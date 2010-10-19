@@ -50,11 +50,13 @@ function SendEmail()
 	  }
 
 	var Params = "emailAddress=" + emailAddress + "&subject=" + subject + "&body=" + body;
-	
+
+	//send the parameters to the servlet with POST
 	xmlhttp.open("POST","GmailSMTPServlet" ,true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xmlhttp.send(Params);
-	
+
+	//change the text while sending the email
 	document.getElementById("myDiv").innerHTML="<h2>Please wait...sending email</h2>";
 }
 </script>

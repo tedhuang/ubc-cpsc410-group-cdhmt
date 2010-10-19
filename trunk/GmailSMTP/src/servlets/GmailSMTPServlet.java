@@ -28,15 +28,7 @@ public class GmailSMTPServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SMTPManager emailManager = SMTPManager.getInstance();
-		
-		Enumeration param = request.getParameterNames();
-		
-		String toAddress = request.getParameter("emailAddress").toString();
-		String subject = request.getParameter("subject").toString();
-		String body = request.getParameter("body").toString();
-		
-		emailManager.sendMail(toAddress, subject, body);
+
 	}
 
 	/**

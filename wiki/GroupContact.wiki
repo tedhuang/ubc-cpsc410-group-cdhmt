@@ -1,0 +1,39 @@
+#summary List of Contact of Group Members
+
+= Stuff =
+
+Chris Lack
+  * Phone = 
+  * Email = c.lack@ucl.ac.uk
+
+Delfino Leong
+  * Phone = 778-858-4356
+  * Email = delfino.leong@gmail.com
+  * Automatic links to other wiki pages
+
+Harry Chen
+  * Email = abigrabit@gmail.com
+
+Martin Ku
+  * Phone = 604-306-4985
+  * Email = martinku86@gmail.com
+
+Ted Huang
+  * Phone = 778-238-8891
+  * Email = ted_huang88@hotmail.com
+
+
+Martin Ku
+CSID - g0m5
+
+Harry Chen
+CSID - s9l6
+
+Delfino Leong
+CSID - x7d6
+
+Ted Huang
+CSID - h2v6
+
+Chris Lack
+CSID - a1t7

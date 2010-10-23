@@ -20,7 +20,7 @@ function ParseXMLResponse(responseXML)
 function createAuctionRequest()
 {
 	
-	var Title = document.getElementById("Title").value;
+	var Title = document.getElementById("AuctionTitle").value;
 	var OwnerID = document.getElementById("OwnerID").value;
 	var MinPrice = document.getElementById("MinPrice").value;
 	
@@ -46,7 +46,7 @@ function createAuctionRequest()
 	    }
 	  }
 
-	var Params = "Title=" + Title + "&OwnerID=" + OwnerID + "&MinPrice=" + MinPrice;
+	var Params = "AuctionTitle=" + Title + "&OwnerID=" + OwnerID + "&MinPrice=" + MinPrice;
 
 	//send the parameters to the servlet with POST
 	xmlhttp.open("POST","createAuctionServlet" ,true);

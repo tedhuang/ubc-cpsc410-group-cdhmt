@@ -9,4 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>createAuctionServlet</display-name>
+    <servlet-name>createAuctionServlet</servlet-name>
+    <servlet-class>Servlets.createAuctionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>createAuctionServlet</servlet-name>
+    <url-pattern>/createAuctionServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

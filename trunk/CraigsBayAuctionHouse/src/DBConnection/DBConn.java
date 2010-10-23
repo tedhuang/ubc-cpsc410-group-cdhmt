@@ -40,7 +40,7 @@ public class DBConn {
 		try{
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 		
-			m_conn = DriverManager.getConnection("jdbc:mysql://localhost/craigsbay:3306",
+			m_conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/craigsbay",
 			        "root", "cpsc410");
 			
 			System.out.println("Succesfully Connected");

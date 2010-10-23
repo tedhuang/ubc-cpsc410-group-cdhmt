@@ -5,14 +5,15 @@ import java.sql.*;
 
 public class DBConn {
 	
+	/*
 	 public static void main(String args[]){
 		 Connection conn;
 		 
 		 try{
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
 			
-				conn = DriverManager.getConnection("jdbc:mysql://70.79.38.90:3306/craigsbay",
-				        "root", "");
+				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/craigsbay",
+				        "root", "cpsc410");
 				
 				System.out.println("Succesfully Connected");
 			}
@@ -31,15 +32,15 @@ public class DBConn {
 			}
 		 
 	 
-	 }
-/*
-	public static Connection conn;
+	 }*/
+
+	public Connection conn;
 
 	public DBConn() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		try{
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 		
-			conn = DriverManager.getConnection("jdbc:mysql:70.79.38.90:3306",
+			conn = DriverManager.getConnection("jdbc:mysql:localhost:3306",
 			        "root", "secret");
 			
 			System.out.println("Succesfully Connected");
@@ -49,5 +50,5 @@ public class DBConn {
 		}
 	
 	}
-*/
+
 }  

@@ -22,7 +22,7 @@
             if (username.toLowerCase().trim().equals("admin") && password.toLowerCase().trim().equals("admin")) {
                 out.println("Welcome " + username + " <a href=\"index.jsp\">Back to main</a>");
                 session.setAttribute("username", username);
-                String redirectURL = "http://localhost:8080/Home_Craigsbay/Control Panel/index.html";
+                String redirectURL = "http://localhost:8080/CraigsBayAuctionHouse/Control Panel/index.html";
                 response.sendRedirect(redirectURL);
             }
            else 

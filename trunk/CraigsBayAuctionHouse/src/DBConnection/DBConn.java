@@ -34,14 +34,14 @@ public class DBConn {
 	 
 	 }*/
 
-	public Connection conn;
+	private Connection m_conn=null;
 
 	public DBConn() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		try{
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 		
-			conn = DriverManager.getConnection("jdbc:mysql:localhost:3306",
-			        "root", "secret");
+			m_conn = DriverManager.getConnection("jdbc:mysql:localhost:3306",
+			        "root", "cpsc410");
 			
 			System.out.println("Succesfully Connected");
 		}
@@ -49,6 +49,11 @@ public class DBConn {
 			System.out.println(e.getMessage());
 		}
 	
+	}
+	
+	public Connection getDBConnection()
+	{
+		return m_conn;
 	}
 
 }  

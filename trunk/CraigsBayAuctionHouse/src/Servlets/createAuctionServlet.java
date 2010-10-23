@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Managers.DBManager;
+
 
 /**
  * Servlet implementation class GmailSMTPServlet
@@ -39,7 +41,8 @@ public class createAuctionServlet extends HttpServlet {
 		String OwnerID = request.getParameter("OwnerID").toString();
 		String MinPrice = request.getParameter("MinPrice").toString();
 		
-		//TODO: call DB Manager and send request
+		DBManager dbm = new DBManager();
+		dbm.createNewAuction(AuctionTitle, "test category",Double.parseDouble(MinPrice), Integer.parseInt(OwnerID), "flickr album");
 		
 		// Write XML to response if DB has return message
 //		StringBuffer XMLResponse = new StringBuffer();	

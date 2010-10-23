@@ -31,15 +31,16 @@ public class DBManager {
 	public Boolean createNewAuction(String auctionName, String category, Double minPrice, int ownerID, String flickrAlbumID   )
 	{
 		try {
+			stm = m_conn.createStatement();
 			String query = "INSERT INTO AuctionsTable(AuctionTitle, Category, " +
 								"OwnerID, MinPrice, FlickerAlbumID) VALUES" +
-								"(" + auctionName + ", " + category + ", " + ownerID + ", " +
-								minPrice + ", " + flickrAlbumID + ")"; 
+								"('" + auctionName + "' , '" + category + "' , " + ownerID + ", " +
+								minPrice + ", '" + flickrAlbumID + "')"; 
 			
 			System.out.println("Creating new auction : " + query);
 			
-			rs = stm.executeQuery(query);
-			return true;
+			boolean success = stm.execute(query);
+			return success;
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}

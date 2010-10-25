@@ -35,6 +35,8 @@ public class userLoginServlet extends HttpServlet {
 		String userName = request.getParameter("userName").toString();
 		String password = request.getParameter("password").toString();
 		
+		System.out.println("user="+ userName+ "Password="+ password);
+		
 		DBManager dbm = new DBManager();
 		dbm.userLogin(userName, password);
 		

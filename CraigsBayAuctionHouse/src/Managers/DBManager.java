@@ -48,5 +48,71 @@ public class DBManager {
 		return false;
 	}
 
+	public int userCheck( String userName, String password ) {
+		
+		try {
+			stm = m_conn.createStatement();
+			String query = "SELECT LoginStatus From UserTAble " +
+								"WHERE UserName='" + userName + "' " +
+								"&& Password='" + password + "'"; 
+		
+			System.out.println("Checking UserName/Password : \n" + query);
+		
+			ResultSet result = stm.getResultSet();
+		
+			/*
+			 * 3 possible return value
+			 *  true = user exists and is logged in
+			 *  false = user exists and is not logged in
+			 *  null = user does not exist
+			 */
+
+			if (result == null ) {
+				return -1;
+			}
+			else {
+				return result.getInt("LoginStatus");
+			}
+		}
+		catch (SQLException e) {
+			//TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return -1;
+	}
+	
+	public Boolean userLogin(String userName, String password)
+	{
+		int loginStatus = userCheck( userName, password );
+				
+		if ( loginStatus == -1 ) {
+		
+			return false;
+		}
+				
+		try {
+			stm = m_conn.createStatement();
+					
+			String query = "UPDATE UserTAble " +
+				"SET LoginStatus=true " +
+				"WHERE UserName='" + userName + "' " +
+				"&& Password='" + password + "'"; 
+
+			boolean success = stm.execute(query);
+
+			System.out.println("User " + userName + " logged in");
+
+			return success;
+					
+		}
+		catch (SQLException e) {
+			//TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return null;
+
+	}
 	
 }

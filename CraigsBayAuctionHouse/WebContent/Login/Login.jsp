@@ -10,10 +10,9 @@
 
 function userLoginRequest()
 {
-	
 	var userName = document.getElementById("username").value;
 	var password = document.getElementById("password").value;
-	
+	//alert("im in");
 	
 	if (window.XMLHttpRequest)
 	  {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -29,8 +28,8 @@ function userLoginRequest()
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	    {
 		    //parse XML response from server
-		    var responseText= ParseXMLResponse(xmlhttp.responseXML);
-		    //alert("responseText: " + responseText);
+		   // var responseText= ParseXMLResponse(xmlhttp.responseXML);
+		    alert("responseText: " + responseText);
 		   
 	    	document.getElementById("myDiv").innerHTML=responseText;
 	    }
@@ -39,10 +38,9 @@ function userLoginRequest()
 	var Params = "userName=" + userName + "&password=" + password;
 
 	//send the parameters to the servlet with POST
-	xmlhttp.open("POST","userLoginServlet" ,true);
+	xmlhttp.open("POST","../userLoginServlet" ,true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xmlhttp.send(Params);
-	
 	document.getElementById("myDiv").innerHTML=Params;
 
 }
@@ -66,7 +64,7 @@ function userLoginRequest()
 
 
 
-<form name="myform" action="userLoginRequest()">
+
 
 <div id="login-box-name" style="margin-top:20px;">User:</div>
 <div id="login-box-field" style="margin-top:20px;">
@@ -82,9 +80,8 @@ function userLoginRequest()
 <br />
 
 <input type="image" src="images/login-btn.png" name="image" width="103" height="42" style="margin-left:90px"
-	onclick="userLoginRequest()";/>
-<button type="button" onclick="userLoginRequest()">Request Login</button>
-</form>
+	onclick="userLoginRequest()" />
+
 
 <br />
 <br />

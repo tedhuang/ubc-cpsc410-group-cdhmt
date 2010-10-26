@@ -19,7 +19,7 @@
     <servlet-name>createAuctionServlet</servlet-name>
     <url-pattern>/createAuctionServlet</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>userLoginServlet</display-name>
     <servlet-name>userLoginServlet</servlet-name>

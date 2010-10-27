@@ -19,7 +19,7 @@
     <servlet-name>createAuctionServlet</servlet-name>
     <url-pattern>/createAuctionServlet</url-pattern>
   </servlet-mapping>
-  <servlet>
+    <servlet>
     <description></description>
     <display-name>userLoginServlet</display-name>
     <servlet-name>userLoginServlet</servlet-name>
@@ -28,5 +28,15 @@
   <servlet-mapping>
     <servlet-name>userLoginServlet</servlet-name>
     <url-pattern>/userLoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>pageFrameTestServlet</display-name>
+    <servlet-name>pageFrameTestServlet</servlet-name>
+    <servlet-class>Servlets.pageFrameTestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>pageFrameTestServlet</servlet-name>
+    <url-pattern>/pageFrameTestServlet</url-pattern>
   </servlet-mapping>
 </web-app>

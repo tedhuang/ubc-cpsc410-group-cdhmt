@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Managers.DBManager;
+import Managers.SMTPManager;
 
 
 /**
@@ -43,6 +44,11 @@ public class createAuctionServlet extends HttpServlet {
 		
 		DBManager dbm = new DBManager();
 		dbm.createNewAuction(AuctionTitle, "test category",Double.parseDouble(MinPrice), Integer.parseInt(OwnerID), "flickr album");
+		
+		/*
+		SMTPManager smtp = new SMTPManager();
+		smtp.sendMail("delfinosmtp", "my sub", "body");
+		*/
 		
 		// Write XML to response if DB has return message
 //		StringBuffer XMLResponse = new StringBuffer();	

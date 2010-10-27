@@ -7,7 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<H1> Hello World! testest</H1>
-<a href = createAuctionTable.jsp>createAuctionTable.jsp</href>
+<H1> Hello World! testing modules:</H1>
+
+<a href = createAuctionTable.jsp>Create Auction Page</href>
+<br>
+<a href = ./Login/Login.jsp>User Login Page</href>
+
+
+
+
 </body>
 </html>

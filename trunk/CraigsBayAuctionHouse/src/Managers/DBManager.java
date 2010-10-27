@@ -14,8 +14,6 @@ public class DBManager {
 	public DBManager()
 	{
 		
-		//NOTE: Right now DB connections only work on the server (You CANNOT access the DB from your local computer)
-		//You will need to commit your code, and run it on the server.
 		try {
 			m_conn = new DBConn().getDBConnection();
 			

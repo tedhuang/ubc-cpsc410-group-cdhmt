@@ -35,13 +35,20 @@ public class pageFrameTestServlet extends HttpServlet {
 		
 		// Write XML to response.
 		String title = "pageFrame test page";
-		String body = "Page Frame Test Sucessful";
+		String body = "&ltbutton type=&quotbutton&quot &gt PageFrameTest &lt/button&gt";
 		
+		
+		//		&	&amp;
+		//		<	&lt;
+		//		>	&gt;
+		//		"	&quot;
+		//		'	&apos
 		StringBuffer XMLResponse = new StringBuffer();	
 		XMLResponse.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
 		XMLResponse.append("<response>\n");
-		XMLResponse.append("\t<title>" + title + "</toAddress>\n");
+		XMLResponse.append("\t<title>" + title + "</title>\n");
 		XMLResponse.append("\t<body>" + body + "</body>\n");
+		XMLResponse.append("\t<test>" + "&ltbutton type=&quotbutton&quot &gt PageFrameTest &lt/button&gt" + "</test>\n");
 		XMLResponse.append("</response>\n");
 			
 		response.setContentType("application/xml");

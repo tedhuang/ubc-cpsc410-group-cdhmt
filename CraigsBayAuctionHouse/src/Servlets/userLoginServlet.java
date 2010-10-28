@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Classes.Credential;
+
 import Managers.DBManager;
 
 public class userLoginServlet extends HttpServlet {
@@ -36,8 +38,13 @@ public class userLoginServlet extends HttpServlet {
 		String password = request.getParameter("password").toString();
 		
 		System.out.println("user="+ userName+ "Password="+ password);
+
 		
 		DBManager dbm = new DBManager();
+		
+		
+		Credential userCred = new Credential(userName, password);
+		
 		dbm.userLogin(userName, password);
 		
 		// Write XML to response if DB has return message

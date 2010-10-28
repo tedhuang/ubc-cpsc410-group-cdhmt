@@ -1,0 +1,17 @@
+#summary Reference Links for HTML and XML
+
+= Links =
+
+HTML Reference:
+  * http://www.w3schools.com/tags/
+
+HTML Overlays and CSS:
+  * http://flowplayer.org/tools/demos/overlay/index.h
+  * http://highslide.com/doc.php#custom-overlays
+
+HTML divs:
+  * http://codingforums.com/showthread.php?t=99473
+  * http://www.webmasterworld.com/css/3632575.htm
+
+XML Reference:
+  * http://www.xmlnews.org/docs/xml-basics.html

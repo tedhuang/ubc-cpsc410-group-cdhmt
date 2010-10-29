@@ -1,6 +1,7 @@
 package Managers;
 
 import java.sql.*;
+import java.util.Calendar;
 
 import DBConnection.DBConn;
 
@@ -10,6 +11,9 @@ public class DBManager {
 	
 	protected ResultSet rs;
 	protected Statement stm;
+	
+	// duration of valid login with no action in milliseconds
+	private final long LoginDuration = 1000 * 60 * 15; 
 	
 	public DBManager()
 	{
@@ -51,9 +55,13 @@ public class DBManager {
 
 	public int userCheck( String userName, String password ) {
 		
+		String cred = null;
+		Timestamp loginExpire = null;
+		
+		
 		try {
 			stm = m_conn.createStatement();
-			String query = "SELECT LoginStatus From UserTAble " +
+			String query = "SELECT LoginStatus FROM UserTable " +
 								"WHERE UserName='" + userName + "' " +
 								"&& Password='" + password + "'"; 
 		
@@ -61,14 +69,13 @@ public class DBManager {
 			
 			stm.executeQuery(query);
 			ResultSet result = stm.getResultSet();
-		
 			/*
 			 * 3 possible return value
-			 *  true = user exists and is logged in
-			 *  false = user exists and is not logged in
-			 *  null = user does not exist
+			 *  1 = user exists and is logged in
+			 *  0 = user exists and is not logged in
+			 *  -1 = user does not exist
 			 */
-
+			
 			if (result == null ) {
 				stm.close();
 				result.close();
@@ -76,7 +83,16 @@ public class DBManager {
 			}
 			else {
 				stm.close();
-				return result.getInt("LoginStatus");
+				cred = result.getString("Credential");
+				loginExpire = result.getTimestamp("LoginExpireTime");
+				
+				if( cred.isEmpty() ||  loginExpire.after( Calendar.getInstance().getTime() )) {
+					return 0;
+				}
+				
+				
+				stm.close();
+				result.close();
 			}
 		}
 		catch (SQLException e) {
@@ -84,7 +100,9 @@ public class DBManager {
 			e.printStackTrace();
 		}
 
-		return -1;
+		return 1;
+
+		
 	}
 	
 	public Boolean userLogin(String userName, String password)

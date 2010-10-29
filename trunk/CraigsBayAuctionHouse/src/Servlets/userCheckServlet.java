@@ -36,7 +36,7 @@ public class userCheckServlet extends HttpServlet {
 		String password = request.getParameter("password").toString();
 		
 		DBManager dbm = new DBManager();
-		int checkResult = dbm.userCheck(userName, password);
+		int checkResult = dbm.userLoginCheck(userName, password);
 		
 		// Write XML to response if DB has return message
 		StringBuffer XMLResponse = new StringBuffer();	

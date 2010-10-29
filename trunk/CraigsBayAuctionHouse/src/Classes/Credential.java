@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 public class Credential {
 
-       String hashString = null;
+       private String hashString = null;
 
        public Credential( String username, String password ) {
     	   this.generateHash(username, password);
@@ -18,7 +18,7 @@ public class Credential {
        }
 
        private void generateHash( String username, String password ) {
-               hashString = Integer.toHexString( username.hashCode() )
+           this.hashString = Integer.toHexString( username.hashCode() )
                                                + Integer.toHexString( password.hashCode() )
                                                + Integer.toHexString( Calendar.getInstance().getTime().hashCode() );
        }

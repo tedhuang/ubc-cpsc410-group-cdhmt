@@ -144,7 +144,7 @@ public class DBManager {
 					
 			String query = "UPDATE UserTAble" +
 				" SET Credential=" + userCred.returnHash() +
-				" SET LoginExpireTime=" + expire +
+				" SET LoginExpireTime='" + expire + "' " +
 				" WHERE UserName='" + userName + "' " +
 				"&& Password='" + password + "'"; 
 

@@ -42,9 +42,6 @@ public class userLoginServlet extends HttpServlet {
 		
 		DBManager dbm = new DBManager();
 		
-		
-		Credential userCred = new Credential(userName, password);
-		
 		dbm.userLogin(userName, password);
 		
 		// Write XML to response if DB has return message

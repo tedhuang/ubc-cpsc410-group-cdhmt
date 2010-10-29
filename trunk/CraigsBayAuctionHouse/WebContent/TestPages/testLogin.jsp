@@ -44,7 +44,7 @@ function checkLoginRequest(){
 	var Params = "userName=" + userName + "&password=" + password;
 
 	//send the parameters to the servlet with POST
-	xmlhttp.open("POST","userCheckServlet" ,true);
+	xmlhttp.open("POST","../userCheckServlet" ,true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xmlhttp.send(Params);
 

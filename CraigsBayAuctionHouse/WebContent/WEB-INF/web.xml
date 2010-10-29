@@ -41,12 +41,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>entryAdding</display-name>
-    <servlet-name>entryAdding</servlet-name>
-    <servlet-class>Servlets.entryAdding</servlet-class>
+    <display-name>entryServlet</display-name>
+    <servlet-name>entryServlet</servlet-name>
+    <servlet-class>Servlets.entryServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>entryAdding</servlet-name>
-    <url-pattern>/entryAdding</url-pattern>
+    <servlet-name>entryServlet</servlet-name>
+    <url-pattern>/entryServlet</url-pattern>
   </servlet-mapping>
 </web-app>

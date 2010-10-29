@@ -100,9 +100,15 @@ function ParseXMLResponse(responseXML)
 	 var price =(responseXML.getElementsByTagName("latestPrice")[0]).childNodes[0].nodeValue;
 
 	 var responseText = "<h2>Get a entry: ";
-	 responseText += item + status + timeLeft + price+ "</h2>";
+	responseText += "<tr>" +
+		"<td><input type=checkbox /></td>" +
+		"<td><a href=index.html title=title>" +item + "</td>" +
+		"<td>"+ status + "</a></td>" +
+		"<td>"+ timeLeft +"</td>" +
+		"<td>"+ price +"</td>" +"</tr>"; 
+		 //item + status + timeLeft + price+ "</h2>";
 
-	 return responseText;
+	 updatePage(responseText);
 }
 
 function addEntry()
@@ -130,7 +136,7 @@ function addEntry()
 		    var responseText= ParseXMLResponse(xmlhttp.responseXML);
 		    //alert("responseText: " + responseText);
 		   
-	    	document.getElementById("myDiv").innerHTML=responseText;
+	    	//document.getElementById("myDiv").innerHTML=responseText;
 	    	//document.getElementById("title").innerHTML=title;
 	    	//document.getElementById("body").innerHTML=body;
 	    }
@@ -143,6 +149,20 @@ function addEntry()
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xmlhttp.send(Params);
 	document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
+}
+
+function updatePage( testHTMLcode ) {
+	bod 				= document.getElementsByTagName('body')[0];
+	overlay 			= document.createElement('div');
+	overlay.id		    = 'overlay';
+
+	/*
+	overlay.innerHTML   = '<div id=newDiv>' +
+							+ testHTMLcode +
+							+ '</div>';
+	*/
+	overlay.innerHTML = testHTMLcode;
+	bod.appendChild(overlay);
 }
 	</script>
    </head>

@@ -72,25 +72,7 @@ function ParseXMLResponseTitle(responseXML)
 	 return title;
 }
 
-/*
- * 
- function ParseXMLResponseBody(responseXML)
-{
-	// var body = (responseXML.getElementsByTagName("body")[0]).childNodes[0].nodeValue;
-	// alert( (responseXML.getElementsByTagName("test")[0]).childNodes[0].nodeValue );
-	//var body = "<button type=\"button\" > my dyanmaic button </button> ";
-	var body = "<tr>"+
-	    " <td><input type="checkbox" /></td>"+
-		"<td><a href="#" title="title">IPhone 4G</td>"+
-		"<td>Hot Bidding!</a></td>"+
-		"<td>12 Hours</td>"+
-		"<td>150</td>";
-	
-		
-	 updatePage( body );
-	
-}
-*/
+
 function ParseXMLResponse(responseXML)
 {
 	
@@ -100,15 +82,14 @@ function ParseXMLResponse(responseXML)
 	 var price =(responseXML.getElementsByTagName("latestPrice")[0]).childNodes[0].nodeValue;
 
 	 var responseText = "<h2>Get a entry: ";
-	responseText += "<tr>" +
-		"<td><input type=checkbox /></td>" +
-		"<td><a href=index.html title=title>" +item + "</td>" +
-		"<td>"+ status + "</a></td>" +
+	responseText += "<td><input type=checkbox /></td>" +
+		"<td><a href=index.html>"+item + "</a></td>" +
+		"<td>"+ status + "</td>" +
 		"<td>"+ timeLeft +"</td>" +
-		"<td>"+ price +"</td>" +"</tr>"; 
-		 //item + status + timeLeft + price+ "</h2>";
-
-	 updatePage(responseText);
+		"<td>"+ price +"</td>"; 
+		 
+		addElement(responseText);
+	 
 }
 
 function addEntry()
@@ -117,6 +98,11 @@ function addEntry()
 	var status=document.getElementById("status").value;
 	var timeLeft=document.getElementById("timeLeft").value;
 	var latestPrice=document.getElementById("latestPrice").value;
+	
+	//var ni = document.getElementById('myDiv');
+	//var numi = document.getElementById('theValue');
+	//var num = (document.getElementById('theValue').value -1)+ 2;
+	  
 	
 	if (window.XMLHttpRequest)
 	  {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -132,13 +118,12 @@ function addEntry()
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	    {
 		    //parse XML response from server
-		    //var title= ParseXMLResponseTitle(xmlhttp.responseXML);
+		    
 		    var responseText= ParseXMLResponse(xmlhttp.responseXML);
-		    //alert("responseText: " + responseText);
 		   
-	    	//document.getElementById("myDiv").innerHTML=responseText;
-	    	//document.getElementById("title").innerHTML=title;
-	    	//document.getElementById("body").innerHTML=body;
+		   // document.getElementById("myDiv").innerHTML="<h2>Entry Added</h2>";
+		   // document.getElementById("myDiv").innerHTML=responseText;
+	    	
 	    }
 	  }
 
@@ -148,34 +133,54 @@ function addEntry()
 	xmlhttp.open("POST","../entryServlet" ,true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xmlhttp.send(Params);
-	document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
+	//document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
 }
-
+/*
 function updatePage( testHTMLcode ) {
-	bod 				= document.getElementsByTagName('body')[0];
+	bod 				= document.getElementsByTagName('myDiv')[0];
 	overlay 			= document.createElement('div');
 	overlay.id		    = 'overlay';
 
-	/*
+	
 	overlay.innerHTML   = '<div id=newDiv>' +
 							+ testHTMLcode +
 							+ '</div>';
-	*/
+	
 	overlay.innerHTML = testHTMLcode;
 	bod.appendChild(overlay);
 }
+*/
+function addElement(response) {
+	var ni = document.getElementById('myDiv');
+	  var numi = document.getElementById('theValue');
+	  var num = (document.getElementById('theValue').value -1)+ 2;
+	  numi.value = num;
+	  var newdiv = document.createElement('div');
+	  var divIdName = 'my'+num+'Div';
+	  newdiv.setAttribute('id',divIdName);
+	  newdiv.innerHTML = response;
+	  //'Element Number '+num+' has been added! 
+	  //<a href=\'#\' onclick=\'removeElement('+divIdName+')\'>Remove the div "'+divIdName+'"</a>';
+	  ni.appendChild(newdiv);
+	  
+	}
+	
+function removeElement(divNum) {
+	  var d = document.getElementById('myDiv');
+	  var olddiv = document.getElementById(divNum);
+	  d.removeChild(olddiv);
+	}
 	</script>
    </head>
   <body>
-  
+  <input type="hidden" value="0" id="theValue" />
   Item: <input id="auctionItem" type="text" name="auctionItem" size="20"><br>
   Status: <input id="status" type="text" name="status" size="20"><br>
   Time Left: <input id="timeLeft" name="time left" size="20"><br>
   Latest Price: <input id="latestPrice" type="text" name="price" size="20"><br>
   
- 
-	<button type="button" onclick="addEntry()">ADD</button>
-	<div id="myDiv"> Entry shows Here</div>
+ <button type="button" onclick="addEntry()">ADD</button>
+	<a href=# onclick=removeElement('+divIdName+')\'>Remove the div "'+divIdName+'"</a>'
   
 	<div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
 		
@@ -209,7 +214,7 @@ function updatePage( testHTMLcode ) {
 						
 						<table>
 							
-							<thead>
+							<thead id="tableHeader">
 								<tr>
 								   <th><input class="check-all" type="checkbox" /></th>
 								   <th>Auction Item</th>
@@ -250,12 +255,15 @@ function updatePage( testHTMLcode ) {
 							<tbody>
 							
 								<!-- Need DB access methods -->
+								
 								<tr>
+								<div id="entry1">
 									<td><input type="checkbox" /></td>
-									<td><a href="#" title="title">IPhone 4G</td>
-									<td>Hot Bidding!</a></td>
+									<td><a href="#" title="title">IPhone 4G</a></td>
+									<td>Hot Bidding!</td>
 									<td>12 Hours</td>
 									<td>150</td>
+								</div>
 							 <!-- Need to generate automatically with the entry -->
 									<td>
 										<!-- Icons -->
@@ -268,8 +276,8 @@ function updatePage( testHTMLcode ) {
 								
 								<tr>
 									<td><input type="checkbox" /></td>
-									<td><a href="#" title="title">Adidas Samba</td>
-									<td>Nobody's interested</a></td>
+									<td><a href="#" title="title">Adidas Samba</a></td>
+									<td>Nobody's interested</td>
 									<td>5 Days</td>
 									<td>30</td>
 									<td>
@@ -278,6 +286,10 @@ function updatePage( testHTMLcode ) {
 										 <a href="#" title="Delete"><img src="resources/images/icons/cross.png" alt="Delete" /></a> 
 										 <a href="#" title="Edit Meta"><img src="resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a>
 									</td>
+								</tr>
+								
+								<tr>
+								 <td><div id="myDiv"> Entry shows Here</div></td>
 								</tr>
 							</tbody>
 							

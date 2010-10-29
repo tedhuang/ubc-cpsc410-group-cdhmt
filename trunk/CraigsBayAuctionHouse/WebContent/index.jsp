@@ -11,7 +11,7 @@
 
 <a href = createAuctionTable.jsp>Create Auction Page</href>
 <br>
-<a href = ./Login/Login.jsp>User Login Page</href>
+<a href = ./Login/>User Login Page</href>
 
 
 

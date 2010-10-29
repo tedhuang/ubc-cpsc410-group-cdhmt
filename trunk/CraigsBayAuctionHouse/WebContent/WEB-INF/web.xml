@@ -49,4 +49,14 @@
     <servlet-name>entryServlet</servlet-name>
     <url-pattern>/entryServlet</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>userCheckServlet</display-name>
+    <servlet-name>userCheckServlet</servlet-name>
+    <servlet-class>Servlets.userCheckServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>userCheckServlet</servlet-name>
+    <url-pattern>/userCheckServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

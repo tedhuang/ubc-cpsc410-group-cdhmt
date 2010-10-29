@@ -6,10 +6,11 @@
 
 function ParseXMLResponse(responseXML)
 {
+	 var result = (responseXML.getElementsByTagName("result")[0]).childNodes[0].nodeValue;
 	 var message = (responseXML.getElementsByTagName("message")[0]).childNodes[0].nodeValue;
 
 	 var responseText = "<h2>AJAX XML response from server: ";
-	 responseText += message;
+	 responseText += result + " " + message + "</h2>";
 
 	 return responseText;
 }
@@ -73,20 +74,20 @@ function createLoginRequest()
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	    {
 		    //parse XML response from server
-		    var responseText= ParseXMLResponse(xmlhttp.responseXML);
+		    //var responseText= ParseXMLResponse(xmlhttp.responseXML);
 		    //alert("responseText: " + responseText);
-		   
+		    checkLoginRequest();
 	    }
 	  }
 
 	var Params = "userName=" + userName + "&password=" + password;
 
 	//send the parameters to the servlet with POST
-	xmlhttp.open("POST","userLoginServlet" ,true);
+	xmlhttp.open("POST","../userLoginServlet" ,true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xmlhttp.send(Params);
 
-	checkLoginRequest();
+	
 }
 </script>
 

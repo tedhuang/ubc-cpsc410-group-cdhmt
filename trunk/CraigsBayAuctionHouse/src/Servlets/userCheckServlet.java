@@ -41,7 +41,8 @@ public class userCheckServlet extends HttpServlet {
 		// Write XML to response if DB has return message
 		StringBuffer XMLResponse = new StringBuffer();	
 		XMLResponse.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
-
+		XMLResponse.append("<response>\n");
+		
 		XMLResponse.append("\t<result>" + checkResult + "</result>\n");
 		
 		if ( checkResult == -1 ) {

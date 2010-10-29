@@ -57,12 +57,12 @@ public class DBManager {
 	public int userLoginCheck( String userName, String password ) {
 		
 		String cred = null;
-		Date loginExpire = null;
+		Long loginExpire = null;
 		
 		
 		try {
 			stm = m_conn.createStatement();
-			String query = "SELECT LoginStatus FROM UserTable " +
+			String query = "SELECT Credential, LoginExpireTime FROM UserTable " +
 								"WHERE UserName='" + userName + "' " +
 								"&& Password='" + password + "'"; 
 		
@@ -83,15 +83,19 @@ public class DBManager {
 				return -1;
 			}
 			else {
-
+				
+				
+				result.first();
 				cred = result.getString("Credential");
-				loginExpire = result.getDate("LoginExpireTime");
+				loginExpire = result.getLong("LoginExpireTime");
+				      
+				
 				
 				
 				stm.close();
 				result.close();
 				
-				if( cred.isEmpty() ||  loginExpire.after( Calendar.getInstance().getTime() )) {
+				if( cred == null || loginExpire == null || ( Calendar.getInstance().getTime().getTime() > loginExpire.longValue() ) ) {
 					return 0;
 				}
 
@@ -108,16 +112,11 @@ public class DBManager {
 	}
 	
 	private String newExpireTime() {
-		java.util.Date expire = new java.util.Date( Calendar.getInstance().getTime().getTime() + loginExpireTime );
+		//java.util.Date expire = new java.util.Date( Calendar.getInstance().getTime().getTime() + loginExpireTime );
+		Long expire = Calendar.getInstance().getTime().getTime() + loginExpireTime;
 		
-		String expireTime = Integer.toString( expire.getYear() ) + "-"
-								+ Integer.toString( expire.getMonth() ) + "-"
-								+ Integer.toString( expire.getDay() ) + " "
-								+ Integer.toString( expire.getHours() ) + ":"
-								+ Integer.toString( expire.getMinutes() ) + ":"
-								+ Integer.toString( expire.getSeconds() ) + ":";
 		
-		return expireTime;
+		return expire.toString();
 	}
 	
 	public Boolean userLogin(String userName, String password)
@@ -142,12 +141,13 @@ public class DBManager {
 		try {
 			stm = m_conn.createStatement();
 					
-			String query = "UPDATE UserTAble" +
-				" SET Credential=" + userCred.returnHash() +
-				" SET LoginExpireTime='" + expire + "' " +
+			String query = "UPDATE UserTable" +
+				" SET Credential='" + userCred.returnHash() + "'," +
+				" LoginExpireTime=" + expire + " " +
 				" WHERE UserName='" + userName + "' " +
-				"&& Password='" + password + "'"; 
-
+				"AND Password='" + password + "'"; 
+			
+			System.out.println("Updating Credentials:" + query);
 			boolean success = stm.execute(query);
 
 			System.out.println("User " + userName + " logged in");

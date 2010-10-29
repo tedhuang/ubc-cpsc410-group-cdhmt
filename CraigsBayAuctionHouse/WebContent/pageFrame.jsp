@@ -53,7 +53,7 @@ function requestPage()
 	  }
 
 	//send the parameters to the servlet with POST
-	var Params = "test";
+	var Params = "username=delfino&password=123";
 	
 	xmlhttp.open("POST","pageFrameTestServlet" ,true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');

@@ -15,6 +15,10 @@ public class Auction {
 	public String flickerAlbumID;
 	public int numberOfViews;
 	
+	public void toXML(){
+		
+	}
+	
 	
 
 }

@@ -44,7 +44,9 @@ public class userLoginServlet extends HttpServlet {
 				
 		String userCred = dbm.userLogin(userName, password);
 		
+
 		if( userCred != null){ 
+			
 			// Write XML to response if DB has return message
 			StringBuffer XMLResponse = new StringBuffer();	
 			XMLResponse.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
@@ -55,6 +57,12 @@ public class userLoginServlet extends HttpServlet {
 			XMLResponse.append("</response>\n");
 			response.setContentType("application/xml");
 			response.getWriter().println(XMLResponse);
+			
+		}
+		else{
+			
+			System.out.println("userCred is null");
+			
 		}
 		
 		

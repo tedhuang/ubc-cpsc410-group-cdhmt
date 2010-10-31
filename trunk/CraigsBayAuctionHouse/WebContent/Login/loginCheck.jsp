@@ -10,6 +10,10 @@
 
 <p><font size="6">
 <%
+//===========================================
+//This is a Test page that does not work **
+//==========================================
+
             String username = request.getParameter("username");
             String password = request.getParameter("password");
            out.println("Checking login<br>");
@@ -29,8 +33,6 @@
                {
                 out.println("Invalid username and password");
            }
-
-
 
 
 %> 

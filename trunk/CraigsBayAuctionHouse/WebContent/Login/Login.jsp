@@ -8,6 +8,20 @@
 
 <script type="text/javascript">
 
+function ParseXMLResponse(responseXML)
+{
+	 var result = (responseXML.getElementsByTagName("userCred")[0]).childNodes[0].nodeValue;
+	 //var message = (responseXML.getElementsByTagName("message")[0]).childNodes[0].nodeValue;
+
+	 var message = "User Credential responseText";
+	 
+	 var responseText = "<h2>AJAX XML response from server: ";
+	 responseText += result + " " + message + "</h2>";
+
+	 return responseText;
+}
+
+
 function userLoginRequest()
 {
 	var userName = document.getElementById("username").value;
@@ -28,8 +42,8 @@ function userLoginRequest()
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	    {
 		    //parse XML response from server
-		   // var responseText= ParseXMLResponse(xmlhttp.responseXML);
-		    alert("responseText: " + responseText);
+		    var responseText= ParseXMLResponse(xmlhttp.responseXML);
+		    alert(responseText);
 		   
 	    	document.getElementById("myDiv").innerHTML=responseText;
 	    }
@@ -37,13 +51,15 @@ function userLoginRequest()
 
 	var Params = "userName=" + userName + "&password=" + password;
 
+	
 	//send the parameters to the servlet with POST
 	xmlhttp.open("POST","../userLoginServlet" ,true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xmlhttp.send(Params);
-
+	
+    //var responseText= ParseXMLResponse(xmlhttp.responseXML);
+    
 	document.getElementById("myDiv").innerHTML=Params;
-
 
 }
 </script>
@@ -63,9 +79,6 @@ function userLoginRequest()
 <H2>Login</H2>
 <br />
 <br />
-
-
-
 
 
 <div id="login-box-name" style="margin-top:20px;">User:</div>

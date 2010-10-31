@@ -41,10 +41,24 @@ public class userLoginServlet extends HttpServlet {
 
 		
 		DBManager dbm = new DBManager();
+				
+		String userCred = dbm.userLogin(userName, password);
 		
-		dbm.userLogin(userName, password);
+		if( userCred != null){ 
+			// Write XML to response if DB has return message
+			StringBuffer XMLResponse = new StringBuffer();	
+			XMLResponse.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
+			XMLResponse.append("<response>\n");
+			
+			XMLResponse.append("\t<userCred>" + userCred + "</result>\n");
+			
+			XMLResponse.append("</response>\n");
+			response.setContentType("application/xml");
+			response.getWriter().println(XMLResponse);
+		}
 		
-		// Write XML to response if DB has return message
+		
+		//Kept for reference:
 //		StringBuffer XMLResponse = new StringBuffer();	
 //		XMLResponse.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
 //		XMLResponse.append("<response>\n");
@@ -52,7 +66,7 @@ public class userLoginServlet extends HttpServlet {
 //		XMLResponse.append("\t<subject>" + subject + "</subject>\n");
 //		XMLResponse.append("\t<body>" + body + "</body>\n");
 //		XMLResponse.append("</response>\n");
-//			
+//
 //		response.setContentType("application/xml");
 //		response.getWriter().println(XMLResponse);
 	}

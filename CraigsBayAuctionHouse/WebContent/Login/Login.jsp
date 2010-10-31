@@ -41,7 +41,9 @@ function userLoginRequest()
 	xmlhttp.open("POST","../userLoginServlet" ,true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xmlhttp.send(Params);
+
 	document.getElementById("myDiv").innerHTML=Params;
+
 
 }
 </script>

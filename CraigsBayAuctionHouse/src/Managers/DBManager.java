@@ -119,18 +119,19 @@ public class DBManager {
 		return expire.toString();
 	}
 	
-	public Boolean userLogin(String userName, String password)
+	public String userLogin(String userName, String password)
 	{
 		int loginStatus = userLoginCheck( userName, password );
-				
+		
+		
 		if ( loginStatus == -1 ) {
-			return false;
+			return null;
 		}
 		
 		Credential userCred;
 		
 		if ( loginStatus == 1 ) {
-			// pass back Credential in the future
+			//TODO: pass back Credential in the future
 		}
 		
 		userCred = new Credential( userName, password );
@@ -152,7 +153,7 @@ public class DBManager {
 
 			System.out.println("User " + userName + " logged in");
 			stm.close();
-			return success;
+			return  userCred.returnHash();
 					
 		}
 		catch (SQLException e) {
@@ -161,7 +162,6 @@ public class DBManager {
 		}
 
 		return null;
-
 	}
 	
 	

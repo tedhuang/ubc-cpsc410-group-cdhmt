@@ -1,8 +1,10 @@
 package Managers;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 
+import Classes.Auction;
 import Classes.Credential;
 import DBConnection.DBConn;
 
@@ -56,8 +58,9 @@ public class DBManager {
 	
 	
 
-	public void auctionList( )
+	public ArrayList<Auction> auctionList( )
 	{
+		ArrayList<Auction> auctionsList = new ArrayList<Auction>();
 		
 		try {
 			stm = m_conn.createStatement();
@@ -69,16 +72,44 @@ public class DBManager {
 			
 			System.out.println("Retrieving Auctions List : " + query);
 			
+			//TODO: figure out if we need a success check here
 			boolean success = stm.execute(query);
 			
+			ResultSet result = stm.getResultSet();
 			
+			while( result.next() ) {
+				Auction tempAuction = new Auction();
+				
+				tempAuction.auctionTitle = result.getString("AuctionTitle");
+				tempAuction.auctionID = result.getInt("AuctionID");
+
+				tempAuction.expiryDate = result.getDouble("ExpiryDate");
+				tempAuction.creationDate = result.getDouble("CreationDate");
+				tempAuction.category = result.getString("Category");
+				tempAuction.ownerID = result.getInt("OwnerID");
+				tempAuction.lastBidder = result.getInt("lastBidder");
+				tempAuction.minPrice = result.getDouble("MinPrice");
+				tempAuction.lastestBidPrice = result.getDouble("LastestBidPrice");
+				tempAuction.bidCounter = result.getInt("BidCounter");
+				tempAuction.auctionStatus = result.getString("auctionStatus");
+				tempAuction.flickerAlbumID = result.getString("flickerAlbumID");
+				tempAuction.numberOfViews = result.getInt("numberOfViews");
+				
+				auctionsList.add( tempAuction );
+				
+			}
 			
+
 			stm.close();
+			
+			return auctionsList;
+			
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
 		
 		
+		return null;
 		
 		
 	}

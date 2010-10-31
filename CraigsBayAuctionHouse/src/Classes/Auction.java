@@ -32,7 +32,7 @@ public class Auction {
 		XMLResponse.append("\t<auctionID>" + auctionID + "</auctionID>\n + " +
 							"\t<auctionTitle>" + auctionTitle + "</auctionTitle>\n" +
 							"\t<expiryDate>" + expiryDate + "</expiryDate>\n" +
-							"\t<creationDate>" + creationDate + "</creationDate>\n"
+							"\t<creationDate>" + creationDate + "</creationDate>\n" +
 							"\t<category>" + category + "</category>\n" +
 							"\t<ownerID>" + ownerID + "</ownerID>\n" +
 							"\t<lastBidder>" + lastBidder + "</lastBidder>\n" +

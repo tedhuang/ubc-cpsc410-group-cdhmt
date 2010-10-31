@@ -53,6 +53,8 @@ public class DBManager {
 		
 		return false;
 	}
+	
+	
 
 	public int userLoginCheck( String userName, String password ) {
 		

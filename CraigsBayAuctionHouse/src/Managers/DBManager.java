@@ -56,6 +56,33 @@ public class DBManager {
 	
 	
 
+	public void auctionList( )
+	{
+		
+		try {
+			stm = m_conn.createStatement();
+			
+			String listRange = "*";
+			String query = "SELECT " + listRange + 
+								" FROM AuctionsTable(AuctionTitle, Category, " +
+								"OwnerID, MinPrice, FlickerAlbumID) VALUES"; 
+			
+			System.out.println("Retrieving Auctions List : " + query);
+			
+			boolean success = stm.execute(query);
+			
+			
+			
+			stm.close();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		
+		
+		
+	}
+	
 	public int userLoginCheck( String userName, String password ) {
 		
 		String cred = null;

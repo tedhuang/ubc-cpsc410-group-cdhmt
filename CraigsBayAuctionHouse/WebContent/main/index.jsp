@@ -20,7 +20,7 @@
 		<link rel="stylesheet" href="../resources/css/invalid.css" type="text/css" media="screen" />	
 		
 		<!-- login css -->
-		<link rel="stylesheet" href="../resources/css/default.css" media="screen,projection" type="text/css" />
+		
 		<link rel="stylesheet" href="../resources/css/lightbox.css" media="screen,projection" type="text/css" />
 		
 		<!--                       Javascripts                       -->

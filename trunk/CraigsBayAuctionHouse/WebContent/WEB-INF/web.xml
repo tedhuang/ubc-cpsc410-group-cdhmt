@@ -49,7 +49,7 @@
     <servlet-name>entryServlet</servlet-name>
     <url-pattern>/entryServlet</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>userCheckServlet</display-name>
     <servlet-name>userCheckServlet</servlet-name>
@@ -58,5 +58,15 @@
   <servlet-mapping>
     <servlet-name>userCheckServlet</servlet-name>
     <url-pattern>/userCheckServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>listAuctionsServlet</display-name>
+    <servlet-name>listAuctionsServlet</servlet-name>
+    <servlet-class>Servlets.listAuctionsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>listAuctionsServlet</servlet-name>
+    <url-pattern>/listAuctionsServlet</url-pattern>
   </servlet-mapping>
 </web-app>

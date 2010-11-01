@@ -33,9 +33,11 @@ function checkAuctionList(){
 	  }
 
 	//send the parameters to the servlet with POST
-	xmlhttp.open("POST","../listAuctionServlet" ,true);
+	var param = "test";
+	
+	xmlhttp.open("POST","../listAuctionsServlet" ,true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-	xmlhttp.send();
+	xmlhttp.send(param);
 
 	//change the text while sending the email
 	document.getElementById("myDiv").innerHTML="<h2>Please wait... Sending Request</h2>";

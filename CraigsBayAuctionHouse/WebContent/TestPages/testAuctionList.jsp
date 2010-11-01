@@ -17,13 +17,16 @@ function ParseXMLResponse( responseXML ) {
 	var auctionsList = responseXML.getElementsByTagName('auctionsList').item(0);
 	
 	var printout = "";
+	/*
 	var auctionListLength = responseXML.getElementsByTagName('auctionsList').item(0).length;
 	var auctionChildLength = auctionsList.childNodes.length;
-	var areponseLength = responseXML.getElementsByTagName('response').length
-	
-	for (var iNode = 0; iNode < responseXML.getElementsByTagName('response').length; iNode++) {
+	var areponseLength = responseXML.getElementsByTagName('response').length;
+	*/
+
+	var auctions = auctionsList.getElementsByTagName("auction");
+	for (var iNode = 0; iNode < auctions.length; iNode++) {
 		
-        var auction_node = auctionsList.getElementsByTagName("auction")[iNode];
+        var auction_node = auctions[iNode];
 
         var auctionID		=	auction_node.getAttribute("auctionID");
         var auctionTitle	=	auction_node.getAttribute("auctionTitle");

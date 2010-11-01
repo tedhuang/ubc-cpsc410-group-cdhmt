@@ -40,7 +40,8 @@ function userLoginRequest()
 					responseText += userCred  + "</h2>";		
 					
 					document.getElementById("myDiv").innerHTML=responseText;
-
+					document.getElementById("submitCred").value = userCred;
+					document.getElementById("close").submit();
 					
 					
 
@@ -64,7 +65,7 @@ function userLoginRequest()
 }
 </script>
 
-<link href="../resource/css/login-box.css" rel="stylesheet" type="text/css" />
+<link href="./resources/css/login-box.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -72,8 +73,9 @@ function userLoginRequest()
 
 <div id="login-box">
 
-<form name="close">
-<input type="image" src="../resources/images/close.png" name="image" width="50" height="50" style="margin-left:300px";/>
+<form id= "close" name="close" method="post">
+	<input id="submitCred" type="hidden" name="cred" />
+	<input type="image" src="./resources/images/close.png" name="image" width="50" height="50" style="margin-left:300px";/>
 </form>
 
 <H2>Login</H2>
@@ -94,7 +96,7 @@ function userLoginRequest()
 <br />
 <br />
 
-<input type="image" src="../resources/images/login-btn.png" name="image" width="103" height="42" style="margin-left:90px"
+<input type="image" src="./resources/images/login-btn.png" name="image" width="103" height="42" style="margin-left:90px"
 	onclick="userLoginRequest()" />
 
 

@@ -49,7 +49,7 @@ function createAuctionRequest()
 	var Params = "AuctionTitle=" + Title + "&OwnerID=" + OwnerID + "&MinPrice=" + MinPrice;
 
 	//send the parameters to the servlet with POST
-	xmlhttp.open("POST","createAuctionServlet" ,true);
+	xmlhttp.open("POST","../createAuctionServlet" ,true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xmlhttp.send(Params);
 

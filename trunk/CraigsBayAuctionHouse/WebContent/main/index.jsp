@@ -11,35 +11,35 @@
 		<!--                       CSS                       -->
 	  
 		<!-- Reset Stylesheet -->
-		<link rel="stylesheet" href="../resources/css/reset.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="./resources/css/reset.css" type="text/css" media="screen" />
 	  
 		<!-- Main Stylesheet -->
-		<link rel="stylesheet" href="../resources/css/style.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="./resources/css/style.css" type="text/css" media="screen" />
 		
 		<!-- Invalid Stylesheet. This makes stuff look pretty. Remove it if you want the CSS completely valid -->
-		<link rel="stylesheet" href="../resources/css/invalid.css" type="text/css" media="screen" />	
+		<link rel="stylesheet" href="./resources/css/invalid.css" type="text/css" media="screen" />	
 		
 		<!-- login css -->
 		
-		<link rel="stylesheet" href="../resources/css/lightbox.css" media="screen,projection" type="text/css" />
+		<link rel="stylesheet" href="./resources/css/lightbox.css" media="screen,projection" type="text/css" />
 		
 		<!--                       Javascripts                       -->
   
 		<!-- jQuery -->
-		<script type="text/javascript" src="../resources/scripts/jquery-1.3.2.min.js"></script>
+		<script type="text/javascript" src="./resources/scripts/jquery-1.3.2.min.js"></script>
 		
 		<!-- jQuery Configuration -->
-		<script type="text/javascript" src="../resources/scripts/simpla.jquery.configuration.js"></script>
+		<script type="text/javascript" src="./resources/scripts/simpla.jquery.configuration.js"></script>
 		
 		<!-- Facebox jQuery Plugin -->
-		<script type="text/javascript" src="../resources/scripts/facebox.js"></script>
+		<script type="text/javascript" src="./resources/scripts/facebox.js"></script>
 		
 		<!-- jQuery WYSIWYG Plugin -->
-		<script type="text/javascript" src="../resources/scripts/jquery.wysiwyg.js"></script>
+		<script type="text/javascript" src="./resources/scripts/jquery.wysiwyg.js"></script>
 		
 		<!-- Login script -->
-		<script type="text/javascript" src="../resources/scripts/prototype.js"></script>
-		<script type="text/javascript" src="../resources/scripts/lightbox.js"></script>
+		<script type="text/javascript" src="./resources/scripts/prototype.js"></script>
+		<script type="text/javascript" src="./resources/scripts/lightbox.js"></script>
 		
 		<!-- Internet Explorer .png-fix -->
 		
@@ -50,8 +50,23 @@
 			</script>
 		<![endif]-->
 		
+		
+	<!--  Functions -->
+	<!--  CREDENTIAL CHECK -->
+	
+		
 	</head>
 	
+            
+	
+	<% 
+		String cred = request.getParameter("cred");
+		
+	%>
+	
+	<h2>
+	<%= cred %>
+	</h2>
 	
 	<body><div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
 		
@@ -60,7 +75,7 @@
 			<h1 id="sidebar-title"><a href="#">Admin Panel</a></h1>
 		  
 			<!-- Logo (221px wide) -->
-			<img id="logo" src="../resources/images/lighthouse.gif" width="100" height="100" alt="logo" />
+			<img id="logo" src="./resources/images/lighthouse.gif" width="100" height="100" alt="logo" />
 		  
 			<!-- Sidebar Profile links -->
 			<ul>
@@ -145,6 +160,8 @@
 				</form>
 				
 			</div> <!-- End #messages -->
+			
+			
 			
 			</div><!-- Sidebar Style ends here -->
 			</div><!-- Siderbar ends here -->

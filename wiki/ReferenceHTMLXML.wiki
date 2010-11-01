@@ -15,6 +15,7 @@ HTML divs:
 
 XML Reference:
   * http://www.xmlnews.org/docs/xml-basics.html
+  * http://www.captain.at/howto-ajax-process-xml.php
 
 XML Format from Flickr
   * http://api.flickr.com/services/rest/?&method=flickr.people.getPublicPhotos&api_key=4ef2fe2affcdd6e13218f5ddd0e2500d&user_id=29096781@N02

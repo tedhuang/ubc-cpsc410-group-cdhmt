@@ -50,6 +50,8 @@ public class listAuctionsServlet extends HttpServlet {
 		XMLResponse.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
 		XMLResponse.append("<response>\n");
 		
+		
+		//TODO: make each auctiontable entry different element
 		while( auctionListIterator.hasNext() ) {
 			String thisXML = auctionListIterator.next().toXMLContent();
 			XMLResponse.append( thisXML );

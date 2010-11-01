@@ -159,25 +159,25 @@ function addElement(response) {
 	  var divIdName = 'my'+num+'Div';
 	  newdiv.setAttribute('id',divIdName);
 	  newdiv.innerHTML = response;
-	  //'Element Number '+num+' has been added! 
-	  //<a href=\'#\' onclick=\'removeElement('+divIdName+')\'>Remove the div "'+divIdName+'"</a>';
 	  ni.appendChild(newdiv);
 	  
 	}
 	
 function removeElement() {
-	var participants = document.getElementById( 'myDiv' ).getElementsByTagName("div");
- 	
-	for( var i = participants.length-1; i > -1; i-- )
-		if( participants[ i ].checked )
+	var elements=document.getElementById( 'myDiv' );
+	var entries = document.getElementById( 'myDiv' ).getElementsByTagName('div');
+	var chkBox;
+	var temp;
+	for( var i = entries.length-1; i > -1; i-- )
+	 {
+		chkBox=document.getElementById( entries[i].id ).getElementsByTagName("input");
+		temp = document.getElementById(entries[i].id);
+		if( chkBox[0].checked )
 		{
-
-			if( participants[i].nextSibling.nodeType == 3 )
-				participants[i].parentNode.removeChild( participants[i].nextSibling );
-participants[ i ].opt.set=false;
-		participants[ i ].parentNode.removeChild( participants[ i ] );
-
+			elements.removeChild( temp );
 		}
+	 }
+		
 	}
 	</script>
    </head>

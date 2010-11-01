@@ -7,17 +7,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		
 		<title>Welcome To CS410 Project</title>
-		
-<!-- Meta Tags -->
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<meta name="robots" content="index, follow" />
 
-<!-- CSS -->
-
-
-<!-- JavaScript -->
-
-		
 		<!--                       CSS                       -->
 	  
 		<!-- Reset Stylesheet -->

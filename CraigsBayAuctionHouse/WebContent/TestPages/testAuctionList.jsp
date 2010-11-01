@@ -9,6 +9,31 @@
 <body>
 
 <script type="text/javascript">
+
+function ParseXMLResponse( responseXML ) {
+
+	var auctionList = responseXML.getElementsByTagName('auctionList').item(0);
+	
+	for (var iNode = 0; iNode < auctionList.childNodes.length; iNode++) {
+		
+        var auction_node = auctionList.childNodes.item(iNode);
+        
+        var auctionID=(auction_node.getElementsByTagName("auctionID")[0]).childNodes[0].nodeValue;
+        
+	}
+        
+}
+
+function addrow(tablename, arr) {
+	   var tbl = document.getElementById(tablename);
+	   var lastRow = tbl.rows.length;
+	   var row = tbl.insertRow(lastRow);
+	      for (r = 0; r < arr.length; r++) {   
+	         var cell = row.insertCell(r);
+	         cell.innerHTML = arr[r];
+	      }
+}
+
 function checkAuctionList(){
 	
 	if (window.XMLHttpRequest)
@@ -45,11 +70,13 @@ function checkAuctionList(){
 
 </script>
 
+
+<button type="button" onclick="checkAuctionList()">Check Auction List</button>
         	  
 <div id="myDiv"><h2>Feedback Area</h2></div>
 
+<table border="1" id="mytable"></table>
 
 
-<button type="button" onclick="checkAuctionList()">Check Auction List</button>
 </body>
 </html>

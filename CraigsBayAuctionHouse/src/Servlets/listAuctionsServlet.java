@@ -43,7 +43,6 @@ public class listAuctionsServlet extends HttpServlet {
 		DBManager dbm = new DBManager();
 		auctionList = dbm.auctionList();
 		
-		ListIterator<Auction> auctionListIterator = auctionList.listIterator();
 		
 		//Write XML
 		StringBuffer XMLResponse = new StringBuffer();	
@@ -51,7 +50,9 @@ public class listAuctionsServlet extends HttpServlet {
 		XMLResponse.append("<response>\n");
 		
 		
-		XMLResponse.append("<auctions>\n");
+		XMLResponse.append("\t<auctionsList>\n");
+
+		ListIterator<Auction> auctionListIterator = auctionList.listIterator();
 		
 		//TODO: make each auctiontable entry different element
 		while( auctionListIterator.hasNext() ) {
@@ -60,7 +61,7 @@ public class listAuctionsServlet extends HttpServlet {
 		}
 		
 		//TODO: XMLResponse.append();
-		XMLResponse.append("</auctions>\n");
+		XMLResponse.append("\t</auctionsList>\n");
 		XMLResponse.append("</response>\n");
 		response.setContentType("application/xml");
 		response.getWriter().println(XMLResponse);

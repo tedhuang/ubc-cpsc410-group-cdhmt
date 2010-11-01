@@ -139,13 +139,12 @@ public class DBManager {
 			System.out.println("Result : " + result);
 			
 			//TODO: fix this, result is not null even if username/pass is wrong
-			if (result == null ) {
+			if (  result.first() == false) {
 				stm.close();
 				return -1;
 			}
 			else {
 				
-				result.first();
 				cred = result.getString("Credential");
 				loginExpire = result.getLong("LoginExpireTime");
 				      

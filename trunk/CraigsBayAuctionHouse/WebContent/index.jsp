@@ -7,16 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-<<<<<<< .mine
+
 <H1> Hello World</H1>
 <a href = createAuctionTable.jsp>createAuctionTable.jsp</href>
-=======
+
 <H1> Hello World! testing modules:</H1>
 
 <a href = createAuctionTable.jsp>Create Auction Page</href>
 <br>
 <a href = ./Login/>User Login Page</href>
-
+<br>
 <a href = FlickrAPI.jsp>FlickrAPI test</href>
 
 </body>

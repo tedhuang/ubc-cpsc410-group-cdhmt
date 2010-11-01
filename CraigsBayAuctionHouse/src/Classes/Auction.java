@@ -26,7 +26,7 @@ public class Auction {
 	//TODO: make sure null entry and null value could be processed for a certain field
 	public String toXMLContent() {
 		
-		return "\t<auctionID>" + auctionID + "</auctionID>\n + " +
+		return "\t<auctionID>" + auctionID + "</auctionID>\n" +
 				"\t<auctionTitle>" + auctionTitle + "</auctionTitle>\n" +
 				"\t<expiryDate>" + expiryDate + "</expiryDate>\n" +
 				"\t<creationDate>" + creationDate + "</creationDate>\n" +

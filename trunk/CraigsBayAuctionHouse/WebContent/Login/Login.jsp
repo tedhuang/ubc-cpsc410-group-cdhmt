@@ -42,12 +42,13 @@ function userLoginRequest()
 					document.getElementById("myDiv").innerHTML=responseText;
 
 					
+					
 
 		    	}
 		    else
 		    	{
 			    	//TODO: implement error handling
-			    	document.getElementById("myDiv").innerHTML="<h2>Login Failed!</h2>";
+			    	document.getElementById("myDiv").innerHTML="<h2>Login Failed!</h2>"; //This doesn't actually print
 		    	}
 	    }
 	  };

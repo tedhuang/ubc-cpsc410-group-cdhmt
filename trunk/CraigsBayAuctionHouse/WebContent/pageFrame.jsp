@@ -61,6 +61,8 @@ function requestPage()
 
 }
 
+
+
 function updatePage( testHTMLcode ) {
 	bod 				= document.getElementsByTagName('body')[0];
 	overlay 			= document.createElement('div');
@@ -72,17 +74,20 @@ function updatePage( testHTMLcode ) {
 							+ '</div>';
 	*/
 	overlay.innerHTML = testHTMLcode;
-	bod.appendChild(overlay);
+	bod.appendChild(overlay); // TODO: maybe we can add another method that uses append for adding new posts to our list in the front page 
+	//bod.replaceChild(overlay);
 }
+
+
 
 </script>
 
 </head>
 <body>
 
-<button type="button" onclick="requestPage()">Request Page</button>
-
 <div id="div0">
+
+<button type="button" onclick="requestPage()">Request Page</button>
 
 </div>
 

@@ -74,7 +74,7 @@
 			<div id="profile-links">
 				Hello, <a href="#" title="Edit your profile">Admin</a>, you have <a href="#messages" rel="modal" title="3 Messages">3 Messages</a><br />
 				<br />
-				<a href="#" title="View the Site">View the Site</a> | <a href="/Home_Craigsbay/Login/index.html" title="Sign Out">Sign Out</a>
+				<a href="#" title="View the Site">View the Site</a> | <a href="/CraigsBayAuctionHouse/Login/index.html" title="Sign Out">Sign Out</a>
 			</div>        
 			
 			<ul id="main-nav">  <!-- Accordion Menu -->

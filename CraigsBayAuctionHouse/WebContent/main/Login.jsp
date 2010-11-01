@@ -8,19 +8,6 @@
 
 <script type="text/javascript">
 
-function ParseXMLResponse(responseXML)
-{
-	 var result = (responseXML.getElementsByTagName("userCred")[0]).childNodes[0].nodeValue;
-	 //var message = (responseXML.getElementsByTagName("message")[0]).childNodes[0].nodeValue;
-
-	 var message = "User Credential responseText";
-	 
-	 var responseText = "<h2>AJAX XML response from server: ";
-	 responseText += result + " " + message + "</h2>";
-
-	 return responseText;
-}
-
 
 function userLoginRequest()
 {
@@ -42,30 +29,42 @@ function userLoginRequest()
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	    {
 		    //parse XML response from server
-		    var responseText= ParseXMLResponse(xmlhttp.responseXML);
-		    alert(responseText);
-		   
-	    	document.getElementById("myDiv").innerHTML=responseText;
-	    }
-	  }
+		    //var responseText= ParseXMLResponse(xmlhttp.responseXML);
+		    		    
+		    //Gets userCred and prints it to div
+			var userCred = (xmlhttp.responseXML.getElementsByTagName("userCred")[0]).childNodes[0].nodeValue;
+			
+		    if(userCred != null) 
+			    { 
+					var responseText = "<h2>User Credential is: ";
+					responseText += userCred  + "</h2>";		
+					
+					document.getElementById("myDiv").innerHTML=responseText;
 
+					
+					
+
+		    	}
+		    else
+		    	{
+			    	//TODO: implement error handling
+			    	document.getElementById("myDiv").innerHTML="<h2>Login Failed!</h2>"; //This doesn't actually print
+		    	}
+	    }
+	  };
+	  
 	var Params = "userName=" + userName + "&password=" + password;
 
 	//send the parameters to the servlet with POST
 	xmlhttp.open("POST","../userLoginServlet" ,true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xmlhttp.send(Params);
-	
-    //var responseText= ParseXMLResponse(xmlhttp.responseXML);
-    
-
-	document.getElementById("myDiv").innerHTML=Params;
 
 
 }
 </script>
 
-<link href="../resources/css/login-box.css" rel="stylesheet" type="text/css" />
+<link href="login-box.css" rel="stylesheet" type="text/css" />
 
 </head>
 

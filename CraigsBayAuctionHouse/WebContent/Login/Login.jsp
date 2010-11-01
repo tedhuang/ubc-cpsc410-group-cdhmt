@@ -51,22 +51,10 @@ function userLoginRequest()
 
 	var Params = "userName=" + userName + "&password=" + password;
 
-<<<<<<< .mine
-	
-//	document.getElementById("myDiv").innerHTML=Params;
-	
-=======
-	
->>>>>>> .r68
 	//send the parameters to the servlet with POST
 	xmlhttp.open("POST","../userLoginServlet" ,true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xmlhttp.send(Params);
-	
-    //var responseText= ParseXMLResponse(xmlhttp.responseXML);
-    
-
-	document.getElementById("myDiv").innerHTML=Params;
 
 
 }

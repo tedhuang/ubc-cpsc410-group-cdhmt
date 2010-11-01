@@ -87,7 +87,7 @@
 				
 				<li>
 					<a href="#" class="nav-top-item">
-						Social Nectwork
+						Social Network
 					</a>
 					<ul>
 						<li><a href="#">Start a Chat</a></li>

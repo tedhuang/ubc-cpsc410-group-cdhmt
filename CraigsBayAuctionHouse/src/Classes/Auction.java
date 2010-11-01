@@ -14,9 +14,9 @@ public class Auction {
 	public double creationDate;
 	public String category;
 	public int ownerID;
-	public int lastBidder;
+	public int lastBidderID;
 	public double minPrice;
-	public double lastestBidPrice;
+	public double latestBidPrice;
 	public int bidCounter;
 	public String auctionStatus;
 	public String flickerAlbumID;
@@ -32,9 +32,9 @@ public class Auction {
 				"\t<creationDate>" + creationDate + "</creationDate>\n" +
 				"\t<category>" + category + "</category>\n" +
 				"\t<ownerID>" + ownerID + "</ownerID>\n" +
-				"\t<lastBidder>" + lastBidder + "</lastBidder>\n" +
+				"\t<lastBidderID>" + lastBidderID + "</lastBidderID>\n" +
 				"\t<minPrice>" + minPrice + "</minPrice>\n" +
-				"\t<lastestBidPrice>" + lastestBidPrice + "</lastestBidPrice>\n" +
+				"\t<latestBidPrice>" + latestBidPrice + "</latestBidPrice>\n" +
 				"\t<bidCounter>" + bidCounter + "</bidCounter>\n" +
 				"\t<auctionStatus>" + auctionStatus + "</auctionStatus>\n" +
 				"\t<flickerAlbumID>" + flickerAlbumID + "</flickerAlbumID>\n" +

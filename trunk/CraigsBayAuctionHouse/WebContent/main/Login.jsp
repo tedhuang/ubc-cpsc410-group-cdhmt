@@ -51,13 +51,6 @@ function userLoginRequest()
 
 	var Params = "userName=" + userName + "&password=" + password;
 
-<<<<<<< .mine
-	
-//	document.getElementById("myDiv").innerHTML=Params;
-	
-=======
-	
->>>>>>> .r68
 	//send the parameters to the servlet with POST
 	xmlhttp.open("POST","../userLoginServlet" ,true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -72,7 +65,7 @@ function userLoginRequest()
 }
 </script>
 
-<link href="login-box.css" rel="stylesheet" type="text/css" />
+<link href="../resources/css/login-box.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -81,7 +74,7 @@ function userLoginRequest()
 <div id="login-box">
 
 <form name="close">
-<input type="image" src="images/close.png" name="image" width="50" height="50" style="margin-left:300px";/>
+<input type="image" src="../resources/images/close.png" name="image" width="50" height="50" style="margin-left:300px";/>
 </form>
 
 <H2>Login</H2>
@@ -102,7 +95,7 @@ function userLoginRequest()
 <br />
 <br />
 
-<input type="image" src="images/login-btn.png" name="image" width="103" height="42" style="margin-left:90px"
+<input type="image" src="../resources/images/login-btn.png" name="image" width="103" height="42" style="margin-left:90px"
 	onclick="userLoginRequest()" />
 
 

@@ -126,6 +126,7 @@ public class DBManager {
 								"WHERE UserName='" + userName + "' " +
 								"&& Password='" + password + "'"; 
 		
+
 			System.out.println("Checking UserName/Password : \n" + query);
 			
 			stm.executeQuery(query);
@@ -136,34 +137,31 @@ public class DBManager {
 			 *  0 = user exists and is not logged in
 			 *  -1 = user does not exist
 			 */
+			System.out.println("Result : " + result);
 			
+			//TODO: fix this, result is not null even if username/pass is wrong
 			if (result == null ) {
 				stm.close();
-
 				return -1;
 			}
 			else {
-				
 				
 				result.first();
 				cred = result.getString("Credential");
 				loginExpire = result.getLong("LoginExpireTime");
 				      
-				
-				
-				
 				stm.close();
 				result.close();
 				
 				if( cred == null || loginExpire == null || ( Calendar.getInstance().getTime().getTime() > loginExpire.longValue() ) ) {
 					return 0;
 				}
-
 			}
 		}
 		catch (SQLException e) {
 			//TODO Auto-generated catch block
 			e.printStackTrace();
+			return -1;
 		}
 
 		return 1;
@@ -183,6 +181,7 @@ public class DBManager {
 	{
 		int loginStatus = userLoginCheck( userName, password );
 		
+		//System.out.println("loginStatus: " + loginStatus);
 		
 		if ( loginStatus == -1 ) {
 			return null;

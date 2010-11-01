@@ -60,9 +60,17 @@ public class userLoginServlet extends HttpServlet {
 			
 		}
 		else{
-			
 			System.out.println("userCred is null");
 			
+			StringBuffer XMLResponse = new StringBuffer();	
+			XMLResponse.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
+			XMLResponse.append("<response>\n");
+			
+			XMLResponse.append("\t<userCred>" + null + "</userCred>\n"); //probably don't need this line to say userCred is null
+			
+			XMLResponse.append("</response>\n");
+			response.setContentType("application/xml");
+			response.getWriter().println(XMLResponse);
 		}
 		
 		

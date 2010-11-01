@@ -58,7 +58,7 @@ public class DBManager {
 	
 	
 
-	public ArrayList<Auction> auctionList( )
+	public ArrayList<Auction> auctionList()
 	{
 		ArrayList<Auction> auctionsList = new ArrayList<Auction>();
 		

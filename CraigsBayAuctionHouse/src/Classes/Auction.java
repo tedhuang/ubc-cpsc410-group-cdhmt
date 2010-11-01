@@ -22,30 +22,23 @@ public class Auction {
 	public String flickerAlbumID;
 	public int numberOfViews;
 	
-	public void toXML(HttpServletResponse response) throws ServletException, IOException{
+	
+	//TODO: make sure null entry and null value could be processed for a certain field
+	public String toXMLContent() {
 		
-		//Write XML
-		StringBuffer XMLResponse = new StringBuffer();	
-		XMLResponse.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
-		XMLResponse.append("<response>\n");
-		
-		XMLResponse.append("\t<auctionID>" + auctionID + "</auctionID>\n + " +
-							"\t<auctionTitle>" + auctionTitle + "</auctionTitle>\n" +
-							"\t<expiryDate>" + expiryDate + "</expiryDate>\n" +
-							"\t<creationDate>" + creationDate + "</creationDate>\n" +
-							"\t<category>" + category + "</category>\n" +
-							"\t<ownerID>" + ownerID + "</ownerID>\n" +
-							"\t<lastBidder>" + lastBidder + "</lastBidder>\n" +
-							"\t<minPrice>" + minPrice + "</minPrice>\n" +
-							"\t<lastestBidPrice>" + lastestBidPrice + "</lastestBidPrice>\n" +
-							"\t<bidCounter>" + bidCounter + "</bidCounter>\n" +
-							"\t<auctionStatus>" + auctionStatus + "</auctionStatus>\n" +
-							"\t<flickerAlbumID>" + flickerAlbumID + "</flickerAlbumID>\n" +
-							"\t<numberOfViews>" + numberOfViews + "</numberOfViews>\n");
-		XMLResponse.append("</response>\n");
-		
-		response.setContentType("application/xml");
-		response.getWriter().println(XMLResponse);
+		return "\t<auctionID>" + auctionID + "</auctionID>\n + " +
+				"\t<auctionTitle>" + auctionTitle + "</auctionTitle>\n" +
+				"\t<expiryDate>" + expiryDate + "</expiryDate>\n" +
+				"\t<creationDate>" + creationDate + "</creationDate>\n" +
+				"\t<category>" + category + "</category>\n" +
+				"\t<ownerID>" + ownerID + "</ownerID>\n" +
+				"\t<lastBidder>" + lastBidder + "</lastBidder>\n" +
+				"\t<minPrice>" + minPrice + "</minPrice>\n" +
+				"\t<lastestBidPrice>" + lastestBidPrice + "</lastestBidPrice>\n" +
+				"\t<bidCounter>" + bidCounter + "</bidCounter>\n" +
+				"\t<auctionStatus>" + auctionStatus + "</auctionStatus>\n" +
+				"\t<flickerAlbumID>" + flickerAlbumID + "</flickerAlbumID>\n" +
+				"\t<numberOfViews>" + numberOfViews + "</numberOfViews>\n";
 				
 	}
 	

@@ -28,14 +28,14 @@ function checkAuctionList(){
 		    //var responseText= ParseXMLResponse(xmlhttp.responseXML);
 		    //alert("responseText: " + responseText);   
 			
-	    	document.getElementById("myDiv").innerHTML=xmlhttp.responseXML;
+	    	document.getElementById("myDiv").innerHTML="<h2>We got it</h2>";
 	    }
 	  }
 
 	//send the parameters to the servlet with POST
 	xmlhttp.open("POST","../listAuctionServlet" ,true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-	xmlhttp.send(Params);
+	xmlhttp.send();
 
 	//change the text while sending the email
 	document.getElementById("myDiv").innerHTML="<h2>Please wait... Sending Request</h2>";

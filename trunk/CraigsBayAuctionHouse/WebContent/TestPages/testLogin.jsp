@@ -77,12 +77,12 @@ function createLoginRequest()
 		    //var responseText= ParseXMLResponse(xmlhttp.responseXML);
 		    
 		    //checkLoginRequest();
-		    
-		   	var result = (xmlhttp.responseXML.getElementsByTagName("userCred")[0]).childNodes[0].nodeValue;
+			var result = (xmlhttp.responseXML.getElementsByTagName("userCred")[0]).childNodes[0].nodeValue;
 			var responseText = "<h2>AJAX XML response from server: ";
 			responseText += result  + "</h2>";		
 			
 			document.getElementById("myDiv").innerHTML=responseText;
+
 	    }
 	  }
 

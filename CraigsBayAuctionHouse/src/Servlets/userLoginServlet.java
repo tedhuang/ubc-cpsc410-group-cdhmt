@@ -52,7 +52,7 @@ public class userLoginServlet extends HttpServlet {
 			XMLResponse.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
 			XMLResponse.append("<response>\n");
 			
-			XMLResponse.append("\t<userCred>" + userCred + "</result>\n");
+			XMLResponse.append("\t<userCred>" + userCred + "</userCred>\n");
 			
 			XMLResponse.append("</response>\n");
 			response.setContentType("application/xml");

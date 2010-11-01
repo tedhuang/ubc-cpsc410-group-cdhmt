@@ -165,10 +165,19 @@ function addElement(response) {
 	  
 	}
 	
-function removeElement(divNum) {
-	  var d = document.getElementById('myDiv');
-	  var olddiv = document.getElementById(divNum);
-	  d.removeChild(olddiv);
+function removeElement() {
+	var participants = document.getElementById( 'myDiv' ).getElementsByTagName("div");
+ 	
+	for( var i = participants.length-1; i > -1; i-- )
+		if( participants[ i ].checked )
+		{
+
+			if( participants[i].nextSibling.nodeType == 3 )
+				participants[i].parentNode.removeChild( participants[i].nextSibling );
+participants[ i ].opt.set=false;
+		participants[ i ].parentNode.removeChild( participants[ i ] );
+
+		}
 	}
 	</script>
    </head>
@@ -180,7 +189,7 @@ function removeElement(divNum) {
   Latest Price: <input id="latestPrice" type="text" name="price" size="20"><br>
   
  <button type="button" onclick="addEntry()">ADD</button>
-	<a href=# onclick=removeElement('+divIdName+')\'>Remove the div "'+divIdName+'"</a>'
+	<a href=# onclick=removeElement();>Remove Selected Entry</a>'
   
 	<div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
 		

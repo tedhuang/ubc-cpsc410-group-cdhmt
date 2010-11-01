@@ -74,14 +74,15 @@ function createLoginRequest()
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	    {
 		    //parse XML response from server
-		    var responseText= ParseXMLResponse(xmlhttp.responseXML);
+		    //var responseText= ParseXMLResponse(xmlhttp.responseXML);
 		    
 		    //checkLoginRequest();
 		    
 		   	var result = (xmlhttp.responseXML.getElementsByTagName("userCred")[0]).childNodes[0].nodeValue;
 			var responseText = "<h2>AJAX XML response from server: ";
 			responseText += result  + "</h2>";		
-		    
+			
+			document.getElementById("myDiv").innerHTML=responseText;
 	    }
 	  }
 

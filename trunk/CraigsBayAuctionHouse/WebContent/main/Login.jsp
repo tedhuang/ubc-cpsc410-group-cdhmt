@@ -64,7 +64,7 @@ function userLoginRequest()
 }
 </script>
 
-<link href="login-box.css" rel="stylesheet" type="text/css" />
+<link href="../resource/css/login-box.css" rel="stylesheet" type="text/css" />
 
 </head>
 

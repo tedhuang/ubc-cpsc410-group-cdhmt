@@ -21,7 +21,7 @@ public class Auction {
 	public String auctionStatus;
 	public String flickerAlbumID;
 	public int numberOfViews;
-	
+
 	
 	//TODO: make sure null entry and null value could be processed for a certain field
 	public String toXMLContent() {

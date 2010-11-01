@@ -10,18 +10,38 @@
 
 <script type="text/javascript">
 
+
+//This code doesn't fetch attributes correctly
 function ParseXMLResponse( responseXML ) {
 
-	var auctionList = responseXML.getElementsByTagName('auctionList').item(0);
+	var auctionsList = responseXML.getElementsByTagName('auctionsList').item(0);
 	
-	for (var iNode = 0; iNode < auctionList.childNodes.length; iNode++) {
+	var printout;
+	
+	for (var iNode = 0; iNode < auctionsList.childNodes.length; iNode++) {
 		
-        var auction_node = auctionList.childNodes.item(iNode);
+        var auction_node = auctionsList.childNodes.item(iNode);
+
+        var auctionID		=	auction_node.getElementsByTagName("auction")[0].getAttribute("auctionID");
+        var auctionTitle	=	auction_node.getElementsByTagName("auction")[0].getAttribute("auctionTitle");
+        var expiryDate		=	auction_node.getElementsByTagName("auction")[0].getAttribute("expiryDate");
+        var creationDate	=	auction_node.getElementsByTagName("auction")[0].getAttribute("creationDate");
+        var category		=	auction_node.getElementsByTagName("auction")[0].getAttribute("category");
+        var ownerID			=	auction_node.getElementsByTagName("auction")[0].getAttribute("ownerID");
+        var lastBidderID	=	auction_node.getElementsByTagName("auction")[0].getAttribute("lastBidderID");
+        var minPrice		=	auction_node.getElementsByTagName("auction")[0].getAttribute("minPrice");
+        var latestBidPrice	=	auction_node.getElementsByTagName("auction")[0].getAttribute("latestBidPrice");
+        var bidCounter		=	auction_node.getElementsByTagName("auction")[0].getAttribute("bidCounter");
+        var auctionStatus	=	auction_node.getElementsByTagName("auction")[0].getAttribute("auctionStatus");
+        var flickerAlbumID	=	auction_node.getElementsByTagName("auction")[0].getAttribute("flickerAlbumID");
+        var numberOfViews	=	auction_node.getElementsByTagName("auction")[0].getAttribute("numberOfViews");
         
-        var auctionID=(auction_node.getElementsByTagName("auctionID")[0]).childNodes[0].nodeValue;
-        
+        printout += "<h2>auctionID=" + auctionID + " auctionTitle=" + auctionTitle
+				+ " ownerID=" + ownerID + "</h2>";
+						
 	}
-        
+   
+	return printout;
 }
 
 function addrow(tablename, arr) {
@@ -50,10 +70,11 @@ function checkAuctionList(){
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	    {
 		    //parse XML response from server
-		    //var responseText= ParseXMLResponse(xmlhttp.responseXML);
+		    var responseText= ParseXMLResponse(xmlhttp.responseXML);
 		    //alert("responseText: " + responseText);   
 			
-	    	document.getElementById("myDiv").innerHTML="<h2>We got it</h2>";
+	    	//document.getElementById("myDiv").innerHTML="<h2>We got it</h2>";
+		    document.getElementById("myDiv").innerHTML = responseText;
 	    }
 	  }
 
@@ -74,9 +95,6 @@ function checkAuctionList(){
 <button type="button" onclick="checkAuctionList()">Check Auction List</button>
         	  
 <div id="myDiv"><h2>Feedback Area</h2></div>
-
-<table border="1" id="mytable"></table>
-
 
 </body>
 </html>

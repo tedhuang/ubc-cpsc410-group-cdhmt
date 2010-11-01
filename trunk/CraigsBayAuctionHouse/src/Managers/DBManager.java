@@ -67,8 +67,7 @@ public class DBManager {
 			
 			String listRange = "*";
 			String query = "SELECT " + listRange + 
-								" FROM AuctionsTable(AuctionTitle, Category, " +
-								"OwnerID, MinPrice, FlickerAlbumID) VALUES"; 
+								" FROM AuctionsTable"; 
 			
 			System.out.println("Retrieving Auctions List : " + query);
 			
@@ -87,9 +86,9 @@ public class DBManager {
 				tempAuction.creationDate = result.getDouble("CreationDate");
 				tempAuction.category = result.getString("Category");
 				tempAuction.ownerID = result.getInt("OwnerID");
-				tempAuction.lastBidder = result.getInt("lastBidder");
+				tempAuction.lastBidderID = result.getInt("lastBidderID");
 				tempAuction.minPrice = result.getDouble("MinPrice");
-				tempAuction.lastestBidPrice = result.getDouble("LastestBidPrice");
+				tempAuction.latestBidPrice = result.getDouble("LatestBidPrice");
 				tempAuction.bidCounter = result.getInt("BidCounter");
 				tempAuction.auctionStatus = result.getString("auctionStatus");
 				tempAuction.flickerAlbumID = result.getString("flickerAlbumID");

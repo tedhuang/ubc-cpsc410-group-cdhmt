@@ -41,9 +41,7 @@ function userLoginRequest()
 					
 					document.getElementById("myDiv").innerHTML=responseText;
 
-					
-					
-
+				
 		    	}
 		    else
 		    	{

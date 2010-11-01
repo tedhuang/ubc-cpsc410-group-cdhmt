@@ -26,20 +26,20 @@ public class Auction {
 	//TODO: make sure null entry and null value could be processed for a certain field
 	public String toXMLContent() {
 		
-		return "\t<auction" +
-				" auctionID =" + auctionID +
-				" auctionTitle =" + auctionTitle +
-				" expiryDate =" + expiryDate  +
-				" creationDate =" + creationDate +
-				" category =" + category +
-				" ownerID =" + ownerID +
-				" lastBidderID =" + lastBidderID +
-				" minPrice =" + minPrice +
-				" latestBidPrice =" + latestBidPrice +
-				" bidCounter =" + bidCounter +
-				" auctionStatus =" + auctionStatus +
-				" flickerAlbumID =" + flickerAlbumID +
-				" numberOfViews =" + numberOfViews + 
+		return "\t\t<auction" +
+				" auctionID=\"" + auctionID + "\"" +
+				" auctionTitle=\"" + auctionTitle + "\"" +
+				" expiryDate=\"" + expiryDate  + "\"" +
+				" creationDate=\"" + creationDate + "\"" +
+				" category=\"" + category + "\"" +
+				" ownerID=\"" + ownerID + "\"" +
+				" lastBidderID=\"" + lastBidderID + "\"" +
+				" minPrice=\"" + minPrice + "\"" +
+				" latestBidPrice=\"" + latestBidPrice + "\"" +
+				" bidCounter=\"" + bidCounter + "\"" +
+				" auctionStatus=\"" + auctionStatus + "\"" +
+				" flickerAlbumID=\"" + flickerAlbumID + "\"" +
+				" numberOfViews=\"" + numberOfViews + "\"" +
 				"/>\n";
 				
 	}

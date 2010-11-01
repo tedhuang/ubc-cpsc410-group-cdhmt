@@ -64,12 +64,12 @@
 		  
 			<!-- Sidebar Profile links -->
 			<ul>
-			<li><a href="Login.jsp" class="lbOn">Login From Here</a></li>
+			<li><a href="../main/Login.jsp" class="lbOn">Login From Here</a></li>
 			</ul>
 			<div id="profile-links">
 				Hello, <a href="#" title="Edit your profile">Admin</a>, you have <a href="#messages" rel="modal" title="3 Messages">3 Messages</a><br />
 				<br />
-				<a href="#" title="View the Site">View the Site</a> | <a href="/CraigsBayAuctionHouse/main/Login.jsp" title="Sign Out">Sign Out</a>
+				<a href="#" title="View the Site">View the Site</a> | <a href="../main/Login.jsp" class="lbOn" title="Sign Out">Sign Out</a>
 			</div>        
 			
 			<ul id="main-nav">  <!-- Accordion Menu -->

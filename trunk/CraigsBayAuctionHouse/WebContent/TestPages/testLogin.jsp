@@ -76,7 +76,7 @@ function createLoginRequest()
 		    //parse XML response from server
 		    //var responseText= ParseXMLResponse(xmlhttp.responseXML);
 		    
-		    //checkLoginRequest();
+		    checkLoginRequest();
 		    
 		    //Gets userCred and prints it to div
 			var result = (xmlhttp.responseXML.getElementsByTagName("userCred")[0]).childNodes[0].nodeValue;

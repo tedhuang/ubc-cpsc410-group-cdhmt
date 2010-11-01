@@ -51,7 +51,7 @@ public class listAuctionsServlet extends HttpServlet {
 		
 		
 		XMLResponse.append("\t<auctionsList>\n");
-
+		
 		ListIterator<Auction> auctionListIterator = auctionList.listIterator();
 		
 		//TODO: make each auctiontable entry different element

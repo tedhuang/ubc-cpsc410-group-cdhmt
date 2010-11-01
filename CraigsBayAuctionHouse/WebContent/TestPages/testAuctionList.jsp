@@ -16,25 +16,28 @@ function ParseXMLResponse( responseXML ) {
 
 	var auctionsList = responseXML.getElementsByTagName('auctionsList').item(0);
 	
-	var printout;
+	var printout = "";
+	var auctionListLength = responseXML.getElementsByTagName('auctionsList').item(0).length;
+	var auctionChildLength = auctionsList.childNodes.length;
+	var areponseLength = responseXML.getElementsByTagName('response').length
 	
-	for (var iNode = 0; iNode < auctionsList.childNodes.length; iNode++) {
+	for (var iNode = 0; iNode < responseXML.getElementsByTagName('response').length; iNode++) {
 		
-        var auction_node = auctionsList.childNodes.item(iNode);
+        var auction_node = auctionsList.getElementsByTagName("auction")[iNode];
 
-        var auctionID		=	auction_node.getElementsByTagName("auction")[0].getAttribute("auctionID");
-        var auctionTitle	=	auction_node.getElementsByTagName("auction")[0].getAttribute("auctionTitle");
-        var expiryDate		=	auction_node.getElementsByTagName("auction")[0].getAttribute("expiryDate");
-        var creationDate	=	auction_node.getElementsByTagName("auction")[0].getAttribute("creationDate");
-        var category		=	auction_node.getElementsByTagName("auction")[0].getAttribute("category");
-        var ownerID			=	auction_node.getElementsByTagName("auction")[0].getAttribute("ownerID");
-        var lastBidderID	=	auction_node.getElementsByTagName("auction")[0].getAttribute("lastBidderID");
-        var minPrice		=	auction_node.getElementsByTagName("auction")[0].getAttribute("minPrice");
-        var latestBidPrice	=	auction_node.getElementsByTagName("auction")[0].getAttribute("latestBidPrice");
-        var bidCounter		=	auction_node.getElementsByTagName("auction")[0].getAttribute("bidCounter");
-        var auctionStatus	=	auction_node.getElementsByTagName("auction")[0].getAttribute("auctionStatus");
-        var flickerAlbumID	=	auction_node.getElementsByTagName("auction")[0].getAttribute("flickerAlbumID");
-        var numberOfViews	=	auction_node.getElementsByTagName("auction")[0].getAttribute("numberOfViews");
+        var auctionID		=	auction_node.getAttribute("auctionID");
+        var auctionTitle	=	auction_node.getAttribute("auctionTitle");
+        var expiryDate		=	auction_node.getAttribute("expiryDate");
+        var creationDate	=	auction_node.getAttribute("creationDate");
+        var category		=	auction_node.getAttribute("category");
+        var ownerID			=	auction_node.getAttribute("ownerID");
+        var lastBidderID	=	auction_node.getAttribute("lastBidderID");
+        var minPrice		=	auction_node.getAttribute("minPrice");
+        var latestBidPrice	=	auction_node.getAttribute("latestBidPrice");
+        var bidCounter		=	auction_node.getAttribute("bidCounter");
+        var auctionStatus	=	auction_node.getAttribute("auctionStatus");
+        var flickerAlbumID	=	auction_node.getAttribute("flickerAlbumID");
+        var numberOfViews	=	auction_node.getAttribute("numberOfViews");
         
         printout += "<h2>auctionID=" + auctionID + " auctionTitle=" + auctionTitle
 				+ " ownerID=" + ownerID + "</h2>";

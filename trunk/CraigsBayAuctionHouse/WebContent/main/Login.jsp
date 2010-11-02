@@ -33,9 +33,10 @@ function userLoginRequest()
 		    		    
 		    //Gets userCred and prints it to div
 			var userCred = (xmlhttp.responseXML.getElementsByTagName("userCred")[0]).childNodes[0].nodeValue;
-			
-		    if(userCred != null) 
+
+		    if( userCred != "null" ) 
 			    { 
+			    
 					var responseText = "<h2>User Credential is: ";
 					responseText += userCred  + "</h2>";		
 					
@@ -43,13 +44,13 @@ function userLoginRequest()
 					document.getElementById("submitCred").value = userCred;
 					document.getElementById("close").submit();
 					
-					
 
 		    	}
 		    else
 		    	{
 			    	//TODO: implement error handling
-			    	document.getElementById("myDiv").innerHTML="<h2>Login Failed!</h2>"; //This doesn't actually print
+			    	alert("Login Failed");
+			    	document.getElementById("myDiv").innerHTML="<h2>Login Failed!</h2>"; 
 		    	}
 	    }
 	  };

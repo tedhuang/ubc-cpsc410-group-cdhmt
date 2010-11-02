@@ -64,6 +64,7 @@
 
 <script type="text/javascript">
 
+
 function ParseXMLResponseTitle(responseXML)
 {
 	
@@ -80,14 +81,13 @@ function ParseXMLResponse(responseXML)
 	 var status = (responseXML.getElementsByTagName("status")[0]).childNodes[0].nodeValue;
 	 var timeLeft = (responseXML.getElementsByTagName("timeLeft")[0]).childNodes[0].nodeValue;
 	 var price =(responseXML.getElementsByTagName("latestPrice")[0]).childNodes[0].nodeValue;
-
-	 var responseText = "<h2>Get a entry: ";
-	responseText += "<td><input type=checkbox /></td>" +
-		"<td><a href=index.html>"+item + "</a></td>" +
+   
+	 var responseText ="<td><input type=checkbox /></td>" +
+		"<td class=div-table-col><a href=index.html>"+item + "</a></td>" +
 		"<td>"+ status + "</td>" +
 		"<td>"+ timeLeft +"</td>" +
 		"<td>"+ price +"</td>"; 
-		 
+		
 		addElement(responseText);
 	 
 }
@@ -114,15 +114,12 @@ function addEntry()
 	  }
 	  
 	xmlhttp.onreadystatechange=function()
-	  {
+	{
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	    {
 		    //parse XML response from server
 		    
 		    var responseText= ParseXMLResponse(xmlhttp.responseXML);
-		   
-		   // document.getElementById("myDiv").innerHTML="<h2>Entry Added</h2>";
-		   // document.getElementById("myDiv").innerHTML=responseText;
 	    	
 	    }
 	  }
@@ -135,21 +132,7 @@ function addEntry()
 	xmlhttp.send(Params);
 	//document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
 }
-/*
-function updatePage( testHTMLcode ) {
-	bod 				= document.getElementsByTagName('myDiv')[0];
-	overlay 			= document.createElement('div');
-	overlay.id		    = 'overlay';
 
-	
-	overlay.innerHTML   = '<div id=newDiv>' +
-							+ testHTMLcode +
-							+ '</div>';
-	
-	overlay.innerHTML = testHTMLcode;
-	bod.appendChild(overlay);
-}
-*/
 function addElement(response) {
 	var ni = document.getElementById('myDiv');
 	  var numi = document.getElementById('theValue');
@@ -158,6 +141,7 @@ function addElement(response) {
 	  var newdiv = document.createElement('div');
 	  var divIdName = 'my'+num+'Div';
 	  newdiv.setAttribute('id',divIdName);
+	  newdiv.setAttribute('class','div-table-row');
 	  newdiv.innerHTML = response;
 	  ni.appendChild(newdiv);
 	  
@@ -180,8 +164,16 @@ function removeElement() {
 		
 	}
 	</script>
+  <style type="text/css">
+	
+  	.div-table-row{display:table-row;}
+  	.div-table-col{display:table-cell; padding: 5px; border: 1px solid #003399;}
+  </style>
+	
    </head>
+   
   <body>
+  
   <input type="hidden" value="0" id="theValue" />
   Item: <input id="auctionItem" type="text" name="auctionItem" size="20"><br>
   Status: <input id="status" type="text" name="status" size="20"><br>

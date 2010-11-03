@@ -113,6 +113,64 @@ public class DBManager {
 		
 	}
 	
+	/*
+	 * Takes the credential of the user and checks 
+	 * @param: credential of the user
+	 * @return: -1 if credential is invalid, 0 if user login expired, 1 if credential check was passed
+	 */
+	public int userCredentialCheck( String cred ){
+		
+		Long loginExpire = null;
+		ResultSet result;
+		
+		if (cred == "null" ) //might not need to check this but doing it just in case
+			return -1;		
+		
+		try{
+			stm = m_conn.createStatement();
+			String query = "SELECT LoginExpireTime FROM UserTable " +
+								"WHERE Credential='" + cred + "'"; 
+			
+			System.out.println("Checking User Credential: \n" + query);
+			
+			stm.executeQuery(query);
+			result = stm.getResultSet();
+			System.out.println("Result : " + result);
+			
+			
+			//TODO: Check if these conditons work
+			if (  result.first() == false) {
+				stm.close();
+				return -1;
+			}
+			else {
+				
+				loginExpire = result.getLong("LoginExpireTime");
+				      
+				stm.close();
+				result.close();
+				
+				if( loginExpire == null || ( Calendar.getInstance().getTime().getTime() > loginExpire.longValue() ) ) {
+					return 0;
+				}
+			}
+		
+		}catch (SQLException e) {
+			//TODO Auto-generated catch block
+			//Credential not found
+			e.printStackTrace();
+			return -1;
+		}
+			
+	
+
+
+		
+		return 1;
+	}
+	
+	
+	
 	public int userLoginCheck( String userName, String password ) {
 		
 		String cred = null;
@@ -174,6 +232,9 @@ public class DBManager {
 		
 		return expire.toString();
 	}
+	
+	
+	
 	
 	public String userLogin(String userName, String password)
 	{

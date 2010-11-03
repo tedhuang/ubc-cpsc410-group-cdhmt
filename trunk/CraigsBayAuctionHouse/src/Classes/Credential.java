@@ -4,7 +4,6 @@ import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
 
-
 public class Credential {
 
        private String hashString = null;
@@ -23,6 +22,7 @@ public class Credential {
                                                + Integer.toHexString( Calendar.getInstance().getTime().hashCode() );
        }
 
+       
        public String returnHash() {
     	   return hashString;
        }

@@ -56,7 +56,28 @@ public class DBManager {
 		return false;
 	}
 	
-	
+	public Boolean userCreateNewAuction(String cred, String auctionName, String category, Double minPrice, String flickrAlbumID )
+	{
+		
+		int ownerID = 0;
+		
+		try {
+			stm = m_conn.createStatement();
+			
+			if( userCredentialCheck( cred ) <= 0 ) {
+				return false;
+			}
+			
+			return createNewAuction( auctionName, category, minPrice, ownerID, flickrAlbumID  );
+			
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		
+		
+		return false;
+	}
 
 	public ArrayList<Auction> auctionList()
 	{
@@ -116,11 +137,13 @@ public class DBManager {
 	/*
 	 * Takes the credential of the user and checks 
 	 * @param: credential of the user
-	 * @return: -1 if credential is invalid, 0 if user login expired, 1 if credential check was passed
+	 * @return: -1 if credential is invalid, 0 if user login expired
+	 * @return: ownerID linked the credential if valid
 	 */
 	public int userCredentialCheck( String cred ){
 		
 		Long loginExpire = null;
+		int ownerID = 0;
 		ResultSet result;
 		
 		if (cred == "null" ) //might not need to check this but doing it just in case
@@ -128,7 +151,7 @@ public class DBManager {
 		
 		try{
 			stm = m_conn.createStatement();
-			String query = "SELECT LoginExpireTime FROM UserTable " +
+			String query = "SELECT OwnerID, LoginExpireTime FROM UserTable " +
 								"WHERE Credential='" + cred + "'"; 
 			
 			System.out.println("Checking User Credential: \n" + query);
@@ -146,13 +169,20 @@ public class DBManager {
 			else {
 				
 				loginExpire = result.getLong("LoginExpireTime");
-				      
+				ownerID = result.getInt("OwnerID");
+				
+				
 				stm.close();
 				result.close();
 				
 				if( loginExpire == null || ( Calendar.getInstance().getTime().getTime() > loginExpire.longValue() ) ) {
 					return 0;
 				}
+				else {
+					return ownerID;
+				}
+				
+				
 			}
 		
 		}catch (SQLException e) {
@@ -162,11 +192,6 @@ public class DBManager {
 			return -1;
 		}
 			
-	
-
-
-		
-		return 1;
 	}
 	
 	

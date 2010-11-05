@@ -35,11 +35,28 @@ public class userCreateAuctionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String Credential = request.getParameter("Credential");
-		String AuctionTitle = request.getParameter("AuctionTitle").toString();
-		String MinPrice = request.getParameter("MinPrice").toString();
 		
 		DBManager dbm = new DBManager();
-		boolean success = dbm.userCreateNewAuction( Credential, AuctionTitle, "test category", Double.parseDouble(MinPrice), "flickr album");
+		
+		int userID = dbm.userCredentialCheck( Credential );
+		
+		if( userID == -1 ) {
+			//TODO: user does not exist - exit condition
+			System.out.println("Error: User does not exist");
+			return;
+		}
+		if( userID == 0 ) {
+			//TODO: user is not logged in - exit condition
+			System.out.println("Error: User is not logged in");
+			return;
+		}
+		
+		
+		String AuctionTitle = request.getParameter("AuctionTitle").toString();
+		Double MinPrice = new Double( request.getParameter("MinPrice").toString() );
+		
+		
+		boolean success = dbm.createNewAuction(AuctionTitle, "test", MinPrice, userID, "random");
 		
 		
 	}

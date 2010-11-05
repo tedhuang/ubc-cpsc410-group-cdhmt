@@ -63,8 +63,9 @@ public class DBManager {
 		
 		try {
 			stm = m_conn.createStatement();
+			ownerID = userCredentialCheck( cred );
 			
-			if( userCredentialCheck( cred ) <= 0 ) {
+			if( ownerID <= 0 ) {
 				return false;
 			}
 			
@@ -143,7 +144,7 @@ public class DBManager {
 	public int userCredentialCheck( String cred ){
 		
 		Long loginExpire = null;
-		int ownerID = 0;
+		int userID = 0;
 		ResultSet result;
 		
 		if (cred == "null" ) //might not need to check this but doing it just in case
@@ -151,7 +152,7 @@ public class DBManager {
 		
 		try{
 			stm = m_conn.createStatement();
-			String query = "SELECT OwnerID, LoginExpireTime FROM UserTable " +
+			String query = "SELECT UserID, LoginExpireTime FROM UserTable " +
 								"WHERE Credential='" + cred + "'"; 
 			
 			System.out.println("Checking User Credential: \n" + query);
@@ -169,7 +170,7 @@ public class DBManager {
 			else {
 				
 				loginExpire = result.getLong("LoginExpireTime");
-				ownerID = result.getInt("OwnerID");
+				userID = result.getInt("UserID");
 				
 				
 				stm.close();
@@ -179,7 +180,7 @@ public class DBManager {
 					return 0;
 				}
 				else {
-					return ownerID;
+					return userID;
 				}
 				
 				

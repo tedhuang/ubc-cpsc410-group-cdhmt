@@ -56,29 +56,6 @@ public class DBManager {
 		return false;
 	}
 	
-	public Boolean userCreateNewAuction(String cred, String auctionName, String category, Double minPrice, String flickrAlbumID )
-	{
-		
-		int ownerID = 0;
-		
-		try {
-			stm = m_conn.createStatement();
-			ownerID = userCredentialCheck( cred );
-			
-			if( ownerID <= 0 ) {
-				return false;
-			}
-			
-			return createNewAuction( auctionName, category, minPrice, ownerID, flickrAlbumID  );
-			
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
-		
-		
-		
-		return false;
-	}
 
 	public ArrayList<Auction> auctionList()
 	{

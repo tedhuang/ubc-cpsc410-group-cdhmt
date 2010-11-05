@@ -69,4 +69,14 @@
     <servlet-name>listAuctionsServlet</servlet-name>
     <url-pattern>/listAuctionsServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>userCreateAuctionServlet</display-name>
+    <servlet-name>userCreateAuctionServlet</servlet-name>
+    <servlet-class>Servlets.userCreateAuctionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>userCreateAuctionServlet</servlet-name>
+    <url-pattern>/userCreateAuctionServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

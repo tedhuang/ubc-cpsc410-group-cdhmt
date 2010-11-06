@@ -142,7 +142,7 @@ function ParseAuctionList( responseXML ) {
 function addElement( rowParams ) {
 	
 	  var ni = document.getElementById('myDiv');
-	  /*
+	  
 	  var numi = document.getElementById('theValue');
 	  var num = (document.getElementById('theValue').value -1)+ 2;
 	  numi.value = num;
@@ -150,7 +150,7 @@ function addElement( rowParams ) {
 	  var divIdName = 'my'+num+'Div';
 	  newdiv.setAttribute('id',divIdName);
 	  newdiv.setAttribute('class','div-table-row');
-	  */
+	  
 	  
 	  //newdiv.innerHTML += "<tr>";
 	  //alert("<tr>"+rowHTML+"</tr>");
@@ -162,9 +162,11 @@ function addElement( rowParams ) {
 	    var oBody = document.getElementById('myDiv');
 
 	    oRow = oBody.insertRow(oBody.rows.length);
+	    oRow.setAttribute('id', rowParams[0]);
 	    
 	  //checkbox
 	    oCell = oRow.insertCell(-1);
+	    oCell.setAttribute ('id', "checkBox" );
 	    oCell.innerHTML = "<input type=checkbox />";
 	      
 
@@ -229,18 +231,29 @@ function loadAuctionTable()
 
 	
 function removeElement() {
-	var elements=document.getElementById( 'myDiv' );
-	var entries = document.getElementById( 'myDiv' ).getElementsByTagName('div');
+	var tableBody=document.getElementById( 'myDiv' );
+	//var entries = document.getElementById( 'myDiv' ).getElementsByTagName('div');
 	var chkBox;
 	var temp;
-	for( var i = entries.length-1; i > -1; i-- )
+
+	var checked = new Array();
+
+	var rows = tableBody.getElementsByTagName( 'tr' );
+	
+	for( var i = rows.length-1 ; i > -1; i-- )
 	 {
-		chkBox=document.getElementById( entries[i].id ).getElementsByTagName("input");
-		temp = document.getElementById(entries[i].id);
+		chkBox= rows[i].cells[0].getElementsByTagName('input');
+		temp = rows[i];
+		
 		if( chkBox[0].checked )
 		{
-			elements.removeChild( temp );
+			checked.push(temp);
 		}
+	 }
+
+	 for (var j = 0 ; j < checked.length; ++j)
+	 {
+		tableBody.removeChild( checked[j] );
 	 }
 		
 	}

@@ -3,10 +3,10 @@
 <head>
 <title>Tabs Demo</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<link href="default.css" rel="stylesheet" type="text/css" />
-<link href="tabbed.css" rel="stylesheet" type="text/css" />
+<link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
+<link href="t./resources/css/abbed.css" rel="stylesheet" type="text/css" />
 
-<script type="text/javascript" src="tabbed.js"></script>
+<script type="text/javascript" src="./resources/scripts/tabbed.js"></script>
 <style type="text/css">
 
 /******************************************************************************
@@ -166,12 +166,12 @@ function removeName(el, name) {
 
 <div class="tabBox" style="float:right;width:24em;">
   <div class="tabArea">
-    <a class="tab" href="news.html" target="tabIframe1">News</a>
-    <a class="tab" href="reviews.html" target="tabIframe1">Reviews</a>
-    <a class="tab" href="links.html" target="tabIframe1">Links</a>
+    <a class="tab" href="123" target="tabIframe1">My Auction</a>
+    <a class="tab" href="123" target="tabIframe1">My Goods</a>
+    <a class="tab" href="123" target="tabIframe1">My Messages</a>
   </div>
   <div class="tabMain">
-    <div class="tabIframeWrapper"><iframe class="tabContent" name="tabIframe1" src="news.html" marginheight="8" marginwidth="8" frameborder="0" style="height:18ex;"></iframe></div>
+    <div class="tabIframeWrapper"><iframe class="tabContent" name="tabIframe1" src="sms.html" marginheight="8" marginwidth="8" frameborder="0" style="height:18ex;"></iframe></div>
   </div>
 </div>
 
@@ -189,13 +189,13 @@ function removeName(el, name) {
   <div class="tabArea">
   	<a class="tab" href="tableLoad.jsp" target="tabIframe2">Auctions</a>
     <a class="tab" href="pageFrame.jsp" target="tabIframe2">Control Panel</a>
-    <a class="tab" href="#" target="tabIframe2">Messages</a>
-    <a class="tab" href="#" target="tabIframe2">History</a>
-    <a class="tab" href="#" target="tabIframe2">...</a>
+    <a class="tab" href="123" target="tabIframe2">Search</a>
+    <a class="tab" href="123" target="tabIframe2">History</a>
+    <a class="tab" href="123" target="tabIframe2">...</a>
   </div>
   <div class="tabMain">
-    <h4 id="title">Top Picks</h4>
-    <div class="tabIframeWrapper"><iframe class="tabContent" name="tabIframe2" src="action.html" marginheight="8" marginwidth="8" frameborder="0"></iframe></div>
+    <h4 id="title">Tool Bar</h4>
+    <div class="tabIframeWrapper"><iframe class="tabContent" name="tabIframe2" src="tableLoad.jsp" marginheight="8" marginwidth="8" frameborder="0"></iframe></div>
   </div>
 </div>
 

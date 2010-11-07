@@ -59,8 +59,8 @@
 	<script type="text/javascript">
 	function viewAllAuctions()
 	{
-		ajaxpage('tableLoad.jsp', 'Dynapage') //load "test.htm" into "rightcolumn" DIV
-		loadobjs('./resources/scripts/auctionListLoader.js');
+		ajaxpage('tableLoad.jsp', 'Dynapage') //load tableLoad.jsp in to div Dynapage
+		loadobjs('./resources/scripts/auctionListLoader.js'); //load the additional javascript tableLoad.jsp requires
 	}
 	</script>
 	

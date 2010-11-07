@@ -187,11 +187,11 @@ function removeName(el, name) {
 
 <div class="tabBox" style="clear:both;">
   <div class="tabArea">
+  	<a class="tab" href="tableLoad.jsp" target="tabIframe2">Auctions</a>
     <a class="tab" href="pageFrame.jsp" target="tabIframe2">Control Panel</a>
-    <a class="tab" href="simulation.html" target="tabIframe2">Auctions</a>
-    <a class="tab" href="sports.html" target="tabIframe2">Sports</a>
-    <a class="tab" href="roleplaying.html" target="tabIframe2">Role-Playing</a>
-    <a class="tab" href="strategy.html" target="tabIframe2">Strategy</a>
+    <a class="tab" href="#" target="tabIframe2">Messages</a>
+    <a class="tab" href="#" target="tabIframe2">History</a>
+    <a class="tab" href="#" target="tabIframe2">...</a>
   </div>
   <div class="tabMain">
     <h4 id="title">Top Picks</h4>

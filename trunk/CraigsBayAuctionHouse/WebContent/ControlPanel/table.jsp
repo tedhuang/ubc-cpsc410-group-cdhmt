@@ -81,7 +81,10 @@ function ParseXMLResponse(responseXML)
 	 var status = (responseXML.getElementsByTagName("status")[0]).childNodes[0].nodeValue;
 	 var timeLeft = (responseXML.getElementsByTagName("timeLeft")[0]).childNodes[0].nodeValue;
 	 var price =(responseXML.getElementsByTagName("latestPrice")[0]).childNodes[0].nodeValue;
-   
+     var newStyle=document.createElement('style');
+     newStyle.type="text/css";
+     newStyle.color='#12345';
+     item.appendChild(newStyle);
 	 var responseText ="<td><input type=checkbox /></td>" +
 		"<td class=div-table-col><a href=index.html>"+item + "</a></td>" +
 		"<td>"+ status + "</td>" +

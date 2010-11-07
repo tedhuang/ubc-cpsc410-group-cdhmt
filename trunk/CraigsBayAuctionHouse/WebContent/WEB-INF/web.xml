@@ -79,4 +79,24 @@
     <servlet-name>userCreateAuctionServlet</servlet-name>
     <url-pattern>/userCreateAuctionServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>flickrTestServlet</display-name>
+    <servlet-name>flickrTestServlet</servlet-name>
+    <servlet-class>Servlets.createAuctionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>flickrTestServlet</servlet-name>
+    <url-pattern>/flickrTestServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>flickrServletTest</display-name>
+    <servlet-name>flickrServletTest</servlet-name>
+    <servlet-class>Servlets.entryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>flickrServletTest</servlet-name>
+    <url-pattern>/flickrServletTest</url-pattern>
+  </servlet-mapping>
 </web-app>

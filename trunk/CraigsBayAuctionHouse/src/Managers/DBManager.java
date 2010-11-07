@@ -57,7 +57,7 @@ public class DBManager {
 	}
 	
 
-	public ArrayList<Auction> auctionList()
+	public ArrayList<Auction> auctionList() //TODO: change the name of this method to something like "makeAuctionList"
 	{
 		ArrayList<Auction> auctionsList = new ArrayList<Auction>();
 		

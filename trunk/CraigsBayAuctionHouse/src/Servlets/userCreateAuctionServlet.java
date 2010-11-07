@@ -58,6 +58,9 @@ public class userCreateAuctionServlet extends HttpServlet {
 		
 		boolean success = dbm.createNewAuction(AuctionTitle, "test", MinPrice, userID, "random");
 		
+		if(!success){
+			System.out.println("Error: createNewAuction in userCreateAuctionServlet failed");
+		}
 		
 	}
 

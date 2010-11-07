@@ -55,6 +55,15 @@
 		
 		
 	<!--  Functions -->
+	
+	<script type="text/javascript">
+	function viewAllAuctions()
+	{
+		ajaxpage('tableLoad.jsp', 'Dynapage') //load "test.htm" into "rightcolumn" DIV
+		loadobjs('./resources/scripts/auctionListLoader.js');
+	}
+	</script>
+	
 	<!--  CREDENTIAL CHECK -->
 	
 		
@@ -137,6 +146,7 @@
 						Auctions
 					</a>
 					<ul>
+						<li OnClick="viewAllAuctions()"><a href=#>View All Auctions</a></li>
 						<li><a href="#">New Auction</a></li>
 						<li><a href="#">Manage Auction</a></li>
 					</ul>
@@ -212,9 +222,6 @@
 			<div id="main-content">
 			<h2><div id="surferTitle">Welcome Guest</div></h2>
 			
-			<script type="text/javascript">
-			ajaxpage('tableLoad.jsp', 'Dynapage') //load "test.htm" into "rightcolumn" DIV
-			</script>
 			<div id="Dynapage">
 			Dynamic page is here
 			</div>

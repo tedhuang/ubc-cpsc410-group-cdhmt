@@ -59,7 +59,7 @@
 		
 	
 	
-	
+
 	<!-- Ajax to add entries to the table -->
 
 <script type="text/javascript">
@@ -267,6 +267,9 @@ function removeElement() {
    </head>
    
   <body>
+  
+  
+  
   
   <input type="hidden" value="0" id="theValue" />
   Item: <input id="auctionItem" type="text" name="auctionItem" size="20"><br>

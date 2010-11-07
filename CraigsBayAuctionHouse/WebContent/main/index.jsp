@@ -61,11 +61,13 @@
 	
 	<% 
 		String cred = request.getParameter("cred");
-		
+		String userName = request.getParameter("name");
+
 	%>
 	
 	<h2>
 	<%= cred %>
+	<%= userName %>
 	</h2>
 	
 	<body><div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
@@ -82,9 +84,46 @@
 			<li><a href="../main/Login.jsp" class="lbOn">Login From Here</a></li>
 			</ul>
 			<div id="profile-links">
-				Hello, <a href="#" title="Edit your profile">Admin</a>, you have <a href="#messages" rel="modal" title="3 Messages">3 Messages</a><br />
+				Hello, <a href="#" title="Edit your profile">
+				<%  
+				if(userName != null && userName != "")
+				{
+				%>
+					<%= userName %>
+				<%
+				}
+				else
+				{
+				%>				
+					Guest
+				<%
+				}
+				%>
+				
+				</a>, you have <a href="#messages" rel="modal" title="3 Messages">3 Messages</a><br />
+				
 				<br />
-				<a href="#" title="View the Site">View the Site</a> | <a href="../main/Login.jsp" class="lbOn" title="Sign Out">Sign Out</a>
+				<a href="#" title="View the Site">View the Site</a> | 
+				<%  
+				if(userName != null && userName != "")
+				{
+					
+				%>
+				<a href="../main" title="Sign Out">Sign Out</a>
+				
+				<%
+				}
+				else
+				{
+				%>
+				<a href="../main/Login.jsp" class="lbOn" title="Sign In">Sign In</a>
+				<%
+				}
+				%>
+				
+				
+				
+				
 			</div>        
 			
 			<ul id="main-nav">  <!-- Accordion Menu -->

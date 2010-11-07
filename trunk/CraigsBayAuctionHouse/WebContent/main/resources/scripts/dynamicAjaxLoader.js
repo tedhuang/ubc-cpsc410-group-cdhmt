@@ -38,7 +38,13 @@ page_request.send(null)
 
 function loadpage(page_request, containerid){
 if (page_request.readyState == 4 && (page_request.status==200 || window.location.href.indexOf("http")==-1))
-document.getElementById(containerid).innerHTML=page_request.responseText
+document.getElementById(containerid).innerHTML=page_request.responseText;
+
+var ob = document.getElementsByTagName("script");
+for(var i=0; i<ob.length-1; i++){
+if(ob[i+1].text!=null) eval(ob[i+1].text);
+}
+
 }
 
 function loadobjs(){

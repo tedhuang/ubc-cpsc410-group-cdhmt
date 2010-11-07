@@ -48,6 +48,8 @@
 		<!-- jQuery WYSIWYG Plugin -->
 		<script type="text/javascript" src="./resources/scripts/jquery.wysiwyg.js"></script>
 		
+		<script type="text/javascript" src="./resources/scripts/auctionListLoader.js"></script>
+		
 		<!-- Internet Explorer .png-fix -->
 		
 		<!--[if IE 6]>
@@ -71,10 +73,16 @@
    
   <body>
   
+ <script type="text/javascript">
+  //this will get run when the page is dynamically loaded.
+ loadAuctionTable();
   
+  </script>
   
   
   <input type="hidden" value="0" id="theValue" />
+  
+  <!--  
   Item: <input id="auctionItem" type="text" name="auctionItem" size="20"><br>
   Status: <input id="status" type="text" name="status" size="20"><br>
   Time Left: <input id="timeLeft" name="time left" size="20"><br>
@@ -82,6 +90,8 @@
   
  <button type="button" onclick="loadAuctionTable()">LOAD</button>
 	<a href=# onclick=removeElement();>Remove Selected Entry</a>'
+  -->
+  
   
 	<div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
 		

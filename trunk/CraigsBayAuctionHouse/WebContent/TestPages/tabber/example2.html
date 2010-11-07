@@ -1,0 +1,144 @@
+<!-- $Id: example2.html,v 1.8 2006/04/10 05:05:28 pat Exp $ -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Advanced Tabber Example</title>
+
+<link rel="stylesheet" href="example.css" TYPE="text/css" MEDIA="screen">
+<link rel="stylesheet" href="example-print.css" TYPE="text/css" MEDIA="print">
+
+<script type="text/javascript">
+
+/* Optional: Temporarily hide the "tabber" class so it does not "flash"
+   on the page as plain HTML. After tabber runs, the class is changed
+   to "tabberlive" and it will appear.
+*/
+document.write('<style type="text/css">.tabber{display:none;}<\/style>');
+
+var tabberOptions = {
+
+  /* Optional: instead of letting tabber run during the onload event,
+     we'll start it up manually. This can be useful because the onload
+     even runs after all the images have finished loading, and we can
+     run tabber at the bottom of our page to start it up faster. See the
+     bottom of this page for more info. Note: this variable must be set
+     BEFORE you include tabber.js.
+  */
+  'manualStartup':true,
+
+  /* Optional: code to run after each tabber object has initialized */
+
+  'onLoad': function(argsObj) {
+    /* Display an alert only after tab2 */
+    if (argsObj.tabber.id == 'tab2') {
+      alert('Finished loading tab2!');
+    }
+  },
+
+  /* Optional: code to run when the user clicks a tab. If this
+     function returns boolean false then the tab will not be changed
+     (the click is canceled). If you do not return a value or return
+     something that is not boolean false, */
+
+  'onClick': function(argsObj) {
+
+    var t = argsObj.tabber; /* Tabber object */
+    var id = t.id; /* ID of the main tabber DIV */
+    var i = argsObj.index; /* Which tab was clicked (0 is the first tab) */
+    var e = argsObj.event; /* Event object */
+
+    if (id == 'tab2') {
+      return confirm('Swtich to '+t.tabs[i].headingText+'?\nEvent type: '+e.type);
+    }
+  },
+
+  /* Optional: set an ID for each tab navigation link */
+  'addLinkId': true
+
+};
+
+</script>
+
+<!-- Load the tabber code -->
+<script type="text/javascript" src="tabber.js"></script>
+
+</head>
+<body>
+
+<h1>Advanced Tabber Example</h1>
+
+<p>&larr; <a href="http://www.barelyfitz.com/projects/tabber/">Tabber Home</a></p>
+
+<p>In the following example, the height is not constrained, so the page jumps around when a new tab is selected. "Tab 2" contains a nested tabber.</p>
+
+<div class="tabber" id="tab1">
+
+  <div class="tabbertab">
+    <h2><a name="tab1">Tab <em>1</em></a></h2>
+    <p>Tab 1 content.</p>
+  </div>
+
+  <div class="tabbertab">
+    <h2>Tab 2</h2>
+    <p>Tab 2 content. A nested tabber:</p>
+
+    <div class="tabber" id="tab1-1">
+
+      <div class="tabbertab">
+        <h3>Tab 2-1</h3>
+        <p>Tab 2-1 content.</p>
+      </div>
+
+      <div class="tabbertab">
+        <h3>Tab 2-2</h3>
+        <p>Tab 2-2 content.</p>
+      </div>
+
+      <div class="tabbertab">
+        <h3>Tab 2-3</h3>
+        <p>Tab 2-3 content.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabbertab">
+    <h2>Tab 3</h2>
+    <p>Tab 3 content.</p>
+  </div>
+</div>
+
+<p>In the following example, "Tab 2" should be selected automatically. In addition, there is an onclick function attached to the tabs so you can confirm each click.</p>
+
+
+<div class="tabber" id="tab2">
+
+  <div class="tabbertab">
+    <h2>Tab 1</h2>
+    <p>Tab 1 content.</p>
+  </div>
+
+  <div class="tabbertab tabbertabdefault">
+    <h2>Tab 2</h2>
+    <p>a.</p>
+    </div>
+
+    <div class="tabbertab" title="Tab 3 Title Override">
+      <h2>Tab 3</h2>
+      <p>The name of this tab is taken from the TITLE attribute instead of from the H2 element, then the TITLE attribute is erased so it does not cause a mouseover tooltip over the content area.</p>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+/* Since we specified manualStartup=true, tabber will not run after
+   the onload event. Instead let's run it now, to prevent any delay
+   while images load.
+*/
+
+tabberAutomatic(tabberOptions);
+
+</script>
+
+</body>
+</html>

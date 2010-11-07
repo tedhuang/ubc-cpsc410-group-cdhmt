@@ -42,6 +42,7 @@ function userLoginRequest()
 					
 					document.getElementById("myDiv").innerHTML=responseText;
 					document.getElementById("submitCred").value = userCred;
+					document.getElementById("name").value = userName;
 					document.getElementById("close").submit();
 					
 
@@ -75,7 +76,8 @@ function userLoginRequest()
 <div id="login-box">
 
 <form id= "close" name="close" method="post">
-	<input id="submitCred" type="hidden" name="cred" />
+	<input id="submitCred" type="hidden" name="cred"/>
+	<input id="name" type="hidden" name="name" />
 	<input type="image" src="./resources/images/close.png" name="image" width="50" height="50" style="margin-left:300px";/>
 </form>
 

@@ -4,6 +4,9 @@
 <title>Tabs Demo</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <link href="default.css" rel="stylesheet" type="text/css" />
+<link href="tabbed.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="tabbed.js"></script>
 <style type="text/css">
 
 /******************************************************************************
@@ -25,11 +28,11 @@ div.tabArea {
   padding: 0px 0px 3px 0px;
 }
 
-a.tab {
-  background-color: #A7ECF7;
-  border: 2px solid #000000;
+a.tab {/*Gerenal tab style*/
+  background-color: #FFFFFF;
+  border: 1px solid #000000;
   border-bottom-width: 0px;
-  border-color: #f0d0ff #b090e0 #b090e0 #f0d0ff;
+  border-color: #849B9E #849B9E #849B9E #849B9E;
   -moz-border-radius: .75em .75em 0em 0em;
   border-radius-topleft: .75em;
   border-radius-topright: .75em;
@@ -41,7 +44,7 @@ a.tab {
 }
 
 a.tab, a.tab:visited {
-  color: #3A66F8;
+  color: #2177DA;
 }
 
 a.tab:hover {
@@ -51,8 +54,8 @@ a.tab:hover {
 }
 
 a.tab.activeTab, a.tab.activeTab:hover, a.tab.activeTab:visited {
-  background-color: #9070c0;
-  border-color: #b090e0 #7050a0 #7050a0 #b090e0;
+  background-color: #2177DA;
+  border-color: #2F74D0 #2F74D0 #2F74D0 #2F74D0;
   color: #ffe0ff;
 }
 
@@ -62,10 +65,11 @@ a.tab.activeTab {
   z-index: 102;
 }
 
-div.tabMain {
-  background-color: #9070c0;
+
+div.tabMain { /*Main tab styles*/
+  background-color: #2177DA;
   border: 2px solid #000000;
-  border-color: #b090e0 #7050a0 #7050a0 #b090e0;
+  border-color: #2177DA #FFFFFF #2177DA #FFFFFF;
   -moz-border-radius: 0em .5em .5em 0em;
   border-radius-topright: .5em;
   border-radius-bottomright: .5em;
@@ -87,14 +91,15 @@ iframe.tabContent {
 }
 
 /******************************************************************************
-* Additional styles.                                                          *
+* Additional styles.      
+Bar inside the tab                                                    *
 ******************************************************************************/
 
 h4#title {
-  background-color: #503080;
+  background-color: #2177DA;
   border: 1px solid #000000;
-  border-color: #7050a0 #b090e0 #b090e0 #7050a0;
-  color: #d0b0ff;
+  border-color: #2177DA #2177DA #2177DA #2177DA;
+  color: #8ED6EA;
   font-weight: bold;
   margin-top: 0em;
   margin-bottom: .5em;
@@ -183,7 +188,7 @@ function removeName(el, name) {
 <div class="tabBox" style="clear:both;">
   <div class="tabArea">
     <a class="tab" href="pageFrame.jsp" target="tabIframe2">Control Panel</a>
-    <a class="tab" href="simulation.html" target="tabIframe2">Simulation</a>
+    <a class="tab" href="simulation.html" target="tabIframe2">Auctions</a>
     <a class="tab" href="sports.html" target="tabIframe2">Sports</a>
     <a class="tab" href="roleplaying.html" target="tabIframe2">Role-Playing</a>
     <a class="tab" href="strategy.html" target="tabIframe2">Strategy</a>

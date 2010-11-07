@@ -23,7 +23,7 @@ function createGallery()
 	 document.getElementById("myDiv").innterHTML="<h2>SOMETHING HAPPENED</h2>";
 }
 
-//http://api.flickr.com/services/rest/?&method=flickr.people.getPublicPhotos&api_key=301748fd9ccc9801f9ed91772b19d8bd&user_id=55164508@N02&format=json
+//http://api.flickr.com/services/rest/?&method=flickr.people.getPublicPhotos&api_key=301748fd9ccc9801f9ed91772b19d8bd&user_id=55164508@N02&format
 
 
 

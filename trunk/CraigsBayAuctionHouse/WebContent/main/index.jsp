@@ -41,6 +41,9 @@
 		<script type="text/javascript" src="./resources/scripts/prototype.js"></script>
 		<script type="text/javascript" src="./resources/scripts/lightbox.js"></script>
 		
+		<!--  Ajax Loader Script -->
+		<script type="text/javascript" src="./resources/scripts/dynamicAjaxLoader.js"></script>
+		
 		<!-- Internet Explorer .png-fix -->
 		
 		<!--[if IE 6]>
@@ -209,6 +212,9 @@
 			<div id="main-content">
 			<h2><div id="surferTitle">Welcome Guest</div></h2>
 			
+			<script type="text/javascript">
+			ajaxpage('tableLoad.jsp', 'Dynapage') //load "test.htm" into "rightcolumn" DIV
+			</script>
 			<div id="Dynapage">
 			Dynamic page is here
 			</div>

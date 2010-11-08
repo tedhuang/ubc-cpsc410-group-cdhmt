@@ -40,12 +40,48 @@ function loadpage(page_request, containerid){
 if (page_request.readyState == 4 && (page_request.status==200 || window.location.href.indexOf("http")==-1))
 document.getElementById(containerid).innerHTML=page_request.responseText;
 
-var ob = document.getElementsByTagName("script");
-for(var i=0; i<ob.length-1; i++){
-if(ob[i+1].text!=null) eval(ob[i+1].text);
+/*
+var source = page_request.responseText;
+var scripts = new Array();
+
+while(source.indexOf("<dynamicOnLoad") > -1 || source.indexOf("</dynamicOnLoad") > -1) {
+	var s = source.indexOf("<dynamicOnLoad");
+	var s_e = source.indexOf(">", s);
+	var e = source.indexOf("</dynamicOnLoad", s);
+	var e_e = source.indexOf(">", e);
+	
+	// Add to scripts array
+	scripts.push(source.substring(s_e+1, e));
+	// Strip from source
+	source = source.substring(0, s) + source.substring(e_e+1);
+	// Loop through every script collected and eval it
+	for(var i=0; i<scripts.length; i++) {
+		try {
+			alert(scripts[i]);
+			eval(scripts[i]);
+		}
+		catch(ex) {
+			// do what you want here when a script fails
+		}
+	}
+	break;
 }
 
+*/
+	
+	//call any dynamic onLoad functions...
+	var ob = document.getElementById(containerid).getElementsByTagName("script");
+	for(var i=0; i<ob.length-1; i++){
+	if(ob[i+1].text!=null && ob[i+1].text!="") 
+		{
+			//alert(ob[i+1].text);
+			eval(ob[i+1].text);
+		}
+	}
+
+
 }
+
 
 function loadobjs(){
 if (!document.getElementById)

@@ -146,7 +146,7 @@
 												<option value="option2">Edit</option>
 												<option value="option3">Delete</option>
 											</select>
-											<a class="button" href="#">Apply to selected</a>
+											<a class="button" onclick=removeElement();>Apply to selected</a>
 										</div>
 								<!-- Need code to Generate Pages-->		
 										<div class="pagination">
@@ -197,34 +197,12 @@
 							<fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
 								
 								<p>
-									<label>Small form input</label>
-										<input class="text-input small-input" type="text" id="small-input" name="small-input" /> <span class="input-notification success png_bg">Successful message</span> <!-- Classes for input-notification: success, error, information, attention -->
-										<br /><small>A small description of the field</small>
+									<label>Title</label>
+										<input class="text-input large-input" type="text" id="title-input" name="title-input" />
+										<br /><small>Edit the Title Here</small>
 								</p>
-								
 								<p>
-									<label>Medium form input</label>
-									<input class="text-input medium-input" type="text" id="medium-input" name="medium-input" /> <span class="input-notification error png_bg">Error message</span>
-								</p>
-								
-								<p>
-									<label>Large form input</label>
-									<input class="text-input large-input" type="text" id="large-input" name="large-input" />
-								</p>
-								
-								<p>
-									<label>Checkboxes</label>
-									<input type="checkbox" name="checkbox1" /> This is a checkbox <input type="checkbox" name="checkbox2" /> And this is another checkbox
-								</p>
-								
-								<p>
-									<label>Radio buttons</label>
-									<input type="radio" name="radio1" /> This is a radio button<br />
-									<input type="radio" name="radio2" /> This is another radio button
-								</p>
-								
-								<p>
-									<label>This is a drop down list</label>              
+									<label>Category</label>              
 									<select name="dropdown" class="small-input">
 										<option value="option1">Option 1</option>
 										<option value="option2">Option 2</option>
@@ -232,10 +210,46 @@
 										<option value="option4">Option 4</option>
 									</select> 
 								</p>
+								<p>
+									<label>Price</label>
+									<input class="text-input small-input" type="text" id="category-input" name="category-input" />
+									<br /><small>Price Cannot be Changed Once Bidding is Started</small>
+								</p>
 								
 								<p>
-									<label>Textarea with WYSIWYG</label>
-									<textarea class="text-input textarea wysiwyg" id="textarea" name="textfield" cols="79" rows="15"></textarea>
+									<label>Flickr Picture URL</label>
+									<input class="text-input small-input" type="text" id="large-input" name="large-input" />
+								</p>
+								<p>
+									<label>Conditions</label>
+									<input type="checkBox" name="checkbox1" /> New </br>
+									<input type="checkBox" name="checkbox2" />Used
+								</p>
+								
+								<p>
+									<label>Shipping</label>
+									<input type="radio" name="freeship" /> Free Shipping </br>
+									<input type="radio" name="nFreeship" /> Shipping By Rates</br>
+									<input type="radio" name="pickup" /> Local-Pickup Only
+								</p>
+								
+								<p>
+									<label>Refund Policy</label>
+									<input type="radio" name="radio1" /> Non-Refundable<br />
+									<input type="radio" name="radio2" /> Refundable
+								</p>
+								<p>
+									<label>Payment</label>
+									<input type="checkBox" name="pmcash" /> Cash </br>
+									<input type="checkBox" name="pmchk" /> Checks</br>
+									<input type="checkBox" name="pmOther" /> Other 
+									<input type="text" id="otherPayment" name="other-Payment" />
+								</p>
+							
+								
+								<p>
+									<label>Details</label>
+									<textarea class="text-input textarea wysiwyg" id="detail-input" name="detailInput" cols="79" rows="15"></textarea>
 								</p>
 								
 								<p>

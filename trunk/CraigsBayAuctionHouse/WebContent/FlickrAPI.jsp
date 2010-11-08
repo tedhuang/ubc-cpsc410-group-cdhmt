@@ -9,31 +9,82 @@
 
 <script type="text/javascript">
 
-function createGallery()
+
+var apiKey = "301748fd9ccc9801f9ed91772b19d8bd&u";
+var userID = "55164508@N02&format";
+
+function ParseXMLResponse( responseXML ) {
+	
+	//This only works for public albums
+	var photosList = responseXML.getElementsByTagName("photos").item(0);
+
+	var photos = photosList.getElementsByTagName("photo");
+
+	var photoID = photos[0].getAttribute("id"); //only get the first photo to test
+
+	//TODO: implement selecting the photo based on the user
+	
+	var responseText = "http://www.flickr.com/photos/" + apiKey + "/" + photoID + "/";
+
+	System.out.println("ResponseText for Flickr:\n" + responseText);
+	
+	return responseText;
+}
+
+
+function showImage()
 {
-	
-	//var responseXML = "http://api.flickr.com/services/rest/?&method=flickr.people.getPublicPhotos&api_key=301748fd9ccc9801f9ed91772b19d8bd&user_id=55164508@N02";
-		
-	
-	 //var message = (responseXML.getElementsByTagName("owner")[0]).childNodes[0].nodeValue;
 
-	 //var responseText = "<h2>Return is: ";
-	 //responseText += message;
+	if (window.XMLHttpRequest)
+	  {// code for IE7+, Firefox, Chrome, Opera, Safari
+	  xmlhttp=new XMLHttpRequest();
+	  }
+	else
+	  {// code for IE6, IE5
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }	
+	xmlhttp.onreadystatechange=function()
+	  {
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	    {
+		    //parse XML response from server
+		    var responseText= ParseXMLResponse(xmlhttp.responseXML);
+		    //alert("responseText: " + responseText);
+		   
+	    	document.getElementById("div").innerHTML=responseText;
+	    }
+	  };
+	  
 
-	 document.getElementById("myDiv").innterHTML="<h2>SOMETHING HAPPENED</h2>";
+  	document.getElementById("div").innerHTML="<h2>Button Clicked</h2>";
+  	
+	var Params; // "api_key=" + apiKey "&user_id=" + userID;
+
+	//send the parameters to the servlet with POST
+	xmlhttp.open("POST","flickrServlet" ,true);
+	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xmlhttp.send(Params);
+
+	//change the text while sending the email
+	document.getElementById("div").innerHTML="<h2>Please wait... Sending Request</h2>";
 }
 
 //http://api.flickr.com/services/rest/?&method=flickr.people.getPublicPhotos&api_key=301748fd9ccc9801f9ed91772b19d8bd&user_id=55164508@N02&format
-
+//http://www.flickr.com/photos/55164508@N02/5119444922/
 
 
 </script>
 
 <body>
 
-<div id="myDiv"><h2>Feedback Area</h2></div>
+<button type="button" onclick="showImage()">Create Gallery</button>
+<div id="div"><h2>Feedback</h2></div>
 
-<button type="button" onclick="createGallery()">Create Gallery</button>
+
+<!-- Can't link this way 
+<img src="http://www.flickr.com/photos/55164508@N02/5119444922/" alt="Test Photo"/>
+-->
+
 
 </body>
 </html>

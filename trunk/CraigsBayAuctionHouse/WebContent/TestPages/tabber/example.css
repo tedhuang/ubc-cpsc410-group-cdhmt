@@ -107,3 +107,14 @@ ul.tabbernav li.tabberactive a:hover
  height:200px;
  overflow:auto;
 }
+
+div.tabIframeWrapper {
+  width: 100%;
+}
+iframe.tabContent {
+  background-color: #FFFFFF;
+  border: 0px solid #000000;
+  border-color: #FFFFFF #FFFFFF #FFFFFF #FFFFFF;
+  width: 100%;
+  height: 100ex;
+}

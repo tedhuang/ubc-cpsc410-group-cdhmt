@@ -37,7 +37,7 @@ function ParseXMLResponseBody(responseXML)
 	// var body = (responseXML.getElementsByTagName("body")[0]).childNodes[0].nodeValue;
 	// alert( (responseXML.getElementsByTagName("test")[0]).childNodes[0].nodeValue );
 	//var body = "<button type=\"button\" > my dyanmaic button </button> ";
-	var body = "<iframe width=1000 height = 1000 src = ../ControlPanel/index.html>  </iframe> ";
+	var body = "<iframe width=1000 height = 1000 src = ../main/>  </iframe> ";
 	 updatePage( body );
 }
 

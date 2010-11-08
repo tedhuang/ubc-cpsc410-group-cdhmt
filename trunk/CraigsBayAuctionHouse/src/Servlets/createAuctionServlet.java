@@ -12,10 +12,25 @@ import Managers.DBManager;
 import Managers.SMTPManager;
 
 
+import java.util.Calendar;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+
 /**
  * Servlet implementation class GmailSMTPServlet
  */
 public class createAuctionServlet extends HttpServlet {
+
+   //Method to calculate expiry date
+    private String expiryDate(int auctionLength){
+    	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    	Calendar cal = Calendar.getInstance();
+    	cal.add(Calendar.DATE, auctionLength);
+    	return dateFormat.format(cal.getTime());
+    	
+    }
+    
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -41,9 +56,11 @@ public class createAuctionServlet extends HttpServlet {
 		String AuctionTitle = request.getParameter("AuctionTitle").toString();
 		String OwnerID = request.getParameter("OwnerID").toString();
 		String MinPrice = request.getParameter("MinPrice").toString();
+		String ExpiryDate = expiryDate(Integer.parseInt(request.getParameter("ExpiryDate")));
+		String Category = request.getParameter("Category").toString();
 		
 		DBManager dbm = new DBManager();
-		dbm.createNewAuction(AuctionTitle, "test category",Double.parseDouble(MinPrice), Integer.parseInt(OwnerID), "flickr album");
+		dbm.createNewAuction(AuctionTitle, Category, ExpiryDate, Double.parseDouble(MinPrice), Integer.parseInt(OwnerID), "flickr album");
 		
 		/*
 		SMTPManager smtp = new SMTPManager();

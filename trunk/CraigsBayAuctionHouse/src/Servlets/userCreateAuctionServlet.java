@@ -26,6 +26,12 @@ public class userCreateAuctionServlet extends HttpServlet {
     	return dateFormat.format(cal.getTime());
     	
     }
+    
+    private String getDate(){
+    	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    	Calendar cal = Calendar.getInstance();
+    	return dateFormat.format(cal.getTime());
+    }
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -64,14 +70,18 @@ public class userCreateAuctionServlet extends HttpServlet {
 			return;
 		}
 		
-				
+		
+		
+		//Data for new auction
 		String AuctionTitle = request.getParameter("AuctionTitle").toString();
-		String OwnerID = request.getParameter("OwnerID").toString();
+		int OwnerID = userID;
 		String MinPrice = request.getParameter("MinPrice").toString();
+		String AuctionStatus = "Open";
+		String CreationDate = getDate();
 		String ExpiryDate = expiryDate(Integer.parseInt(request.getParameter("ExpiryDate")));
 		String Category = request.getParameter("Category").toString();
 		
-		boolean success = dbm.createNewAuction(AuctionTitle, Category, ExpiryDate, Double.parseDouble(MinPrice), Integer.parseInt(OwnerID), "flickr album");;
+		boolean success = dbm.createNewAuction(AuctionTitle, Category, AuctionStatus, CreationDate, ExpiryDate, Double.parseDouble(MinPrice), OwnerID, "flickr album");;
 		
 		if(!success){
 			System.out.println("Error: createNewAuction in userCreateAuctionServlet failed");

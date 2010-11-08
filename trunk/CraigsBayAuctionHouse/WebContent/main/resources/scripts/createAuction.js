@@ -1,14 +1,14 @@
 //Ajax to create auction
-var credential;
+
 
 function createAuctionRequest()
 {
 	
 	var Title = document.getElementById("AuctionTitle").value;
-	//var OwnerID = document.getElementById("OwnerID").value;
 	var MinPrice = document.getElementById("MinPrice").value;
 	var ExpiryDate = document.getElementById("ExpiryDate").value;
 	var Category= document.getElementById("Category").value;
+	var credential = document.getElementById("cred").value;
 	
 	
 	if (window.XMLHttpRequest)
@@ -50,4 +50,8 @@ function loginParseXMLResponse(responseXML)
 	 var toCredential = (responseXML.getElementsByTagName("userCred")[0]).childNodes[0].nodeValue;
 
 	 return toCredential;
+}
+
+function auctionParseXMLResponse(responseXML){
+	
 }

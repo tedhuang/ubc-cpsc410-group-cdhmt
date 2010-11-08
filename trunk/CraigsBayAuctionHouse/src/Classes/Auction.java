@@ -10,8 +10,8 @@ public class Auction {
 	
 	public int auctionID;
 	public String auctionTitle;
-	public double expiryDate;
-	public double creationDate;
+	public String expiryDate;
+	public String creationDate;
 	public String category;
 	public int ownerID;
 	public int lastBidderID;
@@ -25,8 +25,8 @@ public class Auction {
 	public Auction() {
 		auctionID 		= -1;
 		auctionTitle 	= null;
-		expiryDate		= 0;
-		creationDate	= 0;
+		expiryDate		= "";
+		creationDate	= "";
 		category		= null;
 		ownerID			= -1;
 		lastBidderID	= -1;

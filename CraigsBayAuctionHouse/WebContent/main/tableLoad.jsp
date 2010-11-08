@@ -73,11 +73,11 @@
    
   <body>
   
- <script type="text/javascript">
-  //this will get run when the page is dynamically loaded.
+ <!--  this will get called when the page is dynamically loaded. -->
+ <!--  <input type="hidden" value="loadAuctionTable()" name="dynamicLoad" /> -->
+ <script>
  loadAuctionTable();
-  
-  </script>
+ </script>
   
   
   <input type="hidden" value="0" id="theValue" />

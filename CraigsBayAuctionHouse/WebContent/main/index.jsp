@@ -64,6 +64,13 @@
 		
 	}
 	</script>
+	<script type="text/javascript">
+	function createAuction()
+	{
+		ajaxpage('createAuctionTable.jsp', 'Dynapage')
+		loadobjs('./resources/scripts/createAuction.js');
+	}
+	</script>
 	
 	<!--  CREDENTIAL CHECK -->
 	
@@ -148,7 +155,7 @@
 					</a>
 					<ul>
 						<li OnClick="viewAllAuctions()"><a href=#>View All Auctions</a></li>
-						<li><a href="#">New Auction</a></li>
+						<li OnClick="createAuction()"><a href="#">New Auction</a></li>
 						<li><a href="#">Manage Auction</a></li>
 					</ul>
 				</li>

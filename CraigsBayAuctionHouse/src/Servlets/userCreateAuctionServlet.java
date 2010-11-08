@@ -1,6 +1,10 @@
 package Servlets;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +17,15 @@ import Managers.DBManager;
  */
 public class userCreateAuctionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	//Method to calculate expiry date
+    private String expiryDate(int auctionLength){
+    	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    	Calendar cal = Calendar.getInstance();
+    	cal.add(Calendar.DATE, auctionLength);
+    	return dateFormat.format(cal.getTime());
+    	
+    }
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -51,12 +64,14 @@ public class userCreateAuctionServlet extends HttpServlet {
 			return;
 		}
 		
-		
+				
 		String AuctionTitle = request.getParameter("AuctionTitle").toString();
-		Double MinPrice = new Double( request.getParameter("MinPrice").toString() );
+		String OwnerID = request.getParameter("OwnerID").toString();
+		String MinPrice = request.getParameter("MinPrice").toString();
+		String ExpiryDate = expiryDate(Integer.parseInt(request.getParameter("ExpiryDate")));
+		String Category = request.getParameter("Category").toString();
 		
-		
-		boolean success = dbm.createNewAuction(AuctionTitle, "test", MinPrice, userID, "random");
+		boolean success = dbm.createNewAuction(AuctionTitle, Category, ExpiryDate, Double.parseDouble(MinPrice), Integer.parseInt(OwnerID), "flickr album");;
 		
 		if(!success){
 			System.out.println("Error: createNewAuction in userCreateAuctionServlet failed");

@@ -33,19 +33,19 @@ public class DBManager {
 		}
 	}
 	
-	public Boolean createNewAuction(String auctionName, String category, String auctionStatus, String creationDate, String expiryDate, Double minPrice, int ownerID, String flickrAlbumID   )
+	public int createNewAuction(String auctionName, String category, String auctionStatus, String creationDate, String expiryDate, Double minPrice, int ownerID, String flickrAlbumID   )
 	{
 		try {
 			stm = m_conn.createStatement();
-			String query = "INSERT INTO AuctionsTable(AuctionTitle, Category, AuctionStatus " +
+			String query = "INSERT INTO AuctionsTable(AuctionTitle, Category, AuctionStatus, " +
 								"ExpiryDate, CreationDate, OwnerID, MinPrice, FlickerAlbumID) VALUES" +
 								"('" + auctionName + "' , '" + category + "' , '" + auctionStatus +
-								"' , '"  + creationDate + "' , '" + expiryDate + 
-								"' , '" + ownerID + ", " + minPrice + ", '" + flickrAlbumID + "')"; 
+								"' , '"  + expiryDate + "' , '" + creationDate + 
+								"' , '" + ownerID + "' , '" + minPrice + "' , '" + flickrAlbumID + "')"; 
 			
 			System.out.println("Creating new auction : " + query);
 			
-			boolean success = stm.execute(query);
+			int success = stm.executeUpdate(query);
 			stm.close();
 			return success;
 		} catch (SQLException e1) {
@@ -54,7 +54,7 @@ public class DBManager {
 		
 		
 		
-		return false;
+		return -1;
 	}
 	
 
@@ -82,8 +82,8 @@ public class DBManager {
 				tempAuction.auctionTitle = result.getString("AuctionTitle");
 				tempAuction.auctionID = result.getInt("AuctionID");
 
-				tempAuction.expiryDate = result.getDouble("ExpiryDate");
-				tempAuction.creationDate = result.getDouble("CreationDate");
+				tempAuction.expiryDate = result.getString("ExpiryDate");
+				tempAuction.creationDate = result.getString("CreationDate");
 				tempAuction.category = result.getString("Category");
 				tempAuction.ownerID = result.getInt("OwnerID");
 				tempAuction.lastBidderID = result.getInt("lastBidderID");
@@ -140,8 +140,8 @@ public class DBManager {
 
 				auction.auctionTitle 	= result.getString("AuctionTitle");
 				auction.auctionID 		= result.getInt("AuctionID");
-				auction.expiryDate 		= result.getDouble("ExpiryDate");
-				auction.creationDate 	= result.getDouble("CreationDate");
+				auction.expiryDate 		= result.getString("ExpiryDate");
+				auction.creationDate 	= result.getString("CreationDate");
 				auction.category 		= result.getString("Category");
 				auction.ownerID 		= result.getInt("OwnerID");
 				auction.lastBidderID 	= result.getInt("lastBidderID");

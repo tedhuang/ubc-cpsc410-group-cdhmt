@@ -84,6 +84,7 @@
 		String userName = request.getParameter("name");
 
 	%>
+	<input id="cred" type="hidden" value=<%= cred %>>
 	
 	<h2>
 	<%= cred %>

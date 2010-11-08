@@ -20,7 +20,7 @@ public class userCreateAuctionServlet extends HttpServlet {
 	
 	//Method to calculate expiry date
     private String expiryDate(int auctionLength){
-    	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     	Calendar cal = Calendar.getInstance();
     	cal.add(Calendar.DATE, auctionLength);
     	return dateFormat.format(cal.getTime());
@@ -28,7 +28,7 @@ public class userCreateAuctionServlet extends HttpServlet {
     }
     
     private String getDate(){
-    	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     	Calendar cal = Calendar.getInstance();
     	return dateFormat.format(cal.getTime());
     }
@@ -81,9 +81,9 @@ public class userCreateAuctionServlet extends HttpServlet {
 		String ExpiryDate = expiryDate(Integer.parseInt(request.getParameter("ExpiryDate")));
 		String Category = request.getParameter("Category").toString();
 		
-		boolean success = dbm.createNewAuction(AuctionTitle, Category, AuctionStatus, CreationDate, ExpiryDate, Double.parseDouble(MinPrice), OwnerID, "flickr album");;
+		int success = dbm.createNewAuction(AuctionTitle, Category, AuctionStatus, CreationDate, ExpiryDate, Double.parseDouble(MinPrice), OwnerID, "flickr album");;
 		
-		if(!success){
+		if(success <= 0){
 			System.out.println("Error: createNewAuction in userCreateAuctionServlet failed");
 		}
 		

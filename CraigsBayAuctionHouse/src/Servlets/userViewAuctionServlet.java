@@ -59,15 +59,15 @@ public class userViewAuctionServlet extends HttpServlet {
 		
 		if( userID == auction.ownerID ) {
 			
-			XMLResponse.append("owner=true bid=false");
+			XMLResponse.append("owner=\"true\" bid=\"false\"");
 			
 		}
 		else {
-			if( userID == -1 ) {
-				XMLResponse.append("owner=false bid=false");
+			if( userID <= 0 ) {
+				XMLResponse.append("owner=\"false\" bid=\"false\"");
 			}
 			else {
-				XMLResponse.append("owner=false bid=true");
+				XMLResponse.append("owner=\"false\" bid=\"true\"");
 			}
 			
 		}
@@ -77,7 +77,7 @@ public class userViewAuctionServlet extends HttpServlet {
 		String thisXML = auction.toXMLContent();
 		XMLResponse.append( thisXML );
 		
-		XMLResponse.append("\t</auctionsView>\n");
+		XMLResponse.append("\t</auctionView>\n");
 		XMLResponse.append("</response>\n");
 		response.setContentType("application/xml");
 		response.getWriter().println(XMLResponse);

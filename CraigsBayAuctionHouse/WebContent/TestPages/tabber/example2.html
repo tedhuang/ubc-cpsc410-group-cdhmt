@@ -58,6 +58,9 @@ var tabberOptions = {
 
 };
 
+
+
+
 </script>
 
 <!-- Load the tabber code -->
@@ -74,9 +77,14 @@ var tabberOptions = {
 
 <div class="tabber" id="tab1">
 
-  <div class="tabbertab">
+  <div class="tabbertab" id="tab_1">
     <h2><a name="tab1">Tab <em>1</em></a></h2>
-    <p>Tab 1 content.</p>
+    <div class="tabIframeWrapper">
+	  	<iframe class="tabContent" 
+	  			name="tabIframe2" src="../pageFrame.jsp" 
+	  			marginheight="8" marginwidth="8" frameborder="0">
+	  	</iframe>
+	</div>
   </div>
 
   <div class="tabbertab">

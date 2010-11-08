@@ -2,6 +2,7 @@
 	// Ajax to add entries to the table
 
 function ParseAuctionList( responseXML ) {
+	
 
 	var auctionsList = responseXML.getElementsByTagName('auctionsList').item(0);
 
@@ -74,6 +75,7 @@ function ParseAuctionList( responseXML ) {
 		
 	}
 
+	document.getElementById("surferTitle").innerHTML="Auction List";
 }
 
 function addElement( rowParams ) {

@@ -12,6 +12,7 @@ var bustcacheparameter=""
 
 function ajaxpage(url, containerid){
 var page_request = false
+
 if (window.XMLHttpRequest) // if Mozilla, Safari etc
 page_request = new XMLHttpRequest()
 else if (window.ActiveXObject){ // if IE

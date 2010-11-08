@@ -61,6 +61,7 @@
 	{
 		loadobjs('./resources/scripts/auctionListLoader.js'); //load the additional javascript tableLoad.jsp requires
 		ajaxpage('tableLoad.jsp', 'Dynapage'); //load tableLoad.jsp in to div Dynapage
+		document.getElementById("surferTitle").innerHTML="Loading...";
 		
 	}
 	</script>
@@ -82,14 +83,13 @@
 	<% 
 		String cred = request.getParameter("cred");
 		String userName = request.getParameter("name");
-
+		
+		if(userName == null || userName == "")
+		{
+			userName = "Guest";
+		}
 	%>
 	<input id="cred" type="hidden" value=<%= cred %>>
-	
-	<h2>
-	<%= cred %>
-	<%= userName %>
-	</h2>
 	
 	<body><div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
 		
@@ -106,27 +106,15 @@
 			</ul>
 			<div id="profile-links">
 				Hello, <a href="#" title="Edit your profile">
-				<%  
-				if(userName != null && userName != "")
-				{
-				%>
-					<%= userName %>
-				<%
-				}
-				else
-				{
-				%>				
-					Guest
-				<%
-				}
-				%>
+
+				<%= userName %>
 				
 				</a>, you have <a href="#messages" rel="modal" title="3 Messages">3 Messages</a><br />
 				
 				<br />
 				<a href="#" title="View the Site">View the Site</a> | 
 				<%  
-				if(userName != null && userName != "")
+				if(userName != "Guest")
 				{
 					
 				%>
@@ -229,7 +217,7 @@
 			
 			<!-- Dynamic Page Starts Here -->
 			<div id="main-content">
-			<h2><div id="surferTitle">Welcome Guest</div></h2>
+			<h2><div id="surferTitle">Welcome <%= userName %></div></h2>
 			
 			<div id="Dynapage">
 			Dynamic page is here

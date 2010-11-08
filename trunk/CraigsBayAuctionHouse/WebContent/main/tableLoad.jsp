@@ -74,7 +74,6 @@
   <body>
   
  <!--  this will get called when the page is dynamically loaded. -->
- <!--  <input type="hidden" value="loadAuctionTable()" name="dynamicLoad" /> -->
  <script>
  loadAuctionTable();
  </script>

@@ -21,6 +21,22 @@ public class Auction {
 	public String auctionStatus;
 	public String flickerAlbumID;
 	public int numberOfViews;
+	
+	public Auction() {
+		auctionID 		= -1;
+		auctionTitle 	= null;
+		expiryDate		= 0;
+		creationDate	= 0;
+		category		= null;
+		ownerID			= -1;
+		lastBidderID	= -1;
+		minPrice		= -1;
+		latestBidPrice	= -1;
+		bidCounter		= 0;
+		auctionStatus	= null;
+		flickerAlbumID	= null;
+		numberOfViews	= 0;
+	}
 
 	
 	//TODO: make sure null entry and null value could be processed for a certain field

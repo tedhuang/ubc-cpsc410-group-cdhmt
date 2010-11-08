@@ -99,4 +99,14 @@
     <servlet-name>flickrServletTest</servlet-name>
     <url-pattern>/flickrServletTest</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>userViewAuctionServlet</display-name>
+    <servlet-name>userViewAuctionServlet</servlet-name>
+    <servlet-class>Servlets.userViewAuctionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>userViewAuctionServlet</servlet-name>
+    <url-pattern>/userViewAuctionServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

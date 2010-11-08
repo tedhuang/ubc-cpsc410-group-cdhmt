@@ -78,7 +78,8 @@ function Login()
 		    //parse XML response from server
 		    credential= loginParseXMLResponse(xmlhttp.responseXML);
 		    //alert("responseText: " + responseText);
-		   
+		   document.getElementById("AuctionTitle").type="text";
+		   document.getElementById("MinPrice").type="text";
 	    	document.getElementById("loginDiv").innerHTML=credential;
 	    }
 	  }
@@ -120,8 +121,8 @@ Pass: <input id="password" type="text" name="OwnerID" size="20"><br>
 <br>
 <br>
 
-Title: <input id="AuctionTitle" type="text" name="AuctionTitle" size="20"><br>
-MinPrice: <input id="MinPrice" type="text" name="MinPrice" size="20"><br>
+Title: <input id="AuctionTitle" type="hidden" name="AuctionTitle" size="20"><br>
+MinPrice: <input id="MinPrice" type="hidden" name="MinPrice" size="20"><br>
         	  
 <div id="myDiv"><h2>Feedback Area</h2></div>
 

@@ -112,6 +112,59 @@ public class DBManager {
 		
 	}
 	
+	public Auction auctionGetByID( int auctionID ) //TODO: change the name of this method to something like "makeAuctionList"
+	{
+
+		Auction auction = new Auction();
+		
+		try {
+			stm = m_conn.createStatement();
+			
+			String query = "SELECT * FROM AuctionsTable" +
+							" WHERE AuctionID=" + auctionID; 
+			
+			System.out.println("Retrieving Auction " + auctionID + ": " + query);
+			
+			//TODO: figure out if we need a success check here
+			boolean success = stm.execute(query);
+			
+			ResultSet result = stm.getResultSet();
+			
+			//TODO: Check if these conditons work
+			if (  result.first() == false) {
+				stm.close();
+				return null;
+			}
+			else {
+
+				auction.auctionTitle 	= result.getString("AuctionTitle");
+				auction.auctionID 		= result.getInt("AuctionID");
+				auction.expiryDate 		= result.getDouble("ExpiryDate");
+				auction.creationDate 	= result.getDouble("CreationDate");
+				auction.category 		= result.getString("Category");
+				auction.ownerID 		= result.getInt("OwnerID");
+				auction.lastBidderID 	= result.getInt("lastBidderID");
+				auction.minPrice 		= result.getDouble("MinPrice");
+				auction.latestBidPrice 	= result.getDouble("LatestBidPrice");
+				auction.bidCounter 		= result.getInt("BidCounter");
+				auction.auctionStatus 	= result.getString("auctionStatus");
+				auction.flickerAlbumID 	= result.getString("flickerAlbumID");
+				auction.numberOfViews 	= result.getInt("numberOfViews");
+				
+			}
+
+			stm.close();
+			
+			return auction;
+			
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		return null;
+		
+	}
+	
 	/*
 	 * Takes the credential of the user and checks 
 	 * @param: credential of the user

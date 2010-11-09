@@ -24,7 +24,7 @@ public class SMTPManager {
 	public boolean sendMail(String UserName, String subject, String body)
 	{
 		DBManager dbm = new DBManager();
-		String[] info = dbm.getUserPhoneInfo(UserName);
+		String[] info = dbm.userGetPhoneInfo(UserName);
 		String toAddress = "";
 		
 		if(info[0] != null && info[1] != null)

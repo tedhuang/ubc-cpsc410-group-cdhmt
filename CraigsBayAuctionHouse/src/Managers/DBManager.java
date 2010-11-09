@@ -343,7 +343,7 @@ public class DBManager {
 	// returns
 	// [0] PhoneNumber
 	// [1] PhoneCarrier
-	public String[] getUserPhoneInfo(String userName)
+	public String[] userGetPhoneInfo(String userName)
 	{
 		try {
 			stm = m_conn.createStatement();

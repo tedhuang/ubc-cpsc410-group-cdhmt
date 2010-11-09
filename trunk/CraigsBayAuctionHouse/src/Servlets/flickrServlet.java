@@ -52,21 +52,22 @@ public class flickrServlet extends HttpServlet {
 		//Hard coded URL for public album
 		URL url = new URL("http://api.flickr.com/services/rest/?&method=flickr.people.getPublicPhotos&api_key=301748fd9ccc9801f9ed91772b19d8bd&user_id=55164508@N02");
 		
-		StreamSource xml = new StreamSource(url.openStream());
-		StreamSource xsl = new StreamSource(new File("/path/to/file.xsl"));
-		StreamResult output = new StreamResult(response.getOutputStream());
-
-		try {
-		    Transformer transformer = TransformerFactory.newInstance().newTransformer(xsl);
-		    transformer.transform(xml, output);
-		} catch (TransformerException e) {
-		    throw new ServletException("Transforming XML failed.", e);
-		}
-		
-		System.out.println(output.toString()); //Testprint
-		
-		response.setContentType("application/xml");
-		response.getWriter().println(output);
+		//Doesn't work:
+//		StreamSource xml = new StreamSource(url.openStream());
+//		StreamSource xsl = new StreamSource(new File("/path/to/file.xsl"));
+//		StreamResult output = new StreamResult(response.getOutputStream());
+//
+//		try {
+//		    Transformer transformer = TransformerFactory.newInstance().newTransformer(xsl);
+//		    transformer.transform(xml, output);
+//		} catch (TransformerException e) {
+//		    throw new ServletException("Transforming XML failed.", e);
+//		}
+//		
+//		System.out.println(output.toString()); //Testprint
+//		
+//		response.setContentType("application/xml");
+//		response.getWriter().println(output);
 		
 	}
 

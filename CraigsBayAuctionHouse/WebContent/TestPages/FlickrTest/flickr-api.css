@@ -1,0 +1,21 @@
+@CHARSET "ISO-8859-1";
+
+/*CSS for Flickr API Examples
+	This is an example file adapted from tutorial site
+*/
+*{ margin: 0; padding 0; border: 0; }
+body { font: 62.5% Arial, Helvetica, Sans-Serif; }
+h1, h2 { width: 515px; margin: 10px 0px 5px 0px; text-align: center; }
+div.api h1, div.api h2{ width: 100%; }
+h1{ font-size: 1.6em; }
+h2{ font-size: 1.4em; }
+ul { float:left; width: 100%; list-style-type: none; padding: 0;  }
+li { float:left; padding: 10px; }
+a { float:left; padding: 4px; background: #ccc; }
+a:hover { background: #66ccff; }
+a img { border: 0; }
+pre{ font-size: 1.2em; background:#E1E9E5 none repeat scroll 0 0; margin:20px 0; padding:10px; }
+.wrapper { width: 525px; margin: 0 auto; padding-bottom: 20px; }
+div.api { width: 860px; }
+.container { float: left; margin-bottom: 20px; }
+.badge a { float: left; margin: 10px; }

@@ -171,8 +171,16 @@
 					</a>
 					<ul>
 						<li OnClick="viewAllAuctions()"><a href=#>View All Auctions</a></li>
+						<%  
+							if(userName != "Guest")
+							{
+						%>
+						
 						<li OnClick="createAuction()"><a href="#">New Auction</a></li>
 						<li><a href="#">Manage Auction</a></li>
+						<%
+							}
+						%>
 					</ul>
 				</li>
 				

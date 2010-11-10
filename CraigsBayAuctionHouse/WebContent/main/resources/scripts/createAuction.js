@@ -26,7 +26,6 @@ function createAuctionRequest()
 	    {
 		    //parse XML response from server
 		    var responseText= auctionParseXMLResponse(xmlhttp.responseXML);
-		    //alert("responseText: " + responseText);
 		   
 	    	document.getElementById("myDiv").innerHTML=responseText;
 	    }
@@ -40,7 +39,7 @@ function createAuctionRequest()
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xmlhttp.send(Params);
 
-	//change the text while sending the email
+	//change the text while sending the request
 	document.getElementById("myDiv").innerHTML="<h2>Please wait... Sending Request</h2>";
 }
 
@@ -54,4 +53,19 @@ function loginParseXMLResponse(responseXML)
 
 function auctionParseXMLResponse(responseXML){
 	
+	 var success = (responseXML.getElementsByTagName("success")[0]).childNodes[0].nodeValue;
+	 var responseText = "";
+	 
+	 if(success==0)
+	{
+		 responseText = "<h2>Error creating auction!</h2>";
+	}
+	 else 
+	{
+		 
+		 responseText = "<h2>Auction Created!</h2>";
+	}
+	
+
+	 return responseText;
 }

@@ -76,6 +76,7 @@
 	{
 		ajaxpage('createAuctionTable.jsp', 'Dynapage')
 		loadobjs('./resources/scripts/createAuction.js');
+		document.getElementById("surferTitle").innerHTML="Create a New Auction";
 	}
 	
 	</script>

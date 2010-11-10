@@ -38,10 +38,10 @@ public class DBManager {
 		try {
 			stm = m_conn.createStatement();
 			String query = "INSERT INTO AuctionsTable(AuctionTitle, Category, AuctionStatus, " +
-								"ExpiryDate, CreationDate, OwnerID, MinPrice, FlickerAlbumID) VALUES" +
+								"ExpiryDate, CreationDate, OwnerID, MinPrice, LatestBidPrice, FlickerAlbumID) VALUES" +
 								"('" + auctionName + "' , '" + category + "' , '" + auctionStatus +
 								"' , '"  + expiryDate + "' , '" + creationDate + 
-								"' , '" + ownerID + "' , '" + minPrice + "' , '" + flickrAlbumID + "')"; 
+								"' , '" + ownerID + "' , '" + minPrice + "' , '" + minPrice + "' , '" + flickrAlbumID + "')"; 
 			
 			System.out.println("Creating new auction : " + query);
 			

@@ -58,12 +58,66 @@ var tabberOptions = {
   height:200px;
 }
 </style>
+
+<script type="text/javascript">
+
+
+function addElement() {
+	var ni = document.getElementById('tab2');
+	  var numi = document.getElementById('theValue');
+	  var num = (document.getElementById('theValue').value -1)+ 2;
+	  numi.value = num;
+	  var newdiv = document.createElement('div');
+	  var divIdName = 'my'+num+'Div';
+	  newdiv.setAttribute('class','tabbertab');
+	  newdiv.setAttribute('id',divIdName);
+	  newdiv.innerHTML = '<h2>Tab X</h2> <p>Tab X content.</p>';
+	  ni.appendChild(newdiv);
+	  
+	}
+function addDiv(parent, id, style, children) {
+	  var r = document.createElement("div");
+	  if(id)
+	    r.id = id;
+	  if(style)
+	    for(var x in style)
+	      r.style[x] = style[x];
+	  if(children)
+	    for(var i = 0; i < children.length; ++i)
+	      r.appendChild(children);
+	  parent.appendChild(r);
+	  return r;
+	}
+	
+//<div class="tabbertab">
+//<h2>Tab 3</h2>
+//<p>Tab 3 content.</p>
+//</div>
+	
+function removeElement() {
+	var elements=document.getElementById( 'myDiv' );
+	var entries = document.getElementById( 'myDiv' ).getElementsByTagName('div');
+	var chkBox;
+	var temp;
+	for( var i = entries.length-1; i > -1; i-- )
+	 {
+		chkBox=document.getElementById( entries[i].id ).getElementsByTagName("input");
+		temp = document.getElementById(entries[i].id);
+		if( chkBox[0].checked )
+		{
+			elements.removeChild( temp );
+		}
+	 }
+		
+	}
+</script>
 </head>
 <body>
 
 <h1>Ajax Tabber Example</h1>
 
-<p>&larr; <a href="http://www.barelyfitz.com/projects/tabber/">Tabber Home</a></p>
+<input type="hidden" value="0" id="theValue" />
+<button type="button" onclick="addElement()">ADD</button>
 
 <div class="tabber">
 
@@ -83,7 +137,7 @@ var tabberOptions = {
      </div>
 
 
-     <div class="tabbertab">
+     <div class="tabbertab" id="tab2">
 	  <h2>Tab 3</h2>
      </div>
 

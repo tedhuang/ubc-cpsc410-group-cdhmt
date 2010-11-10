@@ -20,7 +20,7 @@
 		<link rel="stylesheet" href="./resources/css/invalid.css" type="text/css" media="screen" />	
 		
 		<!-- login css -->
-		
+		<link rel="stylesheet" href="./resources/css/loginBubble.css" media="screen,projection" type="text/css" />
 		<link rel="stylesheet" href="./resources/css/lightbox.css" media="screen,projection" type="text/css" />
 		
 		<!-- Floading Menu References -->
@@ -89,7 +89,17 @@
 
 		//</div>
 		//
-	//
+	//---------------------------------------------------------
+	//<ul id="bubblemenu">
+  //      <li>
+  //          LOG IN FROM HERE
+  //          <div class="tabIframeWrapper">
+//	  			<iframe class="tabContent" 
+	//	  			name="tabIframe2" src="del.html" 
+//		  			marginheight="8" marginwidth="8" frameborder="0">
+//	  			</iframe>
+//			</div>
+//	</ul>
 	</script>
 	
 	
@@ -129,6 +139,8 @@
 			<ul>
 			<li><a href="../main/Login.jsp" class="lbOn">Login From Here</a></li>
 			</ul>
+			
+			
 			<div id="profile-links">
 				Hello, <a href="#" title="Edit your profile">
 

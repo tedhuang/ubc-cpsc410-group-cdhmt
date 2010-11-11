@@ -1,4 +1,4 @@
-function loadAuctionTable()
+function loadUserInfo()
 {	
 	if (window.XMLHttpRequest)
 	  {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -19,11 +19,13 @@ function loadAuctionTable()
 	    	
 	    }
 	  }
+	
+	var credential = document.getElementById("cred").value;
 
 	//send the parameters to the servlet with POST
-	var Params = "";
+	var Params = "Credential=" + credential;
 	
-	xmlhttp.open("POST","../listAuctionsServlet" ,true);
+	xmlhttp.open("GET","../userEditIfo" ,true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xmlhttp.send(Params);
 	//document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
@@ -31,39 +33,25 @@ function loadAuctionTable()
 
 
 function ParseUserInfo( responseXML ) {
-	
+	var user = responseXML.getElementsByTagName("user");		
+    
+	document.getElementById("Password").value =	user.getAttribute("password");
+    document.getElementById("PhoneNumber").value = user.getAttribute("phoneNumber");
+    document.getElementById("PhoneCarrier").value	=	user.getAttribute("phoneCarrier");
+    document.getElementById("EmailAddress").value =	user.getAttribute("emailAddress");
 
-	var auctionsList = responseXML.getElementsByTagName('auctionsList').item(0);
-	var auctions = auctionsList.getElementsByTagName("auction");
-	for (var iNode = 0; iNode < auctions.length; iNode++) {
-		
-        var auction_node = auctions[iNode];
-
-        document.getElementById("Password").value =	auction_node.getAttribute("auctionID");
-        document.getElementById("Telephone").value = auction_node.getAttribute("auctionTitle");
-        document.getElementById("PhoneCarrier").value	=	auction_node.getAttribute("auctionStatus");
-        document.getElementById("EmailAddress").value =	auction_node.getAttribute("expiryDate");
-	}
-
-	document.getElementById("surferTitle").innerHTML="Auction List";
+	document.getElementById("surferTitle").innerHTML="User Info";
 }
 
-
-
-
-function getUserInfo()
-{
-
-}
 
 function editUserInfo()
 {
 	//Unlocks textboxes etc. to be edited
 	document.getElementById("Password").disabled = "";
-	document.getElementById("Telephone").disabled = "";
+	document.getElementById("PhoneNumber").disabled = "";
 	document.getElementById("PhoneCarrier").disabled = "";
 	document.getElementById("EmailAddress").disabled = "";	
-	document.getElementById("Submit").style = 'display:all;';
+	document.getElementById("Submit").type = "button";
 }
 
 
@@ -71,7 +59,7 @@ function updateUserRequest()
 {
 	
 	var Password = document.getElementById("Password").value;
-	var Telephone = document.getElementById("Telephone").value;
+	var Telephone = document.getElementById("PhoneNumber").value;
 	var PhoneCarrier = document.getElementById("PhoneCarrier").value;
 	var EmailAddress= document.getElementById("EmailAddress").value;
 	var credential = document.getElementById("cred").value;
@@ -97,7 +85,7 @@ function updateUserRequest()
 	    }
 	  }
 
-	var Params = "Credential=" + credential + "&Password=" + Password + "&Telephone=" + Telephone
+	var Params = "Credential=" + credential + "&Password=" + Password + "&PhoneNumber=" + PhoneNumber
 					+ "&PhoneCarrier=" + Phonecarrier + "&EmailAddress=" + EmailAddress;
 
 	//send the parameters to the servlet with POST

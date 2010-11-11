@@ -30,24 +30,28 @@ public class userEditInfo extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)        
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		Map<String, String> parameterMap = request.getParameterMap();
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		// retrieve credential and userID
-		String userCred = parameterMap.get("credential").toString();
+		String userCred = request.getParameter("Credential");
 		User user = new User();
-		DBManager dbm = new DBManager();
-		user = dbm.userGetByCred(userCred);
 		
-		//Write XML
-		StringBuffer XMLResponse = new StringBuffer();	
-		XMLResponse.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
-		XMLResponse.append("<response>\n");
-		XMLResponse.append(user.toXMLContent());
-		XMLResponse.append("</response>\n");
-		response.setContentType("application/xml");
-		response.getWriter().println(XMLResponse);
+		DBManager dbm = new DBManager();
+		int userID = dbm.userCredentialCheck(userCred);
+		if( userID <= 0){
+			// TODO do error code
+		}
+		else{
+			user = dbm.userGetByID(userID);
+			
+			//Write XML
+			StringBuffer XMLResponse = new StringBuffer();	
+			XMLResponse.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
+			XMLResponse.append("<response>\n");
+			XMLResponse.append(user.toXMLContent());
+			XMLResponse.append("</response>\n");
+			response.setContentType("application/xml");
+			response.getWriter().println(XMLResponse);
+		}
 		
 	}
 

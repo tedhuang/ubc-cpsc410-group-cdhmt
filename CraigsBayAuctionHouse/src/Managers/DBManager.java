@@ -377,7 +377,7 @@ public class DBManager {
 
 	}
 	
-	public User userGetByCred( String cred ) 
+	public User userGetByID( int userID ) 
 	{
 
 		User user = new User();
@@ -386,7 +386,7 @@ public class DBManager {
 			stm = m_conn.createStatement();
 			
 			String query = "SELECT * FROM UserTable" +
-							" WHERE Credential=" + cred; 
+							" WHERE UserID=" + userID; 
 			
 			//System.out.println("Retrieving Auction " + auctionID + ": " + query);
 			
@@ -402,10 +402,10 @@ public class DBManager {
 			}
 			else {
 				// TODO: match up the names with names in database
-				user.userID 	= result.getInt("userId");
-				user.password		= result.getString("password");
-				user.telephone 		= result.getString("telephone");
-				user.phoneCarrier 	= result.getString("phoneCarrier");
+				user.userID 	= result.getInt("UserID");
+				user.password		= result.getString("Password");
+				user.phoneNumber 		= result.getString("PhoneNumber");
+				user.phoneCarrier 	= result.getString("PhoneCarrier");
 				user.emailAddress		= result.getString("EmailAddress");
 				
 			}

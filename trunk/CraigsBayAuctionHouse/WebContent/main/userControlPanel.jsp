@@ -7,9 +7,13 @@
 <title>User Control Panel</title>
 </head>
 <body>
-
+ <script>
+ loadUserInfo();
+ </script>
+ 
+ 
 Password: <input id="Password" disabled="disabled" type="text" name="Password" size="20"><br>
-Telephone: <input id="Telephone" disabled="disabled" type="text" name="Telephone" size="20"><br>
+Phone Number: <input id="PhoneNumber" disabled="disabled" type="text" name="PhoneNumber" size="20"><br>
 Phone carrier:<select id="PhoneCarrier" disabled="disabled" name="PhoneCarrier">
 				<option value="1">Fido</option>
 				<option value="2">Rogers</option>
@@ -27,7 +31,7 @@ E-mail Address: <input id="EmailAddress" disabled="disabled" type="text" name="E
 
 
 <button id='Edit' type="button" onclick="editUserInfo()">Edit Info</button>
-<button id='Submit' type="button" style='display:none;' onclick="updateUserRequest()">Submit Info</button>
+<button id='Submit' type="hidden"  onclick="updateUserRequest()">Submit Info</button>
 
 </body>
 </html>

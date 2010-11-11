@@ -79,8 +79,8 @@
 	<script type="text/javascript">
 	function userControlPage()
 	{
-		ajaxpage('userControlPanel.jsp', 'Dynapage')
 		loadobjs('./resources/scripts/userControlPanel.js');
+		ajaxpage('userControlPanel.jsp', 'Dynapage')
 		document.getElementById("surferTitle").innerHTML="Loading...";
 	}
 	
@@ -313,7 +313,7 @@
 					<ul>
 						<li><a href="#">General</a></li>
 						<li><a href="#">Design</a></li>
-						<li><a href="#">Your Profile</a></li>
+						<li OnClick="userControlPage()"><a href="#">Your Profile</a></li>
 						<li><a href="#">Users and Permissions</a></li>
 					</ul>
 				</li>      

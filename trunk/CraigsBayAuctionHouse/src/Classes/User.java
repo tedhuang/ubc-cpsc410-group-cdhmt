@@ -10,14 +10,14 @@ public class User {
 	
 	public int userID;
 	public String password;
-	public String telephone;
+	public String phoneNumber;
 	public String phoneCarrier;
 	public String emailAddress;
 	
 	public User() {
 		userID 		= -1;
 		password = "";
-		telephone	= "";
+		phoneNumber	= "";
 		phoneCarrier		= "";
 		emailAddress	= "";
 	}
@@ -29,7 +29,7 @@ public class User {
 		return "\t\t<user" +
 				" userID=\"" + userID + "\"" +
 				" password=\"" + password + "\"" +
-				" telephone=\"" + telephone + "\"" +
+				" phoneNumber=\"" + phoneNumber + "\"" +
 				" phonecarrier=\"" + phoneCarrier  + "\"" +
 				" emailAddress=\"" + emailAddress + "\"" +
 				"/>\n";

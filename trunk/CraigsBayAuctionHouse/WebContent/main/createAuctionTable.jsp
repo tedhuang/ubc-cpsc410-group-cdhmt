@@ -38,7 +38,7 @@ Category: <select id="Category" name="Category">
 
 
         	  
-<div id="myDiv"><h2>Feedback Area</h2></div>
+<div id="createAuctionFeedback"><h2>Feedback Area</h2></div>
 
 
 <button type="button" onclick="createAuctionRequest()">Create Auction</button>

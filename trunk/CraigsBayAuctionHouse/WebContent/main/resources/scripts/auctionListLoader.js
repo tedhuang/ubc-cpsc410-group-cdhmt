@@ -80,7 +80,7 @@ function ParseAuctionList( responseXML ) {
 
 function addElement( rowParams ) {
 	
-	  var ni = document.getElementById('myDiv');
+	  var ni = document.getElementById('myTable');
 	  
 	  var numi = document.getElementById('theValue');
 	  var num = (document.getElementById('theValue').value -1)+ 2;
@@ -98,7 +98,7 @@ function addElement( rowParams ) {
 	 // newdiv.innerHTML += "</tr>";
 	 
 	 // Insert rows and cells into bodies.
-	    var oBody = document.getElementById('myDiv');
+	    var oBody = document.getElementById('myTable');
 
 	    oRow = oBody.insertRow(oBody.rows.length);
 	    oRow.setAttribute('id', rowParams[0]);
@@ -170,7 +170,7 @@ function loadAuctionTable()
 
 	
 function removeElement() {
-	var tableBody=document.getElementById( 'myDiv' );
+	var tableBody=document.getElementById( 'myTable' );
 	//var entries = document.getElementById( 'myDiv' ).getElementsByTagName('div');
 	var chkBox;
 	var temp;

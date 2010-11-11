@@ -27,7 +27,7 @@ function createAuctionRequest()
 		    //parse XML response from server
 		    var responseText= auctionParseXMLResponse(xmlhttp.responseXML);
 		   
-	    	document.getElementById("myDiv").innerHTML=responseText;
+	    	document.getElementById("createAuctionFeedback").innerHTML=responseText;
 	    }
 	  }
 
@@ -40,7 +40,7 @@ function createAuctionRequest()
 	xmlhttp.send(Params);
 
 	//change the text while sending the request
-	document.getElementById("myDiv").innerHTML="<h2>Please wait... Sending Request</h2>";
+	document.getElementById("createAuctionFeedback").innerHTML="<h2>Please wait... Sending Request</h2>";
 }
 
 function loginParseXMLResponse(responseXML)

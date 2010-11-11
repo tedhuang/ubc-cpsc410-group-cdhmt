@@ -3,6 +3,7 @@ package Managers;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.Map;
 
 import Classes.Auction;
@@ -375,13 +376,44 @@ public class DBManager {
 
 	}
 	
-	public boolean userEditInfo( int userID, Map parameterMap ) {
+	public boolean userEditInfo( int userID, Map<String, String> parameterMap ) {
 		
+		Iterator<String> keyIterator = parameterMap.keySet().iterator();
 		
+		try {
+			stm = m_conn.createStatement();
+					
+			String query = "UPDATE UserTable SET ";
+			
+			while( keyIterator.hasNext() ) {
+				String tempKey = keyIterator.next();
+				
+				query	+= tempKey + "='";
+				query	+= parameterMap.get( tempKey ) + "'";
+				
+				if( keyIterator.hasNext() ) {
+					query	+= ", ";
+				}
+				
+			}
+				
+			query +=	" WHERE UserID='" + userID + "'"; 
+			
+			System.out.println("Updating UserInfo:" + query);
+			boolean success = stm.execute(query);
+
+			stm.close();
+			return  true;
+					
+		}
+		catch (SQLException e) {
+			//TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+
 		
-		
-		return true;
+		return false;
 	}
 	
 }

@@ -404,7 +404,7 @@
 				<a class="trigger" href="#">MENUS</a>
 				
 				
-		</div>
+		
 			<h2><div id="surferTitle">Welcome <%= userName %></div></h2>
 			
 			
@@ -412,9 +412,11 @@
 			<div id="Dynapage">
 			Dynamic page is here
 			</div>
+			
+			</div>
 			</div>
 			
-			
+	
 		</div><!-- Page style ends here -->	
 		</body><!-- Whole body ends here -->
 

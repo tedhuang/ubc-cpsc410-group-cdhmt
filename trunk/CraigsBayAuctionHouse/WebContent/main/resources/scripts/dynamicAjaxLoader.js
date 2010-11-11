@@ -73,11 +73,11 @@ while(source.indexOf("<dynamicOnLoad") > -1 || source.indexOf("</dynamicOnLoad")
 	
 	//call any dynamic onLoad functions...
 	var ob = document.getElementById(containerid).getElementsByTagName("script");
-	for(var i=0; i<ob.length-1; i++){
-	if(ob[i+1].text!=null && ob[i+1].text!="") 
+	for(var i=0; i<ob.length; i++){
+	if(ob[i].text!=null && ob[i].text!="") 
 		{
-			//alert(ob[i+1].text);
-			eval(ob[i+1].text);
+			//alert(ob[i].text);
+			eval(ob[i].text);
 		}
 	}
 }

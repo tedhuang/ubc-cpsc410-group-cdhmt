@@ -1,6 +1,16 @@
 
 	// Ajax to add entries to the table
 
+
+
+function viewDetails(auctionID)
+{
+	loadobjs('./resources/scripts/auctionDetailLoader.js'); //load the additional javascript file	
+	ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID, 'Dynapage'); //load auctionDetailsPage in to div Dynapage
+	
+}
+
+
 function ParseAuctionList( responseXML ) {
 	
 
@@ -111,7 +121,8 @@ function addElement( rowParams ) {
 
 	   //name
 	    oCell = oRow.insertCell(-1);
-	    oCell.innerHTML = "<a href=#>"+ rowParams[1] + "</a>";
+	    
+	    oCell.innerHTML = "<a href='#' onClick=viewDetails(" + rowParams[0] + ")>"+ rowParams[1] + "</a>";
 	    
 	    //status
 	    oCell = oRow.insertCell(-1);

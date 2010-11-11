@@ -109,4 +109,14 @@
     <servlet-name>userViewAuctionServlet</servlet-name>
     <url-pattern>/userViewAuctionServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>userChangeInfo</display-name>
+    <servlet-name>userChangeInfo</servlet-name>
+    <servlet-class>Servlets.userChangeInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>userChangeInfo</servlet-name>
+    <url-pattern>/userChangeInfo</url-pattern>
+  </servlet-mapping>
 </web-app>

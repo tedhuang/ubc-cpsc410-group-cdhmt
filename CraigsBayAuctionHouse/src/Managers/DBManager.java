@@ -3,6 +3,7 @@ package Managers;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Map;
 
 import Classes.Auction;
 import Classes.Credential;
@@ -372,6 +373,15 @@ public class DBManager {
 		
 		return null;
 
+	}
+	
+	public boolean userEditInfo( int userID, Map parameterMap ) {
+		
+		
+		
+		
+		
+		return true;
 	}
 	
 }

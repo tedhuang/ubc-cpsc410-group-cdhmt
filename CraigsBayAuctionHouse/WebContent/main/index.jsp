@@ -16,12 +16,14 @@
 		<!-- Main Stylesheet -->
 		<link rel="stylesheet" href="./resources/css/style.css" type="text/css" media="screen" />
 		
+		<!-- Sliding Menu Style -->
+		<link rel="stylesheet" href="./resources/css/slidingMenu.css" type="text/css" media="screen" />
+		
 		<!-- Invalid Stylesheet. This makes stuff look pretty. Remove it if you want the CSS completely valid -->
 		<link rel="stylesheet" href="./resources/css/invalid.css" type="text/css" media="screen" />	
 		
 		<!-- login css -->
-		
-		<link rel="stylesheet" href="./resources/css/lightbox.css" media="screen,projection" type="text/css" />
+		<link rel="stylesheet" href="./resources/css/loginBubble.css" media="screen,projection" type="text/css" />
 		
 		<!-- Floading Menu References -->
 		<link rel="stylesheet" href="./resources/css/floadStyle.css" type="text/css" media="screen" />
@@ -41,23 +43,15 @@
 		<!-- jQuery WYSIWYG Plugin -->
 		<script type="text/javascript" src="./resources/scripts/jquery.wysiwyg.js"></script>
 		
-		<!-- Login script -->
-		<script type="text/javascript" src="./resources/scripts/prototype.js"></script><!-- THIS ONE CONFLICTS MENU STYLE-->
-		<script type="text/javascript" src="./resources/scripts/lightbox.js"></script>
+		<!-- New Lightbox Login -->
+		<link type="text/css" rel="stylesheet" href="./resources/css/lightbox-form.css">
+		<script src="./resources/scripts/lightbox-form.js" type="text/javascript"></script>
 		
 		<!--  Ajax Loader Script -->
 		<script type="text/javascript" src="./resources/scripts/dynamicAjaxLoader.js"></script>
 		
 		
 		
-		<!-- Internet Explorer .png-fix -->
-		
-		<!--[if IE 6]>
-			<script type="text/javascript" src="resources/scripts/DD_belatedPNG_0.0.7a.js"></script>
-			<script type="text/javascript">
-				DD_belatedPNG.fix('.png_bg, img, li');
-			</script>
-		<![endif]-->
 		
 		
 	<!--  Functions -->
@@ -82,6 +76,76 @@
 	</script>
 	
 	<script type="text/javascript">
+	function userLoginRequest()
+		{
+			var userName = document.getElementById("username").value;
+			var password = document.getElementById("password").value;
+			//alert("im in");
+			
+			if (window.XMLHttpRequest)
+			  {// code for IE7+, Firefox, Chrome, Opera, Safari
+			  xmlhttp=new XMLHttpRequest();
+			  }
+			else
+			  {// code for IE6, IE5
+			  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			  }
+			  
+			xmlhttp.onreadystatechange=function()
+			  {
+			  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			    {
+				    //parse XML response from server
+				    //var responseText= ParseXMLResponse(xmlhttp.responseXML);
+				    		    
+				    //Gets userCred and prints it to div
+					var userCred = (xmlhttp.responseXML.getElementsByTagName("userCred")[0]).childNodes[0].nodeValue;
+		
+				    if( userCred != "null" ) 
+					    { 
+					    
+							var responseText = "<h2>User Credential is: ";
+							responseText += userCred  + "</h2>";		
+							
+							document.getElementById("myDiv").innerHTML=responseText;
+							document.getElementById("submitCred").value = userCred;
+							document.getElementById("name").value = userName;
+							document.getElementById("close").submit();
+							
+		
+				    	}
+				    else
+				    	{
+					    	//TODO: implement error handling
+					    	alert("Login Failed");
+					    	document.getElementById("myDiv").innerHTML="<h2>Login Failed!</h2>"; 
+				    	}
+			    }
+			  };
+			  
+			var Params = "userName=" + userName + "&password=" + password;
+		
+			//send the parameters to the servlet with POST
+			xmlhttp.open("POST","../userLoginServlet" ,true);
+			xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			xmlhttp.send(Params);
+		
+		
+		}
+		</script>
+		
+		<!-- Sliding Menu js functions  -->
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$(".trigger").click(function(){
+			$(".panel").toggle("fast");
+			$(this).toggleClass("active");
+			return false;
+		});
+		});
+	</script>
+	
+	<script type="text/javascript">
 	//Temp for floading menu
 	//	<div id="menu" class="fload_panel">
 	//		<h2>Menu</h2>
@@ -90,7 +154,17 @@
 
 		//</div>
 		//
-	//
+	//---------------------------------------------------------
+	//<ul id="bubblemenu">
+  //      <li>
+  //          LOG IN FROM HERE
+  //          <div class="tabIframeWrapper">
+//	  			<iframe class="tabContent" 
+	//	  			name="tabIframe2" src="del.html" 
+//		  			marginheight="8" marginwidth="8" frameborder="0">
+//	  			</iframe>
+//			</div>
+//	</ul>
 	</script>
 	
 	
@@ -126,32 +200,56 @@
 			<!-- Logo (221px wide) -->
 			<img id="logo" src="./resources/images/lighthouse.gif" width="100" height="100" alt="logo" />
 		  
-			<!-- Sidebar Profile links -->
-			<ul>
-			<li><a href="../main/Login.jsp" class="lbOn">Login From Here</a></li>
-			</ul>
+	<!-- Sidebar Profile links -->
+			
+		<!-- NEW LIGHTBOX LOGIN -->
+		<div id="filter"></div>
+			<div id="box">
+			  <span id="boxtitle"></span>
+			  
+			 
+			  <form id= "close" name="close" method="post" title="Close" >
+					<input id="submitCred" type="hidden" name="cred"/>
+					<input id="name" type="hidden" name="name" />
+					<input type="image" src="./resources/images/minus.png" name="image" />
+			  </form>
+			  
+			  <div id="login-box-name" style="margin-top:20px;">User:</div>
+					<div id="login-box-field">
+						<input id="username" name="username" class="form-login" title="Username" value="" size="30" maxlength="2048" />
+					</div>
+					<div id="login-box-name">Password:</div>
+					<div id="login-box-field">
+					<input id="password" name="password" type="password" class="form-login" title="Password" value="" size="30" maxlength="2048" /></div>
+		    <p> 
+			   <input type="image" src="./resources/images/login-btn.png" name="image" onclick="userLoginRequest()"/>
+			</p>
+						
+					<div id="myDiv"><h2>Debug Message for page</h2></div>
+			</div>
+			
+		<!-- ~ENDS: NEW LIGHTBOX LOGIN -->	
+			
 			<div id="profile-links">
-				Hello, <a href="#" title="Edit your profile">
+				Hello, 
 
 				<%= userName %>
-				
-				</a>, you have <a href="#messages" rel="modal" title="3 Messages">3 Messages</a><br />
-				
-				<br />
-				<a href="#" title="View the Site">View the Site</a> | 
+				 
 				<%  
 				if(userName != "Guest")
 				{
 					
 				%>
-				<a href="../main" title="Sign Out">Sign Out</a>
+				, you have <a href="#messages" rel="modal" title="3 Messages">3 Messages</a><br />
+				<p><a href="#" title="Edit your profile"> Profile</a> | 
+				<a href="../main" title="Sign Out">Sign Out</a> </p>
 				
 				<%
 				}
 				else
 				{
 				%>
-				<a href="../main/Login.jsp" class="lbOn" title="Sign In">Sign In</a>
+				<p>Already A Member? <a href="#" onclick="openbox('User Sign In', 1)">Sign-in From here</a></p>
 				<%
 				}
 				%>
@@ -255,6 +353,63 @@
 			
 			<!-- Dynamic Page Starts Here -->
 			<div id="main-content">
+			
+			
+			<div class="panel">
+				<h3>Profile</h3>
+				<img class="right" src="./resources/images/happy.jpg" />
+							<p><h3><%= userName %></h3></p>
+							<p><a href=#>Message</a> | <a href=#>My items</a></p>
+						
+						<div style="clear:both;"></div>
+						
+							<div class="columns">
+								<div class="colleft">
+								<h3>Business</h3>
+									<ul>
+										<li OnClick="viewAllAuctions()"><a href=#>View All Auctions</a></li>
+										<li OnClick="createAuction()"><a href="#">New Auction</a></li>
+										<li><a href="3" title="portfolio">My Auction</a></li>
+										<li><a href="4" title="contact">Won history</a></li>
+									</ul>
+								</div>
+							
+								<div class="colright">
+									<h3>Social Network</h3>
+									<ul>
+										<li><a href="7" title="Twitter">My Profile</a></li>
+										<li><a href="7" title="Twitter">My Messages</a></li>
+										<li><a href="8" title="DesignBump">My Friends</a></li>
+										<li><a href="9" title="Digg">Search People</a></li>
+										
+									</ul>
+								</div>
+							</div>
+						<div style="clear:both;"></div>
+						
+						</div>
+						
+		<div id="menuTrigger" class="trigger">
+			<%  
+				if(userName != "Guest")
+				{
+					
+			%>
+				
+				<a href="#">MENUS</a>
+				
+					<% 
+				}
+				else
+				{
+					%>
+					
+				<% 
+				
+				}
+				%>
+				
+		</div>
 			<h2><div id="surferTitle">Welcome <%= userName %></div></h2>
 			
 			

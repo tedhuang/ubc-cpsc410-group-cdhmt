@@ -81,6 +81,7 @@
   
   <input type="hidden" value="0" id="theValue" />
   
+  
   <!--  
   Item: <input id="auctionItem" type="text" name="auctionItem" size="20"><br>
   Status: <input id="status" type="text" name="status" size="20"><br>

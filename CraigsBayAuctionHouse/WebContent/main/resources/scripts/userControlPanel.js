@@ -25,7 +25,7 @@ function loadUserInfo()
 	//send the parameters to the servlet with POST
 	var Params = "Credential=" + credential;
 	
-	xmlhttp.open("GET","../userEditIfo" ,true);
+	xmlhttp.open("GET","../userEditInfo" ,true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xmlhttp.send(Params);
 	//document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
@@ -47,10 +47,10 @@ function ParseUserInfo( responseXML ) {
 function editUserInfo()
 {
 	//Unlocks textboxes etc. to be edited
-	document.getElementById("Password").disabled = "";
-	document.getElementById("PhoneNumber").disabled = "";
-	document.getElementById("PhoneCarrier").disabled = "";
-	document.getElementById("EmailAddress").disabled = "";	
+	document.getElementById("Password").disabled = "false";
+	document.getElementById("PhoneNumber").disabled = "false";
+	document.getElementById("PhoneCarrier").disabled = "false";
+	document.getElementById("EmailAddress").disabled = "false";	
 	document.getElementById("Submit").type = "button";
 }
 

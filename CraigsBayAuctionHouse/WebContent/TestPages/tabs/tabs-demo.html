@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Xul.fr - Demonstration of CSS Tab Panel</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <script src="tabs.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="tabs.css" />
 <style>
@@ -24,6 +24,24 @@ body
 
 </style>
 
+<script type="text/javascript">
+
+function addListItem( listID, fieldID )
+{
+ var theList = document.getElementById( listID ),
+     theField = document.getElementById( fieldID ),
+     newItem;
+ 
+ if( theList && theField && /\S/.test( theField.value ) )
+ {
+  newItem = theList.appendChild( document.createElement( 'li' ) );    
+  newItem.appendChild( document.createTextNode( theField.value ) ); 
+ }
+ 
+ delete newItem; 
+}
+
+</script>
 
 
 </head>
@@ -39,15 +57,17 @@ The No Script tab is an example that does not use JavaScript and replace this pa
 
 
 <div id="tabs">
-<ul>
+<ul id="tabPane">
      <li><a href="#" rel="tab-css.html" class="selected"  onclick="loadit(this)">CSS</a></li>
      <li><a href="#" rel="tab-dom.html" onClick="loadit(this)">DOM</a></li>
      <li><a href="#" rel="tab-javascript.html" onClick="loadit(this)">JavaScript</a></li>
      <li><a href="tab-noscript.html">No Script</a></li>
+     
 </ul>
 <iframe id="container"></iframe>
 </div>
 
+<input type='button' id='addBtn' value="Add LI" onclick="addListItem( 'myUl', 'liText' )" >
 
 <p><br>
   Return to the  tutorial: <a href="tabs.php" target="_parent">Tab Panel without  framework</a>.<br>

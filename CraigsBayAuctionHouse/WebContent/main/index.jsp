@@ -400,25 +400,9 @@
 						
 						</div>
 						
-		<div id="menuTrigger" class="trigger">
-			<%  
-				if(userName != "Guest")
-				{
-					
-			%>
+		
+				<a class="trigger" href="#">MENUS</a>
 				
-				<a href="#">MENUS</a>
-				
-					<% 
-				}
-				else
-				{
-					%>
-					
-				<% 
-				
-				}
-				%>
 				
 		</div>
 			<h2><div id="surferTitle">Welcome <%= userName %></div></h2>

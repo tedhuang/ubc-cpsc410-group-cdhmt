@@ -16,6 +16,9 @@
 		<!-- Main Stylesheet -->
 		<link rel="stylesheet" href="./resources/css/style.css" type="text/css" media="screen" />
 		
+		<!-- Sliding Menu Style -->
+		<link rel="stylesheet" href="./resources/css/slidingMenu.css" type="text/css" media="screen" />
+		
 		<!-- Invalid Stylesheet. This makes stuff look pretty. Remove it if you want the CSS completely valid -->
 		<link rel="stylesheet" href="./resources/css/invalid.css" type="text/css" media="screen" />	
 		
@@ -49,14 +52,6 @@
 		
 		
 		
-		<!-- Internet Explorer .png-fix -->
-		
-		<!--[if IE 6]>
-			<script type="text/javascript" src="resources/scripts/DD_belatedPNG_0.0.7a.js"></script>
-			<script type="text/javascript">
-				DD_belatedPNG.fix('.png_bg, img, li');
-			</script>
-		<![endif]-->
 		
 		
 	<!--  Functions -->
@@ -75,14 +70,13 @@
 	{
 		ajaxpage('createAuctionTable.jsp', 'Dynapage')
 		loadobjs('./resources/scripts/createAuction.js');
+		document.getElementById("surferTitle").innerHTML="Create a New Auction";
 	}
 	
 	</script>
 	
 	<script type="text/javascript">
-
-
-		function userLoginRequest()
+	function userLoginRequest()
 		{
 			var userName = document.getElementById("username").value;
 			var password = document.getElementById("password").value;
@@ -139,6 +133,17 @@
 		
 		}
 		</script>
+		
+		<!-- Sliding Menu js functions  -->
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$(".trigger").click(function(){
+			$(".panel").toggle("fast");
+			$(this).toggleClass("active");
+			return false;
+		});
+		});
+	</script>
 	
 	<script type="text/javascript">
 	//Temp for floading menu
@@ -201,20 +206,24 @@
 		<div id="filter"></div>
 			<div id="box">
 			  <span id="boxtitle"></span>
+			  
+			 
+			  <form id= "close" name="close" method="post" title="Close" >
+					<input id="submitCred" type="hidden" name="cred"/>
+					<input id="name" type="hidden" name="name" />
+					<input type="image" src="./resources/images/minus.png" name="image" />
+			  </form>
+			  
 			  <div id="login-box-name" style="margin-top:20px;">User:</div>
-					<div id="login-box-field" style="margin-top:20px;">
+					<div id="login-box-field">
 						<input id="username" name="username" class="form-login" title="Username" value="" size="30" maxlength="2048" />
-						</div>
-					<div id="login-box-name">Password:</div><div id="login-box-field">
+					</div>
+					<div id="login-box-name">Password:</div>
+					<div id="login-box-field">
 					<input id="password" name="password" type="password" class="form-login" title="Password" value="" size="30" maxlength="2048" /></div>
-					    <p> 
-					      <input type="submit" name="submit" onclick="userLoginRequest()">
-					      
-					      <form id= "close" name="close" method="post">
-							<input id="submitCred" type="hidden" name="cred"/>
-							<input id="name" type="hidden" name="name" />
-							<input type="image" src="./resources/images/close.png" name="image" width="50" height="50" style="margin-left:300px";/>
-						  </form>
+		    <p> 
+			   <input type="image" src="./resources/images/login-btn.png" name="image" onclick="userLoginRequest()"/>
+			</p>
 						
 					<div id="myDiv"><h2>Debug Message for page</h2></div>
 			</div>
@@ -261,8 +270,16 @@
 					</a>
 					<ul>
 						<li OnClick="viewAllAuctions()"><a href=#>View All Auctions</a></li>
+						<%  
+							if(userName != "Guest")
+							{
+						%>
+						
 						<li OnClick="createAuction()"><a href="#">New Auction</a></li>
 						<li><a href="#">Manage Auction</a></li>
+						<%
+							}
+						%>
 					</ul>
 				</li>
 				
@@ -336,6 +353,57 @@
 			
 			<!-- Dynamic Page Starts Here -->
 			<div id="main-content">
+			
+			
+			<div class="panel">
+				<h3>Profile</h3>
+				<img class="right" src="./resources/images/happy.jpg" />
+							<p><h3><%= userName %></h3></p>
+							<p><a href=#>Message</a> | <a href=#>My items</a></p>
+						
+						<div style="clear:both;"></div>
+						
+							<div class="columns">
+								<div class="colleft">
+								<h3>Business</h3>
+									<ul>
+										<li OnClick="viewAllAuctions()"><a href=#>View All Auctions</a></li>
+										<li OnClick="createAuction()"><a href="#">New Auction</a></li>
+										<li><a href="3" title="portfolio">My Auction</a></li>
+										<li><a href="4" title="contact">Won history</a></li>
+									</ul>
+								</div>
+							
+								<div class="colright">
+									<h3>Social Network</h3>
+									<ul>
+										<li><a href="7" title="Twitter">My Profile</a></li>
+										<li><a href="7" title="Twitter">My Messages</a></li>
+										<li><a href="8" title="DesignBump">My Friends</a></li>
+										<li><a href="9" title="Digg">Search People</a></li>
+										
+									</ul>
+								</div>
+							</div>
+						<div style="clear:both;"></div>
+						
+						</div>
+						
+		<!--  <div id="menuTrigger" class="trigger">-->
+			<%  
+				if(userName != "Guest")
+				{
+					
+			%>
+				
+				<a class="trigger" href="#">MENUS</a>
+				
+					<% 
+				}
+				
+					%>
+					
+		</div>
 			<h2><div id="surferTitle">Welcome <%= userName %></div></h2>
 			
 			

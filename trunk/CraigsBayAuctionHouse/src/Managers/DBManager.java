@@ -8,6 +8,7 @@ import java.util.Map;
 
 import Classes.Auction;
 import Classes.Credential;
+import Classes.User;
 import DBConnection.DBConn;
 
 public class DBManager {
@@ -374,6 +375,51 @@ public class DBManager {
 		
 		return null;
 
+	}
+	
+	public User userGetByCred( String cred ) 
+	{
+
+		User user = new User();
+		
+		try {
+			stm = m_conn.createStatement();
+			
+			String query = "SELECT * FROM UserTable" +
+							" WHERE Credential=" + cred; 
+			
+			//System.out.println("Retrieving Auction " + auctionID + ": " + query);
+			
+			//TODO: figure out if we need a success check here
+			boolean success = stm.execute(query);
+			
+			ResultSet result = stm.getResultSet();
+			
+			//TODO: Check if these conditons work
+			if (  result.first() == false) {
+				stm.close();
+				return null;
+			}
+			else {
+				// TODO: match up the names with names in database
+				user.userID 	= result.getInt("userId");
+				user.password		= result.getString("password");
+				user.telephone 		= result.getString("telephone");
+				user.phoneCarrier 	= result.getString("phoneCarrier");
+				user.emailAddress		= result.getString("EmailAddress");
+				
+			}
+
+			stm.close();
+			
+			return user;
+			
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		return null;
+		
 	}
 	
 	public boolean userEditInfo( int userID, Map<String, String> parameterMap ) {

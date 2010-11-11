@@ -75,6 +75,17 @@
 	
 	</script>
 	
+	<!--TODO Link with profile button -->
+	<script type="text/javascript">
+	function userControlPage()
+	{
+		ajaxpage('userControlPanel.jsp', 'Dynapage')
+		loadobjs('./resources/scripts/userControlPanel.js');
+		document.getElementById("surferTitle").innerHTML="Loading...";
+	}
+	
+	</script>
+	
 	<script type="text/javascript">
 	function userLoginRequest()
 		{
@@ -377,7 +388,7 @@
 								<div class="colright">
 									<h3>Social Network</h3>
 									<ul>
-										<li><a href="7" title="Twitter">My Profile</a></li>
+										<a href="7" title="Twitter">My Profile</a></li>
 										<li><a href="7" title="Twitter">My Messages</a></li>
 										<li><a href="8" title="DesignBump">My Friends</a></li>
 										<li><a href="9" title="Digg">Search People</a></li>

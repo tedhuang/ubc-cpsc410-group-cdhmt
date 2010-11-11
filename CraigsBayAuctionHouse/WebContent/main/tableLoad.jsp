@@ -163,7 +163,7 @@
 						 
 						 <!-- Entries start here -->
 						
-							<tbody id="myDiv">	
+							<tbody id="myTable">	
 									<!-- 
 								<tr>
 								 

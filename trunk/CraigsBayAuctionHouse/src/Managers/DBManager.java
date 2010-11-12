@@ -425,29 +425,17 @@ public class DBManager {
 		
 	}
 	
-	public boolean userEditInfo( int userID, Map<String, String> parameterMap ) {
-		
-		Iterator<String> keyIterator = parameterMap.keySet().iterator();
+	public boolean userEditInfo( int userID, String Password,String PhoneNumber,String PhoneCarrier,String EmailAddress ) {
+
 		
 		try {
 			stm = m_conn.createStatement();
 					
-			String query = "UPDATE UserTable SET ";
-			
-			while( keyIterator.hasNext() ) {
-				String tempKey = keyIterator.next();
-				
-				if( !tempKey.equals("Credential") ) {
-					query	+= tempKey + "='";
-					query	+= parameterMap.get( tempKey ) + "'";
-					
-					if( keyIterator.hasNext() ) {
-						query	+= ", ";
-					}
-				}
-
-				
-			}
+			String query = "UPDATE UserTable SET " +
+			"Password='"+ Password + "'," +
+			"PhoneNumber='" + PhoneNumber + "'," +
+			"PhoneCarrier='" + PhoneCarrier + "'," +
+			"EmailAddress='" + EmailAddress + "'";
 				
 			query +=	" WHERE UserID='" + userID + "'"; 
 			

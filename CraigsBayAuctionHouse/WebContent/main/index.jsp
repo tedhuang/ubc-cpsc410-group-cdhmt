@@ -27,14 +27,14 @@
 		<!-- login css -->
 		<link rel="stylesheet" href="./resources/css/loginBubble.css" media="screen,projection" type="text/css" />
 		
-		<!-- Floading Menu References -->
-		<link rel="stylesheet" href="./resources/css/floadStyle.css" type="text/css" media="screen" />
-		<script type="text/javascript" href="./resources/scripts/jquery-1.3.2.js"></script>
-		
 		<!-- Tab Panel References -->
 		<link rel="stylesheet" href="./resources/css/tab-view.css" type="text/css" media="screen">
 		<script type="text/javascript" src="./resources/scripts/tabPanelAjax.js"></script>
 		<script type="text/javascript" src="./resources/scripts/tab-view.js"></script>
+		
+		<!-- New Lightbox Login -->
+		<link type="text/css" rel="stylesheet" href="./resources/css/lightbox-form.css">
+		<script src="./resources/scripts/lightbox-form.js" type="text/javascript"></script>
 		
 <!-- ***************************************************************************************-->
 						<!--  Javascripts -->
@@ -46,15 +46,11 @@
 		<!-- jQuery Configuration -->
 		<script type="text/javascript" src="./resources/scripts/simpla.jquery.configuration.js"></script>
 		
-		<!-- Facebox jQuery Plugin -->
-		<script type="text/javascript" src="./resources/scripts/facebox.js"></script>
+		<!-- Facebox jQuery Plugin 
+		<script type="text/javascript" src="./resources/scripts/facebox.js"></script>-->
 		
 		<!-- jQuery WYSIWYG Plugin -->
 		<script type="text/javascript" src="./resources/scripts/jquery.wysiwyg.js"></script>
-		
-		<!-- New Lightbox Login -->
-		<link type="text/css" rel="stylesheet" href="./resources/css/lightbox-form.css">
-		<script src="./resources/scripts/lightbox-form.js" type="text/javascript"></script>
 		
 		<!--  Ajax Loader Script -->
 		<script type="text/javascript" src="./resources/scripts/dynamicAjaxLoader.js"></script>
@@ -76,7 +72,8 @@
 		//loadjscssfile('./resources/scripts/auctionListLoader.js', 'js');
 		//loadobjs('./resources/scripts/auctionListLoader.js'); //load the additional javascript tableLoad.jsp requires
 		ajaxpage('tableLoad.jsp', 'Dynapage'); //load tableLoad.jsp in to div Dynapage
-		document.getElementById("surferTitle").innerHTML="Loading...";
+		//createNewTab('dhtmlgoodies_tabView1','All Auctions','','tableLoad.jsp',true);
+		document.getElementById("surferTitle").innerHTML="<img src=./resources/images/loading.gif></img>";
 		
 	}
 	</script>
@@ -84,9 +81,10 @@
 	function createAuction(containerID)
 	{
 
-		ajaxpage('createAuctionTable.jsp', containerID);
+		//ajaxpage('createAuctionTable.jsp', containerID);
 		//loadjscssfile('./resources/scripts/createAuction.js', 'js');
 		//loadobjs('./resources/scripts/createAuction.js');
+		createNewTab('dhtmlgoodies_tabView1','New Auction','','createAuctionTable.jsp',true);
 		document.getElementById("surferTitle").innerHTML="Create a New Auction";
 	}
 	
@@ -99,9 +97,17 @@
 		//loadjscssfile('./resources/scripts/userControlPanel.js', 'js');
 		//loadobjs('./resources/scripts/userControlPanel.js');
 		ajaxpage('userControlPanel.jsp', 'Dynapage');
-		document.getElementById("surferTitle").innerHTML="Loading...";
+		document.getElementById("surferTitle").innerHTML="<img src=./resources/images/loading.gif></img>";
 	}
 	
+	</script>
+	
+	<script type="text/javascript">
+		var insideTab;
+		function getContain(elementID)
+		{
+			insideTab=document.getElementById(elementID).innerHTML;
+		}
 	</script>
 
 <!-- ***************************************************************************************-->
@@ -317,7 +323,7 @@
 							{
 						%>
 						
-						<li OnClick="createAuction('Dynapage')"><a href="#">New Auction</a></li>
+						<li OnClick="createAuction('Dynapage');"><a href="#">New Auction</a></li>
 						<li><a href="#">Manage Auction</a></li>
 						<%
 							}
@@ -474,14 +480,12 @@
 			</div>
 		  </div>
 			<script type="text/javascript">
-			initTabs('dhtmlgoodies_tabView1',Array('What\'s New','tips'),0,500,400,Array(false,true,true,true));
+			initTabs('dhtmlgoodies_tabView1',Array('What\'s New','tips'),0,500,400,Array(false,true));
 			</script>
 		
 <!-- ********************************************************************************************
 							   End~ Tab Panel 
 *************************************************************************************************-->
-		<div id="surferTitle">Welcome <%= userName %></div>
-
 	
 		</div> <!-- End~ main Content -->
 		</div> <!-- End~ bodywrapper -->

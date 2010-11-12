@@ -7,7 +7,7 @@
 		
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		
-		<title>Admin Panel</title>
+		<title></title>
 		
 		<!--                       CSS                       -->
 	  
@@ -49,27 +49,14 @@
 		<script type="text/javascript" src="./resources/scripts/jquery.wysiwyg.js"></script>
 		
 		<script type="text/javascript" src="./resources/scripts/auctionListLoader.js"></script>
-		
-		<!-- Internet Explorer .png-fix -->
-		
-		<!--[if IE 6]>
-			<script type="text/javascript" src="./resources/scripts/DD_belatedPNG_0.0.7a.js"></script>
-			<script type="text/javascript">
-				DD_belatedPNG.fix('.png_bg, img, li');
-			</script>
-		<![endif]-->
-		
-	
-	
 
-	
   <style type="text/css">
 	
   	.div-table-row{display:table-row;}
   	.div-table-col{display:table-cell; padding: 5px; border: 1px solid #003399;}
   </style>
 	
-   </head>
+  </head>
    
   <body>
   
@@ -92,27 +79,18 @@
 	<a href=# onclick=removeElement();>Remove Selected Entry</a>'
   -->
   
-  
-	<div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
-		
-		
-		
-		<div id="main-content"> <!-- Main Content Section with everything -->
+<!-- ****************************Main Content Section with everything*****************************************
+	<div id="main-content"> 
 			
 			
 			<div class="clear"></div> <!-- End .clear -->
 			
-      <!--      -----Start Content Box-----              -->
+<!-- ***************************Start Content Box***************************** -->
 			<div class="content-box">
 				
 				<div class="content-box-header">
 					
-					<h3>Content box</h3>
-					
-					<ul class="content-box-tabs">
-						<li><a href="#tab1" class="default-tab">Table</a></li> <!-- href must be unique and match the id of target div -->
-						<li><a href="#tab2">Forms</a></li>
-					</ul>
+					<h3>All Auction</h3>
 					
 					<div class="clear"></div>
 					
@@ -132,7 +110,6 @@
 								   <th>Status</th>
 								   <th>Time Left</th>
 								   <th>Latest Price</th>
-								   <th>Tools</th>
 								</tr>
 								
 							</thead>
@@ -161,41 +138,30 @@
 									</td>
 								</tr>
 							</tfoot>
-						 
-						 <!-- Entries start here -->
+							
+<!-- *************Entries Will be inserted here*******************-->
+								
+				<tbody id="myTable"></tbody>
+				
+<!--  *************************************************************-->
 						
-							<tbody id="myTable">	
-									<!-- 
-								<tr>
-								 
-								<td> 
-								
-								 <div id="myDiv" > Entry shows Here 
 		
-									
-									
-								</div>
-								 -->
-								 <!-- 
-								 </td>
-								 
-								</tr>
-								-->
-								
-								
-							</tbody>
 						
 							
-						</table>
+		</table>
 						
-					</div> <!-- End #tab1 -->
-					
+	 </div> 
+<!-- ********************************************************************************************
+						END~ Auction List
+*************************************************************************************************-->
+	
+<!-- ********************************************************************************************
+					OLD INPUT FORM 
+			
 					<div class="tab-content" id="tab2">
 					
 						<form action="" method="post">
-							
-							<fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
-								
+														
 								<p>
 									<label>Title</label>
 										<input class="text-input large-input" type="text" id="title-input" name="title-input" />
@@ -262,26 +228,12 @@
 							
 						</form>
 						
-					</div> <!-- End #tab2 -->        
-					
-				</div> <!-- End .content-box-content -->
-				
-			</div> <!-- End .content-box -->
-			
-			
-			<div class="clear"></div>
-			
-			
-			
-			
-			<div id="footer">
-				<small>
-						&#169; CraigsBay Admin Control Panel</a>
-				</small>
-			</div><!-- End #footer -->
-			
-		</div> <!-- End #main-content -->
-		
-	</div></body>
-  
+					</div>         
+<!-- ***********************************End OLD Input***************************-->					
+				</div> <!-- End .content-box -->
+<!-- ***********************************End .content-box-content*****************************************************-->
+	</div> <!-- End #main-content -->
+	<div class="clear"></div>
+ 
+</body>
 </html>

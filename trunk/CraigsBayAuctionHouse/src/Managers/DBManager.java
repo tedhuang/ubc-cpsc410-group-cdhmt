@@ -496,4 +496,55 @@ public class DBManager {
 		return false;
 	}
 	
+	//returns 1 if success
+	//returns -1 if bid amount isn't bigger then latestBid
+	//returns -2 if error
+	public int bidOnAuction(int userID, int auctionID, double amount)
+	{
+		try {
+			stm = m_conn.createStatement();
+					
+			//double check that the latest bid hasn't been updated
+			String query = "SELECT LatestBidPrice FROM auctionsTable WHERE AuctionID = auctionID";
+			
+			boolean success = stm.execute(query);
+			
+			ResultSet result = stm.getResultSet();
+			
+			if(result.first())
+			{
+				 double oldLatestBid = result.getDouble("LatestBidPrice");
+				 
+				 //update the bid
+				 if(oldLatestBid < amount)
+				 {
+					  query = "UPDATE auctionsTable SET " +
+					 		"LatestBidPrice=" + amount +
+					 		", LastBidderID=" + userID +
+					 		", BidCounter=BidCounter+1" +
+					 		" WHERE AuctionID=" + auctionID;
+					 		
+					  System.out.println("New bid: " + query);
+					  
+					  int done = stm.executeUpdate(query);
+					  stm.close();
+					  
+					  return done;
+					 
+				 }
+				 else
+				 {
+					 return -1;
+				 }
+			
+			}
+		}
+		catch (SQLException e) {
+			//TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return -2;
+	}
+	
 }

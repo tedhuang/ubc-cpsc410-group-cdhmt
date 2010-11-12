@@ -7,8 +7,10 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		
 		<title>Welcome To CS410 Project</title>
-
-		<!--                       CSS                       -->
+		
+<!-- ***************************************************************************************-->
+						<!--   CSS    -->
+<!-- ***************************************************************************************-->
 	  
 		<!-- Reset Stylesheet -->
 		<link rel="stylesheet" href="./resources/css/reset.css" type="text/css" media="screen" />
@@ -29,8 +31,15 @@
 		<link rel="stylesheet" href="./resources/css/floadStyle.css" type="text/css" media="screen" />
 		<script type="text/javascript" href="./resources/scripts/jquery-1.3.2.js"></script>
 		
-		<!--                       Javascripts                       -->
-  
+		<!-- Tab Panel References -->
+		<link rel="stylesheet" href="./resources/css/tab-view.css" type="text/css" media="screen">
+		<script type="text/javascript" src="./resources/scripts/tabPanelAjax.js"></script>
+		<script type="text/javascript" src="./resources/scripts/tab-view.js"></script>
+		
+<!-- ***************************************************************************************-->
+						<!--  Javascripts -->
+<!-- ***************************************************************************************-->
+  		
 		<!-- jQuery -->
 		<script type="text/javascript" src="./resources/scripts/jquery-1.3.2.min.js"></script>
 		
@@ -53,8 +62,9 @@
 		
 		
 		
-		
-	<!--  Functions -->
+<!-- ***************************************************************************************-->		
+					<!-- Auction Functions -->
+<!-- ***************************************************************************************-->
 	
 	<script type="text/javascript">
 	function viewAllAuctions()
@@ -66,9 +76,13 @@
 	}
 	</script>
 	<script type="text/javascript">
-	function createAuction()
+	function createAuction(containerID)
 	{
+<<<<<<< .mine
+		ajaxpage('createAuctionTable.jsp', containerID);
+=======
 		ajaxpage('createAuctionTable.jsp', 'Dynapage');
+>>>>>>> .r170
 		loadobjs('./resources/scripts/createAuction.js');
 		document.getElementById("surferTitle").innerHTML="Create a New Auction";
 	}
@@ -85,7 +99,10 @@
 	}
 	
 	</script>
-	
+
+<!-- ***************************************************************************************-->
+							<!-- login Function  -->
+<!-- ***************************************************************************************-->	
 	<script type="text/javascript">
 	function userLoginRequest()
 		{
@@ -144,8 +161,11 @@
 		
 		}
 		</script>
-		
-		<!-- Sliding Menu js functions  -->
+
+<!-- ***************************************************************************************-->	
+						<!-- Sliding Menu js functions  -->
+<!-- ***************************************************************************************-->
+
 		<script type="text/javascript">
 		$(document).ready(function(){
 			$(".trigger").click(function(){
@@ -179,9 +199,9 @@
 	</script>
 	
 	
-	
-	<!--  CREDENTIAL CHECK -->
-	
+<!-- ***************************************************************************************-->
+							<!--  CREDENTIAL CHECK -->
+<!-- ***************************************************************************************-->
 		
 	</head>
 	
@@ -203,15 +223,20 @@
 	</div>
 	
 	<body><div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
-		
+
+<!-- ***************************************************************************************
+								 Sidebar Starts Here
+********************************************************************************************-->
+
 		<div id="sidebar"><div id="sidebar-wrapper"> <!-- Sidebar with logo and menu -->
 			
 			<h1 id="sidebar-title"><a href="#">Admin Panel</a></h1>
 		  
 			<!-- Logo (221px wide) -->
-			<img id="logo" src="./resources/images/lighthouse.gif" width="100" height="100" alt="logo" />
-		  
-	<!-- Sidebar Profile links -->
+		  <img id="logo" src="./resources/images/lighthouse.gif" style="float:center;margin-right:20px;margin-bottom:20px">
+<!-- ***************************************************************************************-->
+								<!-- Sidebar Profile links -->
+<!-- ***************************************************************************************-->
 			
 		<!-- NEW LIGHTBOX LOGIN -->
 		<div id="filter"></div>
@@ -238,9 +263,9 @@
 						
 					<div id="myDiv"><h2>Debug Message for page</h2></div>
 			</div>
-			
-		<!-- ~ENDS: NEW LIGHTBOX LOGIN -->	
-			
+<!-- ***************************************************************************************-->	
+	  					<!-- ~ENDS: NEW LIGHTBOX LOGIN -->	
+<!-- ***************************************************************************************-->
 			<div id="profile-links">
 				Hello, 
 
@@ -270,7 +295,9 @@
 				
 			</div>        
 			
-			
+<!-- ***************************************************************************************-->
+							<!-- Quick Tools -->
+<!-- ***************************************************************************************-->			
 			
 			<ul id="main-nav">  <!-- Accordion Menu -->
 				
@@ -286,7 +313,7 @@
 							{
 						%>
 						
-						<li OnClick="createAuction()"><a href="#">New Auction</a></li>
+						<li OnClick="createAuction('dynapage')"><a href="#">New Auction</a></li>
 						<li><a href="#">Manage Auction</a></li>
 						<%
 							}
@@ -358,13 +385,22 @@
 			
 			
 			</div><!-- Sidebar Style ends here -->
-			</div><!-- Siderbar ends here -->
+			</div>
+<!-- ********************************************************************************************
+									Siderbar ends here
+*************************************************************************************************-->
 			
 	  
 			
-			<!-- Dynamic Page Starts Here -->
-			<div id="main-content">
+<!-- ********************************************************************************************
+								Dynamic Page Starts Here 
+*************************************************************************************************-->
 			
+			<div id="main-content">
+
+<!-- ********************************************************************************************
+								Sliding Menu Starts here 
+*************************************************************************************************-->
 			
 			<div class="panel">
 				<h3>Profile</h3>
@@ -379,7 +415,8 @@
 								<h3>Business</h3>
 									<ul>
 										<li OnClick="viewAllAuctions()"><a href=#>View All Auctions</a></li>
-										<li OnClick="createAuction()"><a href="#">New Auction</a></li>
+										<li OnClick="createAuction();
+											createNewTab('dhtmlgoodies_tabView1','New Auction','','',true)"><a href="#">New Auction</a></li>
 										<li><a href="3" title="portfolio">My Auction</a></li>
 										<li><a href="4" title="contact">Won history</a></li>
 									</ul>
@@ -404,20 +441,66 @@
 				<a class="trigger" href="#">MENUS</a>
 				
 				
+<<<<<<< .mine
+		
+<!-- ********************************************************************************************
+								End~ of Sliding Menu 
+*************************************************************************************************-->
+
+<!-- ********************************************************************************************
+							    Tab Panel Starts here
+*************************************************************************************************-->
+	   <div id="tabHolder">
+		<div id="dhtmlgoodies_tabView1">
+				<div class="dhtmlgoodies_aTab">
+					 
+					<h2><div id="surferTitle">Welcome <%= userName %></div></h2><br>
+					<div id="Dynapage">
+						Dynamic page is here
+					</div><br>
+					
+					<a href="#" onclick="createNewTab('dhtmlgoodies_tabView1','A dynamic tab','','externalfile.html',true);return false">Create new tab dynamically</a><br>
+					<a href="#" type=hidden onclick="deleteTab('Menu scripts')">Remove this tab</a><br>
+						
+				</div>
+				<div class="dhtmlgoodies_aTab">
+					This is the content of the second tab.	<br>
+					<a href="#" onclick="deleteTab('Calendar')">Remove this tab</a><br>
+				</div>
+			</div>
+		  </div>
+			<script type="text/javascript">
+			initTabs('dhtmlgoodies_tabView1',Array('What\'s New','tips'),0,500,400,Array(false,true,true,true));
+			</script>
+		
+<!-- ********************************************************************************************
+							   End~ Tab Panel 
+*************************************************************************************************-->
+		<div id="surferTitle">Welcome <%= userName %></div>
+=======
 		
 			<h2><div id="surferTitle">Welcome <%= userName %></div></h2>
+>>>>>>> .r170
 			
 			
 			
+<<<<<<< .mine
+=======
 			<div id="Dynapage">
 			Dynamic page is here
 			</div>
+>>>>>>> .r170
 			
 			</div>
 			</div>
 			
+<<<<<<< .mine
+		</div> <!-- End~ main Content -->
+		</div> <!-- End~ bodywrapper -->		
+=======
 	
 		</div><!-- Page style ends here -->	
+>>>>>>> .r170
 		</body><!-- Whole body ends here -->
 
 </html>

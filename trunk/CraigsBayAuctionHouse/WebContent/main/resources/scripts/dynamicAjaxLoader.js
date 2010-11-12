@@ -106,7 +106,7 @@ fileref.setAttribute("href", file);
 }
 if (fileref!=""){
 document.getElementsByTagName("head").item(0).appendChild(fileref)
-loadedobjects+=file+" " //Remember this object as being already added to page
+//loadedobjects+=file+" " //Remember this object as being already added to page
 }
 }
 }

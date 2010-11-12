@@ -111,12 +111,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>userChangeInfo</display-name>
-    <servlet-name>userChangeInfo</servlet-name>
-    <servlet-class>Servlets.userChangeInfo</servlet-class>
+    <display-name>userEditInfo</display-name>
+    <servlet-name>userEditInfo</servlet-name>
+    <servlet-class>Servlets.userEditInfo</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>userChangeInfo</servlet-name>
-    <url-pattern>/userChangeInfo</url-pattern>
+    <servlet-name>userEditInfo</servlet-name>
+    <url-pattern>/userEditInfo</url-pattern>
   </servlet-mapping>
 </web-app>

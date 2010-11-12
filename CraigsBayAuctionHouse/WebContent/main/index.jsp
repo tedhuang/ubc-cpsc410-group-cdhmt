@@ -70,9 +70,9 @@
 	function viewAllAuctions()
 	{
 		//loadjscssfile('./resources/scripts/auctionListLoader.js', 'js');
-		loadobjs('./resources/scripts/auctionListLoader.js'); //load the additional javascript tableLoad.jsp requires
-		//ajaxpage('tableLoad.jsp', 'Dynapage'); //load tableLoad.jsp in to div Dynapage
-		createNewTab('dhtmlgoodies_tabView1','All Auctions','','tableLoad.jsp',true);
+		//loadobjs('./resources/scripts/auctionListLoader.js'); //load the additional javascript tableLoad.jsp requires
+		ajaxpage('tableLoad.jsp', 'Dynapage'); //load tableLoad.jsp in to div Dynapage
+		//createNewTab('dhtmlgoodies_tabView1','All Auctions','','tableLoad.jsp',true);
 		document.getElementById("surferTitle").innerHTML="<img src=./resources/images/loading.gif></img>";
 		
 	}

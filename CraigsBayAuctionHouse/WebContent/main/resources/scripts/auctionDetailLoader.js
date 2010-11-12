@@ -122,7 +122,7 @@ function bidOnAuction(auctionID)
 	if(  bidAmount <= latestBidPrice )
 	{
 		alert("Insufficient Bid Amount, current price is: $" + document.getElementById("latestBidPrice").value );
-		document.getElementById("bidFeedback").innerHTML = "<h2>Bid input too low</h2>";
+		document.getElementById("bidFeedback").innerHTML = "<h2>Bid too low</h2>";
 		return;
 	}
 	
@@ -146,7 +146,7 @@ function bidOnAuction(auctionID)
 	  }
 	
 	var credential = document.getElementById("cred").value;
-	var Params = "auctionID=" + auctionID + "&userCred=" + credential;
+	var Params = "auctionID=" + auctionID + "&amount=" + bidAmount + "&userCred=" + credential;
 	
 	//send the parameters to the servlet with POST
 	xmlhttp.open("POST","../userAuctionBidServlet" ,true);
@@ -154,8 +154,18 @@ function bidOnAuction(auctionID)
 	xmlhttp.send(Params);
 }
 
-function bidAuctionParseXMLResponse()
+function bidAuctionParseXMLResponse(responseXML)
 {
+	 var success = (responseXML.getElementsByTagName("success")[0]).childNodes[0].nodeValue;
+	
+	if(success==1)
+		{
+		alert("success");
+		}
+	else
+		{
+		alert(success);
+		}
 	
 }
 

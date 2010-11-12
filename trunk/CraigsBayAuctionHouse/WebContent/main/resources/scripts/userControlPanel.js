@@ -33,7 +33,7 @@ function loadUserInfo()
 
 
 function ParseUserInfo( responseXML ) {
-	var user = responseXML.getElementsByTagName("user");		
+	var user = responseXML.getElementsByTagName("user").item(0);		
     
 	document.getElementById("Password").value =	user.getAttribute("password");
     document.getElementById("PhoneNumber").value = user.getAttribute("phoneNumber");

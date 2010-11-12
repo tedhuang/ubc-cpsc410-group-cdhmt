@@ -193,12 +193,13 @@ public class DBManager {
 			
 			stm.executeQuery(query);
 			result = stm.getResultSet();
-			System.out.println("Result : " + result);
+			System.out.println("Result : " + result.first() );
 			
 			
 			//TODO: Check if these conditons work
 			if (  result.first() == false) {
 				stm.close();
+				System.out.println("Result : Failed to find credential");
 				return -1;
 			}
 			else {
@@ -211,6 +212,7 @@ public class DBManager {
 				result.close();
 				
 				if( loginExpire == null || ( Calendar.getInstance().getTime().getTime() > loginExpire.longValue() ) ) {
+					System.out.println("Result : Credential Expired");
 					return 0;
 				}
 				else {
@@ -223,6 +225,7 @@ public class DBManager {
 		}catch (SQLException e) {
 			//TODO Auto-generated catch block
 			//Credential not found
+			System.out.println("Result : Failed to find credential");
 			e.printStackTrace();
 			return -1;
 		}

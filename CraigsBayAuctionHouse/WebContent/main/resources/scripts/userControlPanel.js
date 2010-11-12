@@ -27,6 +27,7 @@ function loadUserInfo()
 	
 	xmlhttp.open("GET","../userEditInfo?Credential="+ credential ,true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xmlhttp.send();
 	//document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
 }
 

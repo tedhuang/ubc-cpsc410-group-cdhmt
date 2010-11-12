@@ -15,15 +15,15 @@
 Password: <input id="Password" disabled = "true"  type="text" name="Password" size="20"><br>
 Phone Number: <input id="PhoneNumber" disabled= "true" type="text" name="PhoneNumber" size="20"><br>
 Phone carrier:<select id="PhoneCarrier" disabled= "true" name="PhoneCarrier">
-				<option value="1">Fido</option>
-				<option value="2">Rogers</option>
-				<option value="3">Telus</option>
-				<option value="4">Bell</option>
-				<option value="5">Virgin Moblie</option>
-				<option value="6">PC Moblie</option>
-				<option value="7">Koodo</option>
-				<option value="8">SaskTel</option>
-				<option value="9">Manitoba Telecom</option>
+				<option value="Fido">Fido</option>
+				<option value="Rogers">Rogers</option>
+				<option value="Telus">Telus</option>
+				<option value="Bell">Bell</option>
+				<option value="Virgin Mobile">Virgin Moblie</option>
+				<option value="PC Mobile">PC Moblie</option>
+				<option value="Koodo">Koodo</option>
+				<option value="SaskTel">SaskTel</option>
+				<option value="Manitoba Telecom">Manitoba Telecom</option>
 		  	</select><br>
 E-mail Address: <input id="EmailAddress" disabled= "true" type="text" name="EmailAddress" size="20"><br>
 

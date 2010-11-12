@@ -63,7 +63,7 @@ public class userEditInfo extends HttpServlet {
 		Map<String, String> parameterMap = request.getParameterMap();
 		
 		// retrieve credential and userID
-		String userCred = parameterMap.get("credential").toString();
+		String userCred = parameterMap.get("Credential").toString();
 		
 		DBManager dbm = new DBManager();
 		int userID = dbm.userCredentialCheck( userCred );

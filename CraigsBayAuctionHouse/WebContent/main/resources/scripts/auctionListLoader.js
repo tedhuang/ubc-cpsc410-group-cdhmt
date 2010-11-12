@@ -5,9 +5,10 @@
 
 function viewDetails(auctionID)
 {
-	loadobjs('./resources/scripts/auctionDetailLoader.js'); //load the additional javascript file	
+	//loadjscssfile('./resources/scripts/auctionDetailLoader.js', 'js');
+	//loadobjs('./resources/scripts/auctionDetailLoader.js'); //load the additional javascript file	
 	ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID, 'Dynapage'); //load auctionDetailsPage in to div Dynapage
-	
+	document.getElementById("surferTitle").innerHTML="Loading Auction Details...";
 }
 
 

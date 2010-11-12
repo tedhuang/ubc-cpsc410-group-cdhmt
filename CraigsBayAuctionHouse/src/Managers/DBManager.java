@@ -505,11 +505,9 @@ public class DBManager {
 			stm = m_conn.createStatement();
 					
 			//double check that the latest bid hasn't been updated
-			String query = "SELECT LatestBidPrice FROM auctionsTable WHERE AuctionID = auctionID";
+			String query = "SELECT * FROM auctionsTable WHERE AuctionID =" + auctionID;
 			
-			boolean success = stm.execute(query);
-			
-			ResultSet result = stm.getResultSet();
+			ResultSet result = stm.executeQuery(query);
 			
 			if(result.first())
 			{

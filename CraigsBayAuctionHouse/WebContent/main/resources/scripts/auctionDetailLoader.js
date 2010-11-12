@@ -141,7 +141,7 @@ function bidOnAuction(auctionID)
 	  {
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	    {
-		  bidAuctionParseXMLResponse(xmlhttp.responseXML);
+		  bidAuctionParseXMLResponse(xmlhttp.responseXML, auctionID);
 	    }
 	  }
 	
@@ -154,17 +154,24 @@ function bidOnAuction(auctionID)
 	xmlhttp.send(Params);
 }
 
-function bidAuctionParseXMLResponse(responseXML)
+function bidAuctionParseXMLResponse(responseXML, auctionID)
 {
 	 var success = (responseXML.getElementsByTagName("success")[0]).childNodes[0].nodeValue;
 	
 	if(success==1)
 		{
-		alert("success");
+		document.getElementById("bidFeedback").innerHTML = "<h2>Bid Succesful</h2>";
+		
+		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'Dynapage'); //load auctionDetailsPage in to div Dynapage
+		document.getElementById("surferTitle").innerHTML="Bid Succesful, Refreshing Auction Details...";
+		
 		}
 	else
 		{
-		alert(success);
+		document.getElementById("bidFeedback").innerHTML = "<h2>Bid Too Low</h2>";
+		
+		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'Dynapage'); //load auctionDetailsPage in to div Dynapage
+		document.getElementById("surferTitle").innerHTML="Bid too low, Refreshing Auction Details...";
 		}
 	
 }

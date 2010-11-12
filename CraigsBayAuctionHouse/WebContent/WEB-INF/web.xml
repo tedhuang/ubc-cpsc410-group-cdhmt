@@ -119,4 +119,14 @@
     <servlet-name>userEditInfo</servlet-name>
     <url-pattern>/userEditInfo</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>userLogoutServlet</display-name>
+    <servlet-name>userLogoutServlet</servlet-name>
+    <servlet-class>Servlets.userLogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>userLogoutServlet</servlet-name>
+    <url-pattern>/userLogoutServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

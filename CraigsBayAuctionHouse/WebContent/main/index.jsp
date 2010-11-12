@@ -171,6 +171,43 @@
 		
 		}
 		</script>
+		
+		<!-- ***************************************************************************************-->
+							<!-- logout Function  -->
+<!-- ***************************************************************************************-->	
+	<script type="text/javascript">
+	function userLogoutRequest()
+		{
+			var userCred = document.getElementById("cred").value;
+			//alert("im in");
+			
+			if (window.XMLHttpRequest)
+			  {// code for IE7+, Firefox, Chrome, Opera, Safari
+			  xmlhttp=new XMLHttpRequest();
+			  }
+			else
+			  {// code for IE6, IE5
+			  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			  }
+			  
+			xmlhttp.onreadystatechange=function()
+			  {
+			  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			    {
+					window.location="../main";
+			    }
+			  };
+			  
+			var Params = "Credential=" + userCred;
+		
+			//send the parameters to the servlet with POST
+			xmlhttp.open("POST","../userLogoutServlet" ,true);
+			xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			xmlhttp.send(Params);
+		
+		
+		}
+		</script>
 
 <!-- ***************************************************************************************-->	
 						<!-- Sliding Menu js functions  -->
@@ -288,7 +325,7 @@
 				%>
 				, you have <a href="#messages" rel="modal" title="3 Messages">3 Messages</a><br />
 				<p><a href="#" title="Edit your profile"> Profile</a> | 
-				<a href="../main" title="Sign Out">Sign Out</a> </p>
+				<a href="#" title="Sign Out" onclick="userLogoutRequest()">Sign Out</a> </p>
 				
 				<%
 				}

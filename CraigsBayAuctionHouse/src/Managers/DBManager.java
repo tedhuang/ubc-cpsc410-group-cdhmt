@@ -216,6 +216,19 @@ public class DBManager {
 					return 0;
 				}
 				else {
+					stm = m_conn.createStatement();
+					String updateQuery =	"UPDATE UserTable" + 
+											" Set LoginExpireTime=" + newExpireTime() +
+											" WHERE Credential='" + cred + "'"; 
+					
+					System.out.println("Updating LoginExpireTime: \n" + updateQuery);
+					
+					stm.executeQuery(updateQuery);
+					result = stm.getResultSet();
+					
+					stm.close();
+					result.close();
+					
 					return userID;
 				}
 				
@@ -343,6 +356,29 @@ public class DBManager {
 		}
 
 		return null;
+	}
+	
+	public void userLogout( String credential )
+	{
+		try {
+			stm = m_conn.createStatement();
+					
+			String query = "UPDATE UserTable" +
+				" SET Credential=" + null + "," +
+				" LoginExpireTime=" + 0 + " " +
+				" WHERE Credential='" + credential + "'"; 
+			
+			System.out.println("Logging Out:" + query);
+			stm.execute(query);
+
+			stm.close();
+					
+		}
+		catch (SQLException e) {
+			//TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 	
 	

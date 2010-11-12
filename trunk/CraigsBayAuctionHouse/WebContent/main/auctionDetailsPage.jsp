@@ -30,15 +30,16 @@ viewAuctionByID(<%=auctionID%>);
 							
 							<thead id="tableHeader">
 								
-								 < <th scope="row">Auction Item</th></tr>
-								 <tr>  <th scope="row">Status</th></tr>
-								 <tr>  <th scope="row">Time Left</th></tr>
-								 <tr>  <th scope="row">Latest Price</th></tr>
-								 <tr>  <th scope="row">Number of Bids</th></tr>
-								 <tr>  <th scope="row">Last Bidder</th></tr>
-								 <tr>  <th scope="row">Category</th></tr>
-								 <tr>  <th scope="row">Owner</th></tr>
-								 <tr>  <th scope="row"> Picture</th></tr>
+								 <tr> <th id="auctionItem">Auction Item
+								 </tr>
+								 <tr>  <th id="status">Status</th></tr>
+								 <tr>  <th id="timeLeft">Time Left</th></tr>
+								 <tr>  <th id="latestPrice">Latest Price</th></tr>
+								 <tr>  <th id="numBids">Number of Bids</th></tr>
+								 <tr>  <th id="lastBidder">Last Bidder</th></tr>
+								 <tr>  <th id="category">Category</th></tr>
+								 <tr>  <th id="auctionOwner">Owner</th></tr>
+								 <tr>  <th id="picture"> Picture</th></tr>
 								 
 								 
 								

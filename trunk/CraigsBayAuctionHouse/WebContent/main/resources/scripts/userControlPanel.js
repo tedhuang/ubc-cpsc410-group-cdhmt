@@ -47,11 +47,11 @@ function ParseUserInfo( responseXML ) {
 function editUserInfo()
 {
 	//Unlocks textboxes etc. to be edited
-	document.getElementById("Password").disabled = "false";
-	document.getElementById("PhoneNumber").disabled = "false";
-	document.getElementById("PhoneCarrier").disabled = "false";
-	document.getElementById("EmailAddress").disabled = "false";	
-	document.getElementById("Submit").type = "button";
+	document.getElementById("Password").disabled = false;
+	document.getElementById("PhoneNumber").disabled = false;
+	document.getElementById("PhoneCarrier").disabled = false;
+	document.getElementById("EmailAddress").disabled = false;	
+	document.getElementById("Submit").disabled = false;
 }
 
 
@@ -86,7 +86,7 @@ function updateUserRequest()
 	  }
 
 	var Params = "Credential=" + credential + "&Password=" + Password + "&PhoneNumber=" + PhoneNumber
-					+ "&PhoneCarrier=" + Phonecarrier + "&EmailAddress=" + EmailAddress;
+					+ "&PhoneCarrier=" + PhoneCarrier + "&EmailAddress=" + EmailAddress;
 
 	//send the parameters to the servlet with POST
 	xmlhttp.open("POST","../userEditInfo" ,true);

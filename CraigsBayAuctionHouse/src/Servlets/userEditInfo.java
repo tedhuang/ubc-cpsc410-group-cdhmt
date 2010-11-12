@@ -63,16 +63,21 @@ public class userEditInfo extends HttpServlet {
 		Map<String, String> parameterMap = request.getParameterMap();
 		
 		// retrieve credential and userID
-		String userCred = parameterMap.get("Credential").toString();
-		
+		//String userCred = parameterMap.get("Credential").toString();
+		String userCred = request.getParameter("Credential");
 		DBManager dbm = new DBManager();
 		int userID = dbm.userCredentialCheck( userCred );
 		
+		String Password = request.getParameter("Password");
+		String PhoneNumber = request.getParameter("PhoneNumber");
+		String PhoneCarrier = request.getParameter("PhoneCarrier");
+		String EmailAddress = request.getParameter("EmailAddress");
+		
 		// remove credential from Map
-		parameterMap.remove("credential");
+		//parameterMap.remove("Credential");
 		
 		// pass map to function
-		dbm.userEditInfo( userID, parameterMap );
+		dbm.userEditInfo( userID,Password ,PhoneNumber,PhoneCarrier, EmailAddress);
 		
 		
 	}

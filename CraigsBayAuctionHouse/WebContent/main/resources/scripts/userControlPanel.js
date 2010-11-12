@@ -59,7 +59,7 @@ function updateUserRequest()
 {
 	
 	var Password = document.getElementById("Password").value;
-	var Telephone = document.getElementById("PhoneNumber").value;
+	var PhoneNumber = document.getElementById("PhoneNumber").value;
 	var PhoneCarrier = document.getElementById("PhoneCarrier").value;
 	var EmailAddress= document.getElementById("EmailAddress").value;
 	var credential = document.getElementById("cred").value;
@@ -79,7 +79,7 @@ function updateUserRequest()
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	    {
 		    //parse XML response from server
-		    var responseText= auctionParseXMLResponse(xmlhttp.responseXML);
+		   // var responseText= auctionParseXMLResponse(xmlhttp.responseXML);
 		   
 	    	document.getElementById("feedBack").innerHTML=responseText;
 	    }

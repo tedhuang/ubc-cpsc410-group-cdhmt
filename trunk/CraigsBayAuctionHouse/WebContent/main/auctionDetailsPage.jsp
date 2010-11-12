@@ -16,6 +16,9 @@
 String auctionID = request.getParameter("auctionID");		
 %>
 
+<input type="hidden" value="-1" id="ownerID">
+<input type="hidden" value="-1" id="latestBidPrice">
+
  <!--  this will get called when the page is dynamically loaded. -->
 <script>
 viewAuctionByID(<%=auctionID%>);
@@ -39,14 +42,25 @@ viewAuctionByID(<%=auctionID%>);
 								 <tr>  <th id="category">Category</th></tr>
 								 <tr>  <th id="auctionOwner">Owner</th></tr>
 								 <tr>  <th id="picture"> Picture</th></tr>
-								 
-								 
-								
-								
+													
 							</thead>
 							
-						 
+							</tbody>
+							
+						 	</tbody>
+						 	
+						 	
 							<tfoot>
+								<!--  Bidding -->
+								<tr> 
+									<td> 
+
+										<input type="button" onClick='bidOnAuction(<%= auctionID %>)' id="bidButton" disabled="true" value="Bid"> : $ <input type="text" id="bidAmount"/>  
+										<div id="bidFeedback"> </div>
+									</td>
+								</tr>
+								
+								
 								<tr>
 									<td colspan="6">
 										<div class="bulk-actions align-left">
@@ -62,17 +76,11 @@ viewAuctionByID(<%=auctionID%>);
 									</td>
 								</tr>
 							</tfoot>
-						 
-						 <!-- Entries start here -->
-						<tbody id="auctionDetails">	
-									
-								
-								
-						</tbody>
-							
 						
 							
 						</table>
+						
+						
 						
 					</div> <!-- End #infoTab -->
 					<a id="displayText" href="javascript:toggle();">show Editing Table</a> <== click Here

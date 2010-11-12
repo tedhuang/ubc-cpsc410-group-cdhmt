@@ -121,6 +121,16 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>userAuctionBidServlet</display-name>
+    <servlet-name>userAuctionBidServlet</servlet-name>
+    <servlet-class>Servlets.userAuctionBidServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>userAuctionBidServlet</servlet-name>
+    <url-pattern>/userAuctionBidServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>userLogoutServlet</display-name>
     <servlet-name>userLogoutServlet</servlet-name>
     <servlet-class>Servlets.userLogoutServlet</servlet-class>
@@ -129,4 +139,5 @@
     <servlet-name>userLogoutServlet</servlet-name>
     <url-pattern>/userLogoutServlet</url-pattern>
   </servlet-mapping>
+
 </web-app>

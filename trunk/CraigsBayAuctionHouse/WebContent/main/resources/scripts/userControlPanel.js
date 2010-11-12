@@ -25,9 +25,8 @@ function loadUserInfo()
 	//send the parameters to the servlet with POST
 	var Params = "Credential=" + credential;
 	
-	xmlhttp.open("GET","../userEditInfo" ,true);
+	xmlhttp.open("GET","../userEditInfo?Credential="+ credential ,true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-	xmlhttp.send(Params);
 	//document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
 }
 

@@ -9,7 +9,7 @@
 <body>
  <script>
  loadUserInfo();
- </script>
+</script>
  
  
 Password: <input id="Password" disabled="disabled" type="text" name="Password" size="20"><br>

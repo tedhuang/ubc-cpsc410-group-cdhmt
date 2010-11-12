@@ -112,7 +112,7 @@ font-family: verdana, helvetica, arial, sans-serif;
 color:#fff;
 padding: 20px 40px 20px 15px;
 font-weight: 700;
-background:#333333 url(images/plus.png) 85% 55% no-repeat;
+background:#333333 url(../images/plus.png) 85% 55% no-repeat;
 border:1px solid #444444;
 -moz-border-radius-topright: 20px;
 -webkit-border-top-right-radius: 20px;

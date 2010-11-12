@@ -59,7 +59,11 @@
 		<!--  Ajax Loader Script -->
 		<script type="text/javascript" src="./resources/scripts/dynamicAjaxLoader.js"></script>
 		
-		
+		<!--  Javascript files -->
+		<script type="text/javascript" src='./resources/scripts/auctionDetailLoader.js'></script>
+		<script type="text/javascript" src='./resources/scripts/auctionListLoader.js'></script>
+		<script type="text/javascript" src='./resources/scripts/createAuction.js'></script>
+		<script type="text/javascript" src='./resources/scripts/userControlPanel.js'></script>
 		
 		
 <!-- ***************************************************************************************-->		
@@ -69,7 +73,8 @@
 	<script type="text/javascript">
 	function viewAllAuctions()
 	{
-		loadobjs('./resources/scripts/auctionListLoader.js'); //load the additional javascript tableLoad.jsp requires
+		//loadjscssfile('./resources/scripts/auctionListLoader.js', 'js');
+		//loadobjs('./resources/scripts/auctionListLoader.js'); //load the additional javascript tableLoad.jsp requires
 		ajaxpage('tableLoad.jsp', 'Dynapage'); //load tableLoad.jsp in to div Dynapage
 		document.getElementById("surferTitle").innerHTML="Loading...";
 		
@@ -80,7 +85,8 @@
 	{
 
 		ajaxpage('createAuctionTable.jsp', containerID);
-		loadobjs('./resources/scripts/createAuction.js');
+		//loadjscssfile('./resources/scripts/createAuction.js', 'js');
+		//loadobjs('./resources/scripts/createAuction.js');
 		document.getElementById("surferTitle").innerHTML="Create a New Auction";
 	}
 	
@@ -90,8 +96,9 @@
 	<script type="text/javascript">
 	function userControlPage()
 	{
-		loadobjs('./resources/scripts/userControlPanel.js');
-		ajaxpage('userControlPanel.jsp', 'Dynapage')
+		//loadjscssfile('./resources/scripts/userControlPanel.js', 'js');
+		//loadobjs('./resources/scripts/userControlPanel.js');
+		ajaxpage('userControlPanel.jsp', 'Dynapage');
 		document.getElementById("surferTitle").innerHTML="Loading...";
 	}
 	

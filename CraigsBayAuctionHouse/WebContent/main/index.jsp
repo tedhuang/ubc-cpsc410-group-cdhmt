@@ -78,11 +78,8 @@
 	<script type="text/javascript">
 	function createAuction(containerID)
 	{
-<<<<<<< .mine
+
 		ajaxpage('createAuctionTable.jsp', containerID);
-=======
-		ajaxpage('createAuctionTable.jsp', 'Dynapage');
->>>>>>> .r170
 		loadobjs('./resources/scripts/createAuction.js');
 		document.getElementById("surferTitle").innerHTML="Create a New Auction";
 	}
@@ -313,7 +310,7 @@
 							{
 						%>
 						
-						<li OnClick="createAuction('dynapage')"><a href="#">New Auction</a></li>
+						<li OnClick="createAuction('Dynapage')"><a href="#">New Auction</a></li>
 						<li><a href="#">Manage Auction</a></li>
 						<%
 							}
@@ -477,30 +474,10 @@
 							   End~ Tab Panel 
 *************************************************************************************************-->
 		<div id="surferTitle">Welcome <%= userName %></div>
-=======
-		
-			<h2><div id="surferTitle">Welcome <%= userName %></div></h2>
->>>>>>> .r170
-			
-			
-			
-<<<<<<< .mine
-=======
-			<div id="Dynapage">
-			Dynamic page is here
-			</div>
->>>>>>> .r170
-			
-			</div>
-			</div>
-			
-<<<<<<< .mine
-		</div> <!-- End~ main Content -->
-		</div> <!-- End~ bodywrapper -->		
-=======
+
 	
-		</div><!-- Page style ends here -->	
->>>>>>> .r170
+		</div> <!-- End~ main Content -->
+		</div> <!-- End~ bodywrapper -->
 		</body><!-- Whole body ends here -->
 
 </html>

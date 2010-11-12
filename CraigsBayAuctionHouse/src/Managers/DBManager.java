@@ -199,7 +199,7 @@ public class DBManager {
 			//TODO: Check if these conditons work
 			if (  result.first() == false) {
 				stm.close();
-				System.out.println("Result : Failed to find credential");
+				System.out.println("Result : Failed to find Credential");
 				return -1;
 			}
 			else {
@@ -218,16 +218,16 @@ public class DBManager {
 				else {
 					stm = m_conn.createStatement();
 					String updateQuery =	"UPDATE UserTable" + 
-											" Set LoginExpireTime=" + newExpireTime() +
+											" SET LoginExpireTime=" + newExpireTime() +
 											" WHERE Credential='" + cred + "'"; 
 					
 					System.out.println("Updating LoginExpireTime: \n" + updateQuery);
 					
-					stm.executeQuery(updateQuery);
-					result = stm.getResultSet();
+					stm.executeUpdate(updateQuery);
+					//result = stm.getResultSet();
 					
 					stm.close();
-					result.close();
+					//result.close();
 					
 					return userID;
 				}
@@ -285,7 +285,7 @@ public class DBManager {
 				stm.close();
 				result.close();
 				
-				if( cred == null || loginExpire == null || ( Calendar.getInstance().getTime().getTime() > loginExpire.longValue() ) ) {
+				if( cred == null || loginExpire == 0 || ( Calendar.getInstance().getTime().getTime() > loginExpire.longValue() ) ) {
 					return 0;
 				}
 			}
@@ -358,26 +358,30 @@ public class DBManager {
 		return null;
 	}
 	
-	public void userLogout( String credential )
+	public int userLogout( String credential )
 	{
 		try {
 			stm = m_conn.createStatement();
 					
 			String query = "UPDATE UserTable" +
 				" SET Credential=" + null + "," +
-				" LoginExpireTime=" + 0 + " " +
+				" LoginExpireTime=" + Calendar.getInstance().getTimeInMillis() +
 				" WHERE Credential='" + credential + "'"; 
 			
 			System.out.println("Logging Out:" + query);
-			stm.execute(query);
-
+			int success = stm.executeUpdate(query);
+			
 			stm.close();
+			
+			return success;
 					
 		}
 		catch (SQLException e) {
 			//TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		return 0;
 
 	}
 	

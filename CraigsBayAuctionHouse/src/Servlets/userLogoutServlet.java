@@ -40,7 +40,14 @@ public class userLogoutServlet extends HttpServlet {
 				
 		//int userID = dbm.userCredentialCheck( userCred);
 		
-		dbm.userLogout( userCred );
+		dbm.userLogout(userCred);
+		
+//		if (dbm.userLogout( userCred ) ) {
+//			System.out.println("Logout Sucessful");
+//		}
+//		else {
+//			System.out.println("Logout Fail?");
+//		}
 		
 	}
 

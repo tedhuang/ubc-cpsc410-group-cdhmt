@@ -94,6 +94,19 @@ function loadAuctionParseXMLResponse(responseXML) {
 
 function viewInfo(colParams)
 {
+	
+	document.getElementById("auctionItem").innerHTML = "Auction Item: " + colParams[1];
+	document.getElementById("status").innerHTML = "Status " + colParams[2];
+	document.getElementById("timeLeft").innerHTML = "Expiry Date: " + colParams[3];
+	document.getElementById("latestPrice").innerHTML = "Latest Price: " + colParams[9];
+	document.getElementById("numBids").innerHTML = "Number of Bids: " + colParams[10];
+	document.getElementById("lastBidder").innerHTML = "Last Bidder: " + colParams[7];
+	document.getElementById("category").innerHTML = "Category: " + colParams[5];
+	document.getElementById("auctionOwner").innerHTML = "OwnerID: " + colParams[6];
+	document.getElementById("picture").innerHTML = "Picture: " + colParams[11];
+	
+	
+	/*
 	// Insert rows and cells into bodies.
     var oBody = document.getElementById('auctionDetails');
 
@@ -106,7 +119,7 @@ function viewInfo(colParams)
     oRow.setAttribute('id', colParams[0]);
     oCell = oRow.insertCell(-1);
     oCell.innerHTML = colParams[2];
-    
+    */
     //status
    // oCell = oRow.insertCell(-1);
    // oCell.innerHTML =  rowParams[2];

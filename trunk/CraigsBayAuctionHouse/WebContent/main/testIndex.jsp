@@ -187,9 +187,18 @@
 	%>
 	<input id="cred" type="hidden" value=<%= cred %>>
 	
-	<div id="floadMenu">
-			<a class="trigger" href="#">Menu</a>
-	</div>
+			<%  
+				if(userName != "Guest")
+				{
+					
+			%>
+				
+				 <a class="trigger" href="#">MENUS</a>
+				
+					<% 
+				}
+				
+					%>
 	
 	<body><div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
 		
@@ -396,7 +405,7 @@
 					
 			%>
 				
-				<a class="trigger" href="#">MENUS</a>
+				<!--  <a class="trigger" href="#">MENUS</a> -->
 				
 					<% 
 				}

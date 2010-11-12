@@ -70,9 +70,9 @@
 	function viewAllAuctions()
 	{
 		//loadjscssfile('./resources/scripts/auctionListLoader.js', 'js');
-		//loadobjs('./resources/scripts/auctionListLoader.js'); //load the additional javascript tableLoad.jsp requires
-		ajaxpage('tableLoad.jsp', 'Dynapage'); //load tableLoad.jsp in to div Dynapage
-		//createNewTab('dhtmlgoodies_tabView1','All Auctions','','tableLoad.jsp',true);
+		loadobjs('./resources/scripts/auctionListLoader.js'); //load the additional javascript tableLoad.jsp requires
+		//ajaxpage('tableLoad.jsp', 'Dynapage'); //load tableLoad.jsp in to div Dynapage
+		createNewTab('dhtmlgoodies_tabView1','All Auctions','','tableLoad.jsp',true);
 		document.getElementById("surferTitle").innerHTML="<img src=./resources/images/loading.gif></img>";
 		
 	}
@@ -85,7 +85,7 @@
 		//loadjscssfile('./resources/scripts/createAuction.js', 'js');
 		//loadobjs('./resources/scripts/createAuction.js');
 		createNewTab('dhtmlgoodies_tabView1','New Auction','','createAuctionTable.jsp',true);
-		document.getElementById("surferTitle").innerHTML="Create a New Auction";
+		//document.getElementById("surferTitle").innerHTML="Create a New Auction";
 	}
 	
 	</script>
@@ -224,14 +224,6 @@
 	</script>
 	
 	<script type="text/javascript">
-	//Temp for floading menu
-	//	<div id="menu" class="fload_panel">
-	//		<h2>Menu</h2>
-	 //   <p> I'm Here!</p>
-		//<div style="clear:both;"></div>
-
-		//</div>
-		//
 	//---------------------------------------------------------
 	//<ul id="bubblemenu">
   //      <li>
@@ -266,10 +258,18 @@
 	<input id="cred" type="hidden" value=<%= cred %>>
 	<input id="userName" type="hidden" value=<%= userName %>>
 	
-	<div id="floadMenu">
-			<a class="trigger" href="#">Menu</a>
-	</div>
-	
+
+	<% 
+	if(userName != "Guest")
+	{
+	%>
+		<div id="floadMenu">
+				<a class="trigger" href="#">Menu</a>
+		</div>
+	<%
+	}
+	%>
+
 	<body><div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
 
 <!-- ***************************************************************************************
@@ -454,7 +454,7 @@
 				<h3>Profile</h3>
 				<img class="right" src="./resources/images/happy.jpg" />
 							<p><h3><%= userName %></h3></p>
-							<p><a href=#>Message</a> | <a href=#>My items</a></p>
+							<p><a href=#>Messages</a> | <a href=#>My items</a></p>
 						
 						<div style="clear:both;"></div>
 						
@@ -463,8 +463,7 @@
 								<h3>Business</h3>
 									<ul>
 										<li OnClick="viewAllAuctions()"><a href=#>View All Auctions</a></li>
-										<li OnClick="createAuction();
-											createNewTab('dhtmlgoodies_tabView1','New Auction','','',true)"><a href="#">New Auction</a></li>
+										<li OnClick="createAuction()"><a href="#">New Auction</a></li>
 										<li><a href="3" title="portfolio">My Auction</a></li>
 										<li><a href="4" title="contact">Won history</a></li>
 									</ul>
@@ -485,8 +484,15 @@
 						
 						</div>
 						
-		
-				<a class="trigger" href="#">MENUS</a>
+	<% 
+	if(userName != "Guest")
+	{
+	%>
+				  <a class="trigger" href="#">MENUS</a>
+				  
+	<%
+	} 
+	%>
 				
 				
 
@@ -507,13 +513,11 @@
 						Dynamic page is here
 					</div><br>
 					
-					<a href="#" onclick="createNewTab('dhtmlgoodies_tabView1','A dynamic tab','','externalfile.html',true);return false">Create new tab dynamically</a><br>
-					<a href="#" type=hidden onclick="deleteTab('Menu scripts')">Remove this tab</a><br>
 						
 				</div>
 				<div class="dhtmlgoodies_aTab">
 					This is the content of the second tab.	<br>
-					<a href="#" onclick="deleteTab('Calendar')">Remove this tab</a><br>
+					<a href="#" onclick="deleteTab('tip')">Remove this tab</a><br>
 				</div>
 			</div>
 		  </div>

@@ -264,6 +264,7 @@
 		}
 	%>
 	<input id="cred" type="hidden" value=<%= cred %>>
+	<input id="userName" type="hidden" value=<%= userName %>>
 	
 	<div id="floadMenu">
 			<a class="trigger" href="#">Menu</a>

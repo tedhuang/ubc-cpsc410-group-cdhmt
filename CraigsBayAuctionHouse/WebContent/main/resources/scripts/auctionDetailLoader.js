@@ -64,16 +64,6 @@ function loadAuctionParseXMLResponse(responseXML) {
         var flickerAlbumID	=	auction_node.getAttribute("flickerAlbumID");
         var numberOfViews	=	auction_node.getAttribute("numberOfViews");
 
-	//put code to change table here
-    //    var colHTML ="	 <tr>"+ auctionTitle + "</tr>" +
-	//		"    <tr>"+ auctionStatus + "</tr>" +
-	//		"    <tr>"+ expiryDate +"</tr>" +
-	//		"    <tr>"+ latestBidPrice +"</tr>"+
-	//		"    <tr>"+ bidCounter +"</tr>"+
-	//		"    <tr>"+ lastBidderID +"</tr>"+
-	//		"    <tr>"+ category +"</tr>"+
-	//		"    <tr>"+ onwerID +"</tr>" +
-	//		"    <tr>"+ flickerAlbumID +"</tr>";
 			
         var colParams = new Array();
         colParams[0] = auctionID;
@@ -106,26 +96,66 @@ function viewInfo(colParams)
 	document.getElementById("auctionOwner").innerHTML = "OwnerID: " + colParams[6];
 	document.getElementById("picture").innerHTML = "Picture: " + colParams[11];
 	
+	document.getElementById("ownerID").value = colParams[6];
+	document.getElementById("latestBidPrice").value = colParams[9];
 	
-	/*
-	// Insert rows and cells into bodies.
-    var oBody = document.getElementById('auctionDetails');
+	document.getElementById("bidButton").disabled=false;
+    
+}
 
-    oRow = oBody.insertRow(oBody.rows.length);
-    oRow.setAttribute('id',colParams[0]);
-    oCell = oRow.insertCell(-1);
-    oCell.innerHTML = colParams[1];
-    
-    oRow = oBody.insertRow(oBody.rows.length);
-    oRow.setAttribute('id', colParams[0]);
-    oCell = oRow.insertCell(-1);
-    oCell.innerHTML = colParams[2];
-    */
-    //status
-   // oCell = oRow.insertCell(-1);
-   // oCell.innerHTML =  rowParams[2];
-    
-    
+function bidOnAuction(auctionID)
+{
+	
+	//alert(document.getElementById("bidAmount").value);
+	//alert(document.getElementById("latestBidPrice").value);
+	
+	var bidAmount =  parseFloat(document.getElementById("bidAmount").value);
+	var latestBidPrice = parseFloat(document.getElementById("latestBidPrice").value);
+	
+	if(document.getElementById("userName").value == "Guest")
+	{
+		alert("Please sign in to bid");
+		document.getElementById("bidFeedback").innerHTML = "<h2>Please Sign In To Bid!</h2>"
+		return;
+	}
+	
+	if(  bidAmount <= latestBidPrice )
+	{
+		alert("Insufficient Bid Amount, current price is: $" + document.getElementById("latestBidPrice").value );
+		document.getElementById("bidFeedback").innerHTML = "<h2>Bid input too low</h2>";
+		return;
+	}
+	
+	
+	
+	if (window.XMLHttpRequest)
+	  {// code for IE7+, Firefox, Chrome, Opera, Safari
+	  xmlhttp=new XMLHttpRequest();
+	  }
+	else
+	  {// code for IE6, IE5
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	  
+	xmlhttp.onreadystatechange=function()
+	  {
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	    {
+		  bidAuctionParseXMLResponse(xmlhttp.responseXML);
+	    }
+	  }
+	
+	var credential = document.getElementById("cred").value;
+	var Params = "auctionID=" + auctionID + "&userCred=" + credential;
+	
+	//send the parameters to the servlet with POST
+	xmlhttp.open("POST","../userAuctionBidServlet" ,true);
+	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xmlhttp.send(Params);
+}
+
+function bidAuctionParseXMLResponse()
+{
 	
 }
 

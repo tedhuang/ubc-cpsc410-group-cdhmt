@@ -84,7 +84,8 @@ while(source.indexOf("<dynamicOnLoad") > -1 || source.indexOf("</dynamicOnLoad")
 
 }
 
-
+//DEPRECATED - old Dynamic load JS files, now just load it in index.jsp
+/*
 function loadobjs(){
 if (!document.getElementById)
 return
@@ -128,3 +129,4 @@ function loadjscssfile(filename, filetype){
 	  document.getElementsByTagName("head")[0].appendChild(fileref)
 	}
 
+*/

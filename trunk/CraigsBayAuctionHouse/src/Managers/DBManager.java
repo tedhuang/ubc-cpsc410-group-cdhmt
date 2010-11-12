@@ -437,12 +437,15 @@ public class DBManager {
 			while( keyIterator.hasNext() ) {
 				String tempKey = keyIterator.next();
 				
-				query	+= tempKey + "='";
-				query	+= parameterMap.get( tempKey ) + "'";
-				
-				if( keyIterator.hasNext() ) {
-					query	+= ", ";
+				if( !tempKey.equals("Credential") ) {
+					query	+= tempKey + "='";
+					query	+= parameterMap.get( tempKey ) + "'";
+					
+					if( keyIterator.hasNext() ) {
+						query	+= ", ";
+					}
 				}
+
 				
 			}
 				

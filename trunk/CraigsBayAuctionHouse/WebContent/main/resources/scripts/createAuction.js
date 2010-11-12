@@ -40,7 +40,7 @@ function createAuctionRequest()
 	xmlhttp.send(Params);
 
 	//change the text while sending the request
-	document.getElementById("createAuctionFeedback").innerHTML="<h2>Please wait... Sending Request</h2>";
+	document.getElementById("createAuctionFeedback").innerHTML="<h2><img src=./resources/images/loading.gif></img> <p>Sending Request</h2></p>";
 }
 
 function loginParseXMLResponse(responseXML)

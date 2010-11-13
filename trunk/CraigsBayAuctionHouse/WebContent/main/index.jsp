@@ -172,7 +172,7 @@
 		}
 		</script>
 		
-		<!-- ***************************************************************************************-->
+<!-- ***************************************************************************************-->
 							<!-- logout Function  -->
 <!-- ***************************************************************************************-->	
 	<script type="text/javascript">
@@ -275,6 +275,33 @@
 <!-- ***************************************************************************************
 								 Sidebar Starts Here
 ********************************************************************************************-->
+<!-- NEW LIGHTBOX LOGIN -->
+		<div id="filter"></div>
+			<div id="box">
+			  
+			  <form id= "close" name="close" method="post" title="Close" >
+					<input id="submitCred" type="hidden" name="cred"/>
+					<input id="name" type="hidden" name="name" />
+					<!-- <input type="image" src="./resources/images/minus.png" name="image" />
+					 -->
+			  </form>
+			  
+			  <input type="image" src="./resources/images/login-cancle.png" class="login-icon" style="margin-right:20px;" type="button" name="cancel" value="Cancel" onclick="closebox()">  
+				 <div id="login-box-name" style="margin-top:70px; margin-left:100px;">User:</div>   
+				 <div id="login-box-field" >
+					<input id="username" name="username" class="form-login" title="Username" value="" size="10" maxlength="2048" />
+					</div>
+					
+				<div id="login-box-name" style="margin-top:0px; margin-left:130px;">Password:</div><div id="login-box-field">
+				<input id="password" name="password" type="password" class="form-login" title="Password" value="" size="30" maxlength="2048" /></div>
+				<input type="image" src="./resources/images/login-go.png" class="login-icon" title="go!" style="margin-left:200px;" onclick="userLoginRequest()" >
+	
+						
+				<div style="margin-top:300px;" id="myDiv"><h2>Debug Message for page</h2></div>
+			</div>
+<!-- ***************************************************************************************-->	
+	  					<!-- ~ENDS: NEW LIGHTBOX LOGIN -->	
+<!-- ***************************************************************************************-->
 
 		<div id="sidebar"><div id="sidebar-wrapper"> <!-- Sidebar with logo and menu -->
 			
@@ -286,34 +313,7 @@
 								<!-- Sidebar Profile links -->
 <!-- ***************************************************************************************-->
 			
-		<!-- NEW LIGHTBOX LOGIN -->
-		<div id="filter"></div>
-			<div id="box">
-			  <span id="boxtitle"></span>
-			  
-			 
-			  <form id= "close" name="close" method="post" title="Close" >
-					<input id="submitCred" type="hidden" name="cred"/>
-					<input id="name" type="hidden" name="name" />
-					<input type="image" src="./resources/images/minus.png" name="image" />
-			  </form>
-			  
-			  <div id="login-box-name" style="margin-top:20px;">User:</div>
-					<div id="login-box-field">
-						<input id="username" name="username" class="form-login" title="Username" value="" size="30" maxlength="2048" />
-					</div>
-					<div id="login-box-name">Password:</div>
-					<div id="login-box-field">
-					<input id="password" name="password" type="password" class="form-login" title="Password" value="" size="30" maxlength="2048" /></div>
-		    <p> 
-			   <input type="image" src="./resources/images/login-btn.png" name="image" onclick="userLoginRequest()"/>
-			</p>
-						
-					<div id="myDiv"><h2>Debug Message for page</h2></div>
-			</div>
-<!-- ***************************************************************************************-->	
-	  					<!-- ~ENDS: NEW LIGHTBOX LOGIN -->	
-<!-- ***************************************************************************************-->
+		
 			<div id="profile-links">
 				Hello, 
 

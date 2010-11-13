@@ -15,24 +15,6 @@
 		<!-- Main Stylesheet -->
 		<link rel="stylesheet" href="./resources/css/contenBox.css" type="text/css" media="screen" />
 		
-		<!-- Invalid Stylesheet. This makes stuff look pretty. Remove it if you want the CSS completely valid -->
-		<link rel="stylesheet" href="./resources/css/invalid.css" type="text/css" media="screen" />	
-		
-		<!-- Colour Schemes
-	  
-		Default colour scheme is green. Uncomment prefered stylesheet to use it.
-		
-		<link rel="stylesheet" href="./resources/css/blue.css" type="text/css" media="screen" />
-		
-		<link rel="stylesheet" href="./resources/css/red.css" type="text/css" media="screen" />  
-	 
-		-->
-		
-		<!-- Internet Explorer Fixes Stylesheet -->
-		
-		<!--[if lte IE 7]>
-			<link rel="stylesheet" href="./resources/css/ie.css" type="text/css" media="screen" />
-		<![endif]-->
 		
 		<!--                       Javascripts                       -->
   
@@ -41,9 +23,6 @@
 		
 		<!-- jQuery Configuration -->
 		<script type="text/javascript" src="./resources/scripts/simpla.jquery.configuration.js"></script>
-		
-		<!-- Facebox jQuery Plugin -->
-		<script type="text/javascript" src="./resources/scripts/facebox.js"></script>
 		
 		<!-- jQuery WYSIWYG Plugin -->
 		<script type="text/javascript" src="./resources/scripts/jquery.wysiwyg.js"></script>

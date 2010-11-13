@@ -31,8 +31,8 @@ function openbox(formtitle, fadin)
   var box = document.getElementById('box'); 
   document.getElementById('filter').style.display='block';
 
-  var btitle = document.getElementById('boxtitle');
-  btitle.innerHTML = formtitle;
+  //var btitle = document.getElementById('boxtitle');
+ // btitle.innerHTML = formtitle;
   
   if(fadin)
   {

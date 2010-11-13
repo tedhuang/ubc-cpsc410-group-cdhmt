@@ -21,11 +21,12 @@
 	top: 20%;
 	left: 20%;
 	width: 400px;
-	height: 200px;
+	height: 250px;
 	padding: 48px;
 	margin:0;
-	border: 1px solid black;
+	border: 0px solid black;
 	background-color: white;
+	background: url('../images/idCard.png') no-repeat left top;
 	z-index:101;
 	overflow: none;
 }
@@ -47,4 +48,38 @@
 	color:white;
 	text-align:center;
 }
+
+#login-box-name {
+	float: left;
+	display:inline;
+	width:80px;
+	text-align: right;
+	padding: 5px 10px 0 0;
+	margin:0 0 7px 0;
+}
+
+#login-box-field {
+	float: right;
+	display:inline;
+	width:230px;
+	margin:;
+	margin:0 0 0 0;
+}
+
+.form-login  {
+	width: 150px;
+	padding: 8px 4px 6px 3px;
+	border: 1px solid #0d2c52;
+	background-color:#1e4f8a;
+	font-size: 16px;
+	color: #ebebeb;
+}
+.login-icon {
+	float: right;
+	display:inline;
+	margin: 0, 0, 0, 0;
+	padding: 8px 4px 0px 3px;
+	
+	}
+
 

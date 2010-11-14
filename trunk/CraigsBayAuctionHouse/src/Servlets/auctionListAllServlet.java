@@ -15,13 +15,13 @@ import Managers.DBManager;
 /**
  * Servlet implementation class listAuctionsServlet
  */
-public class listAuctionsServlet extends HttpServlet {
+public class auctionListAllServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public listAuctionsServlet() {
+    public auctionListAllServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

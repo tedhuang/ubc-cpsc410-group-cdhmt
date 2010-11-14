@@ -54,5 +54,7 @@ function closebox()
    document.getElementById('filter').style.display='none';
 }
 
+//pop up info window
+
 
 

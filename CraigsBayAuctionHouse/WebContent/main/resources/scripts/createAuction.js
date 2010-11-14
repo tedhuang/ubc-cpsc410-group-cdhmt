@@ -10,6 +10,17 @@ function createAuctionRequest()
 	var Category= document.getElementById("Category").value;
 	var credential = document.getElementById("cred").value;
 	
+	//Check User Input
+	if(Title == null){
+		alert("Must Enter Auction Title!");
+		return;
+	}
+	if(MinPrice.match(/\d{1,10}\.?\d{0,2}/) == null){
+		alert("did not match");
+		return;
+	}
+	
+	
 	
 	if (window.XMLHttpRequest)
 	  {// code for IE7+, Firefox, Chrome, Opera, Safari

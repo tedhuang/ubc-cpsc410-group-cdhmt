@@ -194,8 +194,12 @@
 			  {
 			  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 			    {
-					window.location="../main";
+					window.location="../main";   //if login successfully, redirect to the main page 
 			    }
+			  else //login failed display error messege
+				 {
+				  
+				 }
 			  };
 			  
 			var Params = "Credential=" + userCred;
@@ -286,29 +290,32 @@
 					 -->
 			  </form>
 			  
-			  <input type="image" src="./resources/images/login-cancle.png" class="login-icon" style="margin-right:20px;" type="button" name="cancel" value="Cancel" onclick="closebox()">  
-				 <div id="login-box-name" style="margin-top:70px; margin-left:100px;">User:</div>   
-				 <div id="login-box-field" >
-					<input id="username" name="username" class="form-login" title="Username" value="" size="10" maxlength="2048" />
-					</div>
+			<input type="image" src="./resources/images/login-cancle.png" class="login-icon" style="margin-right:20px;" type="button" name="cancel" value="Cancel" onclick="closebox()">  
+			<div id="login-box-name" style="margin-top:70px; margin-left:100px;">User:</div>   
+			<div id="login-box-field" >
+			  	<input id="username" name="username" class="form-login" title="Username" value="" size="10" maxlength="2048" />
+			</div>
+			
 					
-				<div id="login-box-name" style="margin-top:0px; margin-left:130px;">Password:</div><div id="login-box-field">
-				<input id="password" name="password" type="password" class="form-login" title="Password" value="" size="30" maxlength="2048" /></div>
-				<input type="image" src="./resources/images/login-go.png" class="login-icon" title="go!" style="margin-left:200px;" onclick="userLoginRequest()" >
-	
-						
-				<div style="margin-top:300px;" id="myDiv"><h2>Debug Message for page</h2></div>
+			<div id="login-box-name" style="margin-top:0px; margin-left:130px;">Password:</div>
+			<div id="login-box-field">
+				<input id="password" name="password" type="password" class="form-login" title="Password" value="" size="30" maxlength="2048" />
+			</div>
+				
+				<!-- LOGIN BUTTON -->
+			<input type="image" src="./resources/images/login-go.png" class="login-icon" title="go!" style="margin-left:400px;" onclick="userLoginRequest()" >		
+			<div style="margin-top:300px;" id="myDiv"><h2>Debug Message for page</h2></div>
 			</div>
 <!-- ***************************************************************************************-->	
 	  					<!-- ~ENDS: NEW LIGHTBOX LOGIN -->	
 <!-- ***************************************************************************************-->
 
-		<div id="sidebar"><div id="sidebar-wrapper"> <!-- Sidebar with logo and menu -->
+   <div id="sidebar"><div id="sidebar-wrapper"> <!-- Sidebar with logo and menu -->
 			
-			<h1 id="sidebar-title"><a href="#">Admin Panel</a></h1>
+		<h1 id="sidebar-title"><a href="#">Admin Panel</a></h1>
 		  
-			<!-- Logo (221px wide) -->
-		  <img id="logo" src="./resources/images/lighthouse.gif" style="float:center;margin-right:20px;margin-bottom:20px">
+	  <!-- Logo (221px wide) -->
+	  <img id="logo" src="./resources/images/logo.png" style="float:center;margin-left:50px;margin-bottom:50px">
 <!-- ***************************************************************************************-->
 								<!-- Sidebar Profile links -->
 <!-- ***************************************************************************************-->

@@ -33,25 +33,28 @@ public class userEditInfo extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		// retrieve credential and userID
 		String userCred = request.getParameter("Credential");
+		String message;
 		User user = new User();
 		
 		DBManager dbm = new DBManager();
 		int userID = dbm.userCredentialCheck(userCred);
 		if( userID <= 0){
-			// TODO do error code
+			System.out.println("ERROR");
+			message = "\t<success>false</success>\n";
 		}
 		else{
 			user = dbm.userGetByID(userID);
-			
-			//Write XML
-			StringBuffer XMLResponse = new StringBuffer();	
-			XMLResponse.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
-			XMLResponse.append("<response>\n");
-			XMLResponse.append(user.toXMLContent());
-			XMLResponse.append("</response>\n");
-			response.setContentType("application/xml");
-			response.getWriter().println(XMLResponse);
+			message = "\t<success>true</success>\n" + user.toXMLContent();
 		}
+		
+		//Write XML
+		StringBuffer XMLResponse = new StringBuffer();	
+		XMLResponse.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
+		XMLResponse.append("<response>\n");
+		XMLResponse.append(message);
+		XMLResponse.append("</response>\n");
+		response.setContentType("application/xml");
+		response.getWriter().println(XMLResponse);
 		
 	}
 
@@ -65,19 +68,34 @@ public class userEditInfo extends HttpServlet {
 		// retrieve credential and userID
 		//String userCred = parameterMap.get("Credential").toString();
 		String userCred = request.getParameter("Credential");
+		boolean success;
 		DBManager dbm = new DBManager();
 		int userID = dbm.userCredentialCheck( userCred );
 		
-		String Password = request.getParameter("Password");
-		String PhoneNumber = request.getParameter("PhoneNumber");
-		String PhoneCarrier = request.getParameter("PhoneCarrier");
-		String EmailAddress = request.getParameter("EmailAddress");
+		if(userID <= 0){
+			success = false;
+		}
+		else{
+			String Password = request.getParameter("Password");
+			String PhoneNumber = request.getParameter("PhoneNumber");
+			String PhoneCarrier = request.getParameter("PhoneCarrier");
+			String EmailAddress = request.getParameter("EmailAddress");
+			
+			// remove credential from Map
+			//parameterMap.remove("Credential");
+			
+			// pass map to function
+			success = dbm.userEditInfo( userID,Password ,PhoneNumber,PhoneCarrier, EmailAddress);
+		}
 		
-		// remove credential from Map
-		//parameterMap.remove("Credential");
-		
-		// pass map to function
-		dbm.userEditInfo( userID,Password ,PhoneNumber,PhoneCarrier, EmailAddress);
+		// Write XML to response if DB has return message
+		StringBuffer XMLResponse = new StringBuffer();	
+		XMLResponse.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
+		XMLResponse.append("<response>\n");
+		XMLResponse.append("\t<success>" + success + "</success>\n");
+		XMLResponse.append("</response>\n");
+		response.setContentType("application/xml");
+		response.getWriter().println(XMLResponse);
 		
 		
 	}

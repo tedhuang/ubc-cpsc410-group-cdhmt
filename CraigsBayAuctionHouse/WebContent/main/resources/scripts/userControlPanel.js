@@ -14,8 +14,8 @@ function loadUserInfo()
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	    {
 		    //parse XML response from server
-		    
-		    var responseText= ParseUserInfo(xmlhttp.responseXML);
+		    //var responseText= 
+		    ParseUserInfo(xmlhttp.responseXML);
 	    	
 	    }
 	  }
@@ -33,6 +33,10 @@ function loadUserInfo()
 
 
 function ParseUserInfo( responseXML ) {
+	if((responseXML.getElementsByTagName("success")[0]).childNodes[0].nodeValue == "false"){
+		alert("You must login");
+		return;
+	}
 	var user = responseXML.getElementsByTagName("user").item(0);		
     
 	document.getElementById("Password").value =	user.getAttribute("password");
@@ -65,7 +69,7 @@ function updateUserRequest()
 	var credential = document.getElementById("cred").value;
 	
 	//Check user input
-	if(Password == null){
+	if(Password == ""){
 		alert("Must Enter Password!");
 		return;
 	}
@@ -95,8 +99,8 @@ function updateUserRequest()
 	  {
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	    {
-		    //parse XML response from server
-		   // var responseText= auctionParseXMLResponse(xmlhttp.responseXML);
+		   //parse XML response from server
+		   var responseText= userParseXMLResponse(xmlhttp.responseXML);
 		   
 	    	document.getElementById("feedBack").innerHTML=responseText;
 	    }
@@ -112,4 +116,23 @@ function updateUserRequest()
 
 	//change the text while sending the request
 	document.getElementById("feedBack").innerHTML="<h2>Please wait... Sending Request</h2>";
+}
+
+function userParseXMLResponse(responseXML){
+	
+	 var success = (responseXML.getElementsByTagName("success")[0]).childNodes[0].nodeValue;
+	 var responseText = "";
+	 
+	 if(success==true)
+	{
+		 responseText = "<h2>Error updating user!</h2>";
+	}
+	 else 
+	{
+		 
+		 responseText = "<h2>User Updated!</h2>";
+	}
+	
+
+	 return responseText;
 }

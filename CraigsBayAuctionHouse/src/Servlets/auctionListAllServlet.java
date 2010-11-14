@@ -41,7 +41,7 @@ public class auctionListAllServlet extends HttpServlet {
 		ArrayList<Auction> auctionList = new ArrayList<Auction>();
 		
 		DBManager dbm = new DBManager();
-		auctionList = dbm.auctionList();
+		auctionList = dbm.auctionListAll();
 		
 		
 		//Write XML

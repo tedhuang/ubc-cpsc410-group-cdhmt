@@ -8,19 +8,19 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Auction {
 	
-	public int auctionID;
-	public String auctionTitle;
-	public String expiryDate;
-	public String creationDate;
-	public String category;
-	public int ownerID;
-	public int lastBidderID;
-	public double minPrice;
-	public double latestBidPrice;
-	public int bidCounter;
-	public String auctionStatus;
-	public String flickerAlbumID;
-	public int numberOfViews;
+	public int		auctionID;
+	public String	auctionTitle;
+	public String	expiryDate;
+	public String	creationDate;
+	public String	category;
+	public int		ownerID;
+	public int		lastBidderID;
+	public double	minPrice;
+	public double	latestBidPrice;
+	public int		bidCounter;
+	public String	auctionStatus;
+	public String	flickerAlbumID;
+	public int		numberOfViews;
 	
 	public Auction() {
 		auctionID 		= -1;

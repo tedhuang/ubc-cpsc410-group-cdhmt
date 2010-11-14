@@ -139,5 +139,14 @@
     <servlet-name>userLogoutServlet</servlet-name>
     <url-pattern>/userLogoutServlet</url-pattern>
   </servlet-mapping>
-
+  <servlet>
+    <description></description>
+    <display-name>auctionListUserPostedServlet</display-name>
+    <servlet-name>auctionListUserPostedServlet</servlet-name>
+    <servlet-class>Servlets.auctionListUserPostedServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>auctionListUserPostedServlet</servlet-name>
+    <url-pattern>/auctionListUserPostedServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

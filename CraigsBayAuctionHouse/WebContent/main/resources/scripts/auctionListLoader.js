@@ -137,6 +137,14 @@ function addElement( rowParams ) {
 	    oCell = oRow.insertCell(-1);
 	    oCell.innerHTML =  rowParams[9];
 	    
+	    //category
+	    oCell = oRow.insertCell(-1);
+	    oCell.innerHTML =  rowParams[5];
+	    
+	    //num bids
+	    oCell = oRow.insertCell(-1);
+	    oCell.innerHTML =  rowParams[10];
+	    
 	  	//tools
 	    
 	  //ni.appendChild(newdiv);

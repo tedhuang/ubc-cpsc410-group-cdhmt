@@ -64,6 +64,23 @@ function updateUserRequest()
 	var EmailAddress= document.getElementById("EmailAddress").value;
 	var credential = document.getElementById("cred").value;
 	
+	//Check user input
+	if(Password == null){
+		alert("Must Enter Password!");
+		return;
+	}
+	if(PhoneNumber.match(/\d{10}/)== null){
+		alert("Invalid phone number.");
+		return;
+	}
+	apos=EmailAddress.indexOf("@");
+	dotpos=EmailAddress.lastIndexOf(".");
+	if (apos<1||dotpos-apos<2){
+		alert("Invalid E-mail Address");
+		return;
+	}
+	    
+	
 	
 	if (window.XMLHttpRequest)
 	  {// code for IE7+, Firefox, Chrome, Opera, Safari

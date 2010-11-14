@@ -19,7 +19,7 @@
 <br>
 <h4>Create New Auction</h4>
 Title: <input id="AuctionTitle" type="text" name="AuctionTitle" size="20"><br>
-MinPrice: <input id="MinPrice" type="text" name="MinPrice" size="20"><br>
+MinPrice: <input id="MinPrice" type="text" name="MinPrice" size="12"><br>
 <!-- The value returned by the selection corresponds to the number of days till expiry -->
 ExpiryDate: <select id="ExpiryDate" name="ExpiryDate">
 			<option value="1">One day</option>

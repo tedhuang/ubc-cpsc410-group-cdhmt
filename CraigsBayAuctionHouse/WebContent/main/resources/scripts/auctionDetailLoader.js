@@ -183,7 +183,7 @@ function bidOnAuction(auctionID)
 		return;
 	}
 	
-	
+	document.getElementById("bidButton").disabled=true;
 	
 	if (window.XMLHttpRequest)
 	  {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -230,6 +230,7 @@ function bidAuctionParseXMLResponse(responseXML, auctionID)
 		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'Dynapage'); //load auctionDetailsPage in to div Dynapage
 		document.getElementById("surferTitle").innerHTML="Bid too low, Refreshing Auction Details...";
 		}
+	document.getElementById("bidButton").disabled=false;
 	
 }
 

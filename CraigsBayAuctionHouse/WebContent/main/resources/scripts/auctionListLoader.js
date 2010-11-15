@@ -22,6 +22,13 @@ function ParseAuctionList( responseXML ) {
 	var auctionChildLength = auctionsList.childNodes.length;
 	var areponseLength = responseXML.getElementsByTagName('response').length;
 	*/
+	
+	//remove old elements
+	  var oBody = document.getElementById('myTable');
+	  while(oBody.hasChildNodes())
+	  {
+		  oBody.removeChild(oBody.firstChild);
+	  }
 
 	var auctions = auctionsList.getElementsByTagName("auction");
 	for (var iNode = 0; iNode < auctions.length; iNode++) {
@@ -108,9 +115,11 @@ function addElement( rowParams ) {
 	  //alert(newdiv.innerHTML);
 	 // newdiv.innerHTML += "</tr>";
 	 
+	  //remove old rows..
+	  
+	  var oBody = document.getElementById('myTable');
+	  
 	 // Insert rows and cells into bodies.
-	    var oBody = document.getElementById('myTable');
-
 	    oRow = oBody.insertRow(oBody.rows.length);
 	    oRow.setAttribute('id', rowParams[0]);
 	    

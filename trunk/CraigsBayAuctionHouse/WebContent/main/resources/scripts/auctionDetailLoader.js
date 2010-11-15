@@ -117,6 +117,8 @@ function loadAuctionParseXMLResponse(responseXML) {
         var flickerAlbumID	=	auction_node.getAttribute("flickerAlbumID");
         var numberOfViews	=	auction_node.getAttribute("numberOfViews");
 
+    var ownerName = auctionView.getElementsByTagName("ownerName")[0].childNodes[0].nodeValue;;
+    var lastBidderName = auctionView.getElementsByTagName("lastBidderName")[0].childNodes[0].nodeValue;;
 			
         var colParams = new Array();
         colParams[0] = auctionID;
@@ -132,6 +134,8 @@ function loadAuctionParseXMLResponse(responseXML) {
 		colParams[10] = bidCounter;
 		colParams[11] = flickerAlbumID;
 		colParams[12] = numberOfViews;
+		colParams[13] = ownerName;
+		colParams[14] = lastBidderName;
 		viewInfo(colParams);
 }
 
@@ -144,9 +148,9 @@ function viewInfo(colParams)
 	document.getElementById("timeLeft").innerHTML = "Expiry Date: " + colParams[3];
 	document.getElementById("latestPrice").innerHTML = "Latest Price: " + colParams[9];
 	document.getElementById("numBids").innerHTML = "Number of Bids: " + colParams[10];
-	document.getElementById("lastBidder").innerHTML = "Last Bidder: " + colParams[7];
+	document.getElementById("lastBidder").innerHTML = "Last Bidder: " + colParams[14];
 	document.getElementById("category").innerHTML = "Category: " + colParams[5];
-	document.getElementById("auctionOwner").innerHTML = "OwnerID: " + colParams[6];
+	document.getElementById("auctionOwner").innerHTML = "Auction Owner: " + colParams[13];
 	document.getElementById("picture").innerHTML = "Picture: " + colParams[11];
 	
 	document.getElementById("ownerID").value = colParams[6];

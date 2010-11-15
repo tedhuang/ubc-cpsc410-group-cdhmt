@@ -636,7 +636,7 @@ public class DBManager {
 				user.phoneNumber 		= result.getString("PhoneNumber");
 				user.phoneCarrier 	= result.getString("PhoneCarrier");
 				user.emailAddress		= result.getString("EmailAddress");
-				
+				user.userName = result.getString("UserName");
 			}
 
 			stm.close();
@@ -710,13 +710,37 @@ public class DBManager {
 					 		
 					  System.out.println("New bid: " + query);
 					  
-					  int done = stm.executeUpdate(query);
+					  int success = stm.executeUpdate(query);
 					  
-					  //TODO insert into BidHistory table
+					  if(success==1)
+					  {
+						//insert in to userBids table
+						//see if user has already bidded on this auction before, if yes, no need to do anything
+						  query = "SELECT * FROM UserBidsTable WHERE " + 
+						  		" AuctionID=" + auctionID + " AND UserID=" + userID + " LIMIT 1";
+						  result = stm.executeQuery(query);
+						  
+						  if(result.first())
+						  {
+							  //no need to do anything
+							  return success;
+						  }
+						  else
+						  {
+							  //first time bidding on this auction
+							  query = "INSERT INTO UserBidsTable(AuctionID, UserID) VALUES " + 
+							  		"('" + auctionID + "','" + userID +"')";
+							  success = stm.executeUpdate(query);
+							  
+							  return success;
+							  
+						  }
+						  
+					  }
 					  
 					  stm.close();
 					  
-					  return done;
+					  return success;
 					 
 				 }
 				 else

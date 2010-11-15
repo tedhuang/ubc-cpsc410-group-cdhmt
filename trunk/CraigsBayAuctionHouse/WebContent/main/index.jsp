@@ -131,13 +131,7 @@
 		}
 	</script>
 	
-	<script type="text/javascript">
-		function SelectAll(id)
-		{
-		    document.getElementById(id).focus();
-		    document.getElementById(id).select();
-		}
-	</script>
+	
 	
 	
 				
@@ -259,7 +253,16 @@
 		});
 	</script>
 	
+	
+	
 	<script type="text/javascript">
+	function SelectAll(id)
+	{
+	    document.getElementById(id).focus();
+	    document.getElementById(id).select();
+	}
+</script>
+<script language="javascript">
 	//---------------------------------------------------------
 	//<ul id="bubblemenu">
   //      <li>
@@ -271,7 +274,7 @@
 //	  			</iframe>
 //			</div>
 //	</ul>
-//<script language="javascript">
+//
 			
 //			function cascadeOpt(dropdown){
 //			var myForm = document.getElementById("searchOpt");
@@ -614,6 +617,7 @@
 							<option value="music">Music</option>
 					</select>
 					<input type="text" id="searchOwner" value="search By Authors..." onclick="SelectAll('searchOwner');"/>
+					<input type="submit" id="advancedSearchButton" onclick="searchAuctionTable(1)"/>
 				</div>
 			</div>
 		  </div>

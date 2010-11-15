@@ -61,13 +61,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>listAuctionsServlet</display-name>
-    <servlet-name>listAuctionsServlet</servlet-name>
-    <servlet-class>Servlets.listAuctionsServlet</servlet-class>
+    <display-name>auctionListAllServlet</display-name>
+    <servlet-name>auctionListAllServlet</servlet-name>
+    <servlet-class>Servlets.auctionListAllServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>listAuctionsServlet</servlet-name>
-    <url-pattern>/listAuctionsServlet</url-pattern>
+    <servlet-name>auctionListAllServlet</servlet-name>
+    <url-pattern>/auctionListAllServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -148,6 +148,16 @@
   <servlet-mapping>
     <servlet-name>auctionListUserPostedServlet</servlet-name>
     <url-pattern>/auctionListUserPostedServlet</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>auctionListUserBiddedServlet</display-name>
+    <servlet-name>auctionListUserBiddedServlet</servlet-name>
+    <servlet-class>Servlets.auctionListUserBiddedServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>auctionListUserBiddedServlet</servlet-name>
+    <url-pattern>/auctionListUserBiddedServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>

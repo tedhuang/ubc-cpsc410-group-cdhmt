@@ -46,6 +46,21 @@ public class userViewAuctionServlet extends HttpServlet {
 		//Get Auction
 		Auction auction = dbm.auctionGetByID( auctionID );
 		
+		String ownerUserName = "Craigs Bay Special";
+		String lastBidderUserName = "None";
+		//Get auction owner info
+		if( auction.ownerID != 0)
+		{
+			ownerUserName = dbm.userGetByID(auction.ownerID).userName;
+		}
+		
+		//Get last bidder info
+		if( auction.lastBidderID != 0)
+		{
+			lastBidderUserName = dbm.userGetByID(auction.lastBidderID).userName;
+		}
+		
+		
 		//Identify User
 		int userID = dbm.userCredentialCheck( credential );
 		
@@ -71,11 +86,15 @@ public class userViewAuctionServlet extends HttpServlet {
 			}
 			
 		}
+		
+		
 				
 		XMLResponse.append(">\n");
 
 		String thisXML = auction.toXMLContent();
 		XMLResponse.append( thisXML );
+		XMLResponse.append("\t<ownerName>" + ownerUserName + "</ownerName>");
+		XMLResponse.append("\t<lastBidderName>" + lastBidderUserName + "</lastBidderName>");
 		
 		XMLResponse.append("\t</auctionView>\n");
 		XMLResponse.append("</response>\n");

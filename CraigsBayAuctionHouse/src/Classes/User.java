@@ -13,6 +13,7 @@ public class User {
 	public String phoneNumber;
 	public String phoneCarrier;
 	public String emailAddress;
+	public String userName;
 	
 	public User() {
 		userID 		= -1;
@@ -20,6 +21,7 @@ public class User {
 		phoneNumber	= "";
 		phoneCarrier		= "";
 		emailAddress	= "";
+		userName = "";
 	}
 
 	
@@ -32,6 +34,7 @@ public class User {
 				" phoneNumber=\"" + phoneNumber + "\"" +
 				" phonecarrier=\"" + phoneCarrier  + "\"" +
 				" emailAddress=\"" + emailAddress + "\"" +
+				" userName=\"" + userName + "\"" +
 				"/>\n";
 				
 	}

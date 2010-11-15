@@ -172,6 +172,63 @@ public class DBManager {
 		
 	}
 	
+	public ArrayList<Auction> auctionListBiddedByUser( int userID )
+	{
+		
+		ArrayList<Auction> auctionsList = new ArrayList<Auction>();
+		
+		try {
+			stm = m_conn.createStatement();
+			
+			String query = "SELECT  * FROM UserBidsTable, AuctionsTable" +
+								" WHERE AuctionsTable.AuctionID=UserBidsTable.AuctionID" +
+								" AND UserBidsTable.UserID=" + userID +
+								" AND AuctionsTable.AuctionStatus<>'CLOSED'"; 
+			
+			System.out.println("Retrieving Bid History of User : " + query);
+			
+			//TODO: figure out if we need a success check here
+			boolean success = stm.execute(query);
+			
+			ResultSet result = stm.getResultSet();
+			
+			while( result.next() ) {
+				Auction tempAuction = new Auction();
+				
+				tempAuction.auctionTitle = result.getString("AuctionTitle");
+				tempAuction.auctionID = result.getInt("AuctionID");
+
+				tempAuction.expiryDate = result.getString("ExpiryDate");
+				tempAuction.creationDate = result.getString("CreationDate");
+				tempAuction.category = result.getString("Category");
+				tempAuction.ownerID = result.getInt("OwnerID");
+				tempAuction.lastBidderID = result.getInt("lastBidderID");
+				tempAuction.minPrice = result.getDouble("MinPrice");
+				tempAuction.latestBidPrice = result.getDouble("LatestBidPrice");
+				tempAuction.bidCounter = result.getInt("BidCounter");
+				tempAuction.auctionStatus = result.getString("auctionStatus");
+				tempAuction.flickerAlbumID = result.getString("flickerAlbumID");
+				tempAuction.numberOfViews = result.getInt("numberOfViews");
+				
+				auctionsList.add( tempAuction );
+				
+			}
+			
+
+			stm.close();
+			
+			return auctionsList;
+			
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		
+		return null;
+		
+		
+	}
+	
 	public Auction auctionGetByID( int auctionID ) //TODO: change the name of this method to something like "makeAuctionList"
 	{
 

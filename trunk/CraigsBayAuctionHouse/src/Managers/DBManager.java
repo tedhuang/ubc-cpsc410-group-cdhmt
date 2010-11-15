@@ -55,9 +55,26 @@ public class DBManager {
 			e1.printStackTrace();
 		}
 		
-		
-		
 		return -1;
+	}
+	
+	public int auctionChangeStatus(String auctionID, String status){
+		
+		try{
+			stm = m_conn.createStatement();
+			
+			String query = "UPDATE " + "AuctionsTable" +
+							" SET auctionStatus=" + status +
+							" WHERE auctionID=" + auctionID;
+
+			boolean success = stm.execute(query);
+			
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		
+		return 0;
 	}
 	
 
@@ -70,8 +87,9 @@ public class DBManager {
 			
 			String listRange = "*";
 			String query = "SELECT " + listRange + 
-								" FROM AuctionsTable"; 
-			
+								" FROM AuctionsTable" +
+								" WHERE AuctionStatus='OPEN'"; //Only pull auctions that have status OPEN
+
 			System.out.println("Retrieving Auctions List : " + query);
 			
 			//TODO: figure out if we need a success check here
@@ -84,7 +102,8 @@ public class DBManager {
 				
 				tempAuction.auctionTitle = result.getString("AuctionTitle");
 				tempAuction.auctionID = result.getInt("AuctionID");
-
+				
+				
 				tempAuction.expiryDate = result.getString("ExpiryDate");
 				tempAuction.creationDate = result.getString("CreationDate");
 				tempAuction.category = result.getString("Category");
@@ -238,7 +257,8 @@ public class DBManager {
 			stm = m_conn.createStatement();
 			
 			String query = "SELECT * FROM AuctionsTable" +
-							" WHERE AuctionID=" + auctionID; 
+							" WHERE AuctionID=" + auctionID + 
+							" AND AuctionStatus='OPEN'";
 			
 			System.out.println("Retrieving Auction " + auctionID + ": " + query);
 			

@@ -149,4 +149,24 @@
     <servlet-name>auctionListUserPostedServlet</servlet-name>
     <url-pattern>/auctionListUserPostedServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>auctionChangeStatus</display-name>
+    <servlet-name>auctionChangeStatus</servlet-name>
+    <servlet-class>Servlets.auctionChangeStatus</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>auctionChangeStatus</servlet-name>
+    <url-pattern>/auctionChangeStatus</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>auctionChangeStatusServlet</display-name>
+    <servlet-name>auctionChangeStatusServlet</servlet-name>
+    <servlet-class>Servlets.auctionChangeStatusServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>auctionChangeStatusServlet</servlet-name>
+    <url-pattern>/auctionChangeStatusServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -13,6 +13,59 @@ function toggle() {
 	}
 } 
 
+/*
+ * Might not need
+ */
+function handleDropdownMenu(){
+	
+	//if(selection)
+	var selection = document.getElementById("dropdown").value;
+
+	if(selection.equals("edit")){
+		//Todo:implement
+	}
+	
+	if(selection.equals("close")){
+		closeAuction();
+	}
+		
+	
+}
+
+/*
+ * Sets the status of the auction associated with the ID to "CLOSED"
+ */
+function closeAuction(auctionID){
+	if (window.XMLHttpRequest)
+	  {// code for IE7+, Firefox, Chrome, Opera, Safari
+	  xmlhttp=new XMLHttpRequest();
+	  }
+	else
+	  {// code for IE6, IE5
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	  
+//	xmlhttp.onreadystatechange=function()
+//	  {
+//	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+//	    {
+//		   loadAuctionParseXMLResponse(xmlhttp.responseXML);
+//	    }
+//	  }
+	
+	var credential = document.getElementById("cred").value;
+	var Params = "auctionID=" + auctionID +
+				 "&auctionStatus="+ "CLOSED" + 
+				 "&userCred=" + credential;
+	
+	//send the parameters to the servlet with POST
+	xmlhttp.open("POST","../auctionChangeStatusServlet" ,true);
+	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xmlhttp.send(Params);
+}
+
+
+
 function viewAuctionByID(auctionID ){
 	
 	if (window.XMLHttpRequest)

@@ -77,6 +77,59 @@ public class DBManager {
 		return 0;
 	}
 	
+	public ArrayList<Auction> searchAuctionResults(String searchTitle, String searchCategory, String SearchOwner)
+	{
+		ArrayList<Auction> auctionList = new ArrayList<Auction>();
+		
+		try {
+			stm = m_conn.createStatement();
+			
+			String query = "SELECT * FROM AuctionsTable "
+							+ "WHERE AuctionTitle LIKE '" + searchTitle + "' "; 
+							//+ "AND Category = '" + searchCategory + "' " + 
+							//"AND OwnerID = (SELECT UserID FROM UserTable WHERE UserName = '" + SearchOwner + "')";
+			
+			boolean success = stm.execute(query);
+			
+			ResultSet result = stm.getResultSet();
+			
+			while( result.next() ) {
+				Auction tempAuction = new Auction();
+				
+				tempAuction.auctionTitle = result.getString("AuctionTitle");
+				tempAuction.auctionID = result.getInt("AuctionID");
+
+				tempAuction.expiryDate = result.getString("ExpiryDate");
+				tempAuction.creationDate = result.getString("CreationDate");
+				tempAuction.category = result.getString("Category");
+				tempAuction.ownerID = result.getInt("OwnerID");
+				tempAuction.lastBidderID = result.getInt("lastBidderID");
+				tempAuction.minPrice = result.getDouble("MinPrice");
+				tempAuction.latestBidPrice = result.getDouble("LatestBidPrice");
+				tempAuction.bidCounter = result.getInt("BidCounter");
+				tempAuction.auctionStatus = result.getString("auctionStatus");
+				tempAuction.flickerAlbumID = result.getString("flickerAlbumID");
+				tempAuction.numberOfViews = result.getInt("numberOfViews");
+				
+				auctionList.add( tempAuction );
+				
+			}
+			
+
+			stm.close();
+			
+			System.out.println("Searched Auctions");
+			return auctionList;
+			
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		
+		return null;
+			
+		}
+	
 
 	public ArrayList<Auction> auctionListAll() //TODO: change the name of this method to something like "makeAuctionList"
 	{

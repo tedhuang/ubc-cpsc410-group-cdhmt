@@ -41,7 +41,19 @@ public class auctionListAllServlet extends HttpServlet {
 		ArrayList<Auction> auctionList = new ArrayList<Auction>();
 		
 		DBManager dbm = new DBManager();
-		auctionList = dbm.auctionListAll();
+		
+		//Check whether the request is for all auctions or a search
+		if( request.getParameter("SearchTitle") == null){
+			auctionList = dbm.auctionListAll();
+		}
+		else{
+			String SearchTitle = request.getParameter("SearchTitle");
+			String SearchCategory = request.getParameter("SearchCategory");
+			String SearchOwner = request.getParameter("SearchOwner");
+			auctionList = dbm.searchAuctionResults(SearchTitle, SearchCategory, SearchOwner);
+		}
+		
+		
 		
 		
 		//Write XML

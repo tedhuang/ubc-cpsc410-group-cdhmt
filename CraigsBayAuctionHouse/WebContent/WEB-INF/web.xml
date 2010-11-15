@@ -149,7 +149,7 @@
     <servlet-name>auctionListUserPostedServlet</servlet-name>
     <url-pattern>/auctionListUserPostedServlet</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>auctionListUserBiddedServlet</display-name>
     <servlet-name>auctionListUserBiddedServlet</servlet-name>
@@ -178,5 +178,15 @@
   <servlet-mapping>
     <servlet-name>auctionChangeStatusServlet</servlet-name>
     <url-pattern>/auctionChangeStatusServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>chatRelayServlet</display-name>
+    <servlet-name>chatRelayServlet</servlet-name>
+    <servlet-class>Servlets.chatRelayServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>chatRelayServlet</servlet-name>
+    <url-pattern>/chatRelayServlet</url-pattern>
   </servlet-mapping>
 </web-app>

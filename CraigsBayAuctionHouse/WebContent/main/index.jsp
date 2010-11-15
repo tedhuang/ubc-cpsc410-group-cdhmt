@@ -139,7 +139,7 @@
 		}
 	</script>
 	
-	<script>	
+	<script type="text/javascript">	
 	//Code to search DB for auctions
 	function searchAuctionTable(type)
 	{	

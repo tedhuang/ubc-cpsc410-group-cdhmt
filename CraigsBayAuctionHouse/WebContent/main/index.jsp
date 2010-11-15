@@ -131,7 +131,68 @@
 		}
 	</script>
 	
+	<script type="text/javascript">
+		function SelectAll(id)
+		{
+		    document.getElementById(id).focus();
+		    document.getElementById(id).select();
+		}
+	</script>
 	
+	<script>	
+	//Code to search DB for auctions
+	function searchAuctionTable(type)
+	{	
+		//If type = 0 then basic search else advanced
+		if(type == 0){
+			var searchTitle = document.getElementById("searchTitle").value;
+			var searchCategory = "*";
+			var searchOwner = "*";
+		}
+		else{
+			var searchTitle = document.getElementById("advancedSearchTitle").value;
+			var searchCategory = document.getElementById("searchCategory").value;
+			var searchOwner = document.getElementById("searchOwner").value;
+			
+			//Check to see what parameters matter
+			if(searchCategory == ""){
+				searchCategory = "*";
+			}
+			if(searchOwner == ""){
+				searchOwner = "*";
+			}
+		}
+		
+		if (window.XMLHttpRequest)
+		  {// code for IE7+, Firefox, Chrome, Opera, Safari
+		  xmlhttp=new XMLHttpRequest();
+		  }
+		else
+		  {// code for IE6, IE5
+		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		  }
+		  
+		xmlhttp.onreadystatechange=function()
+		{
+		  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		    {
+			    //parse XML response from server
+			    
+			    var responseText= ParseAuctionList(xmlhttp.responseXML);
+		    	
+		    }
+		  }
+	
+		//send the parameters to the servlet with POST
+		var Params = "SearchTitle="+ searchTitle + "&SearchCategory=" + searchCategory + 
+						"&SearchOwner=" + searchOwner;
+		
+		xmlhttp.open("POST","../auctionListAllServlet" ,true);
+		xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		xmlhttp.send(Params);
+		//document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
+	}
+	</script>
 	
 	
 				
@@ -253,16 +314,7 @@
 		});
 	</script>
 	
-	
-	
 	<script type="text/javascript">
-	function SelectAll(id)
-	{
-	    document.getElementById(id).focus();
-	    document.getElementById(id).select();
-	}
-</script>
-<script language="javascript">
 	//---------------------------------------------------------
 	//<ul id="bubblemenu">
   //      <li>
@@ -274,7 +326,7 @@
 //	  			</iframe>
 //			</div>
 //	</ul>
-//
+//<script language="javascript">
 			
 //			function cascadeOpt(dropdown){
 //			var myForm = document.getElementById("searchOpt");
@@ -436,7 +488,7 @@
 							}
 						%>
 						<li> <input type="text" id="searchTitle" value="search Auctions..." onclick="SelectAll('searchTitle');"/></li>
-						<li><input type="image" src="./resources/images/search-btn.png"/></li>
+						<li><input type="image" src="./resources/images/search-btn.png" onClick="searchAuctionTable(0);"/></li>
 					</ul>
 				</li>
 				
@@ -617,7 +669,6 @@
 							<option value="music">Music</option>
 					</select>
 					<input type="text" id="searchOwner" value="search By Authors..." onclick="SelectAll('searchOwner');"/>
-					<input type="submit" id="advancedSearchButton" onclick="searchAuctionTable(1)"/>
 				</div>
 			</div>
 		  </div>

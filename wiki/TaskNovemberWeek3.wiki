@@ -1,0 +1,44 @@
+#summary Stuff that needs doing@!
+
+= Introduction =
+
+List of stuff we left to complete and the manhour estimation for them
+
+
+= Details =
+
+Search - 2h
+  * UI - Harry
+  * Integration - Chris/Harry - 2h
+
+Chat - 15h
+  * Reseaerch/Design - 1h
+  * Client Side UI - 3h
+  * Client Side Script
+    * sendMsg - 0.5h
+    * recvMsg - 2h
+  * Server receive MSG - 1.5h
+  * Server send MSG - 1.5h
+  * Cache? - 2h
+  * Servlet - 1.5h
+  * MSG history functionality - 1h
+  * DB Structuring 1h.
+
+Flickr - 7-9h
+  * Upload Research - 3-5h
+  * Upload Integrate - 3h
+  * Download Integrate - 1h
+
+SMS - Goes off when Auction Expires?
+  * Auction expiry checker - 2-3h
+
+ViewAuctionDetail
+  * different feature for different user - 1h
+
+Random
+  * in viewAuctionDetail.jsp need to store auctionID for reference - 1.5h
+  * put close() button inside viewAuction page - 1h
+  * change BidHistory in DB to have both AuctionID and UserID as keys - 0.5h
+  * insert new BidHistory for a new bid - 1h
+  * status - expiryTime based?
+  * Cleanup web.xml

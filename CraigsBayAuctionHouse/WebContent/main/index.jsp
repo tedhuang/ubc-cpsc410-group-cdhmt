@@ -130,6 +130,17 @@
 			insideTab=document.getElementById(elementID).innerHTML;
 		}
 	</script>
+	
+	<script type="text/javascript">
+		function SelectAll(id)
+		{
+		    document.getElementById(id).focus();
+		    document.getElementById(id).select();
+		}
+	</script>
+	
+	
+				
 
 <!-- ***************************************************************************************-->
 							<!-- login Function  -->
@@ -215,9 +226,9 @@
 			  {
 			  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 			    {
-					window.location="../main";   //if login successfully, redirect to the main page 
+					window.location="../main";   //if logout successfully, redirect to the main page 
 			    }
-			  else //login failed display error messege
+			  else //logout failed display error messege
 				 {
 				  
 				 }
@@ -260,6 +271,33 @@
 //	  			</iframe>
 //			</div>
 //	</ul>
+//<script language="javascript">
+			
+//			function cascadeOpt(dropdown){
+//			var myForm = document.getElementById("searchOpt");
+//			var opt1=document.getElementById("searchCategory");
+//			var opt2=document.getElementById("searchByPplBox");
+			
+	//		var opt= dropdown.selectedIndex;
+	//		var temp=opt1.style.display;
+		//	switch(opt)
+			//{
+//			case 0:
+	//			break;
+	//		case 1:
+		//		if(temp=="block")
+			//	{
+				//	opt1.style.display="none";
+			//	}
+		//		else
+			//	{
+				//	opt1.style.display="block";
+				//}
+//			break;
+			
+	//	  }
+		//}
+	//	</script>
 	</script>
 	
 	
@@ -316,7 +354,6 @@
 			<div id="login-box-field" >
 			  	<input id="username" name="username" class="form-login" title="Username" value="" size="10" maxlength="2048" />
 			</div>
-			
 					
 			<div id="login-box-name" style="margin-top:0px; margin-left:130px;">Password:</div>
 			<div id="login-box-field">
@@ -395,6 +432,8 @@
 						<%
 							}
 						%>
+						<li> <input type="text" id="searchTitle" value="search Auctions..." onclick="SelectAll('searchTitle');"/></li>
+						<li><input type="image" src="./resources/images/search-btn.png"/></li>
 					</ul>
 				</li>
 				
@@ -429,8 +468,8 @@
 				<h3> Messages</h3>
 			 
 				<p>
-					<strong>17th May 2009</strong> by Admin<br />
-					This is a messege for the admin
+					<strong>Dec 4th 2010</strong> by Admin<br />
+					Demo this day.
 					<small><a href="#" class="remove-link" title="Remove message">Remove</a></small>
 				</p>
 				
@@ -535,23 +574,53 @@
 *************************************************************************************************-->
 	   <div id="tabHolder">
 		<div id="dhtmlgoodies_tabView1">
+				
+				<!-- Main Tab -->
 				<div class="dhtmlgoodies_aTab">
 					 
 					<h2><div id="surferTitle">Welcome <%= userName %></div></h2><br>
 					<div id="Dynapage">
 						Dynamic page is here
 					</div><br>
-					
-						
 				</div>
+				
+				<!--  tip tab-->
 				<div class="dhtmlgoodies_aTab">
 					This is the content of the second tab.	<br>
 					<a href="#" onclick="deleteTab('tip')">Remove this tab</a><br>
 				</div>
+				
+				<!-- Advanced Search Tab -->
+				<div class="dhtmlgoodies_aTab" id="advancedSearchTab">
+					<div id="searchTool1">
+						<input type="text" id="advancedSearchTitle" value="search Auctions..." onclick="SelectAll('advancedSearchTitle');"/>
+						
+					<FORM name="searchOpt"> 
+						<select name="searchCondition1" class="small-input" onChange="cascadeOpt(searchCondition1);">
+							<option value="searchOption">Search By</option>
+							<option value="searchByCategory">Category</option>
+							<option value="searchByPeople">People</option>
+						</select>
+					</FORM>
+					</div>
+				  
+					<select id="searchCategory" >
+							
+							<opttion value=""> Pick a Category</option>
+							<option value="electronics">Electronics</option>
+							<option value="books">Books</option>
+							<option value="motors">Motors</option>
+							<option value="art">Art</option>
+							<option value="music">Music</option>
+					</select>
+					<input type="text" id="searchOwner" value="search By Authors..." onclick="SelectAll('searchOwner');"/>
+				</div>
 			</div>
 		  </div>
+		  
+		  
 			<script type="text/javascript">
-			initTabs('dhtmlgoodies_tabView1',Array('What\'s New','tips'),0,500,400,Array(false,true));
+			initTabs('dhtmlgoodies_tabView1',Array('What\'s New','tips','Advanced Search'),0,500,400,Array(false,true, true));
 			</script>
 		
 <!-- ********************************************************************************************

@@ -7,10 +7,6 @@ List of stuff we left to complete and the manhour estimation for them
 
 = Details =
 
-Search - 2h
-  * UI - Harry
-  * Integration - Chris/Harry - 2h
-
 Chat - 15h
   * Reseaerch/Design - 1h
   * Client Side UI - 3h
@@ -35,8 +31,18 @@ SMS - Goes off when Auction Expires?
 ViewAuctionDetail
   * different feature for different user - 1h
 
+Friends - 5h
+  * Keep a friends list 1h
+  * find out how to represent this on DB - 2h
+  * write client side script and page to track friends - 2h
+
 Random
   * in viewAuctionDetail.jsp need to store auctionID for reference - 1.5h
   * put close() button inside viewAuction page - 1h
   * status - expiryTime based?
   * Cleanup web.xml
+
+= Options =
+
+Search -
+  * Advanced Search

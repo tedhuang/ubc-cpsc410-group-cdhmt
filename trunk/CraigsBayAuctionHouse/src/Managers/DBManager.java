@@ -658,6 +658,9 @@ public class DBManager {
 					  System.out.println("New bid: " + query);
 					  
 					  int done = stm.executeUpdate(query);
+					  
+					  //TODO insert into BidHistory table
+					  
 					  stm.close();
 					  
 					  return done;

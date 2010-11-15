@@ -85,7 +85,7 @@ public class DBManager {
 			stm = m_conn.createStatement();
 			
 			String query = "SELECT * FROM AuctionsTable "
-							+ "WHERE AuctionTitle LIKE '" + searchTitle + "' "; 
+							+ "WHERE AuctionTitle LIKE '" + searchTitle + "%' "; 
 							//+ "AND Category = '" + searchCategory + "' " + 
 							//"AND OwnerID = (SELECT UserID FROM UserTable WHERE UserName = '" + SearchOwner + "')";
 			

@@ -37,7 +37,7 @@ public class auctionChangeStatusServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		String auctionID = request.getParameter("auctionID").toString();
-		String status = request.getParameter("AuctionStatus").toString();  //might be changed to CLOSED
+		String status = request.getParameter("auctionStatus").toString();  //might be changed to CLOSED exclusively
 		String credential = request.getParameter("userCred").toString(); 
 		
 		//Check if status argument is valid

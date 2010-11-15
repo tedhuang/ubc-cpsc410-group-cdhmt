@@ -222,6 +222,39 @@ function loadUserOwnedAuctions()
 	xmlhttp.send(Params);
 	//document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
 }
+
+function loadUserBiddedAuctions() {
+	
+	var credential = document.getElementById("cred").value;
+	
+	if (window.XMLHttpRequest)
+	  {// code for IE7+, Firefox, Chrome, Opera, Safari
+	  xmlhttp=new XMLHttpRequest();
+	  }
+	else
+	  {// code for IE6, IE5
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	  
+	xmlhttp.onreadystatechange=function()
+	{
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	    {
+		    //parse XML response from server
+		    
+		    var responseText= ParseAuctionList(xmlhttp.responseXML);
+	    	
+	    }
+	  }
+
+	//send the parameters to the servlet with POST
+	var Params = "Credential=" + credential;
+	
+	xmlhttp.open("POST","../auctionListUserBiddedServlet" ,true);
+	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xmlhttp.send(Params);
+
+}
 	
 function removeElement() {
 	var tableBody=document.getElementById( 'myTable' );

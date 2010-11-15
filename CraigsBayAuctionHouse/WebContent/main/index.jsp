@@ -99,6 +99,17 @@
 		
 	}
 	</script>
+	<script type="text/javascript">
+	function viewBiddedAuctions()
+	{
+		//loadjscssfile('./resources/scripts/auctionListLoader.js', 'js');
+		//loadobjs('./resources/scripts/auctionListLoader.js'); //load the additional javascript tableLoad.jsp requires
+		ajaxpage('userBiddedAuctionsLoad.jsp', 'Dynapage'); //load tableLoad.jsp in to div Dynapage
+		//createNewTab('dhtmlgoodies_tabView1','All Auctions','','tableLoad.jsp',true);
+		document.getElementById("surferTitle").innerHTML="<img src=./resources/images/loading.gif></img>";
+		
+	}
+	</script>
 	
 	<!--TODO Link with profile button -->
 	<script type="text/javascript">
@@ -380,6 +391,7 @@
 						
 						<li OnClick="createAuction('Dynapage');"><a href="#">New Auction</a></li>
 						<li OnClick="viewUserAuctions();"><a href="#">Manage Auction</a></li>
+						<li OnClick="viewBiddedAuctions();"><a href="#">My Bids</a></li>
 						<%
 							}
 						%>

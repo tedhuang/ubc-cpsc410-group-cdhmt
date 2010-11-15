@@ -38,7 +38,5 @@ ViewAuctionDetail
 Random
   * in viewAuctionDetail.jsp need to store auctionID for reference - 1.5h
   * put close() button inside viewAuction page - 1h
-  * change BidHistory in DB to have both AuctionID and UserID as keys - 0.5h
-  * insert new BidHistory for a new bid - 1h
   * status - expiryTime based?
   * Cleanup web.xml

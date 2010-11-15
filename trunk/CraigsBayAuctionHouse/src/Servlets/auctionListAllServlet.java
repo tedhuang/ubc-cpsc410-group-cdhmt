@@ -55,7 +55,6 @@ public class auctionListAllServlet extends HttpServlet {
 		
 		
 		
-		
 		//Write XML
 		StringBuffer XMLResponse = new StringBuffer();	
 		XMLResponse.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");

@@ -41,7 +41,12 @@ function ParseUserInfo( responseXML ) {
     
 	document.getElementById("Password").value =	user.getAttribute("password");
     document.getElementById("PhoneNumber").value = user.getAttribute("phoneNumber");
-    document.getElementById("PhoneCarrier").value	=	user.getAttribute("phoneCarrier");
+    //DEBUG
+    for(i = 0; i > document.getElementById("PhoneCarrier").options.length; i++){
+    	if(document.getElementById("PhoneCarrier").options[i] == user.getAttribute("phoneCarrier")){
+    		document.getElementById("PhoneCarrier").options[i].selected = true;
+    	}
+    }
     document.getElementById("EmailAddress").value =	user.getAttribute("emailAddress");
 
 	document.getElementById("surferTitle").innerHTML="User Info";

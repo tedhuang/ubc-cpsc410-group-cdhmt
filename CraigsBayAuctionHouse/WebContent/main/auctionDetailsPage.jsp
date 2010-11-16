@@ -57,6 +57,13 @@ viewAuctionByID(<%=auctionID%>);
 
 										<input type="button" onClick='bidOnAuction(<%= auctionID %>)' id="bidButton" disabled="true" value="Bid"> : $ <input type="text" id="bidAmount"/>  
 										<div id="bidFeedback"> </div>
+										
+										<input type="button" onClick ='changeAuctionStatus(<%=auctionID %>)' id="changeStatusButton" disabled="true" value="Owner Option: Change Auction Status"/> :  										
+										<select name="changeStatusValue" id="changeStatusValue" disabled="true">
+											<option value="OPEN">Open</option>
+											<option value="CLOSED">Closed</option>
+											<option value="EXPIRED">Expired</option>
+										</select>
 									</td>
 								</tr>
 								

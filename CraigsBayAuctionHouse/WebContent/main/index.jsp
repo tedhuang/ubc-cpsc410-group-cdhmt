@@ -225,7 +225,8 @@
 				    		    
 				    //Gets userCred and prints it to div
 					var userCred = (xmlhttp.responseXML.getElementsByTagName("userCred")[0]).childNodes[0].nodeValue;
-		
+					var userID = (xmlhttp.responseXML.getElementsByTagName("userID")[0]).childNodes[0].nodeValue;
+					
 				    if( userCred != "null" ) 
 					    { 
 					    
@@ -235,6 +236,7 @@
 							document.getElementById("myDiv").innerHTML=responseText;
 							document.getElementById("submitCred").value = userCred;
 							document.getElementById("name").value = userName;
+							document.getElementById("submitUserID").value = userID;
 							document.getElementById("close").submit();
 							
 		
@@ -367,6 +369,7 @@
 	<% 
 		String cred = request.getParameter("cred");
 		String userName = request.getParameter("name");
+		String loggedInUserID = request.getParameter("loggedInUserID");
 		
 		if(userName == null || userName == "")
 		{
@@ -375,6 +378,7 @@
 	%>
 	<input id="cred" type="hidden" value=<%= cred %>>
 	<input id="userName" type="hidden" value=<%= userName %>>
+	<input id="loginUserID" type="hidden" value=<%=loggedInUserID %>>
 	
 
 	<% 
@@ -400,6 +404,7 @@
 			  <form id= "close" name="close" method="post" title="Close" >
 					<input id="submitCred" type="hidden" name="cred"/>
 					<input id="name" type="hidden" name="name" />
+					<input id="submitUserID" type="hidden" name="loggedInUserID" />
 					<!-- <input type="image" src="./resources/images/minus.png" name="image" />
 					 -->
 			  </form>

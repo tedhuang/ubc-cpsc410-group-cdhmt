@@ -64,10 +64,14 @@ public class DBManager {
 			stm = m_conn.createStatement();
 			
 			String query = "UPDATE " + "AuctionsTable" +
-							" SET auctionStatus=" + status +
-							" WHERE auctionID=" + auctionID;
+							" SET auctionStatus='" + status +
+							"' WHERE auctionID=" + auctionID;
 
 			boolean success = stm.execute(query);
+			if(success)
+			{
+				return 1;
+			}
 			
 		} catch (SQLException e1) {
 			e1.printStackTrace();
@@ -312,8 +316,7 @@ public class DBManager {
 			stm = m_conn.createStatement();
 			
 			String query = "SELECT * FROM AuctionsTable" +
-							" WHERE AuctionID=" + auctionID + 
-							" AND AuctionStatus='OPEN'";
+							" WHERE AuctionID=" + auctionID;
 			
 			System.out.println("Retrieving Auction " + auctionID + ": " + query);
 			
@@ -651,6 +654,41 @@ public class DBManager {
 		
 		return null;
 		
+	}
+	
+	//Returns UserID if valid username/password
+	//Else returns -1
+	public int userGetIDByUserNameAndPassword(String userName, String Password)
+	{
+		try {
+			stm = m_conn.createStatement();
+					
+			String query = "SELECT UserID FROM UserTable WHERE " +
+							"UserName='" + userName + "' AND " +
+							"Password='" + Password +"'";
+			
+			System.out.println("Getting User Id: " + query);
+			ResultSet result = stm.executeQuery(query);
+			
+			if(result.first())
+			{
+				int userID = result.getInt("UserID");
+				stm.close();
+				return userID;
+			}
+			
+			stm.close();
+			return -1;
+			
+					
+		}
+		catch (SQLException e) {
+			//TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return -1;
 	}
 	
 	public boolean userEditInfo( int userID, String Password,String PhoneNumber,String PhoneCarrier,String EmailAddress ) {

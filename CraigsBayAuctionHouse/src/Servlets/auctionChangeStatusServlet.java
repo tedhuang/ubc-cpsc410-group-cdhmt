@@ -37,15 +37,17 @@ public class auctionChangeStatusServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		String auctionID = request.getParameter("auctionID").toString();
-		String status = request.getParameter("auctionStatus").toString();  //might be changed to CLOSED exclusively
+		String status = request.getParameter("auctionStatus").toString(); 
 		String credential = request.getParameter("userCred").toString(); 
 		
 		//Check if status argument is valid
-		if(status != "CLOSED" ||
-		   status != "OPEN" ||
-		   status != "FINISH"){
-			System.out.println("Error: Invalid status change");
-		}
+		if( !( status.equalsIgnoreCase( "CLOSED" ) ||
+			   status.equalsIgnoreCase( "OPEN" )||
+			   status.equalsIgnoreCase( "EXPIRED" ) ) )
+		{
+			System.out.println("Invalid state change");
+		} 
+		
 		
 		DBManager dbm = new DBManager();
 		int userID = dbm.userCredentialCheck(credential);

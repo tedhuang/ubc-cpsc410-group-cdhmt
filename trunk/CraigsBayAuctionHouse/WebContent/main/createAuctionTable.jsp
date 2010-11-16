@@ -21,13 +21,29 @@
 Title: <input id="AuctionTitle" type="text" name="AuctionTitle" size="20"><br>
 MinPrice: <input id="MinPrice" type="text" name="MinPrice" size="12"><br>
 <!-- The value returned by the selection corresponds to the number of days till expiry -->
-ExpiryDate: <select id="ExpiryDate" name="ExpiryDate">
-			<option value="1">One day</option>
-			<option value="2">Two Days</option>
-			<option value="3">Three Days</option>
-			<option value="7">One Week</option>
-			<option value="14">Two Weeks</option>
-		  </select><br>
+Expire In... :
+			Weeks:<select id="ExpiryWeek" name="ExpiryDate">
+			<option value="0"></option>
+			<option value="1">One</option>
+			<option value="2">Two</option>
+			<option value="3">Three</option>
+			<option value="4">Four</option>
+			</select>
+			Days:<select id="ExpiryDay" name="ExpiryDate">
+			<option value="0"></option>
+			<option value="1">One</option>
+			<option value="2">Two</option>
+			<option value="3">Three</option>
+			<option value="4">Four</option>
+			<option value="5">Five</option>
+			<option value="6">Six</option>
+			</select>
+			Hours:<select id="ExpiryHour" name="ExpiryDate">
+			<option value="0"></option>
+			<option value="6">Six</option>
+			<option value="12">Twelve</option>
+			<option value="18">Eighteen</option>
+			</select><br>
 Category: <select id="Category" name="Category">
 			<option value="electronics">Electronics</option>
 			<option value="books">Books</option>

@@ -41,14 +41,14 @@ function ParseUserInfo( responseXML ) {
     
 	document.getElementById("Password").value =	user.getAttribute("password");
     document.getElementById("PhoneNumber").value = user.getAttribute("phoneNumber");
-    //DEBUG
-    for(i = 0; i > document.getElementById("PhoneCarrier").options.length; i++){
-    	if(document.getElementById("PhoneCarrier").options[i] == user.getAttribute("phoneCarrier")){
+    var i = 0;
+    for(i = 0; i < (document.getElementById("PhoneCarrier").options.length); i++){
+    	if(document.getElementById("PhoneCarrier").options[i].value == user.getAttribute("phoneCarrier")){
     		document.getElementById("PhoneCarrier").options[i].selected = true;
     	}
+    	
     }
     document.getElementById("EmailAddress").value =	user.getAttribute("emailAddress");
-
 	document.getElementById("surferTitle").innerHTML="User Info";
 }
 

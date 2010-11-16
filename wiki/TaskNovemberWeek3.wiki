@@ -41,6 +41,7 @@ AuctionExpireTime
   * repopulate DB with rows that has expiry time
   * keep in mind that SMS-daemon will need to check for expiry time
   * should a user who has bidded on an auction see it even if expired? (right now yes)
+  * Should we put a expiry countdown timer on the viewAuctionsDetail page?
 
 Friends - 5h
   * Keep a friends list 1h

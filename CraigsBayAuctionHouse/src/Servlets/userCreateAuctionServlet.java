@@ -19,12 +19,26 @@ public class userCreateAuctionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	//Method to calculate expiry date
-    private String expiryDate(int auctionLength){
+    private String expiryDate(int expiryWeek,int expiryDay, int expiryHour){
+    	long expireTime = expiryTime(expiryWeek, expiryDay, expiryHour);
     	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     	Calendar cal = Calendar.getInstance();
-    	cal.add(Calendar.DATE, auctionLength);
+    	cal.setTimeInMillis(expireTime);
     	return dateFormat.format(cal.getTime());
     	
+    }
+    
+    //Method to calculate the expiry time
+    private long expiryTime(int expiryWeek, int expiryDay, int expiryHour){
+    	Calendar cal = Calendar.getInstance();
+    	long currentTime = cal.getTimeInMillis();
+    	
+    	long expireTime = expiryDay + ( expiryWeek * 7);
+    	expireTime = expiryHour + ( expireTime * 24 );
+    	
+    	expireTime = expireTime * 60 * 60 * 1000;
+    	
+    	return expireTime + currentTime;
     }
     
     private String getDate(){
@@ -78,10 +92,15 @@ public class userCreateAuctionServlet extends HttpServlet {
 		String MinPrice = request.getParameter("MinPrice").toString();
 		String AuctionStatus = "Open";
 		String CreationDate = getDate();
-		String ExpiryDate = expiryDate(Integer.parseInt(request.getParameter("ExpiryDate")));
+		String ExpiryDate = expiryDate(Integer.parseInt(request.getParameter("ExpiryWeek")),
+										Integer.parseInt(request.getParameter("ExpiryDay")),
+										Integer.parseInt(request.getParameter("ExpiryHour")));
+		long ExpiryTime = expiryTime(Integer.parseInt(request.getParameter("ExpiryWeek")),
+										Integer.parseInt(request.getParameter("ExpiryDay")),
+										Integer.parseInt(request.getParameter("ExpiryHour")));
 		String Category = request.getParameter("Category").toString();
 		
-		int success = dbm.createNewAuction(AuctionTitle, Category, AuctionStatus, CreationDate, ExpiryDate, Double.parseDouble(MinPrice), OwnerID, "flickr album");
+		int success = dbm.createNewAuction(AuctionTitle, Category, AuctionStatus, CreationDate, ExpiryDate, ExpiryTime, Double.parseDouble(MinPrice), OwnerID, "flickr album");
 		
 		if(success <= 0){
 			System.out.println("Error: createNewAuction in userCreateAuctionServlet failed");

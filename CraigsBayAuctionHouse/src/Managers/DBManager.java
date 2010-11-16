@@ -36,14 +36,14 @@ public class DBManager {
 		}
 	}
 	
-	public int createNewAuction(String auctionName, String category, String auctionStatus, String creationDate, String expiryDate, Double minPrice, int ownerID, String flickrAlbumID   )
+	public int createNewAuction(String auctionName, String category, String auctionStatus, String creationDate, String expiryDate, long expiryTime, Double minPrice, int ownerID, String flickrAlbumID   )
 	{
 		try {
 			stm = m_conn.createStatement();
 			String query = "INSERT INTO AuctionsTable(AuctionTitle, Category, AuctionStatus, " +
-								"ExpiryDate, CreationDate, OwnerID, MinPrice, LatestBidPrice, FlickerAlbumID) VALUES" +
+								"ExpiryDate, AuctionExpireTime, CreationDate, OwnerID, MinPrice, LatestBidPrice, FlickerAlbumID) VALUES" +
 								"('" + auctionName + "' , '" + category + "' , '" + auctionStatus +
-								"' , '"  + expiryDate + "' , '" + creationDate + 
+								"' , '"  + expiryDate + "' , '" + expiryTime + "' , '" + creationDate + 
 								"' , '" + ownerID + "' , '" + minPrice + "' , '" + minPrice + "' , '" + flickrAlbumID + "')"; 
 			
 			System.out.println("Creating new auction : " + query);

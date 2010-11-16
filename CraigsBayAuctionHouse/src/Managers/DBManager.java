@@ -85,7 +85,8 @@ public class DBManager {
 			stm = m_conn.createStatement();
 			
 			String query = "SELECT * FROM AuctionsTable "
-							+ "WHERE AuctionTitle LIKE '" + searchTitle + "%' "; 
+							+ "WHERE AuctionTitle LIKE '" + searchTitle + "%' " +
+							" AND AuctionExpireTime>" + Calendar.getInstance().getTimeInMillis(); 
 							//+ "AND Category = '" + searchCategory + "' " + 
 							//"AND OwnerID = (SELECT UserID FROM UserTable WHERE UserName = '" + SearchOwner + "')";
 			
@@ -138,10 +139,10 @@ public class DBManager {
 		try {
 			stm = m_conn.createStatement();
 			
-			String listRange = "*";
-			String query = "SELECT " + listRange + 
+			String query = "SELECT *" + 
 								" FROM AuctionsTable" +
-								" WHERE AuctionStatus='OPEN'"; //Only pull auctions that have status OPEN
+								" WHERE AuctionStatus='OPEN'" +
+								" AND AuctionExpireTime>" + Calendar.getInstance().getTimeInMillis(); //Only pull auctions that have status OPEN
 
 			System.out.println("Retrieving Auctions List : " + query);
 			
@@ -168,6 +169,7 @@ public class DBManager {
 				tempAuction.auctionStatus = result.getString("auctionStatus");
 				tempAuction.flickerAlbumID = result.getString("flickerAlbumID");
 				tempAuction.numberOfViews = result.getInt("numberOfViews");
+				//TODO do we need to extract AuctionExpiryTime
 				
 				auctionsList.add( tempAuction );
 				

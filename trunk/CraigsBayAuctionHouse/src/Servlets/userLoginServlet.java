@@ -43,9 +43,10 @@ public class userLoginServlet extends HttpServlet {
 		DBManager dbm = new DBManager();
 				
 		String userCred = dbm.userLogin(userName, password);
+		int userID = dbm.userGetIDByUserNameAndPassword(userName, password);
 		
 
-		if( userCred != null){ 
+		if( userCred != null && userID != -1){ 
 			
 			// Write XML to response if DB has return message
 			StringBuffer XMLResponse = new StringBuffer();	
@@ -53,6 +54,7 @@ public class userLoginServlet extends HttpServlet {
 			XMLResponse.append("<response>\n");
 			
 			XMLResponse.append("\t<userCred>" + userCred + "</userCred>\n");
+			XMLResponse.append("\t<userID>" + userID + "</userID>\n");
 			
 			XMLResponse.append("</response>\n");
 			response.setContentType("application/xml");
@@ -67,6 +69,7 @@ public class userLoginServlet extends HttpServlet {
 			XMLResponse.append("<response>\n");
 			
 			XMLResponse.append("\t<userCred>" + null + "</userCred>\n"); //probably don't need this line to say userCred is null
+			XMLResponse.append("\t<userID>" + null + "</userID>\n");
 			
 			XMLResponse.append("</response>\n");
 			response.setContentType("application/xml");

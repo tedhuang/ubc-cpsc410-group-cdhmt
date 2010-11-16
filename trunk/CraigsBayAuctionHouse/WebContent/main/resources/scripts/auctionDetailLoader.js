@@ -33,9 +33,9 @@ function handleDropdownMenu(){
 }
 
 /*
- * Sets the status of the auction associated with the ID to "CLOSED"
+ * Sets the status of the auction associated with the ID to the specified status
  */
-function closeAuction(auctionID){
+function changeAuctionStatus(auctionID){
 	if (window.XMLHttpRequest)
 	  {// code for IE7+, Firefox, Chrome, Opera, Safari
 	  xmlhttp=new XMLHttpRequest();
@@ -45,23 +45,30 @@ function closeAuction(auctionID){
 	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 	  }
 	  
-//	xmlhttp.onreadystatechange=function()
-//	  {
-//	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-//	    {
-//		   loadAuctionParseXMLResponse(xmlhttp.responseXML);
-//	    }
-//	  }
+	xmlhttp.onreadystatechange=function()
+	  {
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	    {
+		   changeAuctionStatusParseResponse(xmlhttp.responseXML);
+	    }
+	  }
 	
+	var auctionStatus = document.getElementById("changeStatusValue").value;
 	var credential = document.getElementById("cred").value;
 	var Params = "auctionID=" + auctionID +
-				 "&auctionStatus="+ "CLOSED" + 
+				 "&auctionStatus="+ auctionStatus + 
 				 "&userCred=" + credential;
 	
 	//send the parameters to the servlet with POST
 	xmlhttp.open("POST","../auctionChangeStatusServlet" ,true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xmlhttp.send(Params);
+}
+
+function changeAuctionStatusParseResponse(responseXML)
+{
+	
+	
 }
 
 
@@ -157,6 +164,14 @@ function viewInfo(colParams)
 	document.getElementById("latestBidPrice").value = colParams[9];
 	
 	document.getElementById("bidButton").disabled=false;
+	
+	//alert( document.getElementById("loginUserID").value );
+	//alert( document.getElementById("ownerID").value );
+	if(document.getElementById("ownerID").value == document.getElementById("loginUserID").value)
+	{//is owner
+		document.getElementById("changeStatusButton").disabled=false;
+		document.getElementById("changeStatusValue").disabled=false;
+	}
     
 }
 

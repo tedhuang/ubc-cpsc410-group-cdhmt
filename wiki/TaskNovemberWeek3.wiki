@@ -4,8 +4,7 @@
 
 List of stuff we left to complete and the manhour estimation for them
 
-
-= Details =
+= Details = 28-30h
 
 Chat - 15h
   * Reseaerch/Design - 1h
@@ -31,30 +30,25 @@ Flickr - 7-9h
 SMS - Goes off when Auction Expires?
   * Auction expiry checker - 2-3h
 
-ViewAuctionDetail
+ViewAuctionDetail - 1h
   * different feature for different user - 1h
 
+Friends - 5h
+  * Keep a friends list - 1h
+  * find out how to represent this on DB - 2h
+  * write client side script and page to track friends - 2h
+
+
+= Options =
+
 AuctionExpireTime
-  * Insert new expiry time in miliseconds (long) when creating auctions
-  * check for expiry time when viewing all auction
-  * check for expiry time when searching for auction
   * repopulate DB with rows that has expiry time
   * keep in mind that SMS-daemon will need to check for expiry time
   * should a user who has bidded on an auction see it even if expired? (right now yes)
   * Should we put a expiry countdown timer on the viewAuctionsDetail page?
 
-Friends - 5h
-  * Keep a friends list 1h
-  * find out how to represent this on DB - 2h
-  * write client side script and page to track friends - 2h
-
-Random
-  * in viewAuctionDetail.jsp need to store auctionID for reference - 1.5h
-  * put close() button inside viewAuction page - 1h
-  * status - expiryTime based?
-  * Cleanup web.xml
-
-= Options =
-
 Search -
   * Advanced Search
+
+Random
+  * Cleanup web.xml

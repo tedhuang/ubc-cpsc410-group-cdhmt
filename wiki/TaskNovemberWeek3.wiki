@@ -4,7 +4,7 @@
 
 List of stuff we left to complete and the manhour estimation for them
 
-= Details = 28-30h
+= Details 28-30h = 
 
 Chat - 15h
   * Reseaerch/Design - 1h

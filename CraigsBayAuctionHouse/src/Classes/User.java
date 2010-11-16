@@ -32,7 +32,7 @@ public class User {
 				" userID=\"" + userID + "\"" +
 				" password=\"" + password + "\"" +
 				" phoneNumber=\"" + phoneNumber + "\"" +
-				" phonecarrier=\"" + phoneCarrier  + "\"" +
+				" phoneCarrier=\"" + phoneCarrier  + "\"" +
 				" emailAddress=\"" + emailAddress + "\"" +
 				" userName=\"" + userName + "\"" +
 				"/>\n";

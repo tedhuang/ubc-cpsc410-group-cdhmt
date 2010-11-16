@@ -798,4 +798,29 @@ public class DBManager {
 		return -2;
 	}
 	
+	//return 1 if succesful
+	//return -1 if fail
+	public int auctionUpdateExpiryTime(int auctionID, String expiryDate, long expiryTime)
+	{
+		try {
+			stm = m_conn.createStatement();
+				
+			String query = "UPDATE AuctionsTable SET " +
+							"ExpiryDate='" + expiryDate +"'," +
+							"AuctionExpireTime=" + expiryTime +
+							" WHERE AuctionID=" + auctionID;
+			
+			System.out.println("Updating Expiry time : " + query);
+			
+			int success = stm.executeUpdate(query);
+			stm.close();
+			return success;
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		
+		return -1;
+	}
+	
 }

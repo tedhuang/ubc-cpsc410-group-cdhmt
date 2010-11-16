@@ -13,23 +13,23 @@ function toggle() {
 	}
 } 
 
-/*
- * Might not need
- */
-function handleDropdownMenu(){
-	
-	//if(selection)
-	var selection = document.getElementById("dropdown").value;
+function handleStatusSelectionChange()
+{
+	var auctionStatus = document.getElementById("changeStatusValue").value;
+	if(auctionStatus == "OPEN")
+	{
+		document.getElementById("ExpiryWeekAuctionOwnerChange").disabled=false;
+		document.getElementById("ExpiryDayAuctionOwnerChange").disabled=false;
+		document.getElementById("ExpiryHourAuctionOwnerChange").disabled=false;
+	}
+	else
+	{
+		document.getElementById("ExpiryWeekAuctionOwnerChange").disabled=true;
+		document.getElementById("ExpiryDayAuctionOwnerChange").disabled=true;
+		document.getElementById("ExpiryHourAuctionOwnerChange").disabled=true;
+	}
 
-	if(selection.equals("edit")){
-		//Todo:implement
-	}
-	
-	if(selection.equals("close")){
-		closeAuction();
-	}
-		
-	
+
 }
 
 /*
@@ -49,15 +49,25 @@ function changeAuctionStatus(auctionID){
 	  {
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	    {
-		   changeAuctionStatusParseResponse(xmlhttp.responseXML);
+		   changeAuctionStatusParseResponse(xmlhttp.responseXML, auctionID);
 	    }
 	  }
 	
+	var expiryWeek = document.getElementById("ExpiryWeekAuctionOwnerChange").value;
+	var expiryDay = document.getElementById("ExpiryDayAuctionOwnerChange").value;
+	var expiryHour = document.getElementById("ExpiryHourAuctionOwnerChange").value;
+	
 	var auctionStatus = document.getElementById("changeStatusValue").value;
 	var credential = document.getElementById("cred").value;
+	
+	document.getElementById("bidFeedback").innerHTML="<h2><img src=./resources/images/loading.gif></img> <p>Sending Auction Update Request...</h2></p>";
+	
 	var Params = "auctionID=" + auctionID +
 				 "&auctionStatus="+ auctionStatus + 
-				 "&userCred=" + credential;
+				 "&userCred=" + credential +
+				 "&expiryWeek=" + expiryWeek +
+				 "&expiryDay=" + expiryDay +
+				 "&expiryHour=" + expiryHour;
 	
 	//send the parameters to the servlet with POST
 	xmlhttp.open("POST","../auctionChangeStatusServlet" ,true);
@@ -65,9 +75,19 @@ function changeAuctionStatus(auctionID){
 	xmlhttp.send(Params);
 }
 
-function changeAuctionStatusParseResponse(responseXML)
+function changeAuctionStatusParseResponse(responseXML, auctionID)
 {
-	
+	var success = (responseXML.getElementsByTagName("success")[0]).childNodes[0].nodeValue;
+	if(success==1)
+	{
+		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'Dynapage');
+		document.getElementById("surferTitle").innerHTML="Update Succesful, Refreshing Auction Details...";
+	}
+	else
+	{
+		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'Dynapage');
+		document.getElementById("surferTitle").innerHTML="Update Unsuccesful, Please Try Again! - Refreshing Auction Details...";
+	}
 	
 }
 
@@ -163,7 +183,6 @@ function viewInfo(colParams)
 	document.getElementById("ownerID").value = colParams[6];
 	document.getElementById("latestBidPrice").value = colParams[9];
 	
-	document.getElementById("bidButton").disabled=false;
 	
 	//alert( document.getElementById("loginUserID").value );
 	//alert( document.getElementById("ownerID").value );
@@ -171,6 +190,13 @@ function viewInfo(colParams)
 	{//is owner
 		document.getElementById("changeStatusButton").disabled=false;
 		document.getElementById("changeStatusValue").disabled=false;
+		document.getElementById("bidButton").disabled=true;
+		//enable expiry date change fields
+		handleStatusSelectionChange();
+	}
+	else if( document.getElementById("userName").value != "Guest")
+	{
+		document.getElementById("bidButton").disabled=false;
 	}
     
 }
@@ -197,7 +223,7 @@ function bidOnAuction(auctionID)
 		document.getElementById("bidFeedback").innerHTML = "<h2>Bid too low</h2>";
 		return;
 	}
-	
+	document.getElementById("bidFeedback").innerHTML="<h2><img src=./resources/images/loading.gif></img> <p>Sending Bid Request...</h2></p>";
 	document.getElementById("bidButton").disabled=true;
 	
 	if (window.XMLHttpRequest)

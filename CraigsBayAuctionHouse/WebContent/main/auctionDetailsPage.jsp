@@ -59,11 +59,37 @@ viewAuctionByID(<%=auctionID%>);
 										<div id="bidFeedback"> </div>
 										
 										<input type="button" onClick ='changeAuctionStatus(<%=auctionID %>)' id="changeStatusButton" disabled="true" value="Owner Option: Change Auction Status"/> :  										
-										<select name="changeStatusValue" id="changeStatusValue" disabled="true">
+										<select name="changeStatusValue" id="changeStatusValue" disabled="true" onchange="handleStatusSelectionChange()">
 											<option value="OPEN">Open</option>
 											<option value="CLOSED">Closed</option>
 											<option value="EXPIRED">Expired</option>
 										</select>
+										
+									<br>	
+									Expire In... :
+									Weeks:<select id="ExpiryWeekAuctionOwnerChange" name="ExpiryDateAuctionOwnerChange" disabled="true">
+									<option value="0"></option>
+									<option value="1">One</option>
+									<option value="2">Two</option>
+									<option value="3">Three</option>
+									<option value="4">Four</option>
+									</select>
+									Days:<select id="ExpiryDayAuctionOwnerChange"" name="ExpiryDateAuctionOwnerChange" disabled="true">
+									<option value="0"></option>
+									<option value="1">One</option>
+									<option value="2">Two</option>
+									<option value="3">Three</option>
+									<option value="4">Four</option>
+									<option value="5">Five</option>
+									<option value="6">Six</option>
+									</select>
+									Hours:<select id="ExpiryHourAuctionOwnerChange" name="ExpiryDateAuctionOwnerChange" disabled="true">
+									<option value="0"></option>
+									<option value="6">Six</option>
+									<option value="12">Twelve</option>
+									<option value="18">Eighteen</option>
+									</select><br>
+			
 									</td>
 								</tr>
 								

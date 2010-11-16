@@ -20,6 +20,9 @@ Chat - 15h
   * MSG history functionality - 1h
   * DB Structuring 1h.
 
+  * Chat client side receiving should be a HTTPRequest that simply monitors its onReadyStateChange() function to parse incoming XML
+  * Chat client side sender should send msg using POST while client listen using GET
+
 Flickr - 7-9h
   * Upload Research - 3-5h
   * Upload Integrate - 3h

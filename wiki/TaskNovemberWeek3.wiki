@@ -31,6 +31,14 @@ SMS - Goes off when Auction Expires?
 ViewAuctionDetail
   * different feature for different user - 1h
 
+AuctionExpireTime
+  * Insert new expiry time in miliseconds (long) when creating auctions
+  * check for expiry time when viewing all auction
+  * check for expiry time when searching for auction
+  * repopulate DB with rows that has expiry time
+  * keep in mind that SMS-daemon will need to check for expiry time
+  * should a user who has bidded on an auction see it even if expired? (right now yes)
+
 Friends - 5h
   * Keep a friends list 1h
   * find out how to represent this on DB - 2h

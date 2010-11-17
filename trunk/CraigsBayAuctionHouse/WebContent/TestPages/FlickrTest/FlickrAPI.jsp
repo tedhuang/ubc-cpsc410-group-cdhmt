@@ -17,21 +17,25 @@ http://www.flickr.com/photos/55164508@N02/5119444922/
 var apiKey = "301748fd9ccc9801f9ed91772b19d8bd";
 var secret = "a6d78a61a59fbf33";
 var userID = "55164508@N02";
-auth_token=72157625364835544-ed3bb7ac6f3981be
-api_sig=13ab38217c6bc5e98d72059d24921d2a
+var hash = "92a368003b3e7042f76bb99e8b928891" 
 -->
 
-<h3>Uploading Test:</h3>
+<body>
 
+<div id="responseDiv"><h2>Response Text Area</h2></div>
 
-<script type="text/javascript" language="javascript" src="http://api.flickr.com/services/rest/?format=json&method=flickr.photos.search&user_id=55164508@N02&sort=date-taken-desc&api_key=301748fd9ccc9801f9ed91772b19d8bd"></script>
-
-
-<body onload="javascript:window.getSig()">
+<!-- <body onload="javascript:window.getFrobHash()">  -->
+<button type="button" onclick="getFrobHash()">Test Button</button>
+    
 
 <input type="hidden" id="hash" value=""/>
 
-<script type="text/javascript" language="javascript" src="http://api.flickr.com/services/rest/?method=flickr.auth.getFrob&api_key=4b29109dde7b7a3d9f64920b8a574694&api_sig=13ab38217c6bc5e98d72059d24921d2a" ></script>
+<!-- <script type="text/javascript" language="javascript" src="http://api.flickr.com/services/rest/?method=flickr.auth.getFrob&api_key=301748fd9ccc9801f9ed91772b19d8bd&api_sig=" + document.getElementById("hash").value > </script>  --> 
+
+<script type="text/javascript" language="javascript" src="http://api.flickr.com/services/rest/?method=flickr.auth.getFrob&api_key=301748fd9ccc9801f9ed91772b19d8bd&perms=write&api_sig=92a368003b3e7042f76bb99e8b928891" > </script> 
+
+
+<!-- http://flickr.com/services/auth/?api_key=[api_key]&perms=[perms]&api_sig=[api_sig] -->
 
 
 <form enctype="multipart/form-data" method="post"  action="http://api.flickr.com/services/upload/">
@@ -43,7 +47,6 @@ api_sig=13ab38217c6bc5e98d72059d24921d2a
 </form>
 
 
-
 <div class="container">
 	<h2>Flickr Photos Displayed with FlickrAPI</h2>
    	<script type="text/javascript" language="javascript" src="http://api.flickr.com/services/rest/?format=json&method=flickr.photos.search&user_id=55164508@N02&sort=date-taken-desc&api_key=301748fd9ccc9801f9ed91772b19d8bd"></script>
@@ -53,7 +56,7 @@ api_sig=13ab38217c6bc5e98d72059d24921d2a
 
 
 
-<h3>Flickr Photos Displayed with Badges (HTML) might need couple days to work:</h3>
+<h3>Flickr Photos Displayed with Badges:</h3>
 <!-- Start of Flickr Badge -->
 <style type="text/css">
 #flickr_badge_source_txt {padding:0; font: 11px Arial, Helvetica, Sans serif; color:#666666;}
@@ -72,7 +75,11 @@ api_sig=13ab38217c6bc5e98d72059d24921d2a
 </style>
 
 <!-- This line is basically what you need. Everything above is just for looks -->
+<h4>Photo with tag = tag1:</h4>
 <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?show_name=1&count=1&display=latest&size=t&layout=v&source=user_tag&user=55164508%40N02&tag=tag1"></script>
+<h4>Photo with tag = tag2:</h4>
+<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?show_name=1&count=1&display=latest&size=t&layout=v&source=user_tag&user=55164508%40N02&tag=tag2"></script>
+
 
 <tr>
 </td>
@@ -80,10 +87,6 @@ api_sig=13ab38217c6bc5e98d72059d24921d2a
 </table>
 </td></tr></table>
 <!-- End of Flickr Badge -->
-
-
-<h3>All public photos:</h3>
-<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?show_name=1&count=10&display=latest&size=t&layout=v&source=user&user=55164508%40N02"></script>
 
 
 

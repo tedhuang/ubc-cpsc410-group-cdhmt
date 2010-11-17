@@ -4,17 +4,15 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Reader;
+import java.math.BigInteger;
 import java.net.URL;
+import java.security.MessageDigest;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.stream.StreamResult;
-import javax.xml.transform.stream.StreamSource;
+
 
 import Managers.FlickrManager;
 
@@ -31,6 +29,28 @@ public class flickrServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+    
+    
+	
+	/**
+	 * Get the MD5 hash of a text string
+	 */
+	public static String MD5(String text)
+	{
+		String md5Text = "";
+		try {
+			MessageDigest digest = MessageDigest.getInstance("MD5");
+			md5Text = new BigInteger(1, digest.digest((text).getBytes())).toString(16);
+		} catch (Exception e) {
+			System.out.println("Error in call to MD5");
+		}
+		
+        if (md5Text.length() == 31) {
+            md5Text = "0" + md5Text;
+        }
+		return md5Text;
+	}
+    
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -45,30 +65,39 @@ public class flickrServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		//String auctionItem = request.getParameter("auctionItem").toString();
-
-		System.out.println("Check");
+		String apikey = "301748fd9ccc9801f9ed91772b19d8bd";
+		String secret = "a6d78a61a59fbf33";
+		String userid = "55164508@N02";
+		String func = request.getParameter("func").toString();
 		
-		//Hard coded URL for public album
-		URL url = new URL("http://api.flickr.com/services/rest/?&method=flickr.people.getPublicPhotos&api_key=301748fd9ccc9801f9ed91772b19d8bd&user_id=55164508@N02");
+		//TODO: add condition for more functions 
+		//when func will define which function we are giving the hash to and in turn, they differ in the format of the response
 		
-		//Doesn't work:
-//		StreamSource xml = new StreamSource(url.openStream());
-//		StreamSource xsl = new StreamSource(new File("/path/to/file.xsl"));
-//		StreamResult output = new StreamResult(response.getOutputStream());
-//
-//		try {
-//		    Transformer transformer = TransformerFactory.newInstance().newTransformer(xsl);
-//		    transformer.transform(xml, output);
-//		} catch (TransformerException e) {
-//		    throw new ServletException("Transforming XML failed.", e);
-//		}
-//		
-//		System.out.println(output.toString()); //Testprint
-//		
-//		response.setContentType("application/xml");
-//		response.getWriter().println(output);
+		//if(func.equals("getFrob")){
+			//hash calculation for getfrob call only
+			String hash = MD5(secret + "api_key" + apikey + "formatjson" + "methodflickr.auth.getFrob" + "userid" + userid);
+				
+			System.out.println("Hash for getfrob: " + hash);
+			
+			StringBuffer XMLResponse = new StringBuffer();	
+			XMLResponse.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
+			XMLResponse.append("<response>\n");
+			
+			XMLResponse.append("\t<hash>" + hash + "</hash>\n");
+			
+			XMLResponse.append("</response>\n");
+			response.setContentType("application/xml");
+			response.getWriter().println(XMLResponse);
+		//}
 		
 	}
 
 }
+
+
+
+
+
+
+
+

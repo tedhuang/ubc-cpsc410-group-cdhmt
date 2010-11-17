@@ -189,4 +189,14 @@
     <servlet-name>chatRelayServlet</servlet-name>
     <url-pattern>/chatRelayServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>flickrServlet</display-name>
+    <servlet-name>flickrServlet</servlet-name>
+    <servlet-class>Servlets.flickrServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>flickrServlet</servlet-name>
+    <url-pattern>/flickrServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

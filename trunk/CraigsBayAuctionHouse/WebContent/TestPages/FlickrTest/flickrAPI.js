@@ -1,3 +1,4 @@
+
 /*
  * All REST responses from Flickr are handled by this function
  */
@@ -33,7 +34,6 @@ function jsonFlickrApi(rsp) { //Function adapted from example online
 
 function ParseXMLResponse(responseXML)
 {
-	alert("ParseXML");
 	 var hash = (responseXML.getElementsByTagName("hash")[0]).childNodes[0].nodeValue;
 	 
 	 var responseText = "<h2>AJAX XML response from server: " + hash + "</h2>";
@@ -41,23 +41,15 @@ function ParseXMLResponse(responseXML)
 	 return responseText;
 }
 
-function getFrobHash(){ //TODO: add paramter "func"
+function getFrobHash(func){ 
 	//var apikey = "301748fd9ccc9801f9ed91772b19d8bd";
 	//var secret = "a6d78a61a59fbf33";
 	//var userid = "55164508@N02";
 	
-	//a6d78a61a59fbf33api_key301748fd9ccc9801f9ed91772b19d8bdformatjsonuserid55164508@N02
-
-	//a6d78a61a59fbf33api_key301748fd9ccc9801f9ed91772b19d8bdformatjsonmethodflickr.auth.getFrob
-	
 	//var out = "a6d78a61a59fbf33" + "api_key" + "301748fd9ccc9801f9ed91772b19d8bd" + "formatjson" + "methodflickr.auth.getFrob" + "userid" + userid;
 	//var hash = hex_md5(out);
 
-	//document.getElementById("hash").value = hash;
-	//alert(document.getElementById("hash").value );
-	
-	alert("getFrob");
-	
+		
 	if (window.XMLHttpRequest)
 	  {// code for IE7+, Firefox, Chrome, Opera, Safari
 	  xmlhttp=new XMLHttpRequest();
@@ -73,16 +65,20 @@ function getFrobHash(){ //TODO: add paramter "func"
 	    {
 		    //parse XML response from server
 		    var responseText= ParseXMLResponse(xmlhttp.responseXML);
-		    alert("responseText: " + responseText);   
+		    //alert("responseText: " + responseText);   
 			
 	    	document.getElementById("responseDiv").innerHTML=responseText;
+	    	//load hash value into hidden variable
+	    	
+	    	document.getElementById("hash").value = (xmlhttp.responseXML.getElementsByTagName("hash")[0]).childNodes[0].nodeValue;
+	    	alert("Inside js: " + document.getElementById("hash").value );
 	    }
 	  };
 	
-	var func = "getFrob";
-	var Params = "func" + func;
+	//var func = "getFrob";
+	var Params = "func=" + func;
 	
-	xmlhttp.open("POST","../CraigsBayAuctionHouse/flickrServlet" ,true); 
+	xmlhttp.open("POST","/CraigsBayAuctionHouse/flickrServlet" ,true); 
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xmlhttp.send(Params);
 

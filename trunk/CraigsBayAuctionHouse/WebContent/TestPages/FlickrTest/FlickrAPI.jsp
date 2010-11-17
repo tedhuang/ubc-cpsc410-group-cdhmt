@@ -17,25 +17,36 @@ http://www.flickr.com/photos/55164508@N02/5119444922/
 var apiKey = "301748fd9ccc9801f9ed91772b19d8bd";
 var secret = "a6d78a61a59fbf33";
 var userID = "55164508@N02";
-var hash = "92a368003b3e7042f76bb99e8b928891" 
+var api_sig = "92a368003b3e7042f76bb99e8b928891";
+var tempfrob = "72157625407096028-bfc920d4961521fb-119473";
 -->
 
-<body>
+<body onload="javascript:window.getFrobHash(func)"> 
 
-<div id="responseDiv"><h2>Response Text Area</h2></div>
+<script type="text/javascript">
+var func = "getFrob";
+//var frobHash = document.getElementById("hash").value;
+</script>
 
-<!-- <body onload="javascript:window.getFrobHash()">  -->
+<div id="responseDiv">
+<h2>Response Text Area</h2>
+</div>
+
+
+<!-- 
 <button type="button" onclick="getFrobHash()">Test Button</button>
-    
+ -->
 
 <input type="hidden" id="hash" value=""/>
 
-<!-- <script type="text/javascript" language="javascript" src="http://api.flickr.com/services/rest/?method=flickr.auth.getFrob&api_key=301748fd9ccc9801f9ed91772b19d8bd&api_sig=" + document.getElementById("hash").value > </script>  --> 
+<!-- 
+<script type="text/javascript" language="javascript" src="http://api.flickr.com/services/rest/?method=flickr.auth.getFrob&api_key=301748fd9ccc9801f9ed91772b19d8bd&api_sig=" + frobHash > </script> 
+ -->
 
-<script type="text/javascript" language="javascript" src="http://api.flickr.com/services/rest/?method=flickr.auth.getFrob&api_key=301748fd9ccc9801f9ed91772b19d8bd&perms=write&api_sig=92a368003b3e7042f76bb99e8b928891" > </script> 
 
+<!-- This is hard coded, works for now -->
+<script type="text/javascript" language="javascript" src="http://api.flickr.com/services/rest/?method=flickr.auth.getFrob&api_key=301748fd9ccc9801f9ed91772b19d8bd&api_sig=92a368003b3e7042f76bb99e8b928891&format=json" > </script> 
 
-<!-- http://flickr.com/services/auth/?api_key=[api_key]&perms=[perms]&api_sig=[api_sig] -->
 
 
 <form enctype="multipart/form-data" method="post"  action="http://api.flickr.com/services/upload/">
@@ -47,13 +58,14 @@ var hash = "92a368003b3e7042f76bb99e8b928891"
 </form>
 
 
+
+
+<!-- 
 <div class="container">
 	<h2>Flickr Photos Displayed with FlickrAPI</h2>
    	<script type="text/javascript" language="javascript" src="http://api.flickr.com/services/rest/?format=json&method=flickr.photos.search&user_id=55164508@N02&sort=date-taken-desc&api_key=301748fd9ccc9801f9ed91772b19d8bd"></script>
 </div>
-
-
-
+ -->
 
 
 <h3>Flickr Photos Displayed with Badges:</h3>
@@ -86,9 +98,6 @@ var hash = "92a368003b3e7042f76bb99e8b928891"
 </tr>
 </table>
 </td></tr></table>
-<!-- End of Flickr Badge -->
-
-
 
 
 </body>

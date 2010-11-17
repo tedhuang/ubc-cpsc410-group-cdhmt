@@ -1,20 +1,13 @@
 package Servlets;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.Reader;
 import java.math.BigInteger;
-import java.net.URL;
 import java.security.MessageDigest;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
-import Managers.FlickrManager;
 
 /**
  * Servlet implementation class flickrServlet
@@ -29,9 +22,7 @@ public class flickrServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    
-    
-	
+
 	/**
 	 * Get the MD5 hash of a text string
 	 */
@@ -73,10 +64,12 @@ public class flickrServlet extends HttpServlet {
 		//TODO: add condition for more functions 
 		//when func will define which function we are giving the hash to and in turn, they differ in the format of the response
 		
-		//if(func.equals("getFrob")){
+		if(func.equals("getFrob")){
 			//hash calculation for getfrob call only
-			String hash = MD5(secret + "api_key" + apikey + "formatjson" + "methodflickr.auth.getFrob" + "userid" + userid);
-				
+			String signatureOutput = secret + "api_key" + apikey +  "formatjson" + "methodflickr.auth.getFrob";
+			
+			String hash = MD5(signatureOutput); 
+			
 			System.out.println("Hash for getfrob: " + hash);
 			
 			StringBuffer XMLResponse = new StringBuffer();	
@@ -88,16 +81,12 @@ public class flickrServlet extends HttpServlet {
 			XMLResponse.append("</response>\n");
 			response.setContentType("application/xml");
 			response.getWriter().println(XMLResponse);
-		//}
+		} 
+		else if(func.equals("getToken")){
+			
+			
+			
+		}
 		
 	}
-
 }
-
-
-
-
-
-
-
-

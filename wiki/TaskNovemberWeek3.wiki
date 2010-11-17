@@ -22,6 +22,9 @@ Chat - 15h
   * Chat client side receiving should be a HTTPRequest that simply monitors its onReadyStateChange() function to parse incoming XML
   * Chat client side sender should send msg using POST while client listen using GET
 
+AuctionExpireTime
+  * Update expiry status before searching for user-owned auction and user-bidded auction
+
 Flickr - 7-9h
   * Upload Research - 3-5h
   * Upload Integrate - 3h
@@ -29,9 +32,6 @@ Flickr - 7-9h
 
 SMS - Goes off when Auction Expires?
   * Auction expiry checker - 2-3h
-
-ViewAuctionDetail - 1h
-  * different feature for different user - 1h
 
 Friends - 5h
   * Keep a friends list - 1h

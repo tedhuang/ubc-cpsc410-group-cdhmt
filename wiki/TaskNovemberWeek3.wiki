@@ -6,6 +6,13 @@ List of stuff we left to complete and the manhour estimation for them
 
 = Details 28-30h = 
 
+Register User Page - 5h
+  * Input Fields - 1h
+  * Improve UI - 2h
+  * Servlet - 1h
+  * DB methods - 1h
+    * Check for duplicate names (cant exist already and cant be guest)
+
 Chat - 15h
   * Reseaerch/Design - 1h
   * Client Side UI - 3h
@@ -22,9 +29,6 @@ Chat - 15h
   * Chat client side receiving should be a HTTPRequest that simply monitors its onReadyStateChange() function to parse incoming XML
   * Chat client side sender should send msg using POST while client listen using GET
 
-AuctionExpireTime
-  * Update expiry status before searching for user-owned auction and user-bidded auction
-
 Flickr - 7-9h
   * Upload Research - 3-5h
   * Upload Integrate - 3h
@@ -40,6 +44,9 @@ Friends - 5h
 
 
 = Options =
+
+Mail-Box System
+  * possibly used for offline messaging and for friend request
 
 AuctionExpireTime
   * repopulate DB with rows that has expiry time

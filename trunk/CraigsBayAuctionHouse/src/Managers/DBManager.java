@@ -59,6 +59,7 @@ public class DBManager {
 		return -1;
 	}
 	
+	
 	public int auctionChangeStatus(String auctionID, String status){
 		
 		try{
@@ -437,6 +438,42 @@ public class DBManager {
 			
 	}
 	
+	public boolean usernameCheck(String Username){
+		ResultSet result;
+		
+		try{
+			stm = m_conn.createStatement();
+			String query = "SELECT UserID FROM UserTable " +
+								"WHERE UserName='" + Username+ "'"; 
+			
+			System.out.println("Checking Username: \n" + query);
+			
+			stm.executeQuery(query);
+			result = stm.getResultSet();
+			System.out.println("Result : " + result.first() );
+			
+			
+			//TODO: Check if these conditons work
+			if ( result.first() == false) {
+				stm.close();
+				System.out.println("Result : Unique User");
+				return true;
+			}
+			else {
+				stm.close();
+				result.close();
+				return false;
+			}
+		}catch (SQLException e) {
+			//TODO Auto-generated catch block
+			//Credential not found
+			System.out.println("Result : SQL EXCEPTION Failed to find user");
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+	
 	
 	
 	public int userLoginCheck( String userName, String password ) {
@@ -722,6 +759,28 @@ public class DBManager {
 		
 		return false;
 	}
+	
+	public boolean userRegister(String Username, String Password , String PhoneNumber,String PhoneCarrier,String EmailAddress){
+		try {
+			stm = m_conn.createStatement();
+					
+			String query = "INSERT INTO UserTable(UserName, Password, PhoneNumber, PhoneCarrier, EmailAddress) VALUES " + 
+	  		"('" + Username + "','" + Password + "','" + PhoneNumber + "','" + PhoneCarrier + "','" + EmailAddress +"')";
+			
+			System.out.println("Creating User:" + query);
+			boolean success = stm.execute(query);
+			stm.close();
+			return  success;
+					
+		}
+		catch (SQLException e) {
+			//TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+		
+	}
+	
 	
 	//returns 1 if success
 	//returns -1 if bid amount isn't bigger then latestBid

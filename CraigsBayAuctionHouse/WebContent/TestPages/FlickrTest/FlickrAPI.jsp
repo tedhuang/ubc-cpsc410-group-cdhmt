@@ -40,7 +40,7 @@ var func = "getFrob";
 <input type="hidden" id="hash" value=""/>
 
 <!-- 
-<script type="text/javascript" language="javascript" src="http://api.flickr.com/services/rest/?method=flickr.auth.getFrob&api_key=301748fd9ccc9801f9ed91772b19d8bd&api_sig=" + frobHash > </script> 
+<script type="text/javascript" language="javascript" src="http://api.flickr.com/services/rest/?method=flickr.auth.getFrob&api_key=301748fd9ccc9801f9ed91772b19d8bd&api_sig=" + > </script> 
  -->
 
 
@@ -52,8 +52,8 @@ var func = "getFrob";
 <form enctype="multipart/form-data" method="post"  action="http://api.flickr.com/services/upload/">
 <input type="file" name="photo"/>
 <input type="hidden" name="api_key" value="301748fd9ccc9801f9ed91772b19d8bd"/>
-<input type="hidden" name="auth_token" value=""/>
-<input type="hidden" name="api_sig" value=""/>
+<input type="hidden" name="auth_token" value="72157625289914267-ed25c30f0392675d"/>
+<input type="hidden" name="api_sig" value="0dbd6bf1d0c36853881f282a04a72c39"/>
 <input type="submit" name ="submit" value="Upload"/>
 </form>
 

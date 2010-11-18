@@ -25,9 +25,15 @@ public class chatRelayServlet extends HttpServlet {
         super();
         
         DBManager dbm = new DBManager();
+        
         // Statement stm = dbm.createStatement();
         
         //TODO use statment without disconnecting
+    }
+    
+    public void init()
+    {
+    	//System.out.println("IM ALIVE");
     }
 
 	/**

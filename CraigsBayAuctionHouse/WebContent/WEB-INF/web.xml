@@ -199,4 +199,15 @@
     <servlet-name>flickrServlet</servlet-name>
     <url-pattern>/flickrServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>auctionExpiredSMSServlet</display-name>
+    <servlet-name>auctionExpiredSMSServlet</servlet-name>
+    <servlet-class>Servlets.auctionExpiredSMSServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>auctionExpiredSMSServlet</servlet-name>
+    <url-pattern>/auctionExpiredSMSServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

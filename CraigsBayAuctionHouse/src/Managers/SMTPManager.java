@@ -14,32 +14,76 @@ public class SMTPManager {
 	private static final String GMAIL_SMTP_HOST = "smtp.gmail.com";
 	private static final String GMAIL_PORT = "465";
 	
-	
+	private DBManager dbm = null;
 	
 	public SMTPManager()
 	{
-		//don't singleton manager classes as each user will need to make their own instance
+		 dbm = new DBManager();
 	}
 	
-	public boolean sendMail(String UserName, String subject, String body)
+	//if winnerID = 0, means nobody won the auction (no bids)
+	public boolean sendMail(int ownerID, int winnerID, String auctionTitle, boolean isExpiredAuction)
 	{
-		DBManager dbm = new DBManager();
-		String[] info = dbm.userGetPhoneInfo(UserName);
-		String toAddress = "";
 		
-		if(info[0] != null && info[1] != null)
+		String[] ownerinfo = dbm.userGetPhoneInfo(ownerID);
+		String[] winnerInfo = null;
+		
+		if(winnerID != 0)
 		{
-			String number = info[0];
-			String carrier = info[1];
-			toAddress = constructAddress(number,carrier);
-		}
-		else
-		{
-			return false;
+			winnerInfo = dbm.userGetPhoneInfo(winnerID);
 		}
 		
+		String toOwnerAddress = "";
 		
+		if(ownerinfo[0] != null && ownerinfo[1] != null)
+		{
+			String number = ownerinfo[0];
+			String carrier = ownerinfo[1];
+			toOwnerAddress = constructAddress(number,carrier);
+		}
+
+		String toWinnerAddress = "";
 		
+		if(winnerInfo != null && winnerInfo[0] != null && winnerInfo[1] != null)
+		{
+			String number = winnerInfo[0];
+			String carrier = winnerInfo[1];
+			toWinnerAddress = constructAddress(number,carrier);
+		}
+		
+		if(isExpiredAuction)
+		{
+			String body="";
+			if(toOwnerAddress.length()>0)
+			{
+				if(winnerInfo == null)
+				{
+					body = "CraigsBay - Auction Expired without any bidders: " + auctionTitle;
+				}
+				else
+				{
+					body = "CraigsBay - A winner been found for your auction of: " + auctionTitle;
+				}
+					
+				send(toOwnerAddress, auctionTitle, body );
+			}
+			
+			
+			if(toWinnerAddress.length() > 0)
+			{
+				body = "CraigsBay - You have succesfully won: " + auctionTitle;
+				send(toWinnerAddress, auctionTitle, body);
+			}
+			
+			
+		}
+		
+		return true;
+
+	}
+	
+	private boolean send(String address, String title, String body)
+	{
 		Properties props = new Properties();
 		props.put("mail.smtp.user", CRAIGSBAY_EMAIL);
 		props.put("mail.smtp.host", GMAIL_SMTP_HOST);
@@ -61,10 +105,10 @@ public class SMTPManager {
 
 			MimeMessage msg = new MimeMessage(session);
 			msg.setText(body);
-			msg.setSubject(subject);
-			msg.setFrom(new InternetAddress(toAddress));
+			msg.setSubject(title);
+			msg.setFrom(new InternetAddress(address));
 			msg.addRecipient(Message.RecipientType.TO,
-					new InternetAddress(toAddress));
+					new InternetAddress(address));
 			Transport.send(msg);
 			System.out.println("done");
 		} catch (Exception mex) {

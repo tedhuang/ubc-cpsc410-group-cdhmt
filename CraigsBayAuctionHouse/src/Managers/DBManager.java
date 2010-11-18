@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import Classes.Auction;
@@ -66,13 +67,13 @@ public class DBManager {
 			String query = "UPDATE " + "AuctionsTable" +
 							" SET auctionStatus='" + status +
 							"' WHERE auctionID=" + auctionID;
-
-			boolean success = stm.execute(query);
-			if(success)
-			{
-				return 1;
-			}
+			System.out.println(query);
 			
+			stm.execute(query);
+
+			return 1;
+			
+		
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
@@ -580,12 +581,12 @@ public class DBManager {
 	// returns
 	// [0] PhoneNumber
 	// [1] PhoneCarrier
-	public String[] userGetPhoneInfo(String userName)
+	public String[] userGetPhoneInfo(int UserID)
 	{
 		try {
 			stm = m_conn.createStatement();
 			String query = "SELECT PhoneNumber, PhoneCarrier From UserTable " +
-								"WHERE UserName='" + userName + "'";
+								"WHERE UserID=" + UserID ;
 								
 		
 			System.out.println("Getting Phone Info for User : \n" + query);
@@ -724,7 +725,8 @@ public class DBManager {
 	
 	//returns 1 if success
 	//returns -1 if bid amount isn't bigger then latestBid
-	//returns -2 if error
+	//returns -2 if auction has expired
+	//returns -3 if error
 	public int bidOnAuction(int userID, int auctionID, double amount)
 	{
 		try {
@@ -738,9 +740,15 @@ public class DBManager {
 			if(result.first())
 			{
 				 double oldLatestBid = result.getDouble("LatestBidPrice");
+				 String auctionStatus = result.getString("AuctionStatus");
+			     
+			     if(auctionStatus.equalsIgnoreCase("EXPIRED") )
+			     {
+			    	 return -2;
+			     }
 				 
 				 //update the bid
-				 if(oldLatestBid < amount)
+				 if(oldLatestBid < amount )
 				 {
 					  query = "UPDATE auctionsTable SET " +
 					 		"LatestBidPrice=" + amount +
@@ -795,7 +803,7 @@ public class DBManager {
 			e.printStackTrace();
 		}
 		
-		return -2;
+		return -3;
 	}
 	
 	//return 1 if succesful
@@ -821,6 +829,48 @@ public class DBManager {
 		
 		
 		return -1;
+	}
+	
+	public void checkForExpiredAuctionSMSMessage()
+	{	
+		try {
+			stm = m_conn.createStatement();
+				
+			String query = "SELECT AuctionID, AuctionTitle, OwnerID, LastBidderID FROM AuctionsTable WHERE " +
+							" AuctionStatus='EXPIRED' AND SMSMessageSent=0";
+
+			
+			ResultSet rs = stm.executeQuery(query);
+			rs.beforeFirst();
+			
+			List<Integer> auctionIDList = new ArrayList<Integer>();
+			SMTPManager smtp = new SMTPManager();
+			
+			while (rs.next()) {
+					auctionIDList.add(rs.getInt("AuctionID"));
+					int ownerID = rs.getInt("OwnerID");
+					int winnerID = rs.getInt("LastBidderID");
+					String AuctionTitle = rs.getString("AuctionTitle");
+					
+					smtp.sendMail(ownerID, winnerID, AuctionTitle, true);
+				 
+			}
+			
+			for( int i = 0 ; i < auctionIDList.size() ; ++i)
+			{
+				query = "UPDATE AuctionsTable SET SMSMessageSent=1 WHERE "
+					+   " AuctionID=" + auctionIDList.get(i).toString();
+				
+				stm.executeUpdate(query);
+			}
+			
+			System.out.println(auctionIDList.size() + " SMS MESSAGES SENT" );
+			
+
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
 	}
 	
 }

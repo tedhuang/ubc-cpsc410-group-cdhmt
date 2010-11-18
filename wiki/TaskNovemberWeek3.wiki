@@ -7,11 +7,7 @@ List of stuff we left to complete and the manhour estimation for them
 = Details 28-30h = 
 
 Register User Page - 5h
-  * Input Fields - 1h
-  * Improve UI - 2h
-  * Servlet - 1h
-  * DB methods - 1h
-    * Check for duplicate names (cant exist already and cant be guest)
+  * Link up with UI - 2h
 
 Chat - 15h
   * Reseaerch/Design - 1h

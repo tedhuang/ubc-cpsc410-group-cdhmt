@@ -198,6 +198,17 @@ function viewInfo(colParams)
 	{
 		document.getElementById("bidButton").disabled=false;
 	}
+	
+	//status checks
+	if(colParams[2] == "EXPIRED" || colParams[2] == "CLOSED")
+	{
+		document.getElementById("bidButton").disabled=true;
+	}
+	if(colParams[2] == "CLOSED")
+	{
+		document.getElementById("changeStatusButton").disabled=true;
+		document.getElementById("changeStatusValue").disabled=true;
+	}
     
 }
 
@@ -264,12 +275,20 @@ function bidAuctionParseXMLResponse(responseXML, auctionID)
 		document.getElementById("surferTitle").innerHTML="Bid Succesful, Refreshing Auction Details...";
 		
 		}
-	else
+	else if(success==-1)
 		{
 		document.getElementById("bidFeedback").innerHTML = "<h2>Bid Too Low</h2>";
 		
 		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'Dynapage'); //load auctionDetailsPage in to div Dynapage
 		document.getElementById("surferTitle").innerHTML="Bid too low, Refreshing Auction Details...";
+		}
+	else if(success==-2)
+		{
+		document.getElementById("bidFeedback").innerHTML = "<h2>Auction Has Expired</h2>";
+		
+		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'Dynapage'); //load auctionDetailsPage in to div Dynapage
+		document.getElementById("surferTitle").innerHTML="Auction Has Expired, Refreshing Auction Details...";
+		
 		}
 	document.getElementById("bidButton").disabled=false;
 	

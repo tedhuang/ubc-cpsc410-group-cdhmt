@@ -204,7 +204,15 @@ public class DBManager {
 		try {
 			stm = m_conn.createStatement();
 			
-			String query = "SELECT  * FROM AuctionsTable" +
+			String query = "UPDATE AuctionsTable" +
+							" SET AuctionStatus='EXPIRED'" +
+							" WHERE AuctionExpireTime<" + Calendar.getInstance().getTimeInMillis();
+			
+			System.out.println("Updating DB Expired Auctions: " + query);
+			
+			stm.executeUpdate(query);
+			
+			query = "SELECT  * FROM AuctionsTable" +
 								" WHERE OwnerID=" + userID +
 								" AND AuctionStatus<>'CLOSED'"; 
 			
@@ -260,7 +268,15 @@ public class DBManager {
 		try {
 			stm = m_conn.createStatement();
 			
-			String query = "SELECT  * FROM UserBidsTable, AuctionsTable" +
+			String query = "UPDATE AuctionsTable" +
+			" SET AuctionStatus='EXPIRED'" +
+			" WHERE AuctionExpireTime<" + Calendar.getInstance().getTimeInMillis();
+
+			System.out.println("Updating DB Expired Auctions: " + query);
+
+			stm.executeUpdate(query);
+			
+			query = "SELECT  * FROM UserBidsTable, AuctionsTable" +
 								" WHERE AuctionsTable.AuctionID=UserBidsTable.AuctionID" +
 								" AND UserBidsTable.UserID=" + userID +
 								" AND AuctionsTable.AuctionStatus<>'CLOSED'"; 

@@ -308,7 +308,7 @@ public class DBManager {
 		
 	}
 	
-	public Auction auctionGetByID( int auctionID ) //TODO: change the name of this method to something like "makeAuctionList"
+	public Auction auctionGetByID( int auctionID )
 	{
 
 		Auction auction = new Auction();
@@ -741,6 +741,10 @@ public class DBManager {
 			{
 				 double oldLatestBid = result.getDouble("LatestBidPrice");
 				 String auctionStatus = result.getString("AuctionStatus");
+				 int origNumBids = result.getInt("BidCounter");
+				 int ownerID = result.getInt("OwnerID");
+				 String auctionTitle = result.getString("AuctionTitle");
+				 
 			     
 			     if(auctionStatus.equalsIgnoreCase("EXPIRED") )
 			     {
@@ -762,6 +766,15 @@ public class DBManager {
 					  
 					  if(success==1)
 					  {
+						  //first bid, send a text to the owner.
+						  if(origNumBids == 0)
+						  {
+							  SMTPManager smtp = new SMTPManager();
+							  smtp.sendMail(ownerID, 0, auctionTitle, false);
+						  }
+						  
+						  
+						  
 						//insert in to userBids table
 						//see if user has already bidded on this auction before, if yes, no need to do anything
 						  query = "SELECT * FROM UserBidsTable WHERE " + 

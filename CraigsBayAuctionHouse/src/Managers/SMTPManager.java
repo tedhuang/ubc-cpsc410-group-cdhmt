@@ -77,6 +77,15 @@ public class SMTPManager {
 			
 			
 		}
+		else //a text to owner for a new bid
+		{
+			if(toOwnerAddress.length() > 0)
+			{
+				String body = "Craigs Bay - New bid for your auction of : " + auctionTitle;
+				send(toOwnerAddress, auctionTitle, body );
+			}
+			
+		}
 		
 		return true;
 

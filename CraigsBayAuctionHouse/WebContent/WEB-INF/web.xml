@@ -189,7 +189,7 @@
     <servlet-name>chatRelayServlet</servlet-name>
     <url-pattern>/chatRelayServlet</url-pattern>
   </servlet-mapping>
-  <servlet>
+    <servlet>
     <description></description>
     <display-name>flickrServlet</display-name>
     <servlet-name>flickrServlet</servlet-name>
@@ -209,5 +209,15 @@
   <servlet-mapping>
     <servlet-name>auctionExpiredSMSServlet</servlet-name>
     <url-pattern>/auctionExpiredSMSServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>registerUserServlet</display-name>
+    <servlet-name>registerUserServlet</servlet-name>
+    <servlet-class>Servlets.registerUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>registerUserServlet</servlet-name>
+    <url-pattern>/registerUserServlet</url-pattern>
   </servlet-mapping>
 </web-app>

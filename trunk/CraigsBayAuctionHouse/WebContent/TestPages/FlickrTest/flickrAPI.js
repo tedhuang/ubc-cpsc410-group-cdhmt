@@ -71,7 +71,7 @@ function getFrobHash(func){
 	    	//load hash value into hidden variable
 	    	
 	    	document.getElementById("hash").value = (xmlhttp.responseXML.getElementsByTagName("hash")[0]).childNodes[0].nodeValue;
-	    	alert("Inside js: " + document.getElementById("hash").value );
+	    	//alert("Inside js: " + document.getElementById("hash").value );
 	    }
 	  };
 	

@@ -1,3 +1,5 @@
+var hash;
+
 
 /*
  * All REST responses from Flickr are handled by this function
@@ -41,14 +43,10 @@ function ParseXMLResponse(responseXML)
 	 return responseText;
 }
 
-function getFrobHash(func){ 
+function getHash(tags){ 
 	//var apikey = "301748fd9ccc9801f9ed91772b19d8bd";
 	//var secret = "a6d78a61a59fbf33";
 	//var userid = "55164508@N02";
-	
-	//var out = "a6d78a61a59fbf33" + "api_key" + "301748fd9ccc9801f9ed91772b19d8bd" + "formatjson" + "methodflickr.auth.getFrob" + "userid" + userid;
-	//var hash = hex_md5(out);
-
 		
 	if (window.XMLHttpRequest)
 	  {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -70,13 +68,21 @@ function getFrobHash(func){
 	    	document.getElementById("responseDiv").innerHTML=responseText;
 	    	//load hash value into hidden variable
 	    	
-	    	document.getElementById("hash").value = (xmlhttp.responseXML.getElementsByTagName("hash")[0]).childNodes[0].nodeValue;
+
+	    	hash = (xmlhttp.responseXML.getElementsByTagName("hash")[0]).childNodes[0].nodeValue;
+	    	//alert("js: " + hash);
+	    	document.getElementById("api_sig").value=hash;
+	    	//alert("document.getElementById(api_sig).value="  + document.getElementById("api_sig").value);
+	    	document.getElementById("submit").disabled=false;
+	    	
+	    	//document.getElementById("hash").value = (xmlhttp.responseXML.getElementsByTagName("hash")[0]).childNodes[0].nodeValue;
 	    	//alert("Inside js: " + document.getElementById("hash").value );
 	    }
 	  };
+	  
+	document.getElementsByName("submit").disabled=true;
 	
-	//var func = "getFrob";
-	var Params = "func=" + func;
+	var Params = "tags=" + tags;
 	
 	xmlhttp.open("POST","/CraigsBayAuctionHouse/flickrServlet" ,true); 
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -86,12 +92,6 @@ function getFrobHash(func){
 
 
 
-
-function flickrUpload(){
-	
-	
-	
-}
 
 
 

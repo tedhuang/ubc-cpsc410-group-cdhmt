@@ -47,46 +47,43 @@ public class flickrServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
 		String apikey = "301748fd9ccc9801f9ed91772b19d8bd";
 		String secret = "a6d78a61a59fbf33";
-		String userid = "55164508@N02";
-		String func = request.getParameter("func").toString();
+		String auth_token = "72157625289914267-ed25c30f0392675d";
+		String tags = request.getParameter("tags").toString();
+		//String userid = "55164508@N02";
 		
-		//TODO: add condition for more functions 
-		//when func will define which function we are giving the hash to and in turn, they differ in the format of the response
+		//parameters in signature has to be sorted in alphabetical order
+		String signatureOutput = secret + 
+								"api_key" + apikey + 
+								"auth_token" + auth_token + 
+								"submitUpload" + 
+								"tags" + tags;
 		
-		if(func.equals("getFrob")){
-			//hash calculation for getfrob call only
-			String signatureOutput = secret + "api_key" + apikey +  "formatjson" + "methodflickr.auth.getFrob";
-			
-			String hash = MD5(signatureOutput); 
-			
-			System.out.println("Hash for getfrob: " + hash);
-			
-			StringBuffer XMLResponse = new StringBuffer();	
-			XMLResponse.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
-			XMLResponse.append("<response>\n");
-			
-			XMLResponse.append("\t<hash>" + hash + "</hash>\n");
-			
-			XMLResponse.append("</response>\n");
-			response.setContentType("application/xml");
-			response.getWriter().println(XMLResponse);
-		} 
-		else if(func.equals("getToken")){
-			
-			
-			
-		}
+		System.out.println(signatureOutput);
+		
+		String hash = MD5(signatureOutput); 
+		
+		System.out.println("Hash for upload: " + hash);
+		
+		StringBuffer XMLResponse = new StringBuffer();	
+		XMLResponse.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
+		XMLResponse.append("<response>\n");
+		
+		XMLResponse.append("\t<hash>" + hash + "</hash>\n");
+		
+		XMLResponse.append("</response>\n");
+		response.setContentType("application/xml");
+		response.getWriter().println(XMLResponse);
+
+
 		
 	}
 }

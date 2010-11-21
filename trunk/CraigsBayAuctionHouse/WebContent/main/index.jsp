@@ -72,7 +72,7 @@
 		//loadjscssfile('./resources/scripts/auctionListLoader.js', 'js');
 		//loadobjs('./resources/scripts/auctionListLoader.js'); //load the additional javascript tableLoad.jsp requires
 		ajaxpage('tableLoad.jsp', 'Dynapage'); //load tableLoad.jsp in to div Dynapage
-		//createNewTab('dhtmlgoodies_tabView1','All Auctions','','tableLoad.jsp',true);
+		//createNewTab('tabPanel','All Auctions','','tableLoad.jsp',true);
 		document.getElementById("surferTitle").innerHTML="<img src=./resources/images/loading.gif></img>";
 		
 	}
@@ -84,7 +84,7 @@
 		//ajaxpage('createAuctionTable.jsp', containerID);
 		//loadjscssfile('./resources/scripts/createAuction.js', 'js');
 		//loadobjs('./resources/scripts/createAuction.js');
-		createNewTab('dhtmlgoodies_tabView1','New Auction','','createAuctionTable.jsp',true);
+		createNewTab('tabPanel','New Auction','','createAuctionTable.jsp',true);
 		//document.getElementById("surferTitle").innerHTML="Create a New Auction";
 	}
 	</script>
@@ -94,7 +94,7 @@
 		//loadjscssfile('./resources/scripts/auctionListLoader.js', 'js');
 		//loadobjs('./resources/scripts/auctionListLoader.js'); //load the additional javascript tableLoad.jsp requires
 		ajaxpage('userOwnedAuctionsLoad.jsp', 'Dynapage'); //load tableLoad.jsp in to div Dynapage
-		//createNewTab('dhtmlgoodies_tabView1','All Auctions','','tableLoad.jsp',true);
+		//createNewTab('tabPanel','All Auctions','','tableLoad.jsp',true);
 		document.getElementById("surferTitle").innerHTML="<img src=./resources/images/loading.gif></img>";
 		
 	}
@@ -105,7 +105,7 @@
 		//loadjscssfile('./resources/scripts/auctionListLoader.js', 'js');
 		//loadobjs('./resources/scripts/auctionListLoader.js'); //load the additional javascript tableLoad.jsp requires
 		ajaxpage('userBiddedAuctionsLoad.jsp', 'Dynapage'); //load tableLoad.jsp in to div Dynapage
-		//createNewTab('dhtmlgoodies_tabView1','All Auctions','','tableLoad.jsp',true);
+		//createNewTab('tabPanel','All Auctions','','tableLoad.jsp',true);
 		document.getElementById("surferTitle").innerHTML="<img src=./resources/images/loading.gif></img>";
 		
 	}
@@ -316,7 +316,16 @@
 		});
 	</script>
 	
+	
 	<script type="text/javascript">
+	
+
+
+	</script>
+	
+	<script type="text/javascript">
+	
+	
 	//---------------------------------------------------------
 	//<ul id="bubblemenu">
   //      <li>
@@ -493,7 +502,10 @@
 							}
 						%>
 						<li> <input type="text" id="searchTitle" value="search Auctions..." onclick="SelectAll('searchTitle');"/></li>
-						<li><input type="image" src="./resources/images/search-btn.png" onClick="searchAuctionTable(0);"/></li>
+						<li>
+							<input type="image" src="./resources/images/advancedSearch.png" title="Advanced Search" onClick="showAdvancedSearchTab()"/>
+							<input type="image" src="./resources/images/search-btn.png" title="Search" onClick="searchAuctionTable(0);"/>
+						</li>
 					</ul>
 				</li>
 				
@@ -633,7 +645,7 @@
 							    Tab Panel Starts here
 *************************************************************************************************-->
 	   <div id="tabHolder">
-		<div id="dhtmlgoodies_tabView1">
+		<div id="tabPanel">
 				
 				<!-- Main Tab -->
 				<div class="dhtmlgoodies_aTab">
@@ -650,7 +662,7 @@
 					<a href="#" onclick="deleteTab('tip')">Remove this tab</a><br>
 				</div>
 				
-				<!-- Advanced Search Tab -->
+				<!-- Pre-Defined Advanced Search Tab -->
 				<div class="dhtmlgoodies_aTab" id="advancedSearchTab">
 					<div id="searchTool1">
 						<input type="text" id="advancedSearchTitle" value="search Auctions..." onclick="SelectAll('advancedSearchTitle');"/>
@@ -659,14 +671,14 @@
 						<select name="searchCondition1" class="small-input" onChange="cascadeOpt(searchCondition1);">
 							<option value="searchOption">Search By</option>
 							<option value="searchByCategory">Category</option>
-							<option value="searchByPeople">People</option>
+							<option value="searchByPeople">Owner</option>
 						</select>
 					</FORM>
 					</div>
 				  
 					<select id="searchCategory" >
 							
-							<opttion value=""> Pick a Category</option>
+							<option value=""> Pick a Category</option>
 							<option value="electronics">Electronics</option>
 							<option value="books">Books</option>
 							<option value="motors">Motors</option>
@@ -674,13 +686,23 @@
 							<option value="music">Music</option>
 					</select>
 					<input type="text" id="searchOwner" value="search By Authors..." onclick="SelectAll('searchOwner');"/>
+					<br><input type="image" id="advSearchBtn" 
+						   src="./resources/images/advancedSearch.png"
+						   title="Advanced Search" onClick="searchAuctionTable(1)"/>
 				</div>
+				
+				<!-- Auction Details Tab -->
+				<div class="dhtmlgooddies_aTab" id="auctionDetailTab">
+					<div id="itemDetailArea">
+					</div>
+				</div>
+				
 			</div>
 		  </div>
 		  
 		  
 			<script type="text/javascript">
-			initTabs('dhtmlgoodies_tabView1',Array('What\'s New','tips','Advanced Search'),0,500,400,Array(false,true, true));
+			initTabs('tabPanel',Array('What\'s New','tips'),0,500,400,Array(false,true));
 			</script>
 		
 <!-- ********************************************************************************************

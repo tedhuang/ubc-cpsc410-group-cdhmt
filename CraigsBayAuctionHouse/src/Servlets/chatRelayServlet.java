@@ -65,7 +65,6 @@ public class chatRelayServlet extends HttpServlet {
 		response.setContentType("application/xml");
 		response.getWriter().println(XMLResponse);
 		
-		
 	}
 
 }

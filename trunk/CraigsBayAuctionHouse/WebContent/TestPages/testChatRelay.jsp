@@ -11,13 +11,15 @@ function ParseXMLResponse(responseXML)
 	 var responseText = "<h2>AJAX XML response from server: ";
 	 responseText += " " + result + "</h2>";
 
-	 return responseText;
+	 document.getElementById("myDiv").innerHTML=responseText;
+	 //wait 5 sec and poll server again.
+	 setTimeout('addNumberRequest()', 5000);
+	 
 }
 
-function addNumberRequest() {
-	
-	var number = document.getElementById("number").value;
-	
+function createNewRequest()
+{
+	xmlhttp=false;
 	
 	if (window.XMLHttpRequest)
 	  {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -28,17 +30,17 @@ function addNumberRequest() {
 	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 	  }
 	  
-	xmlhttp.onreadystatechange=function()
-	  {
-	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-	    {
-		    //parse XML response from server
-		    var responseText= ParseXMLResponse(xmlhttp.responseXML);
-		    //alert("responseText: " + responseText);   
-			
-	    	document.getElementById("myDiv").innerHTML=responseText;
-	    }
-	  }
+
+	  return xmlhttp;
+}
+
+function addNumberRequest() {
+	
+	var number = document.getElementById("number").value;
+
+	xmlhttp = createNewRequest();
+	  
+	xmlhttp.onreadystatechange = getReadyStateHandler(xmlhttp, ParseXMLResponse);
 
 	var Params = "addThis=" + number;
 
@@ -50,21 +52,36 @@ function addNumberRequest() {
 	//change the text while sending the email
 	document.getElementById("myDiv").innerHTML="<h2>Please wait... Sending Request</h2>";
 }
+
+function getReadyStateHandler(req, responseXmlHandler) {
+
+	   // Return an anonymous function that listens to the XMLHttpRequest instance
+	   return function () {
+
+	     // If the request's status is "complete"
+	     if (req.readyState == 4) {
+	       
+	       // Check that we received a successful response from the server
+	       if (req.status == 200) {
+
+	         // Pass the XML payload of the response to the handler function.
+	         return responseXmlHandler(req.responseXML);
+
+	       } else {
+
+	         // An HTTP problem has occurred
+	         alert("HTTP error "+req.status+": "+req.statusText);
+	       }
+	     }
+	   }
+	 }
+
 </script>
 
 </head>
 
 <body>
 
-<!--  this is non-AJAX.
-<form action="GmailSMTPServlet" method="POST">
-        To Email Address: <input type="text" name="emailAddress" size="20"><br>
-        Subject: <input type="text" name="subject" size="20"><br>
-        Body: <textarea name="body" cols="40" rows="5">
-        	  </textarea><br>
-        <input type="submit" value="Send">
-</form>
- -->
  
 
 Number: <input id="number" type="text" name="number" size="20"><br>

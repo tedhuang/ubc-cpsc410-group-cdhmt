@@ -9,6 +9,7 @@ import java.util.Map;
 
 import Classes.Auction;
 import Classes.Credential;
+import Classes.Friend;
 import Classes.User;
 import DBConnection.DBConn;
 
@@ -81,6 +82,46 @@ public class DBManager {
 		
 		
 		return 0;
+	}
+	
+	public ArrayList<Friend> getFriends(int userID){
+		ArrayList<Friend> friendList = new ArrayList<Friend>();
+		
+		try	{
+			stm = m_conn.createStatement();
+			
+			String query = "SELECT FT.FriendID,UT.UserName FROM FriendsTable FT "
+				+ "INNER JOIN UserTable UT ON FT.FriendID = UT.UserID "
+				+ "WHERE FT.UserID = '" + userID + "' ";
+				//+
+				//" AND (SELECT UserName FROM UserTable "
+				//+ "WHERE UserID = FriendID)"; 
+			
+			boolean success = stm.execute(query);
+			ResultSet result = stm.getResultSet();
+			
+			//System.out.println(result.getInt("FriendID"));
+			while( result.next() ) {
+				Friend tempFriend = new Friend();
+				
+				System.out.println(result.getInt("FriendID"));
+				System.out.println(result.getString("UserName"));
+				tempFriend.friendID = result.getInt("FriendID");
+				tempFriend.friendName = result.getString("UserName");				
+				friendList.add( tempFriend );
+			}
+			
+			stm.close();
+			
+			System.out.println("Searched Friends");
+			return friendList;
+			
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		
+		return null;
 	}
 	
 	public ArrayList<Auction> searchAuctionResults(String searchTitle, String searchCategory, String SearchOwner)

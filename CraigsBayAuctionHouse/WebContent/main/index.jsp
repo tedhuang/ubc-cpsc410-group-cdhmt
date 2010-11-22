@@ -156,6 +156,9 @@
 			var searchOwner = document.getElementById("searchOwner").value;
 			
 			//Check to see what parameters matter
+			if(searchTitle == ""){
+				searchTitle = "*";
+			}
 			if(searchCategory == ""){
 				searchCategory = "*";
 			}

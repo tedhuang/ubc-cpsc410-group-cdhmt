@@ -25,11 +25,14 @@ function ParseAuctionList( responseXML ) {
 	
 	//remove old elements
 	  var oBody = document.getElementById('myTable');
-	  while(oBody.hasChildNodes())
+	  if(oBody != null)
 	  {
-		  oBody.removeChild(oBody.firstChild);
+		  while(oBody.hasChildNodes())
+		  {
+			  oBody.removeChild(oBody.firstChild);
+		  }
 	  }
-
+	  
 	var auctions = auctionsList.getElementsByTagName("auction");
 	for (var iNode = 0; iNode < auctions.length; iNode++) {
 		

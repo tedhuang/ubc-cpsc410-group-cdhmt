@@ -7,7 +7,8 @@ function viewDetails(auctionID)
 {
 	//loadjscssfile('./resources/scripts/auctionDetailLoader.js', 'js');
 	//loadobjs('./resources/scripts/auctionDetailLoader.js'); //load the additional javascript file	
-	ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID, 'Dynapage'); //load auctionDetailsPage in to div Dynapage
+	//ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID, 'Dynapage'); //load auctionDetailsPage in to div Dynapage
+	showItemDetailTab('Test', auctionID);
 	document.getElementById("surferTitle").innerHTML="Loading Auction Details...";
 }
 

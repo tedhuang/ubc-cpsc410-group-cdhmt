@@ -33,6 +33,14 @@ function loadFriends()
 }
 
 function ParseFriendsList(responseXML){
+	 var success = (responseXML.getElementsByTagName("success")[0]).childNodes[0].nodeValue;
+	 
+	if(success=="false")
+	{
+		 //responseText = 
+		 alert("Error finding friends. Please log out and back in again.");
+	}
+	 
 	var friendList = responseXML.getElementsByTagName('friendList').item(0);
 	
 	//remove old elements
@@ -115,4 +123,55 @@ function addElement2( rowParams ) {
 
 function deleteFriend(friendID){
 	
+var credential = document.getElementById("cred").value;
+	
+	
+	if (window.XMLHttpRequest)
+	  {// code for IE7+, Firefox, Chrome, Opera, Safari
+	  xmlhttp=new XMLHttpRequest();
+	  }
+	else
+	  {// code for IE6, IE5
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	  
+	xmlhttp.onreadystatechange=function()
+	{
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	    {
+		    //parse XML response from server
+		    
+		    var responseText= ParseFriendDelete(xmlhttp.responseXML);
+		    loadFriends();
+	    	
+	    }
+	  }
+	
+	//send the parameters to the servlet with POST
+	var Params = "Credential=" + credential + "&FriendID=" + friendID;
+	
+	xmlhttp.open("POST","../friendDeleteServlet" ,true);
+	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xmlhttp.send(Params);
+	//document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
+}
+
+function ParseFriendDelete(responseXML){
+	
+	 var success = (responseXML.getElementsByTagName("success")[0]).childNodes[0].nodeValue;
+	 var responseText = "";
+	 
+	 if(success=="true")
+	{
+		 //responseText = 
+		 alert("Error deleting friend!");
+	}
+	 else 
+	{
+		//responseText = 
+		 alert("Friend deleted!");
+	}
+	 //TODO Disable page while it reloads; ATM it reloads but the user can interact with it while it does.
+	 loadFriends();
+	 return responseText;
 }

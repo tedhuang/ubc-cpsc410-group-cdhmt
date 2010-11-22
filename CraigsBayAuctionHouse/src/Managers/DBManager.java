@@ -237,6 +237,26 @@ public class DBManager {
 		
 	}
 	
+	public boolean deleteFriend(int userID, int friendID ){
+		
+		try {
+			stm = m_conn.createStatement();
+			
+			String query = "DELETE FROM FriendsTable " +
+							"WHERE UserID= '" + userID + "' AND " +
+							"FriendID = '" + friendID + "'";
+			
+			boolean success = stm.execute(query);
+			stm.close();
+			
+			return success;
+			
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return true;
+		
+	}
 	public ArrayList<Auction> auctionListPostedByUser( int userID )
 	{
 		

@@ -250,4 +250,14 @@
     <servlet-name>friendsListServlet</servlet-name>
     <url-pattern>/friendsListServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>friendDeleteServlet</display-name>
+    <servlet-name>friendDeleteServlet</servlet-name>
+    <servlet-class>Servlets.friendDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>friendDeleteServlet</servlet-name>
+    <url-pattern>/friendDeleteServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

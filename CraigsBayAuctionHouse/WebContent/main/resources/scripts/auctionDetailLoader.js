@@ -356,7 +356,7 @@ function getReadyStateHandler(req, responseXmlHandler, auctionID) {
 	       } else {
 
 	         // An HTTP problem has occurred
-	         alert("HTTP error "+req.status+": "+req.statusText);
+	        // alert("HTTP error "+req.status+": "+req.statusText);
 	       }
 	     }
 	   }

@@ -48,7 +48,6 @@ function addNumberRequest() {
 	xmlhttp.open("POST","../chatRelayServlet" ,true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xmlhttp.send(Params);
-
 	//change the text while sending the email
 	document.getElementById("myDiv").innerHTML="<h2>Please wait... Sending Request</h2>";
 }

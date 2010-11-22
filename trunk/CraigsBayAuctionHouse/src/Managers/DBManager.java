@@ -1002,4 +1002,78 @@ public class DBManager {
 		
 	}
 	
+	public int addTextToAuctionChatLog(int auctionID, String userName, String text)
+	{
+		try {
+			stm = m_conn.createStatement();
+				
+			String query = "SELECT * FROM ChatLogTable WHERE " +
+							" AuctionID=" + auctionID + " LIMIT 1";
+
+			ResultSet rs = stm.executeQuery(query);
+			
+			//just appending chat
+			if(rs.first())
+			{
+				query = "UPDATE ChatLogTable SET ChatHistory=CONCAT(ChatHistory,'" + text + "')" +
+						" WHERE auctionID=" + auctionID;
+				System.out.println(query);
+				
+				stm.executeUpdate(query);
+				
+			}
+			else
+			{
+				//new entry in the table
+				query = "INSERT INTO ChatLogTable(AuctionID, ChatHistory) VALUES " + 
+					"(" + auctionID + ",'" + text + "')";
+				System.out.println(query);
+						
+				stm.executeUpdate(query);
+				
+			}
+			
+			return 1;
+			
+			
+
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+	
+	
+	return -1;
+	
+	}
+	
+	public String getTextFromAuctionChatLog(int auctionID)
+	{
+		try {
+			stm = m_conn.createStatement();
+				
+			String query = "SELECT * FROM ChatLogTable WHERE " +
+							" AuctionID=" + auctionID;
+
+			ResultSet rs = stm.executeQuery(query);
+			
+			
+			if(rs.first())
+			{
+				String chatLog = rs.getString("ChatHistory");
+				return chatLog;
+			}
+
+			
+			return "";
+			
+			
+
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return "";
+	}
+	
+	
 }

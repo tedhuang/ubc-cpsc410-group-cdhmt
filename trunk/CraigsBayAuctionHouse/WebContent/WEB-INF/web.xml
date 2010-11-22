@@ -222,6 +222,26 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>AuctionPostChatServlet</display-name>
+    <servlet-name>AuctionPostChatServlet</servlet-name>
+    <servlet-class>Servlets.AuctionPostChatServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AuctionPostChatServlet</servlet-name>
+    <url-pattern>/AuctionPostChatServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AuctionRefreshChatServlet</display-name>
+    <servlet-name>AuctionRefreshChatServlet</servlet-name>
+    <servlet-class>Servlets.AuctionRefreshChatServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AuctionRefreshChatServlet</servlet-name>
+    <url-pattern>/AuctionRefreshChatServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>friendsListServlet</display-name>
     <servlet-name>friendsListServlet</servlet-name>
     <servlet-class>Servlets.friendsListServlet</servlet-class>

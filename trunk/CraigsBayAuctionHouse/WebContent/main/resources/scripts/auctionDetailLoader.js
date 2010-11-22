@@ -144,8 +144,9 @@ function loadAuctionParseXMLResponse(responseXML) {
         var flickerAlbumID	=	auction_node.getAttribute("flickerAlbumID");
         var numberOfViews	=	auction_node.getAttribute("numberOfViews");
 
-    var ownerName = auctionView.getElementsByTagName("ownerName")[0].childNodes[0].nodeValue;;
-    var lastBidderName = auctionView.getElementsByTagName("lastBidderName")[0].childNodes[0].nodeValue;;
+    var ownerName = auctionView.getElementsByTagName("ownerName")[0].childNodes[0].nodeValue;
+    var lastBidderName = auctionView.getElementsByTagName("lastBidderName")[0].childNodes[0].nodeValue;
+    //var chatLog = auctionView.getElementsByTagName("chatLog")[0].childNodes[0].nodeValue;;
 			
         var colParams = new Array();
         colParams[0] = auctionID;
@@ -163,6 +164,7 @@ function loadAuctionParseXMLResponse(responseXML) {
 		colParams[12] = numberOfViews;
 		colParams[13] = ownerName;
 		colParams[14] = lastBidderName;
+		//colParams[15] = chatLog;
 		viewInfo(colParams);
 }
 
@@ -191,12 +193,16 @@ function viewInfo(colParams)
 		document.getElementById("changeStatusButton").disabled=false;
 		document.getElementById("changeStatusValue").disabled=false;
 		document.getElementById("bidButton").disabled=true;
+		document.getElementById("auctionChatInputText").disabled=false;
+		document.getElementById("auctionChatSubmit").disabled=false;
 		//enable expiry date change fields
 		handleStatusSelectionChange();
 	}
 	else if( document.getElementById("userName").value != "Guest")
 	{
 		document.getElementById("bidButton").disabled=false;
+		document.getElementById("auctionChatInputText").disabled=false;
+		document.getElementById("auctionChatSubmit").disabled=false;
 	}
 	
 	//status checks
@@ -209,6 +215,8 @@ function viewInfo(colParams)
 		document.getElementById("changeStatusButton").disabled=true;
 		document.getElementById("changeStatusValue").disabled=true;
 	}
+	
+	//document.getElementById("auctionChatHistory").innerHTML += colParams[15];
     
 }
 
@@ -294,3 +302,103 @@ function bidAuctionParseXMLResponse(responseXML, auctionID)
 	
 }
 
+function sendAuctionChat(auctionID)
+{
+	if (window.XMLHttpRequest)
+	  {// code for IE7+, Firefox, Chrome, Opera, Safari
+	  xmlhttp=new XMLHttpRequest();
+	  }
+	else
+	  {// code for IE6, IE5
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	  
+	xmlhttp.onreadystatechange=function()
+	  {
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	    {
+		   //alert("posted question");
+	    }
+	  }
+	
+	var text = document.getElementById("auctionChatInputText").value;
+	document.getElementById("auctionChatInputText").value="";
+	
+	var userName = document.getElementById("userName").value;
+
+	//document.getElementById("bidFeedback").innerHTML="<h2><img src=./resources/images/loading.gif></img> <p>Sending Auction Update Request...</h2></p>";
+	
+	var Params = "auctionID=" + auctionID +
+				 "&userName=" + userName +
+				 "&text=" + text;
+	
+	//send the parameters to the servlet with POST
+	xmlhttp.open("POST","../AuctionPostChatServlet" ,true);
+	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xmlhttp.send(Params);
+	
+}
+
+function getReadyStateHandler(req, responseXmlHandler, auctionID) {
+
+	   // Return an anonymous function that listens to the XMLHttpRequest instance
+	   return function () {
+
+	     // If the request's status is "complete"
+	     if (req.readyState == 4) {
+	       
+	       // Check that we received a successful response from the server
+	       if (req.status == 200) {
+
+	         // Pass the XML payload of the response to the handler function.
+	         return responseXmlHandler(req.responseXML, auctionID);
+
+	       } else {
+
+	         // An HTTP problem has occurred
+	         alert("HTTP error "+req.status+": "+req.statusText);
+	       }
+	     }
+	   }
+}
+
+function refreshAuctionChatParseXMLResponse(responseXML, auctionID)
+{
+	var chatLog = (responseXML.getElementsByTagName("chatLog")[0]).childNodes[0].nodeValue;
+	document.getElementById("auctionChatHistory").innerHTML = chatLog;
+	
+
+	setTimeout("refreshAuctionChat(" + auctionID + ")", 5000);
+}
+
+function refreshAuctionChat(auctionID)
+{
+	var xmlhttp;
+	
+	if (window.XMLHttpRequest)
+	  {// code for IE7+, Firefox, Chrome, Opera, Safari
+	  xmlhttp=new XMLHttpRequest();
+	  }
+	else
+	  {// code for IE6, IE5
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	  
+	xmlhttp.onreadystatechange=getReadyStateHandler(xmlhttp, refreshAuctionChatParseXMLResponse, auctionID );
+	
+	var text = document.getElementById("auctionChatInputText").value;
+	var userID = document.getElementById("loginUserID").value;
+
+	//document.getElementById("bidFeedback").innerHTML="<h2><img src=./resources/images/loading.gif></img> <p>Sending Auction Update Request...</h2></p>";
+	
+	var Params = "auctionID=" + auctionID +
+				 "&userID=" + userID;
+	
+	//send the parameters to the servlet with POST
+	xmlhttp.open("POST","../AuctionRefreshChatServlet" ,true);
+	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xmlhttp.send(Params);
+
+
+
+}

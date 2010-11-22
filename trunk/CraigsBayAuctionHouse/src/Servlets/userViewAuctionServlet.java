@@ -96,6 +96,9 @@ public class userViewAuctionServlet extends HttpServlet {
 		XMLResponse.append("\t<ownerName>" + ownerUserName + "</ownerName>");
 		XMLResponse.append("\t<lastBidderName>" + lastBidderUserName + "</lastBidderName>");
 		
+		//String chatLog = dbm.getTextFromAuctionChatLog(auctionID);
+		//XMLResponse.append("\t<chatLog>" + chatLog + "</chatLog>");
+		
 		XMLResponse.append("\t</auctionView>\n");
 		XMLResponse.append("</response>\n");
 		response.setContentType("application/xml");

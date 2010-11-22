@@ -38,6 +38,10 @@ public class AuctionRefreshChatServlet extends HttpServlet {
 		int auctionID 	= Integer.parseInt( request.getParameter("auctionID").toString() );
 		
 		String chatLog = dbm.getTextFromAuctionChatLog(auctionID);
+		if(chatLog == null)
+		{
+			chatLog = "";
+		}
 		
 		StringBuffer XMLResponse = new StringBuffer();	
 		XMLResponse.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");

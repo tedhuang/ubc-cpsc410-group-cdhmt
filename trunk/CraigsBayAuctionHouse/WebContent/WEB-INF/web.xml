@@ -189,7 +189,7 @@
     <servlet-name>chatRelayServlet</servlet-name>
     <url-pattern>/chatRelayServlet</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>flickrServlet</display-name>
     <servlet-name>flickrServlet</servlet-name>
@@ -219,5 +219,15 @@
   <servlet-mapping>
     <servlet-name>registerUserServlet</servlet-name>
     <url-pattern>/registerUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>friendsListServlet</display-name>
+    <servlet-name>friendsListServlet</servlet-name>
+    <servlet-class>Servlets.friendsListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>friendsListServlet</servlet-name>
+    <url-pattern>/friendsListServlet</url-pattern>
   </servlet-mapping>
 </web-app>

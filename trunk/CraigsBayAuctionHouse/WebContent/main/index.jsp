@@ -59,6 +59,7 @@
 		<script type="text/javascript" src='./resources/scripts/auctionDetailLoader.js'></script>
 		<script type="text/javascript" src='./resources/scripts/auctionListLoader.js'></script>
 		<script type="text/javascript" src='./resources/scripts/createAuction.js'></script>
+		<script type="text/javascript" src='./resources/scripts/friends.js'></script>
 		<script type="text/javascript" src='./resources/scripts/userControlPanel.js'></script>
 		
 		
@@ -191,6 +192,14 @@
 		xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		xmlhttp.send(Params);
 		//document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
+	}
+	</script>
+	<script type="text/javascript">
+	function viewFriends()
+	{
+		ajaxpage('friendsPage.jsp', 'Dynapage'); //load tableLoad.jsp in to div Dynapage
+		document.getElementById("surferTitle").innerHTML="<img src=./resources/images/loading.gif></img>";
+		
 	}
 	</script>
 	
@@ -515,7 +524,7 @@
 					</a>
 					<ul>
 						<li><a href="#">Start a Chat</a></li>
-						<li><a href="#">Friends</a></li>
+						<li OnClick="viewFriends()"><a href="#">Friends</a></li>
 						<li><a href="#">Chat history</a></li>
 						
 					</ul>

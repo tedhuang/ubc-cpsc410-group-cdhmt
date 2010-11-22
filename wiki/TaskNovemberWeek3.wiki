@@ -6,7 +6,7 @@ List of stuff we left to complete and the manhour estimation for them
 
 = Details 28-30h = 
 
-Register User Page - 5h
+Register User Page - 2h
   * Link up with UI - 2h
 
 Chat - 15h
@@ -26,16 +26,12 @@ Chat - 15h
   * Chat client side sender should send msg using POST while client listen using GET
 
 Flickr - 7-9h
-  * Upload Research - 3-5h
   * Upload Integrate - 3h
   * Download Integrate - 1h
 
-SMS - Goes off when Auction Expires?
-  * Auction expiry checker - 2-3h
-
 Friends - 5h
-``*Add functionality to add friends(possibly to auction details page)
-  *Finish listing friends auctions function
+  * Add functionality to add friends(possibly to auction details page)
+  * Finish listing friends auctions function
 
 
 = Options =

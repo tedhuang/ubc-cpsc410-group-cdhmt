@@ -34,9 +34,8 @@ SMS - Goes off when Auction Expires?
   * Auction expiry checker - 2-3h
 
 Friends - 5h
-  * Keep a friends list - 1h
-  * find out how to represent this on DB - 2h
-  * write client side script and page to track friends - 2h
+``*Add functionality to add friends(possibly to auction details page)
+  *Finish listing friends auctions function
 
 
 = Options =

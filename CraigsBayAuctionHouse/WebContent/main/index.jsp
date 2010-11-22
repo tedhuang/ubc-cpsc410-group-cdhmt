@@ -701,9 +701,9 @@
 				</div>
 				
 				<!-- Auction Details Tab -->
-				<div class="dhtmlgooddies_aTab" id="auctionDetailTab">
+				<div class="dhtmlgoodies_aTab" id="auctionDetailTab">
 					<div id="itemDetailArea">
-					</div>
+					</div><br>
 				</div>
 				
 			</div>

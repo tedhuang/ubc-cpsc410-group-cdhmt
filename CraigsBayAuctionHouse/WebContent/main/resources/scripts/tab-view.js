@@ -29,7 +29,7 @@ Owner of DHTMLgoodies.com
 	var tabFrame_maxNumberOfTabs = 15;	// Maximum number of tabs
 
 	/* Don't change anything below here */
-	var dhtmlgoodies_tabObj = new Array();
+	var tabObj = new Array();
 	var activeTabIndex = new Array();
 	var MSIE = navigator.userAgent.indexOf('MSIE')>=0?true:false;
 
@@ -49,6 +49,13 @@ Owner of DHTMLgoodies.com
 		span.style.paddingLeft = padding + 'px';
 		span.style.paddingRight = padding + 'px';
 	}
+/*************************************************************************************
+ * 				
+ * 					SHOW ACTIVE TABS
+ * 
+ * @param parentId
+ * @param tabIndex
+ *************************************************************************************/
 	function showTab(parentId,tabIndex)
 	{
 		var parentId_div = parentId + "_";
@@ -165,30 +172,30 @@ Owner of DHTMLgoodies.com
 		if(!closeButtonArray)closeButtonArray = new Array();
 
 		if(!additionalTab || additionalTab=='undefined'){
-			dhtmlgoodies_tabObj[mainContainerID] = document.getElementById(mainContainerID);
+			tabObj[mainContainerID] = document.getElementById(mainContainerID);
 			width = width + '';
 			if(width.indexOf('%')<0)width= width + 'px';
-			dhtmlgoodies_tabObj[mainContainerID].style.width = width;
+			tabObj[mainContainerID].style.width = width;
 
 			height = height + '';
 			if(height.length>0){
 				if(height.indexOf('%')<0)height= height + 'px';
-				dhtmlgoodies_tabObj[mainContainerID].style.height = height;
+				tabObj[mainContainerID].style.height = height;
 			}
 
 
 			tabFrameHeight[mainContainerID] = height;
 
 			var tabDiv = document.createElement('DIV');
-			var firstDiv = dhtmlgoodies_tabObj[mainContainerID].getElementsByTagName('DIV')[0];
+			var firstDiv = tabObj[mainContainerID].getElementsByTagName('DIV')[0];
 
-			dhtmlgoodies_tabObj[mainContainerID].insertBefore(tabDiv,firstDiv);
+			tabObj[mainContainerID].insertBefore(tabDiv,firstDiv);
 			tabDiv.className = 'dhtmlgoodies_tabPane';
 			tabFrame_countTabs[mainContainerID] = 0;
 
 		}else{
-			var tabDiv = dhtmlgoodies_tabObj[mainContainerID].getElementsByTagName('DIV')[0];
-			var firstDiv = dhtmlgoodies_tabObj[mainContainerID].getElementsByTagName('DIV')[1];
+			var tabDiv = tabObj[mainContainerID].getElementsByTagName('DIV')[0];
+			var firstDiv = tabObj[mainContainerID].getElementsByTagName('DIV')[1];
 			height = tabFrameHeight[mainContainerID];
 			activeTab = tabFrame_countTabs[mainContainerID];
 
@@ -245,13 +252,13 @@ Owner of DHTMLgoodies.com
 			aTab.appendChild(img);
 		}
 
-		var tabs = dhtmlgoodies_tabObj[mainContainerID].getElementsByTagName('DIV');
+		var tabs = tabObj[mainContainerID].getElementsByTagName('DIV');
 		var divCounter = 0;
 		for(var no=0;no<tabs.length;no++){
 			if(tabs[no].className=='dhtmlgoodies_aTab' && tabs[no].parentNode.id == mainContainerID){
 				if(height.length>0)tabs[no].style.height = height;
 				tabs[no].style.display='none';
-				tabs[no].id = 'tabFrame' + mainContainerID + "_" + divCounter;
+				tabs[no].id = 'tabFrame' + mainContainerID + "_" + divCounter; //tab frame id
 				divCounter++;
 			}
 		}
@@ -281,30 +288,30 @@ Owner of DHTMLgoodies.com
 			if(!closeButtonArray)closeButtonArray = new Array();
 
 			if(!additionalTab || additionalTab=='undefined'){
-				dhtmlgoodies_tabObj[mainContainerID] = document.getElementById(mainContainerID);
+				tabObj[mainContainerID] = document.getElementById(mainContainerID);
 				width = width + '';
 				if(width.indexOf('%')<0)width= width + 'px';
-				dhtmlgoodies_tabObj[mainContainerID].style.width = width;
+				tabObj[mainContainerID].style.width = width;
 
 				height = height + '';
 				if(height.length>0){
 					if(height.indexOf('%')<0)height= height + 'px';
-					dhtmlgoodies_tabObj[mainContainerID].style.height = height;
+					tabObj[mainContainerID].style.height = height;
 				}
 
 
 				tabFrameHeight[mainContainerID] = height;
 
 				var tabDiv = document.createElement('DIV');
-				var firstDiv = dhtmlgoodies_tabObj[mainContainerID].getElementsByTagName('DIV')[0];
+				var firstDiv = tabObj[mainContainerID].getElementsByTagName('DIV')[0];
 
-				dhtmlgoodies_tabObj[mainContainerID].insertBefore(tabDiv,firstDiv);
+				tabObj[mainContainerID].insertBefore(tabDiv,firstDiv);
 				tabDiv.className = 'dhtmlgoodies_tabPane';
 				tabFrame_countTabs[mainContainerID] = 0;
 
 			}else{
-				var tabDiv = dhtmlgoodies_tabObj[mainContainerID].getElementsByTagName('DIV')[0];
-				var firstDiv = dhtmlgoodies_tabObj[mainContainerID].getElementsByTagName('DIV')[1];
+				var tabDiv = tabObj[mainContainerID].getElementsByTagName('DIV')[0];
+				var firstDiv = tabObj[mainContainerID].getElementsByTagName('DIV')[1];
 				height = tabFrameHeight[mainContainerID];
 				activeTab = tabFrame_countTabs[mainContainerID];
 
@@ -315,18 +322,19 @@ Owner of DHTMLgoodies.com
 
 			for(var no=0;no<tabTitles.length;no++){
 				var aTab = document.createElement('DIV');
+				//set up the tab
 				aTab.id = 'tabTitle' + mainContainerID + "_" +  (no + tabFrame_countTabs[mainContainerID]);
-				aTab.onmouseover = rolloverTab;
+				aTab.onmouseover = rolloverTab;  
 				aTab.onmouseout = rolloutTab;
 				aTab.onclick = tabClick;
 				aTab.className='tabInactive';
 				tabDiv.appendChild(aTab);
 				var span = document.createElement('SPAN');
-				span.innerHTML = tabTitles[no];
+				span.innerHTML = tabTitles[no]; //set the tab title
 				span.style.position = 'relative';
 				aTab.appendChild(span);
 
-				if(closeButtonArray[no]){
+				if(closeButtonArray[no]){  //add close button
 					var closeButton = document.createElement('IMG');
 					closeButton.src = './resources/images/close.gif';
 					closeButton.height = closeImageHeight + 'px';
@@ -343,10 +351,11 @@ Owner of DHTMLgoodies.com
 
 					var deleteTxt = span.innerHTML+'';
 
-					closeButton.onclick = function(){ hideTab(this.parentNode.innerHTML) };
+					closeButton.onclick = function(){ hideTab(this.parentNode.innerHTML); };
 					span.appendChild(closeButton);
 				}
-
+				
+				//tab style
 				var img = document.createElement('IMG');
 				img.valign = 'bottom';
 				img.src = './resources/images/tab_right_inactive.gif';
@@ -361,7 +370,7 @@ Owner of DHTMLgoodies.com
 				aTab.appendChild(img);
 			}
 
-			var tabs = dhtmlgoodies_tabObj[mainContainerID].getElementsByTagName('DIV');
+			var tabs = tabObj[mainContainerID].getElementsByTagName('DIV');
 			var divCounter = 0;
 			for(var no=0;no<tabs.length;no++){
 				if(tabs[no].className=='dhtmlgoodies_aTab' && tabs[no].parentNode.id == mainContainerID){
@@ -391,7 +400,7 @@ Owner of DHTMLgoodies.com
 		var tabContentCounter = 0;
 
 
-		var divs = dhtmlgoodies_tabObj[parentId].getElementsByTagName('DIV');
+		var divs = tabObj[parentId].getElementsByTagName('DIV');
 
 
 		for(var no=0;no<divs.length;no++){
@@ -425,7 +434,7 @@ Owner of DHTMLgoodies.com
 		if(tabFrame_countTabs[parentId]>=tabFrame_maxNumberOfTabs)return;	// Maximum number of tabs reached - return
 		var div = document.createElement('DIV');    //new tab tag
 		div.className = 'dhtmlgoodies_aTab';
-		dhtmlgoodies_tabObj[parentId].appendChild(div);
+		tabObj[parentId].appendChild(div);
 
 		var tabId = initTabs(parentId,Array(tabTitle),0,'','',Array(closeButton),true);
 		if(tabContent)div.innerHTML = tabContent;  //if tabcontent is not null tab will display this "tabContent" 
@@ -454,10 +463,11 @@ Owner of DHTMLgoodies.com
 		function createReusableTab(parentId,tabTitle,tabContent,tabContentUrl,closeButton)
 		{
 			if(tabFrame_countTabs[parentId]>=tabFrame_maxNumberOfTabs)return;	// Maximum number of tabs reached - return
-			var div = document.createElement('DIV');    //new tab tag
+			var div = document.createElement('DIV');    //new tab title
 			div.className = 'dhtmlgoodies_aTab';
-			dhtmlgoodies_tabObj[parentId].appendChild(div);
+			tabObj[parentId].appendChild(div);
 
+			/*Following Line Differs from first Function*/
 			var tabId = init_Tabs(parentId,Array(tabTitle),0,'','',Array(closeButton),true);
 			if(tabContent)div.innerHTML = tabContent;  //if tabcontent is not null tab will display this "tabContent" 
 			if(tabContentUrl){						  //Only Will hold page if tabContent is not null
@@ -480,14 +490,34 @@ Owner of DHTMLgoodies.com
 		var open=getTabIndexByTitle('Advanced Search');
 		var contain=document.getElementById('advancedSearchTab'); //get the pre-defined tab
 		
+		
 		if (open<0)	// if the tab is not open yet
-		createReusableTab('tabPanel',
+		var aTab= createReusableTab('tabPanel',
 					 'Advanced Search',
 					 contain, '', true);
 		else
-			{}
+			{
+				//showTab('tabPanel',open.toString());
+			}
 	}
+
+/****************************************************************************************************
+		Open auction detail in a new Tab
+/****************************************************************************************************/
+function showItemDetailTab(auctionTitle, auctionID)
+{
+	ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID, 'itemDetailArea');
+	var open=getTabIndexByTitle(auctionTitle);
+	var contain=document.getElementById('itemDetailArea'); //get the pre-defined tab
 	
+	
+	if (true)	// if the tab is not open yet
+	var aTab= createReusableTab('tabPanel', auctionTitle, contain, '', true);
+	else
+	{
+	//showTab('tabPanel',open.toString());
+	}
+}
 /*****************************************************************************************
 * 
 * 						Get tab index by Title
@@ -498,8 +528,8 @@ Owner of DHTMLgoodies.com
 	{
 		var regExp = new RegExp("(.*?)&nbsp.*$","gi"); // first part--> ; "gi"--> global and case-insensitive
 		tabTitle = tabTitle.replace(regExp,'$1');
-		for(var prop in dhtmlgoodies_tabObj){
-			var divs = dhtmlgoodies_tabObj[prop].getElementsByTagName('DIV');
+		for(var prop in tabObj){
+			var divs = tabObj[prop].getElementsByTagName('DIV');
 			for(var no=0;no<divs.length;no++){
 				if(divs[no].id.indexOf('tabTitle')>=0){
 					var span = divs[no].getElementsByTagName('SPAN')[0];

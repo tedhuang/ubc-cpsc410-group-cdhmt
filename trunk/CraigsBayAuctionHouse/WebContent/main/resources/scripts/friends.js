@@ -62,13 +62,13 @@ function ParseFriendsList(responseXML){
    	 					"<a href=index.html>"+ friendID + "</a></td>" +
 						"    <td>"+ friendName + "</td>"+
 						"    <td><a class=\"button\" onclick=deleteFriend("+friendID+");>Delete</a></td>"+
-						"    <td><a class=\"button\" onclick=viewFriendAuction("+friendID+");>View Auctions</a></td>"+
+						"    <td><a class=\"button\" onclick=searchAuctionTable(2,"+friendName+");>View Auctions</a></td>"+
 						"    <td><a class=\"button\" onclick=chatFriend("+friendID+");>Chat</a></td>";
 		var rowParams = new Array();
 		rowParams[0] = friendID;
 		rowParams[1] = friendName;
 		rowParams[2] = "<a class=\"button\" onclick=deleteFriend("+friendID+");>Delete</a>";
-		rowParams[3] = "<a class=\"button\" onclick=viewFriendAuction("+friendID+");>View Auctions</a>";
+		rowParams[3] = "<a class=\"button\" onclick=searchAuctionTable(2,\""+friendName+"\");>View Auctions</a>";
 		rowParams[4] = "<a class=\"button\" onclick=chatFriend("+friendID+");>Chat</a>";
 		addElement2(rowParams);
 	}

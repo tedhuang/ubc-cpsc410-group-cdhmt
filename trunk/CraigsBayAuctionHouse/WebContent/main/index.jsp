@@ -142,29 +142,38 @@
 	
 	<script type="text/javascript">	
 	//Code to search DB for auctions
-	function searchAuctionTable(type)
+	function searchAuctionTable(type, searchOwner)
 	{	
 		//If type = 0 then basic search else advanced
+		//NOTE for some reason to pass '%' as a string in javascript it has to be '%25'
 		if(type == 0){
 			var searchTitle = document.getElementById("searchTitle").value;
-			var searchCategory = "*";
-			var searchOwner = "*";
+			var searchCategory = "%25";
+			searchOwner = "";
 		}
-		else{
+
+		//Advanced Search
+		if(type == 1){
 			var searchTitle = document.getElementById("advancedSearchTitle").value;
 			var searchCategory = document.getElementById("searchCategory").value;
-			var searchOwner = document.getElementById("searchOwner").value;
-			
+			searchOwner = document.getElementById("searchOwner").value;
+
 			//Check to see what parameters matter
 			if(searchTitle == ""){
-				searchTitle = "*";
+				searchTitle = "%25";
 			}
 			if(searchCategory == ""){
-				searchCategory = "*";
+				searchCategory = "%25";
 			}
 			if(searchOwner == ""){
-				searchOwner = "*";
+				searchOwner = "";
 			}
+		}
+		
+		//Friend Search
+		if(type == 2){
+			var searchCategory = "%25";
+			var searchTitle = "%25";
 		}
 		
 		if (window.XMLHttpRequest)

@@ -127,16 +127,27 @@ public class DBManager {
 	public ArrayList<Auction> searchAuctionResults(String searchTitle, String searchCategory, String SearchOwner)
 	{
 		ArrayList<Auction> auctionList = new ArrayList<Auction>();
+		String ownerQuery;
 		
 		try {
 			stm = m_conn.createStatement();
 			
+			//Determine whether to search owner
+			if(SearchOwner == ""){
+				ownerQuery = "";
+			}
+			else
+			{
+				ownerQuery = "AND OwnerID = (SELECT UserID FROM UserTable WHERE UserName = '" + SearchOwner + "')";
+			}
+
 			String query = "SELECT * FROM AuctionsTable "
-							+ "WHERE AuctionTitle LIKE '" + searchTitle + "%' " +
-							" AND AuctionExpireTime>" + Calendar.getInstance().getTimeInMillis(); 
-							//+ "AND Category = '" + searchCategory + "' " + 
-							//"AND OwnerID = (SELECT UserID FROM UserTable WHERE UserName = '" + SearchOwner + "')";
+							+ "WHERE AuctionTitle LIKE '" + searchTitle + "%' " //+
+							//" AND AuctionExpireTime>" + Calendar.getInstance().getTimeInMillis();
+							+ " AND Category LIKE '" + searchCategory + "' " + 
+							ownerQuery;
 			
+			System.out.println(query);
 			boolean success = stm.execute(query);
 			
 			ResultSet result = stm.getResultSet();

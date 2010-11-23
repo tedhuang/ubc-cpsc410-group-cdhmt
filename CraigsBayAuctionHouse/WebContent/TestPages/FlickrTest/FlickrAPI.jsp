@@ -18,7 +18,7 @@ var api_sig = "92a368003b3e7042f76bb99e8b928891";
 -->
 
 
-<body > 
+<body onLoad="displayBadges()"> 
 
 <div id="responseDiv">
 <h2>Hash for Upload</h2>
@@ -27,7 +27,6 @@ var api_sig = "92a368003b3e7042f76bb99e8b928891";
 <script type="text/javascript">
 var tags = "TestTag";
 getHash(tags);
-//alert( "JSP: " + document.getElementsByName("api_sig").value ); 
 </script>
 
 <form enctype="multipart/form-data" method="post"  action="http://api.flickr.com/services/upload/"> 
@@ -43,19 +42,22 @@ getHash(tags);
 
 
 
+
 <h3>Flickr Photos Displayed with Badges:</h3>
 <!-- Start of Flickr Badge -->
 <h4>Photo with tag = TestTag:</h4>
 <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?show_name=1&count=1&display=latest&size=t&layout=v&source=user_tag&user=55164508%40N02&tag=TestTag"></script>
+
 <h4>Photo with tag = tag2:</h4>
 <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?show_name=1&count=1&display=latest&size=t&layout=v&source=user_tag&user=55164508%40N02&tag=tag2"></script>
 
+<h4>Test:</h4>
+<script type="text/javascript"
+src="http://www.flickr.com/badge_code_v2.gne?show_name=1&count=1&display=latest&size=t&layout=v&source=user_tag&user=55164508%40N02&tag=TestTag">
+</script>
 
-<tr>
-</td>
-</tr>
-</table>
-</td></tr></table>
+
+
 
 
 </body>

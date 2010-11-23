@@ -90,9 +90,14 @@ function getHash(tags){
 
 }
 
-
-
-
+/*
+ * This method is used to test displaying badges with the code in js file
+ */
+function displayBadges(){
+	
+	
+	
+}
 
 
 

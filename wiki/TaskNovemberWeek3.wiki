@@ -31,8 +31,6 @@ Flickr - 7-9h
 
 Friends - 5h
   * Add functionality to add friends(possibly to auction details page)
-  * Finish listing friends auctions function
-
 
 = Options =
 
@@ -46,7 +44,7 @@ AuctionExpireTime
   * Should we put a expiry countdown timer on the viewAuctionsDetail page?
 
 Search -
-  * Advanced Search
+  * Advanced Search - Link up to tab
 
 Random
   * Cleanup web.xml

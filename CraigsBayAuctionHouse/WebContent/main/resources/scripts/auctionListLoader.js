@@ -1,7 +1,23 @@
 
 	// Ajax to add entries to the table
+/****************************************************************************************************************************************
+ * 
+ * 								LAOD ALL AUCTIONS
+ * 
+ *  @param title  	--> Display loading and Title
+ * @param container --> which element to place the table
+ *
+ *****************************************************************************************************************************************/
 
-
+function viewAllAuctions(title, container)
+	{
+		//loadjscssfile('./resources/scripts/auctionListLoader.js', 'js');
+		//loadobjs('./resources/scripts/auctionListLoader.js'); //load the additional javascript tableLoad.jsp requires
+		showAllItemTab();
+		ajaxpage('tableLoad.jsp', container); //load tableLoad.jsp in to div Dynapage;
+		document.getElementById(title).innerHTML="<img src=./resources/images/loading.gif></img>";
+		
+	}
 
 function viewDetails(auctionID)
 {
@@ -9,11 +25,17 @@ function viewDetails(auctionID)
 	//loadobjs('./resources/scripts/auctionDetailLoader.js'); //load the additional javascript file	
 	
 	showDetailViewTab();
-	ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID, 'itemDetailArea'); //load auctionDetailsPage in to div Dynapage
-	document.getElementById("surferTitle").innerHTML="Loading Auction Details...";
+	ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID, 'itemDetailArea'); //load auctionDetailsPage in to New tab
+	document.getElementById("detailTitle").innerHTML="<img src=./resources/images/loading.gif></img><br>" +
+													  "Loading Auction Details...";
 }
 
-
+/**************************************************************************************************
+ * 
+ * 							LOAD  AUCTIONS LIST 		
+ * 
+ * @param responseXML
+ ***************************************************************************************************/
 function ParseAuctionList( responseXML ) {
 	
 
@@ -97,8 +119,82 @@ function ParseAuctionList( responseXML ) {
 		//addElement(rowHTML);
 		
 	}
+	
+	document.getElementById("allItemTitle").innerHTML="<h2>Auction List</h2>";
+}
 
-	document.getElementById("surferTitle").innerHTML="Auction List";
+/**************************************************************************************************
+ * 
+ * 							SEARCH AUCTIONS LIST 		
+ * 
+ * @param responseXML
+ ***************************************************************************************************/
+function ParseSearchedAuctionList( responseXML ) {
+	
+
+	var auctionsList = responseXML.getElementsByTagName('auctionsList').item(0);
+
+	/*
+	var auctionListLength = responseXML.getElementsByTagName('auctionsList').item(0).length;
+	var auctionChildLength = auctionsList.childNodes.length;
+	var areponseLength = responseXML.getElementsByTagName('response').length;
+	*/
+	
+	//remove old elements
+	  var oBody = document.getElementById('myTable');
+	  if(oBody != null)
+	  {
+		  while(oBody.hasChildNodes())
+		  {
+			  oBody.removeChild(oBody.firstChild);
+		  }
+	  }
+	  
+	var auctions = auctionsList.getElementsByTagName("auction");
+	for (var iNode = 0; iNode < auctions.length; iNode++) {
+		
+        var auction_node = auctions[iNode];
+
+        var auctionID		=	auction_node.getAttribute("auctionID");
+        var auctionTitle	=	auction_node.getAttribute("auctionTitle");
+        var auctionStatus	=	auction_node.getAttribute("auctionStatus");
+        var expiryDate		=	auction_node.getAttribute("expiryDate");
+        var creationDate	=	auction_node.getAttribute("creationDate");
+        var category		=	auction_node.getAttribute("category");
+        var ownerID			=	auction_node.getAttribute("ownerID");
+        var lastBidderID	=	auction_node.getAttribute("lastBidderID");
+        var minPrice		=	auction_node.getAttribute("minPrice");
+        var latestBidPrice	=	auction_node.getAttribute("latestBidPrice");
+        var bidCounter		=	auction_node.getAttribute("bidCounter");
+
+        var flickerAlbumID	=	auction_node.getAttribute("flickerAlbumID");
+        var numberOfViews	=	auction_node.getAttribute("numberOfViews");
+		
+   	 	var rowHTML =	"<td><input type=checkbox /></td>" +
+						"    <td>" +
+   	 					"<a href=index.html>"+ auctionTitle + "</a></td>" +
+							"    <td>"+ auctionStatus + "</td>" +
+							"    <td>"+ expiryDate +"</td>" +
+							"    <td>"+ latestBidPrice +"</td>";
+		var rowParams = new Array();
+		rowParams[0] = auctionID;
+		rowParams[1] = auctionTitle;
+		rowParams[2] = auctionStatus;
+		rowParams[3] = expiryDate;
+		rowParams[4] = creationDate;
+		rowParams[5] = category;
+		rowParams[6] = ownerID;
+		rowParams[7] = lastBidderID;
+		rowParams[8] = minPrice;
+		rowParams[9] = latestBidPrice;
+		rowParams[10] = bidCounter;
+		rowParams[11] = flickerAlbumID;
+		rowParams[12] = numberOfViews;
+		addElement(rowParams);
+		
+	}
+	
+	document.getElementById("advSearchTitle").innerHTML="<h2>Search Results</h2>";
 }
 
 function addElement( rowParams ) {

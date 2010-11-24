@@ -170,7 +170,7 @@ function loadAuctionParseXMLResponse(responseXML) {
 
 function viewInfo(colParams)
 {
-	document.getElementById("surferTitle").innerHTML="Auction Details : " + colParams[1];
+	document.getElementById("detailTitle").innerHTML="Auction Details : " + colParams[1];
 	
 	document.getElementById("auctionItem").innerHTML = "Auction Item: " + colParams[1];
 	document.getElementById("status").innerHTML = "Status " + colParams[2];

@@ -24,6 +24,9 @@ var api_sig = "92a368003b3e7042f76bb99e8b928891";
 <h2>Hash for Upload</h2>
 </div>
 
+
+
+
 <script type="text/javascript">
 var tags = "TestTag";
 getHash(tags);
@@ -51,15 +54,27 @@ getHash(tags);
 <h4>Photo with tag = tag2:</h4>
 <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?show_name=1&count=1&display=latest&size=t&layout=v&source=user_tag&user=55164508%40N02&tag=tag2"></script>
 
-<h4>Test:</h4>
-<script type="text/javascript"
-src="http://www.flickr.com/badge_code_v2.gne?show_name=1&count=1&display=latest&size=t&layout=v&source=user_tag&user=55164508%40N02&tag=TestTag">
-</script>
+
+<!-- Flickr Badge Image -->
+<div class="flickrbadge">
+	<h2>Flickr Test Header</h2>
+		<p><a href="http://www.flickr.com/photos/55164508@N02/">Link to Images</a></p>
+</div>
+
+
+<button type="button" id="flickrButton" onClick='displayBadges()'>Display Picture or die!</button>
 
 
 
+<div id="badge"></div>
+<div id="hiddenBadge" style="visibility: hidden">
+<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?show_name=1&count=1&display=latest&size=t&layout=v&source=user_tag&user=55164508%40N02&tag=tag2"></script>
+</div>
+					
 
 
+
+<script src="flickrbadgeloader.js"></script>
 </body>
 </html>
 

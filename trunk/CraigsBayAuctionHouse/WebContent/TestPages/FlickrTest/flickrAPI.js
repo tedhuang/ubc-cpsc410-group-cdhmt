@@ -95,7 +95,7 @@ function getHash(tags){
  */
 function displayBadges(){
 	
-	
+	 document.getElementById("badge").innerHTML = document.getElementById("hiddenBadge").innerHTML;
 	
 }
 

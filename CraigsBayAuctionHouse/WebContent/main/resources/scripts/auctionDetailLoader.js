@@ -51,7 +51,7 @@ function changeAuctionStatus(auctionID){
 	    {
 		   changeAuctionStatusParseResponse(xmlhttp.responseXML, auctionID);
 	    }
-	  }
+	  };
 	
 	var expiryWeek = document.getElementById("ExpiryWeekAuctionOwnerChange").value;
 	var expiryDay = document.getElementById("ExpiryDayAuctionOwnerChange").value;
@@ -110,7 +110,7 @@ function viewAuctionByID(auctionID ){
 	    {
 		   loadAuctionParseXMLResponse(xmlhttp.responseXML);
 	    }
-	  }
+	  };
 	
 	var credential = document.getElementById("cred").value;
 	var Params = "auctionID=" + auctionID + "&userCred=" + credential;
@@ -168,8 +168,33 @@ function loadAuctionParseXMLResponse(responseXML) {
 		viewInfo(colParams);
 }
 
+
+function displayBadges(){
+	//var str = '<a href="javascript:alert(\'hello world\')">test</a>';
+//<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?show_name=1&count=1&display=latest&size=t&layout=v&source=user_tag&user=55164508%40N02&tag=TestTag"></script>
+	
+	//var str = '<p><a href="http://www.flickr.com/photos/55164508@N02/">PLEASE WORK</a></p>';
+	
+	//This currently just redirects to the site to oblivion
+	//document.getElementById("flickrTest").innerHTML = str;
+		//document.write ("<" + "script language='JavaScript' type='text/javascript' src='http://www.flickr.com/badge_code_v2.gne?show_name=1&count=1&display=latest&size=t&layout=v&source=user_tag&user=55164508%40N02&tag=tag2'");
+	
+	/*
+    var container2 = document.getElementById('flickrTest');
+    var script = document.createElement("script");
+    script.type = 'text/javascript';
+    script.innerHTML = "document.write(src='http://www.flickr.com/badge_code_v2.gne?show_name=1&count=1&display=latest&size=t&layout=v&source=user_tag&user=55164508%40N02&tag=TestTag');";
+    container.appendChild(script);
+    */
+	
+	 document.getElementById("flickrTest").innerHTML = document.getElementById("hiddenBadge").innerHTML;
+
+}
+
+
 function viewInfo(colParams)
 {
+
 	document.getElementById("detailTitle").innerHTML="Auction Details : " + colParams[1];
 	
 	document.getElementById("auctionItem").innerHTML = "Auction Item: " + colParams[1];
@@ -181,6 +206,11 @@ function viewInfo(colParams)
 	document.getElementById("category").innerHTML = "Category: " + colParams[5];
 	document.getElementById("auctionOwner").innerHTML = "Auction Owner: " + colParams[13];
 	document.getElementById("picture").innerHTML = "Picture: " + colParams[11];
+
+
+	
+	//http://www.flickr.com/badge_code_v2.gne?show_name=1&count=1&display=latest&size=t&layout=v&source=user_tag&user=55164508%40N02&tag=TestTag
+	
 	
 	document.getElementById("ownerID").value = colParams[6];
 	document.getElementById("latestBidPrice").value = colParams[9];

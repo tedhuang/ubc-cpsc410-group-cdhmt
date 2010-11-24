@@ -660,9 +660,9 @@
 		
 <!-- ********************************************************************************************
 								End~ of Sliding Menu 
-*************************************************************************************************-->
+*************************************************************************************************
 
-<!-- ********************************************************************************************
+*************************************************************************************************
 							    Tab Panel Starts here
 *************************************************************************************************-->
 	   <div id="tabHolder">
@@ -674,6 +674,7 @@
 					<h2><div id="surferTitle">Welcome <%= userName %></div></h2><br>
 					<div id="Dynapage">
 						Dynamic page is here
+						<a href=# onClick="createNewTab('tabPanel','test','','', true)">New tab test</a>
 					</div><br>
 				</div>
 				
@@ -683,9 +684,9 @@
 					<a href="#" onclick="deleteTab('tip')">Remove this tab</a><br>
 				</div>
 				
-				<!-- Pre-Defined Advanced Search Tab -->
+				<!-- Pre-Defined Advanced Search Tab 
 				<div class="dhtmlgoodies_aTab" id="advancedSearchTab">
-					<div id="searchTool1">
+					
 						<input type="text" id="advancedSearchTitle" value="search Auctions..." onclick="SelectAll('advancedSearchTitle');"/>
 						
 					<FORM name="searchOpt"> 
@@ -695,7 +696,7 @@
 							<option value="searchByPeople">Owner</option>
 						</select>
 					</FORM>
-					</div>
+					
 				  
 					<select id="searchCategory" >
 							
@@ -712,11 +713,11 @@
 						   title="Advanced Search" onClick="searchAuctionTable(1)"/>
 				</div>
 				
-				<!-- Auction Details Tab -->
+				<!-- Auction Details Tab 
 				<div class="dhtmlgoodies_aTab" id="auctionDetailTab">
 					<div id="itemDetailArea">
 					</div><br>
-				</div>
+				</div>-->
 				
 			</div>
 		  </div>

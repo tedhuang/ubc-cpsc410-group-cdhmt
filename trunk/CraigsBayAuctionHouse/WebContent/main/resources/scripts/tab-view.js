@@ -432,7 +432,7 @@ Owner of DHTMLgoodies.com
 	function createNewTab(parentId,tabTitle,tabContent,tabContentUrl,closeButton)
 	{
 		if(tabFrame_countTabs[parentId]>=tabFrame_maxNumberOfTabs)return;	// Maximum number of tabs reached - return
-		var div = document.createElement('DIV');    //new tab tag
+		var div = document.createElement('DIV');    //new tab Frame
 		div.className = 'dhtmlgoodies_aTab';
 		tabObj[parentId].appendChild(div);
 
@@ -463,7 +463,7 @@ Owner of DHTMLgoodies.com
 		function createReusableTab(parentId,tabTitle,tabContent,tabContentUrl,closeButton)
 		{
 			if(tabFrame_countTabs[parentId]>=tabFrame_maxNumberOfTabs)return;	// Maximum number of tabs reached - return
-			var div = document.createElement('DIV');    //new tab title
+			var div = document.createElement('DIV');    //new tab Frame
 			div.className = 'dhtmlgoodies_aTab';
 			tabObj[parentId].appendChild(div);
 
@@ -481,26 +481,104 @@ Owner of DHTMLgoodies.com
 			}
 
 		}
+		
+/****************************************************************************************************************************************
+ * 
+ * 								Create ADV SEARCH Tab Function
+ * 
+ * @param parentId --> The Tab Panel ID
+ * @param tabTitle --> New Table Title
+ * @param closeButton --> True for disposable tab; False for non-disposable tabs 
+ *****************************************************************************************************************************************/
+function createAdvSearchTab(parentId,tabTitle,closeButton)
+{
+	if(tabFrame_countTabs[parentId]>=tabFrame_maxNumberOfTabs)return;	// Maximum number of tabs reached - return
+	var div = document.createElement('DIV');    //new tab Frame
+	div.className = 'dhtmlgoodies_aTab';
+	tabObj[parentId].appendChild(div);
+
+	var tabId = initTabs(parentId,Array(tabTitle),0,'','',Array(closeButton),true);
+	div.innerHTML = "<input type='text' id='advancedSearchTitle' value='search Auctions...'" +
+	  				" onclick='SelectAll('advancedSearchTitle');'/>"+
+	  				"<FORM name='searchOpt'>"+ 
+					"<select name='searchCondition1' class='small-input' onChange='cascadeOpt(searchCondition1);'>"+
+						"<option value='searchOption'>Search By</option>"+
+						"<option value='searchByCategory'>Category</option>"+
+						"<option value='searchByPeople'>Owner</option></select></FORM>"+
+  
+						"<select id='searchCategory'>" +
+						
+						"<option value=''> Pick a Category</option><option value='electronics'>Electronics</option>"+
+						"<option value='books'>Books</option><option value='motors'>Motors</option>"+
+						"<option value='art'>Art</option><option value='music'>Music</option></select>"+
+				"<input type='text' id='searchOwner' value='search By Authors...' onclick='SelectAll('searchOwner');'/><br>"+
+				"<input type='image' id='advSearchBtn' src='./resources/images/advancedSearch.png' title='Advanced Search' onClick='searchAuctionTable(1)'/>";  
+}
+
+/****************************************************************************************************************************************
+ * 
+ * 								Create View DETAIL Tab Function
+ * 
+ * @param parentId --> The Tab Panel ID
+ * @param tabTitle --> New Table Title
+ * @param closeButton --> True for disposable tab; False for non-disposable tabs 
+ *****************************************************************************************************************************************/
+function createDetailViewTab(parentId,tabTitle,closeButton)
+{
+	if(tabFrame_countTabs[parentId]>=tabFrame_maxNumberOfTabs)return;	// Maximum number of tabs reached - return
+	var div = document.createElement('DIV');    //new tab Frame
+	div.className = 'dhtmlgoodies_aTab';
+	tabObj[parentId].appendChild(div);
+	
+	var frame = document.createElement('DIV');
+	frame.id = 'auctionDetailTab';
+	frame.innerHTML="<div id='itemDetailArea'></div>";
+	
+	var tabId = initTabs(parentId,Array(tabTitle),0,'','',Array(closeButton),true);
+//	div.innerHTML = "<div id='itemDetailArea'></div>";
+	div.appendChild(frame);
+}
 /****************************************************************************************************
-  					Open Advanced Search Tab
+		 							Open Advanced Search Tab
 /****************************************************************************************************/
-	function showAdvancedSearchTab()
-	{
+function showAdvancedSearchTab()
+{
 
-		var open=getTabIndexByTitle('Advanced Search');
-		var contain=document.getElementById('advancedSearchTab'); //get the pre-defined tab
-		
-		
-		if (open<0)	// if the tab is not open yet
-		var aTab= createReusableTab('tabPanel',
-					 'Advanced Search',
-					 contain, '', true);
-		else
-			{
-				//showTab('tabPanel',open.toString());
-			}
+	var open=getTabIndexByTitle('Advanced Search');
+	if (open<0)// if the tab is not open yet
+	{	
+		var aTab= createAdvSearchTab('tabPanel','Advanced Search', true);
 	}
+	else
+	{
+			//showTab('tabPanel',open.toString());
+	}
+}
+/****************************************************************************************************
+	Open Advanced Search Tab
+/****************************************************************************************************/
+function showDetailViewTab()
+{
 
+	var open=getTabIndexByTitle('View Detail');
+	if (open<0)// if the tab is not open yet
+	{	
+		var aTab= createDetailViewTab('tabPanel','View Detail', true);
+	}
+	else
+	{
+		//showTab('tabPanel',open.toString());
+	}
+}
+function createAdvSearch()
+{
+	var contain=document.createElement('DIV');
+	contain.id='tabPanel_AdvSearchTab';
+	contain.innerHTML="<input type='text' id='advancedSearchTitle' value='search Auctions...'" +
+					  " onclick='SelectAll('advancedSearchTitle');'/>";
+	
+	return contain;
+}
 /****************************************************************************************************
 		Open auction detail in a new Tab
 /****************************************************************************************************/

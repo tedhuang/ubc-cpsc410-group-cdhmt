@@ -95,10 +95,18 @@ function getHash(tags){
  */
 function displayBadges(){
 	
-	 document.getElementById("badge").innerHTML = document.getElementById("hiddenBadge").innerHTML;
-	
+	 document.getElementById("testDiv").innerHTML = document.getElementById("hiddenBadge").innerHTML;
+	 
 }
 
+function displayBadges_two(){
+	 
+	 var container2 = document.getElementById('container2');
+	 var script = document.createElement("script");
+	 script.type = 'text/javascript';
+	 script.innerHTML = "src='http://www.flickr.com/badge_code_v2.gne?show_name=1&count=1&display=latest&size=t&layout=v&source=user_tag&user=55164508%40N02&tag=tag2';";
+	 container.appendChild(script);
+}
 
 
 

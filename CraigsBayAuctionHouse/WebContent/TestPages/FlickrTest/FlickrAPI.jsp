@@ -18,7 +18,7 @@ var api_sig = "92a368003b3e7042f76bb99e8b928891";
 -->
 
 
-<body onLoad="displayBadges()"> 
+<body> 
 
 <div id="responseDiv">
 <h2>Hash for Upload</h2>
@@ -55,29 +55,34 @@ getHash(tags);
 <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?show_name=1&count=1&display=latest&size=t&layout=v&source=user_tag&user=55164508%40N02&tag=tag2"></script>
 
 
-<!-- Flickr Badge Image -->
-<div class="flickrbadge">
-	<h2>Flickr Test Header</h2>
-		<p><a href="http://www.flickr.com/photos/55164508@N02/">Link to Images</a></p>
-</div>
-
+<h4>Testing Area with Dynamic loading:</h4>
 
 <button type="button" id="flickrButton" onClick='displayBadges()'>Display Picture or die!</button>
-
-
-
-<div id="badge"></div>
+ 
+<div id="testDiv"> <h2>Picture should go here after clicking the button</h2> </div>
 <div id="hiddenBadge" style="visibility: hidden">
 <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?show_name=1&count=1&display=latest&size=t&layout=v&source=user_tag&user=55164508%40N02&tag=tag2"></script>
 </div>
-					
 
+
+
+<button type="button" id="flickrButton" onClick='displayBadges_two()'>This button redirects to oblivion</button>
+
+<div id="container"><h3>container</h3></div>
+<div id="container2"><h3>container2</h3></div>
+
+
+
+<!-- Works only inside test page: -->
+<div class="flickrbadge">
+	<h2>Flickr Test Header</h2>
+		<p><a href="http://www.flickr.com/photos/55164508@N02/tags/tag2">Link to Images with tag2</a></p>
+</div>
 
 
 <script src="flickrbadgeloader.js"></script>
 </body>
 </html>
-
 
 <!-- Old example stuff:
 

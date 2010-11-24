@@ -118,35 +118,37 @@ refreshAuctionChat(<%=auctionID%>);
 					
 </div>
 
+
+
        				<div id="flickrTest">
-       					<h4>This Part should change to picture or something</h4>
+       					<h4>This text should change to picture</h4>
        				</div>
-       				
 					<button type="button" id="flickrButton" onClick='displayBadges()'>Display Picture or die!</button>
-
-
-					<div class="flickrbadge">
-						<h3>Flickr Test Header</h3>
-	        			<p><a href="http://www.flickr.com/photos/55164508@N02/tags/tag2">Images by Tag</a></p>
-       				</div>
-       				
-       				
-					<div id="hiddenBadge"
-					   style="visibility: hidden">
-					<!-- Flickr badge goes here -->
+					
+					<!-- Some Hacky way of making javascript possible inside innerhtml -->
+					<div id="hiddenBadge"style="visibility: hidden">
 					<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?show_name=1&count=1&display=latest&size=t&layout=v&source=user_tag&user=55164508%40N02&tag=tag2"></script>
 					</div>
 					
 					<script language="javascript">
-					 document.getElementById(
-					     "badge").innerHTML =
-					   document.getElementById(
-					       "hiddenBadge").innerHTML;
-					</script>				
+					 document.getElementById("badge").innerHTML = document.getElementById("hiddenBadge").innerHTML;
+					</script>
+					
+					
+					
+					
+					<!-- This uses flickrbadgeloader.js to extract photo from link -->
+					<div class="flickrbadge">
+						<h2>Flickr Test Header</h2>
+	        			<p><a href="http://www.flickr.com/photos/55164508@N02/tags/tag2">Images by Tag</a></p>
+       				</div>
        				
-
+     
+						
+					
 
 
 <script src="./resources/scripts/flickrbadgeloader.js"></script>
+<script src="./resources/scripts/auctionDetailLoader.js"></script>
 </body>
 </html>

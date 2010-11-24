@@ -1,26 +1,7 @@
 /************************************************************************************************************
 Tab view
-Copyright (C) October 2005  DTHMLGoodies.com, Alf Magne Kalleland
-
-This library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 2.1 of the License, or (at your option) any later version.
-
-This library is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-Lesser General Public License for more details.
-
-You should have received a copy of the GNU Lesser General Public
-License along with this library; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-
-Dhtmlgoodies.com., hereby disclaims all copyright interest in this script
-written by Alf Magne Kalleland.
-
-Alf Magne Kalleland, 2009
-Owner of DHTMLgoodies.com
+Copyright (C) 2010  UBC CPSC 410 CraigsBay Team
+Cheng Chen
 
 ************************************************************************************************************/
 
@@ -496,6 +477,10 @@ function createAdvSearchTab(parentId,tabTitle,closeButton)
 	var div = document.createElement('DIV');    //new tab Frame
 	div.className = 'dhtmlgoodies_aTab';
 	tabObj[parentId].appendChild(div);
+	
+	var title = document.createElement('SPAN');
+	title.id = 'advSearchTitle';
+	
 
 	var tabId = initTabs(parentId,Array(tabTitle),0,'','',Array(closeButton),true);
 	div.innerHTML = "<input type='text' id='advancedSearchTitle' value='search Auctions...'" +
@@ -513,8 +498,39 @@ function createAdvSearchTab(parentId,tabTitle,closeButton)
 						"<option value='art'>Art</option><option value='music'>Music</option></select>"+
 				"<input type='text' id='searchOwner' value='search By Authors...' onclick='SelectAll('searchOwner');'/><br>"+
 				"<input type='image' id='advSearchBtn' src='./resources/images/advancedSearch.png' title='Advanced Search' onClick='searchAuctionTable(1)'/>";  
+	div.appendChild(title);
 }
-
+function SelectAll(id)
+{
+    document.getElementById(id).focus();
+    document.getElementById(id).select();
+}
+/****************************************************************************************************************************************
+ * 
+ * 								Create View All Item Tab Function
+ * 
+ * @param parentId --> The Tab Panel ID
+ * @param tabTitle --> New Table Title
+ * @param closeButton --> True for disposable tab; False for non-disposable tabs 
+ *****************************************************************************************************************************************/
+function createAllItemViewTab(parentId,tabTitle,closeButton)
+{
+	if(tabFrame_countTabs[parentId]>=tabFrame_maxNumberOfTabs)return;	// Maximum number of tabs reached - return
+	var div = document.createElement('DIV');    //new tab Frame
+	div.className = 'dhtmlgoodies_aTab';
+	tabObj[parentId].appendChild(div);
+	
+	var title = document.createElement('SPAN');
+	title.id='allItemTitle';
+	
+	var frame = document.createElement('DIV');
+	frame.id = 'allItemTab';
+	frame.innerHTML="<div id='allItemArea'></div>";
+	
+	var tabId = initTabs(parentId,Array(tabTitle),0,'','',Array(closeButton),true);
+	div.appendChild(title);
+	div.appendChild(frame);
+}
 /****************************************************************************************************************************************
  * 
  * 								Create View DETAIL Tab Function
@@ -530,12 +546,16 @@ function createDetailViewTab(parentId,tabTitle,closeButton)
 	div.className = 'dhtmlgoodies_aTab';
 	tabObj[parentId].appendChild(div);
 	
+	var title = document.createElement('SPAN');
+	title.id='detailTitle';
+	
 	var frame = document.createElement('DIV');
 	frame.id = 'auctionDetailTab';
 	frame.innerHTML="<div id='itemDetailArea'></div>";
 	
 	var tabId = initTabs(parentId,Array(tabTitle),0,'','',Array(closeButton),true);
 //	div.innerHTML = "<div id='itemDetailArea'></div>";
+	div.appendChild(title);
 	div.appendChild(frame);
 }
 /****************************************************************************************************
@@ -555,7 +575,7 @@ function showAdvancedSearchTab()
 	}
 }
 /****************************************************************************************************
-	Open Advanced Search Tab
+						Open Detail View Tab
 /****************************************************************************************************/
 function showDetailViewTab()
 {
@@ -570,32 +590,23 @@ function showDetailViewTab()
 		//showTab('tabPanel',open.toString());
 	}
 }
-function createAdvSearch()
-{
-	var contain=document.createElement('DIV');
-	contain.id='tabPanel_AdvSearchTab';
-	contain.innerHTML="<input type='text' id='advancedSearchTitle' value='search Auctions...'" +
-					  " onclick='SelectAll('advancedSearchTitle');'/>";
-	
-	return contain;
-}
 /****************************************************************************************************
-		Open auction detail in a new Tab
+						Open All Items Tab
 /****************************************************************************************************/
-function showItemDetailTab(auctionTitle, auctionID)
+function showAllItemTab()
 {
-	ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID, 'itemDetailArea');
-	var open=getTabIndexByTitle(auctionTitle);
-	var contain=document.getElementById('itemDetailArea'); //get the pre-defined tab
-	
-	
-	if (true)	// if the tab is not open yet
-	var aTab= createReusableTab('tabPanel', auctionTitle, contain, '', true);
-	else
-	{
-	//showTab('tabPanel',open.toString());
-	}
+
+		var open=getTabIndexByTitle('All Auction');
+		if (open<0)// if the tab is not open yet
+		{	
+			var aTab= createAllItemViewTab('tabPanel','All Auction', true);
+		}
+		else
+		{
+			//showTab('tabPanel',open.toString());
+		}
 }
+
 /*****************************************************************************************
 * 
 * 						Get tab index by Title

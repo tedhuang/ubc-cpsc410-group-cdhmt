@@ -68,15 +68,7 @@
 <!-- ***************************************************************************************-->
 	
 	<script type="text/javascript">
-	function viewAllAuctions()
-	{
-		//loadjscssfile('./resources/scripts/auctionListLoader.js', 'js');
-		//loadobjs('./resources/scripts/auctionListLoader.js'); //load the additional javascript tableLoad.jsp requires
-		ajaxpage('tableLoad.jsp', 'Dynapage'); //load tableLoad.jsp in to div Dynapage
-		//createNewTab('tabPanel','All Auctions','','tableLoad.jsp',true);
-		document.getElementById("surferTitle").innerHTML="<img src=./resources/images/loading.gif></img>";
-		
-	}
+	
 	</script>
 	<script type="text/javascript">
 	function createAuction(containerID)
@@ -133,11 +125,7 @@
 	</script>
 	
 	<script type="text/javascript">
-		function SelectAll(id)
-		{
-		    document.getElementById(id).focus();
-		    document.getElementById(id).select();
-		}
+		
 	</script>
 	
 	<script type="text/javascript">	
@@ -191,7 +179,7 @@
 		    {
 			    //parse XML response from server
 			    
-			    var responseText= ParseAuctionList(xmlhttp.responseXML);
+			    var responseText= ParseSearchedAuctionList(xmlhttp.responseXML);
 		    	
 		    }
 		  }
@@ -510,7 +498,7 @@
 						Auctions
 					</a>
 					<ul>
-						<li OnClick="viewAllAuctions()"><a href=#>View All Auctions</a></li>
+						<li OnClick="viewAllAuctions('allItemTitle','allItemArea')"><a href=#>View All Auctions</a></li>
 						<%  
 							if(userName != "Guest")
 							{

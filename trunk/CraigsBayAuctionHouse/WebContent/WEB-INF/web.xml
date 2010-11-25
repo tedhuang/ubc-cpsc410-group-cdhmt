@@ -263,6 +263,16 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>friendAddServlet</display-name>
+    <servlet-name>friendAddServlet</servlet-name>
+    <servlet-class>Servlets.friendAddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>friendAddServlet</servlet-name>
+    <url-pattern>/friendAddServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>chatRegisterServlet</display-name>
     <servlet-name>chatRegisterServlet</servlet-name>
     <servlet-class>Servlets.chatRegisterServlet</servlet-class>

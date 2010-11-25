@@ -38,7 +38,7 @@
 <body>
  <!--  this will get called when the page is dynamically loaded. -->
  <script>
- loadFriends();
+ loadFriends('friendTable');
  </script>
  
  <input type="hidden" value="0" id="theValue" />

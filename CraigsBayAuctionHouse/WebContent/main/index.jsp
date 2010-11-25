@@ -193,15 +193,7 @@
 		//document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
 	}
 	</script>
-	<script type="text/javascript">
-	function viewFriends()
-	{
-		ajaxpage('friendsPage.jsp', 'Dynapage'); //load tableLoad.jsp in to div Dynapage
-		document.getElementById("surferTitle").innerHTML="<img src=./resources/images/loading.gif></img>";
-		
-	}
-	</script>
-	
+
 	
 				
 
@@ -523,7 +515,7 @@
 					</a>
 					<ul>
 						<li><a href="#">Start a Chat</a></li>
-						<li OnClick="viewFriends()"><a href="#">Friends</a></li>
+						<li OnClick="viewFriends('friendTable')"><a href="#">Friends</a></li>
 						<li><a href="#">Chat history</a></li>
 						
 					</ul>
@@ -610,7 +602,7 @@
 								<div class="colleft">
 								<h3>Business</h3>
 									<ul>
-										<li OnClick="viewAllAuctions()"><a href=#>View All Auctions</a></li>
+										<li OnClick="viewAllAuctions('allItemTitle','allItemArea')"><a href=#>View All Auctions</a></li>
 										<li OnClick="createAuction()"><a href="#">New Auction</a></li>
 										<li><a href="3" title="portfolio">My Auction</a></li>
 										<li><a href="4" title="contact">Won history</a></li>
@@ -620,7 +612,7 @@
 								<div class="colright">
 									<h3>Social Network</h3>
 									<ul>
-										<a href="7" title="Twitter">My Profile</a></li>
+										<li><a href="7" title="Twitter">My Profile</a></li>
 										<li><a href="7" title="Twitter">My Messages</a></li>
 										<li><a href="8" title="DesignBump">My Friends</a></li>
 										<li><a href="9" title="Digg">Search People</a></li>

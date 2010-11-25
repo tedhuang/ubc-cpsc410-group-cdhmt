@@ -168,7 +168,8 @@ function loadAuctionParseXMLResponse(responseXML) {
 		viewInfo(colParams);
 }
 
-
+/* We don't need this anymore since we are using scriptless badge 
+ * 
 function displayBadges(){
 	//var str = '<a href="javascript:alert(\'hello world\')">test</a>';
 //<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?show_name=1&count=1&display=latest&size=t&layout=v&source=user_tag&user=55164508%40N02&tag=TestTag"></script>
@@ -179,18 +180,30 @@ function displayBadges(){
 	//document.getElementById("flickrTest").innerHTML = str;
 		//document.write ("<" + "script language='JavaScript' type='text/javascript' src='http://www.flickr.com/badge_code_v2.gne?show_name=1&count=1&display=latest&size=t&layout=v&source=user_tag&user=55164508%40N02&tag=tag2'");
 	
-	/*
     var container2 = document.getElementById('flickrTest');
     var script = document.createElement("script");
     script.type = 'text/javascript';
     script.innerHTML = "document.write(src='http://www.flickr.com/badge_code_v2.gne?show_name=1&count=1&display=latest&size=t&layout=v&source=user_tag&user=55164508%40N02&tag=TestTag');";
     container.appendChild(script);
-    */
+
 	
-	 document.getElementById("flickrTest").innerHTML = document.getElementById("hiddenBadge").innerHTML;
+	 //document.getElementById("flickrTest").innerHTML = document.getElementById("hiddenBadge").innerHTML;
+	// var newDiv = document.createElement('DIV');
+	 //newDiv.id = 'imageDiv';
+	 //newDiv.innerHTML = document.getElementById("hiddenBadge").innerHTML;
+	 //document.getElementById("flickrTest").appendChild(newDiv);
+	 //document.body.appendChild(newDiv);
+
+	 var headID = document.getElementById("flickrTest");         
+	 var newScript = document.createElement('script');
+	 newScript.type = 'text/javascript';
+	 newScript.src = 'http://www.flickr.com/badge_code_v2.gne?show_name=1&count=1&display=latest&size=t&layout=v&source=user_tag&user=55164508%40N02&tag=tag2';
+	 headID.appendChild(newScript);
+	 
+	// alert(document.getElementById("imageDiv").innerHTML);
 
 }
-
+*/
 
 function viewInfo(colParams)
 {

@@ -120,35 +120,35 @@ refreshAuctionChat(<%=auctionID%>);
 
 
 
-       				<div id="flickrTest">
-       					<h4>This text should change to picture</h4>
-       				</div>
-					<button type="button" id="flickrButton" onClick='displayBadges()'>Display Picture or die!</button>
-					
-					<!-- Some Hacky way of making javascript possible inside innerhtml -->
-					<div id="hiddenBadge"style="visibility: hidden">
-					<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?show_name=1&count=1&display=latest&size=t&layout=v&source=user_tag&user=55164508%40N02&tag=tag2"></script>
+					<div>
+					<h4>Scriptless badge:</h4>
+					<a href="http://flickrbadge.theducky.com/tag/link/55164508@N02/tag2_1">
+					<img src="http://flickrbadge.theducky.com/tag/photo/55164508@N02/tag2_1_s.jpg" alt="Scriptless Flickr Badge" /></a>
 					</div>
-					
-					<script language="javascript">
-					 document.getElementById("badge").innerHTML = document.getElementById("hiddenBadge").innerHTML;
-					</script>
-					
-					
-					
-					
-					<!-- This uses flickrbadgeloader.js to extract photo from link -->
-					<div class="flickrbadge">
-						<h2>Flickr Test Header</h2>
-	        			<p><a href="http://www.flickr.com/photos/55164508@N02/tags/tag2">Images by Tag</a></p>
-       				</div>
+
        				
-     
-						
-					
 
-
-<script src="./resources/scripts/flickrbadgeloader.js"></script>
-<script src="./resources/scripts/auctionDetailLoader.js"></script>
+<!-- This import is for testing purposes -->
+<script type="text/javascript" src='./resources/scripts/auctionDetailLoader.js'></script>
 </body>
 </html>
+
+
+
+
+
+
+<!-- Deprecated Code, delete when necessary
+<div id="flickrTest">
+	<h4>This text should change to picture</h4>
+</div>
+<button type="button" id="flickrButton" onClick='displayBadges()'>Display Picture or die!</button>
+
+<div id="hiddenBadge"style="visibility: hidden">
+<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?show_name=1&count=1&display=latest&size=t&layout=v&source=user_tag&user=55164508%40N02&tag=tag2"></script>
+</div>
+ -->
+
+
+
+

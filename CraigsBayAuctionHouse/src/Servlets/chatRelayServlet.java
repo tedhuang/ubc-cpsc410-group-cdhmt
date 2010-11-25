@@ -44,9 +44,7 @@ public class chatRelayServlet extends HttpServlet {
     }
 	
 	private int cantorPairing( int key1, int key2 ) {
-		
 		return ( ((key1 + key2) * (key1 + key2 + 1) ) / 2  ) + key2;
-		
 	}
     
 	public int registerChatSession(int senderID, int receiverID ) {
@@ -58,17 +56,21 @@ public class chatRelayServlet extends HttpServlet {
 		return pollingCode;
 	}
 	
+	public boolean sessionExists( int senderID, int sendToID ) {
+		return sessionMsgMap.containsKey( cantorPairing( senderID, sendToID ) );
+	}
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// Registering the user's response for chat
-		Integer userID = Integer.parseInt( request.getParameter("userID") );
+		Integer pollingCode = Integer.parseInt( request.getParameter("pollingCode") );
 		
 		StringBuffer tempBuffer;
-		if( sessionMsgMap.containsKey( userID ) ) {
-			tempBuffer = sessionMsgMap.remove( userID );
+		if( sessionMsgMap.containsKey( pollingCode ) ) {
+			tempBuffer = sessionMsgMap.remove( pollingCode );
 		}
 		else {
 			tempBuffer = new StringBuffer("\t<message></message>");
@@ -92,23 +94,24 @@ public class chatRelayServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// get ID for sender and receiver
 		String senderIDString = request.getParameter("senderID").toString();
-		String sendToIDString = request.getParameter("sendToID").toString();
+//		String sendToIDString = request.getParameter("sendToID").toString();
+//		
+//		Integer senderID = Integer.valueOf(senderIDString);
+//		Integer sendToID = Integer.valueOf(sendToIDString);
 		
-		Integer senderID = Integer.valueOf(senderIDString);
-		Integer sendToID = Integer.valueOf(sendToIDString);
-		
+		String sendToCodeString = request.getParameter("sendToCode").toString();
+		Integer sendToCode = Integer.valueOf(sendToCodeString);
 		
 		// generate the key pairing
 //		int pairKeyTo = cantorPairing( senderID.intValue(), sendToID.intValue() );
 //		int pairKeyFrom = cantorPairing( sendToID.intValue(), senderID.intValue()  );
 		
 		String msg = request.getParameter("message").toString();
-		System.out.println("sending message from " + senderID + " to " + sendToID + " msg: " + msg );
 		
 		StringBuffer tempBuffer;
 		
-		if ( sessionMsgMap.containsKey( sendToID ) ) {
-			tempBuffer = sessionMsgMap.get( sendToID );
+		if ( sessionMsgMap.containsKey( sendToCode ) ) {
+			tempBuffer = sessionMsgMap.get( sendToCode );
 		}
 		else {
 			tempBuffer = new StringBuffer();
@@ -120,7 +123,7 @@ public class chatRelayServlet extends HttpServlet {
 							" timeStamp=\"" + Calendar.getInstance().getTimeInMillis() + "\"" +
 							">" + msg + "</message>\n");
 								
-		sessionMsgMap.put( sendToID, tempBuffer );
+		sessionMsgMap.put( sendToCode, tempBuffer );
 		// Write XML to response if DB has return message
 //		StringBuffer XMLResponse = new StringBuffer();	
 //		XMLResponse.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");

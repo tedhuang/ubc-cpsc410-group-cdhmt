@@ -248,6 +248,57 @@ public class DBManager {
 		
 	}
 	
+	public boolean checkFriendExist(int ownerID, int userID){
+		try {
+			stm = m_conn.createStatement();
+
+			String query = "SELECT * FROM FriendsTable " +
+							"WHERE UserID='" + userID + "' " + 
+							"AND FriendID = '" + ownerID + "' "; 
+			
+			stm.executeQuery(query);
+			ResultSet result = stm.getResultSet();
+			System.out.println("Result : " + result.first() );
+			
+			
+			//TODO: Check if these conditons work
+			if ( result.first() != false) {
+				stm.close();
+				System.out.println("Result : User already friend");
+				return true;
+			}
+			else {
+				stm.close();
+				result.close();
+				return false;
+			}
+			
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return true;
+	}
+	
+	public boolean addFriend(int ownerID,int userID){
+		try {
+			stm = m_conn.createStatement();
+			
+			String query = "INSERT INTO FriendsTable " +
+							"VALUES (" + userID + ", " + ownerID + ")";
+			
+			
+			boolean success = stm.execute(query);
+			stm.close();
+			
+			return success;
+			
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return true;
+		
+	}
+	
 	public boolean deleteFriend(int userID, int friendID ){
 		
 		try {
@@ -266,8 +317,9 @@ public class DBManager {
 			e1.printStackTrace();
 		}
 		return true;
-		
 	}
+	
+	
 	public ArrayList<Auction> auctionListPostedByUser( int userID )
 	{
 		

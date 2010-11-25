@@ -41,7 +41,7 @@
   
  <!--  this will get called when the page is dynamically loaded. -->
  <script>
- loadAuctionTable();
+ loadAuctionTable('myTable');
  </script>
   
   
@@ -77,7 +77,6 @@
 				
 				<div class="content-box-content">
 			   
-					<div class="tab-content default-tab" id="tab1"> <!-- This is the target div. id must match the href of this div's tab -->
 					
 						
 						<table>
@@ -131,7 +130,7 @@
 							
 		</table>
 						
-	 </div> 
+ 
 <!-- ********************************************************************************************
 						END~ Auction List
 *************************************************************************************************-->

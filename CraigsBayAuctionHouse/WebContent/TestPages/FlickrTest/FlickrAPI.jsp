@@ -73,6 +73,11 @@ getHash(tags);
 
 
 
+<a href="http://flickrbadge.theducky.com/tag/link/55164508@N02/tag1_1">
+<img src="http://flickrbadge.theducky.com/tag/photo/55164508@N02/tag1_1_s.jpg" alt="Scriptless Flickr Badge" /></a>
+
+
+
 <!-- Works only inside test page: -->
 <div class="flickrbadge">
 	<h2>Flickr Test Header</h2>

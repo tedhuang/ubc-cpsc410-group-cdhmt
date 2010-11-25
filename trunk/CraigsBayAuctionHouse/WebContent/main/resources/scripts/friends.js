@@ -101,7 +101,7 @@ function addElement2( rowParams, container ) {
 	 
 	  //remove old rows..
 	  
-	  var oBody = document.getElementById(theValue);
+	  var oBody = document.getElementById(container);
 	  
 	 // Insert rows and cells into bodies.
 	    oRow = oBody.insertRow(oBody.rows.length);

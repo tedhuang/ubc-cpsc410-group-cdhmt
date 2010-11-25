@@ -184,6 +184,7 @@
     <display-name>chatRelayServlet</display-name>
     <servlet-name>chatRelayServlet</servlet-name>
     <servlet-class>Servlets.chatRelayServlet</servlet-class>
+    <load-on-startup>2</load-on-startup>
   </servlet>
   <servlet-mapping>
     <servlet-name>chatRelayServlet</servlet-name>
@@ -259,5 +260,15 @@
   <servlet-mapping>
     <servlet-name>friendDeleteServlet</servlet-name>
     <url-pattern>/friendDeleteServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>chatRegisterServlet</display-name>
+    <servlet-name>chatRegisterServlet</servlet-name>
+    <servlet-class>Servlets.chatRegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>chatRegisterServlet</servlet-name>
+    <url-pattern>/chatRegisterServlet</url-pattern>
   </servlet-mapping>
 </web-app>

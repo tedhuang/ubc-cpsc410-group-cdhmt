@@ -69,9 +69,6 @@
 <!-- ***************************************************************************************-->
 	
 	<script type="text/javascript">
-	
-	</script>
-	<script type="text/javascript">
 	function createAuction(containerID)
 	{
 
@@ -139,6 +136,7 @@
 			var searchTitle = document.getElementById("searchTitle").value;
 			var searchCategory = "%25";
 			searchOwner = "";
+			showAdvancedSearchTab();
 		}
 
 		//Advanced Search
@@ -180,7 +178,7 @@
 		    {
 			    //parse XML response from server
 			    
-			    var responseText= ParseSearchedAuctionList(xmlhttp.responseXML);
+			    var responseText= ParseSearchedAuctionList(xmlhttp.responseXML,'searchRsltArea');
 		    	
 		    }
 		  }
@@ -672,41 +670,6 @@
 					This is the content of the second tab.	<br>
 					<a href="#" onclick="deleteTab('tip')">Remove this tab</a><br>
 				</div>
-				
-				<!-- Pre-Defined Advanced Search Tab 
-				<div class="dhtmlgoodies_aTab" id="advancedSearchTab">
-					
-						<input type="text" id="advancedSearchTitle" value="search Auctions..." onclick="SelectAll('advancedSearchTitle');"/>
-						
-					<FORM name="searchOpt"> 
-						<select name="searchCondition1" class="small-input" onChange="cascadeOpt(searchCondition1);">
-							<option value="searchOption">Search By</option>
-							<option value="searchByCategory">Category</option>
-							<option value="searchByPeople">Owner</option>
-						</select>
-					</FORM>
-					
-				  
-					<select id="searchCategory" >
-							
-							<option value=""> Pick a Category</option>
-							<option value="electronics">Electronics</option>
-							<option value="books">Books</option>
-							<option value="motors">Motors</option>
-							<option value="art">Art</option>
-							<option value="music">Music</option>
-					</select>
-					<input type="text" id="searchOwner" value="search By Authors..." onclick="SelectAll('searchOwner');"/>
-					<br><input type="image" id="advSearchBtn" 
-						   src="./resources/images/advancedSearch.png"
-						   title="Advanced Search" onClick="searchAuctionTable(1)"/>
-				</div>
-				
-				<!-- Auction Details Tab 
-				<div class="dhtmlgoodies_aTab" id="auctionDetailTab">
-					<div id="itemDetailArea">
-					</div><br>
-				</div>-->
 				
 			</div>
 		  </div>

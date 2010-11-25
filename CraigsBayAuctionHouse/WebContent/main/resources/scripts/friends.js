@@ -83,56 +83,55 @@ function ParseFriendsList(responseXML, container){
 		rowParams[2] = "<a class=\"button\" onclick=deleteFriend("+friendID+");>Delete</a>";
 		rowParams[3] = "<a class=\"button\" onclick=searchAuctionTable(2,\""+friendName+"\");>View Auctions</a>";
 		rowParams[4] = "<a class=\"button\" onclick=chatFriend("+friendID+");>Chat</a>";
-		addElement(rowParams, container);
+		addElement2(rowParams, container);
 	}
 	document.getElementById("friendTbTitle").innerHTML="Friend List";
 }
 
-//function addElement2( rowParams, container ) {
-//	
-//	  var ni = document.getElementById('myTable');
-//	  
-//	  var numi = document.getElementById('theValue');
-//	  var num = (document.getElementById('theValue').value -1)+ 2;
-//	  numi.value = num;
-//	  var newdiv = document.createElement('div');
-//	  var divIdName = 'my'+num+'Div';
-//	  newdiv.setAttribute('id',divIdName);
-//	  newdiv.setAttribute('class','div-table-row');
-//	 
-//	  //remove old rows..
-//	  
-//	  var oBody = document.getElementById('myTable');
-//	  
-//	 // Insert rows and cells into bodies.
-//	    oRow = oBody.insertRow(oBody.rows.length);
-//	    oRow.setAttribute('id', rowParams[0]);
-//
-//	   //Friend ID
-//	    oCell = oRow.insertCell(-1);
-//	    
-//	    oCell.innerHTML =  rowParams[0];
-//	    
-//	    //Friend Name
-//	    oCell = oRow.insertCell(-1);
-//	    oCell.innerHTML =  rowParams[1];
-//	    
-//	    //Delete Button
-//	    oCell = oRow.insertCell(-1);
-//	    oCell.innerHTML =  rowParams[2];
-//	    
-//	    //Auction Button
-//	    oCell = oRow.insertCell(-1);
-//	    oCell.innerHTML =  rowParams[3];
-//	    
-//	    //Chat Button
-//	    oCell = oRow.insertCell(-1);
-//	    oCell.innerHTML =  rowParams[4];
-//	    
-//	  	//tools
-//	    
-//	  //ni.appendChild(newdiv);
-//	}
+var theValue=0;
+function addElement2( rowParams, container ) {
+	
+	  var ni = document.getElementById(container);
+	  
+	  var num=(theValue-1)+2;
+	  var newdiv = document.createElement('div');
+	  var divIdName = 'my'+num+'Div';
+	  newdiv.setAttribute('id',divIdName);
+	  newdiv.setAttribute('class','div-table-row');
+	 
+	  //remove old rows..
+	  
+	  var oBody = document.getElementById(theValue);
+	  
+	 // Insert rows and cells into bodies.
+	    oRow = oBody.insertRow(oBody.rows.length);
+	    oRow.setAttribute('id', rowParams[0]);
+
+	   //Friend ID
+	    oCell = oRow.insertCell(-1);
+	    
+	    oCell.innerHTML =  rowParams[0];
+	    
+	    //Friend Name
+	    oCell = oRow.insertCell(-1);
+	    oCell.innerHTML =  rowParams[1];
+	    
+	    //Delete Button
+	    oCell = oRow.insertCell(-1);
+	    oCell.innerHTML =  rowParams[2];
+	    
+	    //Auction Button
+	    oCell = oRow.insertCell(-1);
+	    oCell.innerHTML =  rowParams[3];
+	    
+	    //Chat Button
+	    oCell = oRow.insertCell(-1);
+	    oCell.innerHTML =  rowParams[4];
+	    
+	  	//tools
+	    
+	  //ni.appendChild(newdiv);
+	}
 
 function deleteFriend(friendID){
 	

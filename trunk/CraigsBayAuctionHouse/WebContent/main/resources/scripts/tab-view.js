@@ -442,10 +442,9 @@ function createFriendTab(parentId,tabTitle,closeButton)
 	var title = document.createElement('SPAN');
 	title.id = 'friendTbTitle';
 	var buddyList = document.createElement('TABLE');
-	buddyList.innerHTML = "<tr><th><input class=\"check-all\" type='checkbox' /></th>"+
-								"<th>Auction Item</th><th>Status</th><th>Time Left</th>" +
-								"<th>Latest Price</th><th>Category</th><th>Number of Bids</th></tr>" +
-								"<tBody id='friendTable'></tBody>";
+	buddyList.innerHTML = "<tr><th>Friend ID</th><th>Friend Name</th>"+
+								   "<th>Delete</th><th>View Auctions</th>"+
+								   "<th>Chat</th><tBody id='friendTable'></tBody>";
 	
 
 	var tabId = initTabs(parentId,Array(tabTitle),0,'','',Array(closeButton),true);

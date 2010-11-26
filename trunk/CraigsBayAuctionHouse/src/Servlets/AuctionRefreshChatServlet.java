@@ -38,9 +38,9 @@ public class AuctionRefreshChatServlet extends HttpServlet {
 		int auctionID 	= Integer.parseInt( request.getParameter("auctionID").toString() );
 		
 		String chatLog = dbm.getTextFromAuctionChatLog(auctionID);
-		if(chatLog == null)
+		if(chatLog == null || chatLog == "")
 		{
-			chatLog = "";
+			chatLog = "Post Your Questions Here:";
 		}
 		
 		StringBuffer XMLResponse = new StringBuffer();	

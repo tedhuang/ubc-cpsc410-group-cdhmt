@@ -7,21 +7,13 @@ List of stuff we left to complete and the manhour estimation for them
 = Details 28-30h = 
 
 Bugs - 2h
-  * Simple Search - conflict between old UI and new UI
+  * Advanged Search - conflict between old UI and new UI
 
 Register User Page - 2h
   * Link up with UI - 2h
 
-Chat - 15h
-  * Reseaerch/Design - 1h
+Chat - 5h
   * Client Side UI - 3h
-  * Client Side Script
-    * sendMsg - 0.5h
-    * recvMsg - 2h
-  * Server receive MSG - 1.5h
-  * Server send MSG - 1.5h
-  * Cache? - 2h
-  * Servlet - 1.5h
   * MSG history functionality - 1h
   * DB Structuring 1h.
 

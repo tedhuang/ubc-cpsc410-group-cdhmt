@@ -34,7 +34,7 @@ function getMsg( pollingCode ) {
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xmlhttp.send();
 
-	setTimeout("getMsg("+ pollingCode +")", 2000);
+	setTimeout("getMsg("+ pollingCode +")", 3000);
 	
 }
 
@@ -44,7 +44,7 @@ function ParseGETXMLResponse(responseXML)
 	var printout = "";
 	
 	for (var iNode = 0; iNode < messageList.length; iNode++) {
-	
+		
 		var message = messageList[iNode].childNodes[0].nodeValue;
 		var sender = messageList[iNode].getAttribute("senderID");
 		printout += "User " + sender + " said: \"" + message + "\"\n";
@@ -130,12 +130,14 @@ function requestChat()
 	  {
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	    {
-		  var sessionInfo	= xmlhttp.responseXML.getElementsByTagName("chatSession")[0];
+		  var sessionInfo	= xmlhttp.responseXML.getElementsByTagName("chatSession").item(0);
 		  var sendToCode	= sessionInfo.getAttribute("sendToCode");
 		  var pollingCode	= sessionInfo.getAttribute("pollingCode");
 		  
 		  document.getElementById("sendToCode").value = sendToCode;
+		  document.getElementById("pollingCode").value = pollingCode;
 		  
+		  alert("Session Requested: sendToCode=" + sendToCode + " pollingCode=" + pollingCode );
 		  
 		  getMsg( pollingCode );
 	    }
@@ -162,7 +164,7 @@ function waitForChat()
 		  var requestList = xmlhttp.responseXML.getElementsByTagName('chatRequest');
 		  var sender;
 		  var pollingCode;
-		  sendToCode;
+		  var sendToCode;
 		  
 		  for (var iNode = 0; iNode < requestList.length; iNode++) {
 			  sender 		= requestList[iNode].getAttribute("senderID");
@@ -170,18 +172,21 @@ function waitForChat()
 			  sendToCode	= requestList[iNode].getAttribute("sendToCode");
 			  
 			  document.getElementById("sendToCode").value = sendToCode;
+			  document.getElementById("pollingCode").value = pollingCode;
 			  
+			  alert("Session Request from User " + sender +
+					  "sendToCode=" + sendToCode + " pollingCode=" + pollingCode );
 			  getMsg( pollingCode );
 			}
 		  
 		  
 		  //getMsg( pollingCode );
-		  setTimeout("waitForChat()", 5000);
+		  setTimeout("waitForChat()", 8000);
 	    }
 	  }
 
 	//send the parameters to the servlet with POST
-	xmlhttp.open("GET","../chatRegisterServlet?userID=" + userID,true);
+	xmlhttp.open("GET","../chatRegisterServlet?userID="+userID, true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xmlhttp.send();
 }
@@ -206,5 +211,7 @@ UserID: <input id="userID" type="text" name="userID" size="50"><br>
 <button type="button" onclick="waitForChat()">Wait for Chat</button>
 
 <input id="sendToCode" type="hidden" name="sendToCode">
+<input id="pollingCode" type="hidden" name="pollingCode">
+
 </body>
 </html>

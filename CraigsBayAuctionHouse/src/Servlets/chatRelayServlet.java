@@ -56,6 +56,13 @@ public class chatRelayServlet extends HttpServlet {
 		return pollingCode;
 	}
 	
+	public void closeChatSession(int pollingCode ) {
+		
+		//TODO extra step/check?
+		sessionMsgMap.remove(pollingCode );
+		
+	}
+	
 	public boolean sessionExists( int senderID, int sendToID ) {
 		return sessionMsgMap.containsKey( cantorPairing( senderID, sendToID ) );
 	}
@@ -71,9 +78,11 @@ public class chatRelayServlet extends HttpServlet {
 		StringBuffer tempBuffer;
 		if( sessionMsgMap.containsKey( pollingCode ) ) {
 			tempBuffer = sessionMsgMap.remove( pollingCode );
+			System.out.println("Message from " + pollingCode + ":\n" + tempBuffer );
 		}
 		else {
-			tempBuffer = new StringBuffer("\t<message></message>");
+			//tempBuffer = new StringBuffer("\t<message></message>");
+			tempBuffer = new StringBuffer("");
 		}
 		
 		StringBuffer XMLResponse = new StringBuffer();	
@@ -122,7 +131,8 @@ public class chatRelayServlet extends HttpServlet {
 							" senderID=\"" + senderIDString + "\"" +
 							" timeStamp=\"" + Calendar.getInstance().getTimeInMillis() + "\"" +
 							">" + msg + "</message>\n");
-								
+		
+		System.out.println("sendToCode: " + sendToCode + " \n" + tempBuffer );
 		sessionMsgMap.put( sendToCode, tempBuffer );
 		// Write XML to response if DB has return message
 //		StringBuffer XMLResponse = new StringBuffer();	

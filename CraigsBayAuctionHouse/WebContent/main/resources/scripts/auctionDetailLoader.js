@@ -1,4 +1,5 @@
- 
+
+var auctionChatID;
 
 function toggle() {
 	var ele = document.getElementById("editTab");
@@ -94,6 +95,11 @@ function changeAuctionStatusParseResponse(responseXML, auctionID)
 
 
 function viewAuctionByID(auctionID ){
+	
+	if(auctionChatID!=null)
+	{
+		clearTimeout(auctionChatID);
+	}
 	
 	if (window.XMLHttpRequest)
 	  {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -375,7 +381,7 @@ function refreshAuctionChatParseXMLResponse(responseXML, auctionID)
 	document.getElementById("auctionChatHistory").innerHTML = chatLog;
 	document.getElementById("auctionChatHistory").scrollTop = document.getElementById("auctionChatHistory").scrollHeight;
 
-	setTimeout("refreshAuctionChat(" + auctionID + ")", 5000);
+	auctionChatID=setTimeout("refreshAuctionChat(" + auctionID + ")", 5000);
 }
 
 function refreshAuctionChat(auctionID)

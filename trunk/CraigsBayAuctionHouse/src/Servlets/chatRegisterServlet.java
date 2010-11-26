@@ -33,6 +33,7 @@ public class chatRegisterServlet extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Polling for inComingChatRequest
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -44,6 +45,8 @@ public class chatRegisterServlet extends HttpServlet {
 		
 		if( incomingChatRequest.containsKey( userID ) ) {
 			replyBuffer = incomingChatRequest.remove( userID );
+			System.out.println("User " + userID + " incoming chat registering");
+			System.out.println(replyBuffer);
 		}
 		else {
 			replyBuffer = new StringBuffer("");
@@ -63,6 +66,7 @@ public class chatRegisterServlet extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * used to send chat requests
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -93,6 +97,7 @@ public class chatRegisterServlet extends HttpServlet {
 					" sendToCode=\"" + sendToCode + "\"" +
 					" pollingCode=\"" + pollingCode + "\"" +
 					">" + "</chatSession>\n");
+			System.out.println(replyBuffer);
 		}
 		
 		
@@ -105,11 +110,11 @@ public class chatRegisterServlet extends HttpServlet {
 			tempBuffer = new StringBuffer();
 		}
 		
-		
+		//setup chatRequest, fill parameter for receiver side
 		//put pollingCode and senderID inside incomingChatRequest
 		tempBuffer.append("\t<chatRequest" +
 				" senderID=\"" + senderIDString + "\"" +
-				" sendToCode=\"" + sendToCode + "\"" +
+				" sendToCode=\"" + pollingCode + "\"" +
 				" pollingCode=\"" + sendToCode + "\"" +
 				">" + "</chatRequest>\n");
 					

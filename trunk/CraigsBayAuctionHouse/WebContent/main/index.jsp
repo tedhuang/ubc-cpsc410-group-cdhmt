@@ -469,6 +469,7 @@
 				{
 				%>
 				<p>Already A Member? <a href="#" onclick="openbox('User Sign In', 1)">Sign-in From here</a></p>
+				<p>Not A Member? <a href="./registerUser.jsp" >Register here</a></p>
 				<%
 				}
 				%>

@@ -74,13 +74,13 @@ function ParseFriendsList(responseXML, container){
    	 	var rowHTML =	"    <td>" +
    	 					"<a href=index.html>"+ friendID + "</a></td>" +
 						"    <td>"+ friendName + "</td>"+
-						"    <td><a class=\"button\" onclick=deleteFriend("+friendID+");>Delete</a></td>"+
+						"    <td><a class=\"button\" onclick=deleteFriend("+friendID+", "+ container + ");>Delete</a></td>"+
 						"    <td><a class=\"button\" onclick=searchAuctionTable(2,"+friendName+");>View Auctions</a></td>"+
 						"    <td><a class=\"button\" onclick=chatFriend("+friendID+");>Chat</a></td>";
 		var rowParams = new Array();
 		rowParams[0] = friendID;
 		rowParams[1] = friendName;
-		rowParams[2] = "<a class=\"button\" onclick=deleteFriend("+friendID+");>Delete</a>";
+		rowParams[2] = "<a class=\"button\" onclick=deleteFriend("+friendID+", "+ container + ");>Delete</a>";
 		rowParams[3] = "<a class=\"button\" onclick=searchAuctionTable(2,\""+friendName+"\");>View Auctions</a>";
 		rowParams[4] = "<a class=\"button\" onclick=chatFriend("+friendID+");>Chat</a>";
 		addElement2(rowParams, container);
@@ -133,7 +133,7 @@ function addElement2( rowParams, container ) {
 	  //ni.appendChild(newdiv);
 	}
 
-function deleteFriend(friendID){
+function deleteFriend(friendID, container){
 	
 var credential = document.getElementById("cred").value;
 	

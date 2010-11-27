@@ -82,6 +82,7 @@ function userParseXMLResponse(responseXML){
 	 else 
 	{
 		 responseText = "<h2>User Created!</h2>";
+		 window.location='./index.jsp'
 	}
 	
 

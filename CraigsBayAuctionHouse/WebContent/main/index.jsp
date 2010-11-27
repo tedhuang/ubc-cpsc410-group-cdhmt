@@ -61,6 +61,7 @@
 		<script type="text/javascript" src='./resources/scripts/createAuction.js'></script>
 		<script type="text/javascript" src='./resources/scripts/friends.js'></script>
 		<script type="text/javascript" src='./resources/scripts/userControlPanel.js'></script>
+		<script type="text/javascript" src='./resources/scripts/flickrAPI.js'></script>
 
 		
 		

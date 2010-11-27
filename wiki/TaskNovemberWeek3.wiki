@@ -9,9 +9,6 @@ List of stuff we left to complete and the manhour estimation for them
 Bugs - 2h
   * Advanged Search - conflict between old UI and new UI
 
-Register User Page - 2h
-  * Link up with UI - 2h
-
 Chat - 5h
   * Client Side UI - 3h
   * MSG history functionality - 1h
@@ -28,6 +25,9 @@ Friends - 2h - work with harry to fix
   * delete friends will mess up the UI
 
 = Options =
+Register User Page - 2h
+  * Fit to UI style - 2h
+  * Make it so after registering user is logged in - 2h
 
 Mail-Box System
   * possibly used for offline messaging and for friend request

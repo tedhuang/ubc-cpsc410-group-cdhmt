@@ -100,9 +100,9 @@ public class userCreateAuctionServlet extends HttpServlet {
 										Integer.parseInt(request.getParameter("ExpiryHour")));
 		String Category = request.getParameter("Category").toString();
 		
-		int success = dbm.createNewAuction(AuctionTitle, Category, AuctionStatus, CreationDate, ExpiryDate, ExpiryTime, Double.parseDouble(MinPrice), OwnerID, "flickr album");
+		int auctionID = dbm.createNewAuction(AuctionTitle, Category, AuctionStatus, CreationDate, ExpiryDate, ExpiryTime, Double.parseDouble(MinPrice), OwnerID, "flickr album");
 		
-		if(success <= 0){
+		if(auctionID == -1){
 			System.out.println("Error: createNewAuction in userCreateAuctionServlet failed");
 		}
 		
@@ -110,7 +110,7 @@ public class userCreateAuctionServlet extends HttpServlet {
 		StringBuffer XMLResponse = new StringBuffer();	
 		XMLResponse.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
 		XMLResponse.append("<response>\n");
-		XMLResponse.append("\t<success>" + success + "</success>\n");
+		XMLResponse.append("\t<success>" + auctionID + "</success>\n");
 		XMLResponse.append("</response>\n");
 		response.setContentType("application/xml");
 		response.getWriter().println(XMLResponse);

@@ -18,9 +18,10 @@ function getHash(tags){
 	    {
 		    //parse XML response from server
 	    	hash = (xmlhttp.responseXML.getElementsByTagName("hash")[0]).childNodes[0].nodeValue;
-	    	//alert("js: " + hash);
+
 	    	document.getElementById("api_sig").value=hash;
-	    	//alert("document.getElementById(api_sig).value="  + document.getElementById("api_sig").value);
+	    	alert("document.getElementById(api_sig).value="  + document.getElementById("api_sig").value);
+	    	
 	    	document.getElementById("submit").disabled=false;
 	    	
 	    	//document.getElementById("hash").value = (xmlhttp.responseXML.getElementsByTagName("hash")[0]).childNodes[0].nodeValue;

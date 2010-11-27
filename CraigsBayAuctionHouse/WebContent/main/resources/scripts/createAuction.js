@@ -1,5 +1,5 @@
 //Ajax to create auction
-
+var auctionID;
 
 function createAuctionRequest()
 {
@@ -18,7 +18,7 @@ function createAuctionRequest()
 		return;
 	}
 	if(MinPrice.match(/\d{1,10}\.?\d{0,2}/) == null){
-		alert("did not match");
+		alert("Min Price not valid");
 		return;
 	}
 	
@@ -68,40 +68,54 @@ function loginParseXMLResponse(responseXML)
 
 function auctionParseXMLResponse(responseXML){
 	
-	 var success = (responseXML.getElementsByTagName("success")[0]).childNodes[0].nodeValue;
+	 auctionID = (responseXML.getElementsByTagName("success")[0]).childNodes[0].nodeValue;
 	 var responseText = "";
-	 var photoDir = document.getElementById("photoDir").value;
+	 //var photoDir = document.getElementById("photoDir").value;
 
-	 if(success==0)
+	 if(auctionID == -1)
 	{
 		 responseText = "<h2>Error creating auction!</h2>";
 	}
 	 else 
 	{
-		 var uploadCheck = flickrUpload();
-		 if(uploadCheck == -1)
-		 {
-			 //TODO: handle error for unsuccessful upload
-			 
-		 }		 
-		 else
-		 {
-			 responseText = "<h2>Auction Created!</h2>";
-		 }
+		 //document.getElementById("tagAuctionID").value = auctionID;
+		 getHash(auctionID);
+		 document.getElementById("tags").value = auctionID;
+		 
 	}
-	
-
+	 responseText = "<h2>Auction Created!</h2>";
+	 
+	 
 	 return responseText;
 }
 
 /*
- * Returns 0 on success, -1 on failure
+ * Handling Flickr Upload in Javascript
  */
-function flickrUpload(){
-	
-	
-	return 0;
+function postFlickrUpload(params){
+	var uploadform = document.createElement("form");
+    form.setAttribute("method", "POST");
+    form.setAttribute("action", "http://api.flickr.com/services/upload/");
+
+    for(var key in params) {
+        var hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", key);
+        hiddenField.setAttribute("value", params[key]);
+
+        form.appendChild(hiddenField);
+    }
+
+    document.body.appendChild(form);    // Not entirely sure if this is necessary
+    form.submit();
 }
+
+
+
+
+
+
+
 
 
 

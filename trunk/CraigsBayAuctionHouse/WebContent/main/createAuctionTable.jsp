@@ -2,7 +2,6 @@
 <head>
 <title>Create Auction Table Test Page</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <script  type="text/javascript" language="javascript" src='./resources/scripts/flickrAPI.js'></script>
 </head>
 
 <body>
@@ -52,27 +51,30 @@ Category: <select id="Category" name="Category">
 			<option value="art">Art</option>
 			<option value="music">Music</option>
 		  </select><br>
-Photo (optional): <input id="photoDir" type="file" name="photo"/> <br>
+ <br>
 
         	  
 <div id="createAuctionFeedback"><h2>Feedback Area</h2></div>
 
 <button type="button" onclick="createAuctionRequest()">Create Auction</button>
   
-<script type="text/javascript">
-var tags = "TestTag";
-getHash(tags);
-</script>
 
-<form enctype="multipart/form-data" method="post"  action="http://api.flickr.com/services/upload/"> 
-<!-- <input type="file" name="photo"/>  -->  
-<input type="hidden" name="tags" value="TestTag"/>  
-<input type="hidden" name="api_key" value="301748fd9ccc9801f9ed91772b19d8bd"/>
-<input type="hidden" name="auth_token" value="72157625289914267-ed25c30f0392675d"/>
-<input type="hidden" id="api_sig" name="api_sig" value=""/>
-<input type="submit" id="submit" name ="submit" value="Upload"/>
-</form> 
- 
+
+<input type="hidden" value="" id="tagAuctionID">
+	
+<div id="flickrUpload">
+
+	<form enctype="multipart/form-data" method="post"  action="http://api.flickr.com/services/upload/"> 
+	Photo (optional): <input type="file" name="photo"/> 
+	<input type="hidden" name="tags" id="tags" value="TestTag"/>  
+	<input type="hidden" name="api_key" value="301748fd9ccc9801f9ed91772b19d8bd"/>
+	<input type="hidden" name="auth_token" value="72157625289914267-ed25c30f0392675d"/>
+	<input type="hidden" id="api_sig" name="api_sig" value="05fc99a75e09453bc14536bf23593a50"/>
+	<input type="submit" id="submit" name ="submit" value="Upload"/>
+	</form> 
+	
+	
+</div>
 
 
 

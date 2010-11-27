@@ -50,9 +50,31 @@ public class DBManager {
 			
 			System.out.println("Creating new auction : " + query);
 			
-			int success = stm.executeUpdate(query);
+			stm.executeUpdate(query);
+			
+			query = "SELECT AuctionID FROM AuctionsTable WHERE "
+				+ " AuctionTitle='" + auctionName + "'" + " AND ExpiryDate='" + expiryDate + "'" + 
+						" AND AuctionExpireTime='" + expiryTime + "' AND ownerID='" + ownerID + "' AND creationDate='" + creationDate+"'"; 
+			ResultSet result = stm.executeQuery(query);
+			
+			
+			System.out.println("Debug Check " + query);
+			
+			if( result.first() )
+			{
+				int AuctionID = result.getInt("AuctionID");
+				System.out.println("Returned AuctionID: " + AuctionID);
+				stm.close();
+				return AuctionID;
+			}
+			else
+			{
+				System.out.println("Error: result.first() is false ");
+				//TODO: implement handling fail creation
+			}
 			stm.close();
-			return success;
+			
+			
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}

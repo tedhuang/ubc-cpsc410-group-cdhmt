@@ -451,6 +451,66 @@ function createFriendTab(parentId,tabTitle,closeButton)
 	div.appendChild(title);
 	div.appendChild(buddyList);
 }
+/****************************************************************************************************************************************
+ * 
+ * 								Create Chat Tab Function
+ * 
+ * @param parentId --> The Tab Panel ID
+ * @param tabTitle --> New Table Title
+ * @param closeButton --> True for disposable tab; False for non-disposable tabs 
+ *****************************************************************************************************************************************/
+function createChatTab(parentId,tabTitle,closeButton)
+{
+	if(tabFrame_countTabs[parentId]>=tabFrame_maxNumberOfTabs)return;	// Maximum number of tabs reached - return
+	var div = document.createElement('DIV');    //new tab Frame
+	div.className = 'dhtmlgoodies_aTab';
+	tabObj[parentId].appendChild(div);
+	div.id='imSession'; //TODO: add contact ID and session Number to the div.ID 
+	
+	var imFrame = document.createElement('DIV');
+	imFrame.id = 'imFrame';
+	imFrame.clssName='';//TO DO: Make a css class for chatting
+//	imFrame.innerHTML = "test";
+	
+	var imContainer = document.createElement('TABLE');
+	imContainer.id='imContainer';
+	imContainer.style.width='100%';
+	imContainer.style.height='100%';
+	imContainer.cellpadding='0';
+	imContainer.CELLSPACING='0';
+	imContainer.innerHTML=
+		"<tbody>" +
+			"<tr style='height: 37px'>" +
+			  "<td>" +
+			  	"<input type='button' value='Send SMS' onClick=''/>" +
+			  	"<input type='button' value='Send Message' onClick=''/>" +
+			  	"<input type='button' value='Block User' onClick=''/>" +
+			  	"<input type='button' value='Request Chat' onClick=''/>" +
+			  "</td>" +
+			"</tr>" +
+			"<tr>" +
+			   "<td>" +
+				  "<textarea id='imConversation' cols='50' rows='5' wrap='hard' readonly>" +
+					      "This is Gonna be where the Conversation displayed" +
+				  "</textarea>" +
+				"<td>" +
+			"</tr>" +
+			"<tr>" +
+			   "<td>" +
+				  "<textarea id='imInput' cols='45' rows='5' wrap='hard' >" +
+					      "This is Gonna be the input" +
+				  "</textarea>" +
+				  "<input type=button value='send' onClick=''/>" + //onClick method needed
+			"</tr>" +
+		"</tbody>";
+	
+	imFrame.appendChild(imContainer);
+	
+
+	var tabId = initTabs(parentId,Array(tabTitle),0,'','',Array(closeButton),true);
+	div.appendChild(imFrame);
+
+}
 /****************************************************************************************************
 		 							Open Advanced Search Tab
 /****************************************************************************************************/
@@ -489,15 +549,31 @@ else
 function showDetailViewTab()
 {
 
-	var open=getTabIndexByTitle('View Detail');
+	var open=getTabIndexByTitle('View Detail: ');
 	if (open<0)// if the tab is not open yet
 	{	
-		var aTab= createDetailViewTab('tabPanel','View Detail', true);
+		var aTab= createDetailViewTab('tabPanel','View Detail: ' , true);
 	}
 	else
 	{
 		//showTab('tabPanel',open.toString());
 	}
+}
+/****************************************************************************************************
+						Open Chatting Tab
+/****************************************************************************************************/
+function showChatTab(friendName)
+{
+
+var open=getTabIndexByTitle('Chatting with '+friendName);
+if (open<0)// if the tab is not open yet
+{	
+var aTab= createChatTab('tabPanel','Chatting with '+friendName, true);
+}
+else
+{
+//showTab('tabPanel',open.toString());
+}
 }
 /****************************************************************************************************
 						Open All Items Tab

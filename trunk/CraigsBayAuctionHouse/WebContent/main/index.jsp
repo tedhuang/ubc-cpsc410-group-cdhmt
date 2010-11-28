@@ -61,6 +61,7 @@
 		<script type="text/javascript" src='./resources/scripts/createAuction.js'></script>
 		<script type="text/javascript" src='./resources/scripts/friends.js'></script>
 		<script type="text/javascript" src='./resources/scripts/userControlPanel.js'></script>
+		<script type="text/javascript" src='./resources/scripts/chatServices.js'></script>
 		<script type="text/javascript" src='./resources/scripts/flickrAPI.js'></script>
 
 		
@@ -262,6 +263,24 @@
 		}
 		</script>
 		
+		
+<!-- ***************************************************************************************-->
+							<!-- chat Function  -->
+<!-- ***************************************************************************************-->	
+
+	<script type="text/javascript">
+	function chatFriend( friendID ) {
+		
+		requestChat( friendID );
+		
+		
+	}
+	
+	</script>
+	
+
+
+
 <!-- ***************************************************************************************-->
 							<!-- logout Function  -->
 <!-- ***************************************************************************************-->	
@@ -367,14 +386,14 @@
 	//	</script>
 	</script>
 	
-	
-<!-- ***************************************************************************************-->
-							<!--  CREDENTIAL CHECK -->
-<!-- ***************************************************************************************-->
+
 		
 	</head>
 	
-            
+   	
+<!-- ***************************************************************************************-->
+							<!--  CREDENTIAL CHECK -->
+<!-- ***************************************************************************************-->
 	
 	<% 
 		String cred = request.getParameter("cred");
@@ -385,7 +404,12 @@
 		{
 			userName = "Guest";
 		}
+		else
+		{
+
+		}
 	%>
+	
 	<input id="cred" type="hidden" value=<%= cred %>>
 	<input id="userName" type="hidden" value=<%= userName %>>
 	<input id="loginUserID" type="hidden" value=<%=loggedInUserID %>>
@@ -398,6 +422,8 @@
 		<div id="floadMenu">
 				<a class="trigger" href="#">Menu</a>
 		</div>
+		
+		<script language="javascript"> waitForChat() </script>
 	<%
 	}
 	%>

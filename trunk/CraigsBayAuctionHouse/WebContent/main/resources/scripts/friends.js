@@ -89,6 +89,7 @@ function ParseFriendsList(responseXML, container){
 }
 
 var theValue=0;
+var friendIdList=new array();
 function addElement2( rowParams, container ) {
 	
 	  var ni = document.getElementById(container);
@@ -109,7 +110,6 @@ function addElement2( rowParams, container ) {
 
 	   //Friend ID
 	    oCell = oRow.insertCell(-1);
-	    
 	    oCell.innerHTML =  rowParams[0];
 	    
 	    //Friend Name
@@ -186,4 +186,8 @@ function ParseFriendDelete(responseXML, container){
 	 //TODO Disable page while it reloads; ATM it reloads but the user can interact with it while it does.
 	 loadFriends(container);
 	 return responseText;
+}
+chatFriend(friendID)
+{
+	
 }

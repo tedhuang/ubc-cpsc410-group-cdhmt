@@ -542,7 +542,7 @@
 						Social Network
 					</a>
 					<ul>
-						<li><a href="#">Start a Chat</a></li>
+						<li><a href="#" onClick="showChatTab()">Start a Chat</a></li>
 						<li OnClick="viewFriends('friendTable')"><a href="#">Friends</a></li>
 						<li><a href="#">Chat history</a></li>
 						
@@ -681,7 +681,7 @@
 					<h2><div id="surferTitle">Welcome <%= userName %></div></h2><br>
 					<div id="Dynapage">
 						Dynamic page is here
-						<a href=# onClick="createNewTab('tabPanel','test','','', true)">New tab test</a>
+						<a href=# id='Harry' onClick=showChatTab(this.id)>Chat tab test</a>
 					</div><br>
 				</div>
 				

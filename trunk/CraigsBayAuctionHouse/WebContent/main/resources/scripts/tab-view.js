@@ -549,10 +549,10 @@ else
 function showDetailViewTab()
 {
 
-	var open=getTabIndexByTitle('View Detail: ');
+	var open=getTabIndexByTitle('View Detail');
 	if (open<0)// if the tab is not open yet
 	{	
-		var aTab= createDetailViewTab('tabPanel','View Detail: ' , true);
+		var aTab= createDetailViewTab('tabPanel','View Detail' , true);
 	}
 	else
 	{

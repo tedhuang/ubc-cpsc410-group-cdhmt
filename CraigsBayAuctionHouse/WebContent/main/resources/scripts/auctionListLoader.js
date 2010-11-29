@@ -241,8 +241,10 @@ function addElement( rowParams, container ) {
 
 	   //name
 	    oCell = oRow.insertCell(-1);
-	    
-	    oCell.innerHTML = "<a href='#' onClick=viewDetails(" + rowParams[0] + ")>"+ rowParams[1] + "</a>";
+//	    var title=escape(rowParams[1]);
+	    oCell.innerHTML = 
+	    	"<a href='#' " +
+	    	" onClick=viewDetails("+rowParams[0]+")>"+ rowParams[1] + "</a>";
 	    
 	    //status
 	    oCell = oRow.insertCell(-1);
@@ -269,6 +271,10 @@ function addElement( rowParams, container ) {
 	  //ni.appendChild(newdiv);
 	  
 	}
+
+function alltrim(str) {
+    return str.replace(/^\s+|\s+$/g, '%2525%2525%2520%2520');
+}
 /************************************************************************************************
  * 
  * 					REMOVE UNWANTED ENTRIES FROM THE PAGE 
@@ -301,6 +307,9 @@ function removeElement(container) {
 	 }
 		
 	}
+
+
+
 function loadAuctionTable(container)
 {
 	//var ni = document.getElementById('myDiv');

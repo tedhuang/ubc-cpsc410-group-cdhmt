@@ -61,23 +61,43 @@ Category: <select id="Category" name="Category">
 
 
 <input type="hidden" value="" id="tagAuctionID">
-	
-<div id="flickrUpload">
+<!--
+<form id ="flickrUploadForm"></form>
 
-	<form enctype="multipart/form-data" method="post"  action="http://api.flickr.com/services/upload/"> 
-	Photo (optional): <input type="file" name="photo"/> 
-	<input type="hidden" name="tags" id="tags" value="TestTag"/>  
-	<input type="hidden" name="api_key" value="301748fd9ccc9801f9ed91772b19d8bd"/>
-	<input type="hidden" name="auth_token" value="72157625289914267-ed25c30f0392675d"/>
-	<input type="hidden" id="api_sig" name="api_sig" value="05fc99a75e09453bc14536bf23593a50"/>
-	<input type="submit" id="submit" name ="submit" value="Upload"/>
-	</form> 
-	
-	
+  
+Photo (optional): <input type="file" name="photoUpload" id="photoUpload"/> 
+-->
+
+
+<div id="flickrResponse" style="display:none">
+<h3><font color="black"> If you want, you may add a picture to your auction:</font></h3>
 </div>
 
+<div id="flickrForm" style="display:none">
+	<form target="_NEW" id="flickrUploadForm" enctype="multipart/form-data" method="post" action="http://api.flickr.com/services/upload/"> 
+	<input type="file" name="photo"/>  
+	<input type="hidden" name="tags" id="tags" value=""/>  
+	<input type="hidden" name="api_key" value="301748fd9ccc9801f9ed91772b19d8bd"/>
+	<input type="hidden" name="auth_token" value="72157625289914267-ed25c30f0392675d"/>
+	<input type="hidden" id="api_sig" name="api_sig" value=""/>
+	<input type="submit" id="submit" name ="submit" value="Upload"/>
+	</form>
+</div>
 
+<!-- 
+<div id="flickrForm" style="display:none">
 
+	<form id="flickrUploadForm" name="flickrUploadForm" enctype="multipart/form-data" method="post"  action="http://api.flickr.com/services/upload/"> 
+	<input type="file" name="photo" id="photo"/> 
+	<input type="hidden" name="tags" id="tags" value=""/>  
+	<input type="hidden" name="api_key" value="301748fd9ccc9801f9ed91772b19d8bd"/>
+	<input type="hidden" name="auth_token" value="72157625289914267-ed25c30f0392675d"/>
+	<input type="hidden" id="api_sig" name="api_sig" value=""/>
+	 <input type="submit" id="submitFlickrButton" name="submit" value="Upload Picture"/>
+	</form> 
+</div>
+	
+ -->
     
 </body>
 </html>

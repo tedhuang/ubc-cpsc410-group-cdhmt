@@ -109,8 +109,8 @@ refreshAuctionChat(<%=auctionID%>);
 					<h4>Scriptless Flickr badge: (Auction ID: <%=auctionID%>)</h4>
 					
 					<!--Eventually repalce the tag2 with: auctionID -->
-					<a href=<%="http://flickrbadge.theducky.com/tag/link/55164508@N02/" +  "TestTag" + "_1"%>>
-					<img src= <%="http://flickrbadge.theducky.com/tag/photo/55164508@N02/" + "TestTag" + "_1_m.jpg" %> alt="Scriptless Flickr Badge" /></a>
+					<a href=<%="http://flickrbadge.theducky.com/tag/link/55164508@N02/" +  auctionID + "_1"%>>
+					<img src= <%="http://flickrbadge.theducky.com/tag/photo/55164508@N02/" + auctionID + "_1_m.jpg" %> alt="Scriptless Flickr Badge" /></a>
 					</div>
 					
 					

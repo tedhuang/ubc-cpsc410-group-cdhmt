@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Classes.User;
+import Managers.DBManager;
+
 /**
  * Servlet implementation class chatRegisterServlet
  */
@@ -18,6 +21,7 @@ public class chatRegisterServlet extends HttpServlet {
     
 	Map<Integer, StringBuffer > incomingChatRequest;
 	chatRelayServlet chatRelay;
+	DBManager dbm;
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -27,7 +31,8 @@ public class chatRegisterServlet extends HttpServlet {
         
         incomingChatRequest	= new ConcurrentHashMap<Integer, StringBuffer >();
         chatRelay			= new chatRelayServlet();
-
+        dbm 				= new DBManager();
+        
     }
 
 
@@ -37,9 +42,12 @@ public class chatRegisterServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String userIDString = request.getParameter("userID").toString();
+		//String userIDString = request.getParameter("userID").toString();
+		String credential = request.getParameter("Credential").toString();
+		int id = dbm.userCredentialCheckNoUpdate(credential);
 		
-		Integer userID = Integer.valueOf(userIDString);
+		//Integer userID = Integer.valueOf(userIDString);
+		Integer userID = new Integer(id);
 		
 		StringBuffer replyBuffer;
 		
@@ -49,6 +57,7 @@ public class chatRegisterServlet extends HttpServlet {
 			System.out.println(replyBuffer);
 		}
 		else {
+			
 			replyBuffer = new StringBuffer("");
 		}
 		
@@ -70,11 +79,16 @@ public class chatRegisterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String senderIDString = request.getParameter("userID").toString();
+		//String senderIDString = request.getParameter("userID").toString();
+		String credential = request.getParameter("Credential").toString();
+		int userID = dbm.userCredentialCheckNoUpdate(credential);
 		String sendToIDString = request.getParameter("sendToID").toString();
 		
-		Integer senderID = Integer.valueOf(senderIDString);
+		Integer senderID = new Integer(userID);
 		Integer sendToID = Integer.valueOf(sendToIDString);
+		
+		User senderUser = dbm.userGetByID( senderID );
+		User sendToUser = dbm.userGetByID( sendToID );
 		
 		int pollingCode = 0;
 		int sendToCode 	= 0;
@@ -84,7 +98,7 @@ public class chatRegisterServlet extends HttpServlet {
 		
 		if (  chatRelay.sessionExists( senderID, sendToID ) ) {
 			//TODO perhaps retrieve session message
-			
+			System.out.println("Session Exists between " + senderID + " and " + sendToID);
 
 		}
 		else {
@@ -96,11 +110,12 @@ public class chatRegisterServlet extends HttpServlet {
 					" sendToID=\"" + sendToIDString + "\"" +
 					" sendToCode=\"" + sendToCode + "\"" +
 					" pollingCode=\"" + pollingCode + "\"" +
+					" friendName=\"" + sendToUser.userName + "\"" +
 					">" + "</chatSession>\n");
 			System.out.println(replyBuffer);
 		}
 		
-		
+		//TODO need to stop user from setting up chat if sendTo is offline
 		StringBuffer tempBuffer;
 		
 		if( incomingChatRequest.containsKey( sendToID ) ) {
@@ -113,9 +128,10 @@ public class chatRegisterServlet extends HttpServlet {
 		//setup chatRequest, fill parameter for receiver side
 		//put pollingCode and senderID inside incomingChatRequest
 		tempBuffer.append("\t<chatRequest" +
-				" senderID=\"" + senderIDString + "\"" +
+				" senderID=\"" + senderID.toString() + "\"" +
 				" sendToCode=\"" + pollingCode + "\"" +
 				" pollingCode=\"" + sendToCode + "\"" +
+				" friendName=\"" + senderUser.userName + "\"" +
 				">" + "</chatRequest>\n");
 					
 		incomingChatRequest.put(sendToID, tempBuffer);

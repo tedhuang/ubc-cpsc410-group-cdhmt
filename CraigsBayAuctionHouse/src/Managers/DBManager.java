@@ -600,6 +600,60 @@ public class DBManager {
 			
 	}
 	
+	public int userCredentialCheckNoUpdate( String cred ){
+		
+		Long loginExpire = null;
+		int userID = 0;
+		ResultSet result;
+		
+		if (cred == "null" ) //might not need to check this but doing it just in case
+			return -1;		
+		
+		try{
+			stm = m_conn.createStatement();
+			String query = "SELECT UserID, LoginExpireTime FROM UserTable " +
+								"WHERE Credential='" + cred + "'"; 
+
+			stm.executeQuery(query);
+			result = stm.getResultSet();
+
+			//TODO: Check if these conditons work
+			if (  result.first() == false) {
+				stm.close();
+				System.out.println("Result : Failed to find Credential");
+				return -1;
+			}
+			else {
+				
+				loginExpire = result.getLong("LoginExpireTime");
+				userID = result.getInt("UserID");
+				
+				
+				stm.close();
+				result.close();
+				
+				if( loginExpire == null || ( Calendar.getInstance().getTime().getTime() > loginExpire.longValue() ) ) {
+					System.out.println("Result : Credential Expired");
+					return 0;
+				}
+				else {
+
+					return userID;
+				}
+				
+				
+			}
+		
+		}catch (SQLException e) {
+			//TODO Auto-generated catch block
+			//Credential not found
+			System.out.println("Result : Failed to find credential");
+			e.printStackTrace();
+			return -1;
+		}
+			
+	}
+	
 	public boolean usernameCheck(String Username){
 		ResultSet result;
 		

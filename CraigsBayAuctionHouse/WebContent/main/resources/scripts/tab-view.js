@@ -459,8 +459,13 @@ function createFriendTab(parentId,tabTitle,closeButton)
  * @param tabTitle --> New Table Title
  * @param closeButton --> True for disposable tab; False for non-disposable tabs 
  *****************************************************************************************************************************************/
-function createChatTab(parentId,tabTitle,closeButton)
+function createChatTab(parentId,tabTitle, xmlstuff ,closeButton)
 {
+	//TODO make unique tab so that multiple chat can be handled correctly
+	var senderID	= xmlstuff.getAttribute("senderID");
+	var pollingCode	= xmlstuff.getAttribute("pollingCode");
+	var sendToCode	= xmlstuff.getAttribute("sendToCode");
+	
 	if(tabFrame_countTabs[parentId]>=tabFrame_maxNumberOfTabs)return;	// Maximum number of tabs reached - return
 	var div = document.createElement('DIV');    //new tab Frame
 	div.className = 'dhtmlgoodies_aTab';
@@ -482,16 +487,15 @@ function createChatTab(parentId,tabTitle,closeButton)
 		"<tbody>" +
 			"<tr style='height: 37px'>" +
 			  "<td>" +
-			  	"<input type='button' value='Send SMS' onClick=''/>" +
-			  	"<input type='button' value='Send Message' onClick=''/>" +
+//			  	"<input type='button' value='Send SMS' onClick=''/>" +
+//			  	"<input type='button' value='Send Message' onClick=''/>" +
 			  	"<input type='button' value='Block User' onClick=''/>" +
-			  	"<input type='button' value='Request Chat' onClick=''/>" +
 			  "</td>" +
 			"</tr>" +
 			"<tr>" +
 			   "<td>" +
 				  "<textarea id='imConversation' cols='50' rows='5' wrap='hard' readonly>" +
-					      "This is Gonna be where the Conversation displayed" +
+					      "" +
 				  "</textarea>" +
 				"<td>" +
 			"</tr>" +
@@ -500,9 +504,16 @@ function createChatTab(parentId,tabTitle,closeButton)
 				  "<textarea id='imInput' cols='45' rows='5' wrap='hard' >" +
 					      "This is Gonna be the input" +
 				  "</textarea>" +
-				  "<input type=button value='send' onClick=''/>" + //onClick method needed
+				  "<input type=button value='send' onClick='sendMsg(" + sendToCode + ")'/>" + //onClick method needed
 			"</tr>" +
 		"</tbody>";
+//		"</tbody>" +
+//		"<script language=\"javascript\"> getMsg(" + pollingCode + ") </script>";
+
+	 var newScript = document.createElement('script');
+	 newScript.type = 'text/javascript';
+	 newScript.innerHTML = "getMsg(" + pollingCode + ")";
+	 imContainer.appendChild(newScript);
 	
 	imFrame.appendChild(imContainer);
 	
@@ -562,13 +573,14 @@ function showDetailViewTab()
 /****************************************************************************************************
 						Open Chatting Tab
 /****************************************************************************************************/
-function showChatTab(friendName)
+function showChatTab( xmlstuff )
 {
-
-var open=getTabIndexByTitle('Chatting with '+friendName);
+	var sender 		= xmlstuff.getAttribute("friendName");
+	
+var open=getTabIndexByTitle('Chatting with '+ sender);
 if (open<0)// if the tab is not open yet
 {	
-var aTab= createChatTab('tabPanel','Chatting with '+friendName, true);
+var aTab= createChatTab('tabPanel','Chatting with '+ sender,  xmlstuff , true);
 }
 else
 {

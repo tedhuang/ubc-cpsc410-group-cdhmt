@@ -276,6 +276,7 @@
     <display-name>chatRegisterServlet</display-name>
     <servlet-name>chatRegisterServlet</servlet-name>
     <servlet-class>Servlets.chatRegisterServlet</servlet-class>
+    <load-on-startup>3</load-on-startup>
   </servlet>
   <servlet-mapping>
     <servlet-name>chatRegisterServlet</servlet-name>

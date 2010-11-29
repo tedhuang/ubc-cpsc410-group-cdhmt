@@ -102,7 +102,7 @@ public class chatRelayServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// get ID for sender and receiver
-		String senderIDString = request.getParameter("senderID").toString();
+//		String senderIDString = request.getParameter("senderID").toString();
 //		String sendToIDString = request.getParameter("sendToID").toString();
 //		
 //		Integer senderID = Integer.valueOf(senderIDString);
@@ -128,7 +128,7 @@ public class chatRelayServlet extends HttpServlet {
 
 		
 		tempBuffer.append("\t<message" +
-							" senderID=\"" + senderIDString + "\"" +
+//							" senderID=\"" + senderIDString + "\"" +
 							" timeStamp=\"" + Calendar.getInstance().getTimeInMillis() + "\"" +
 							">" + msg + "</message>\n");
 		

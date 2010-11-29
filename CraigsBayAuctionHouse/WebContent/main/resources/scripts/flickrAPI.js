@@ -20,22 +20,36 @@ function getHash(tags){
 	    	hash = (xmlhttp.responseXML.getElementsByTagName("hash")[0]).childNodes[0].nodeValue;
 
 	    	document.getElementById("api_sig").value=hash;
-	    	alert("document.getElementById(api_sig).value="  + document.getElementById("api_sig").value);
+	    				//alert( document.getElementById("flickrUploadForm").innerHTML );
 	    	
 	    	document.getElementById("submit").disabled=false;
+	    
+	    	//document.getElementById("flickrResponse").innerHTML = "<h3>If you want, you may add a picture to your auction:</h3>";
+	    	var myflickrResponsediv = document.getElementById("flickrResponse");
+	    	myflickrResponsediv.style.visibility="";
+	    	myflickrResponsediv.style.display="";
 	    	
-	    	//document.getElementById("hash").value = (xmlhttp.responseXML.getElementsByTagName("hash")[0]).childNodes[0].nodeValue;
+	    	var mydiv = document.getElementById("flickrForm");
+	    	mydiv.style.visibility="";
+	    	mydiv.style.display="";
+	    	
+	    	
+	    	
+	    	
+	    	//postFlickrUpload(tags, hash);
+	    	//document.getElementById("flickrUploadForm").submit();
 	    }
 	  };
 	  
 	document.getElementsByName("submit").disabled=true;
 	
+	 
 	var Params = "tags=" + tags;
 	
 	xmlhttp.open("POST","/CraigsBayAuctionHouse/flickrServlet" ,true); 
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xmlhttp.send(Params);
-
+	
 }
 
 

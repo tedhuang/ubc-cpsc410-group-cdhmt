@@ -78,13 +78,14 @@
 	</script>
 
 	<script type="text/javascript">
-	function viewBiddedAuctions()
+	function viewBiddedAuctions(container, title)
 	{
 		//loadjscssfile('./resources/scripts/auctionListLoader.js', 'js');
 		//loadobjs('./resources/scripts/auctionListLoader.js'); //load the additional javascript tableLoad.jsp requires
-		ajaxpage('userBiddedAuctionsLoad.jsp', 'Dynapage'); //load tableLoad.jsp in to div Dynapage
+		showWantedItemTab();
+		ajaxpage('userBiddedAuctionsLoad.jsp', container); //load tableLoad.jsp in to div Dynapage
 		//createNewTab('tabPanel','All Auctions','','tableLoad.jsp',true);
-		document.getElementById("surferTitle").innerHTML="<img src=./resources/images/loading.gif></img>";
+		document.getElementById(title).innerHTML="<img src=./resources/images/loading.gif></img>";
 		
 	}
 	</script>
@@ -510,7 +511,7 @@
 						
 						<li OnClick="createAuction('Dynapage');"><a href="#">New Auction</a></li>
 						<li OnClick="viewUserAuctions('myAuctionArea','myAuctionTitle');"><a href="#">Manage Auction</a></li>
-						<li OnClick="viewBiddedAuctions();"><a href="#">My Bids</a></li>
+						<li OnClick="viewBiddedAuctions('wantedItemArea', 'wantedItemTitle');"><a href="#">My Bids</a></li>
 						<%
 							}
 						%>

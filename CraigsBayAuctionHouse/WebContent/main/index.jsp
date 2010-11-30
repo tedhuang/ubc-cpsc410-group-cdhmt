@@ -73,12 +73,7 @@
 	<script type="text/javascript">
 	function createAuction(containerID)
 	{
-
-		//ajaxpage('createAuctionTable.jsp', containerID);
-		//loadjscssfile('./resources/scripts/createAuction.js', 'js');
-		//loadobjs('./resources/scripts/createAuction.js');
-		createNewTab('tabPanel','New Auction','','createAuctionTable.jsp',true);
-		//document.getElementById("surferTitle").innerHTML="Create a New Auction";
+			createNewTab('tabPanel','New Auction','','createAuctionTable.jsp',true);
 	}
 	</script>
 

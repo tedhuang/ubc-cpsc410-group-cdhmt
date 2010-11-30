@@ -6,22 +6,28 @@ List of stuff we left to complete and the manhour estimation for them
 
 = Details 28-30h = 
 
-Bugs - 2h
+URGENT MATTERS!!! FIX NOW - 
+  * Responses are loading into totally different tabs
+
+Bugs -
   * Advanged Search - conflict between old UI and new UI
 
+Pending Fixes
+  * Flickr picture - takes time to update?
+  * user Login / cred check - pass back the old credential if repeated login
+  * chat - synchronize chat registering with login and logout fucntion
+    * clear map if user logs out
+    * offline message yay or nay?
+
 Chat - 5h
-  * Client Side UI - 3h
   * MSG history functionality - 1h
   * DB Structuring 1h.
 
   * Chat client side receiving should be a HTTPRequest that simply monitors its onReadyStateChange() function to parse incoming XML
   * Chat client side sender should send msg using POST while client listen using GET
 
-Flickr - 5h
-  * Upload Integrate - either two phase or have servlet handle upload - 3h
-  * Need to have Image displayed instead of link - 1h
-
 Friends - 2h - work with harry to fix
+  * Need to hook up add friends
   * delete friends will mess up the UI
 
 = Options =

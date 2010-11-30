@@ -81,17 +81,7 @@
 		//document.getElementById("surferTitle").innerHTML="Create a New Auction";
 	}
 	</script>
-	<script type="text/javascript">
-	function viewUserAuctions()
-	{
-		//loadjscssfile('./resources/scripts/auctionListLoader.js', 'js');
-		//loadobjs('./resources/scripts/auctionListLoader.js'); //load the additional javascript tableLoad.jsp requires
-		ajaxpage('userOwnedAuctionsLoad.jsp', 'Dynapage'); //load tableLoad.jsp in to div Dynapage
-		//createNewTab('tabPanel','All Auctions','','tableLoad.jsp',true);
-		document.getElementById("surferTitle").innerHTML="<img src=./resources/images/loading.gif></img>";
-		
-	}
-	</script>
+
 	<script type="text/javascript">
 	function viewBiddedAuctions()
 	{
@@ -485,7 +475,7 @@
 				{
 					
 				%>
-				<br />
+				, you have <a href="#messages" rel="modal" title="3 Messages">3 Messages</a><br />
 				<p><a href="#" title="Edit your profile"> Profile</a> | 
 				<a href="#" title="Sign Out" onclick="userLogoutRequest()">Sign Out</a> </p>
 				
@@ -517,14 +507,14 @@
 						Auctions
 					</a>
 					<ul>
-						<li OnClick="viewAllAuctions('allItemTitle','allItemArea')"><a href=#>View All Auctions</a></li>
+						<li OnClick="viewAllAuctions('allItemArea','allItemTitle')"><a href=#>View All Auctions</a></li>
 						<%  
 							if(userName != "Guest")
 							{
 						%>
 						
 						<li OnClick="createAuction('Dynapage');"><a href="#">New Auction</a></li>
-						<li OnClick="viewUserAuctions();"><a href="#">Manage Auction</a></li>
+						<li OnClick="viewUserAuctions('myAuctionArea','myAuctionTitle');"><a href="#">Manage Auction</a></li>
 						<li OnClick="viewBiddedAuctions();"><a href="#">My Bids</a></li>
 						<%
 							}
@@ -542,9 +532,9 @@
 						Social Network
 					</a>
 					<ul>
-						<!-- <li><a href="#" onClick="showChatTab()">Start a Chat</a></li> -->
+						<li><a href="#" onClick="showChatTab()">Start a Chat</a></li>
 						<li OnClick="viewFriends('friendTable')"><a href="#">Friends</a></li>
-						<!-- <li><a href="#">Chat history</a></li> -->
+						<li><a href="#">Chat history</a></li>
 						
 					</ul>
 				</li>
@@ -554,10 +544,10 @@
 						Settings
 					</a>
 					<ul>
-						<!-- <li><a href="#">General</a></li> -->
-						<!-- <li><a href="#">Design</a></li> -->
+						<li><a href="#">General</a></li>
+						<li><a href="#">Design</a></li>
 						<li OnClick="userControlPage()"><a href="#">Your Profile</a></li>
-						<!-- <li><a href="#">Users and Permissions</a></li> -->
+						<li><a href="#">Users and Permissions</a></li>
 					</ul>
 				</li>      
 				

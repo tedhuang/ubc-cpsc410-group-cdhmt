@@ -36,7 +36,7 @@ function handleStatusSelectionChange()
 /*
  * Sets the status of the auction associated with the ID to the specified status
  */
-function changeAuctionStatus(auctionID){
+function changeAuctionStatus(auctionID, title, feedbackTitle){
 	if (window.XMLHttpRequest)
 	  {// code for IE7+, Firefox, Chrome, Opera, Safari
 	  xmlhttp=new XMLHttpRequest();
@@ -50,7 +50,7 @@ function changeAuctionStatus(auctionID){
 	  {
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	    {
-		   changeAuctionStatusParseResponse(xmlhttp.responseXML, auctionID);
+		   changeAuctionStatusParseResponse(xmlhttp.responseXML, auctionID, title);
 	    }
 	  };
 	
@@ -61,7 +61,8 @@ function changeAuctionStatus(auctionID){
 	var auctionStatus = document.getElementById("changeStatusValue").value;
 	var credential = document.getElementById("cred").value;
 	
-	document.getElementById("bidFeedback").innerHTML="<h2><img src=./resources/images/loading.gif></img> <p>Sending Auction Update Request...</h2></p>";
+	document.getElementById(feedbackTitle).innerHTML=
+		"<h2><img src=./resources/images/loading.gif></img> <p>Sending Auction Update Request...</h2></p>";
 	
 	var Params = "auctionID=" + auctionID +
 				 "&auctionStatus="+ auctionStatus + 
@@ -76,18 +77,18 @@ function changeAuctionStatus(auctionID){
 	xmlhttp.send(Params);
 }
 
-function changeAuctionStatusParseResponse(responseXML, auctionID)
+function changeAuctionStatusParseResponse(responseXML, auctionID, title)
 {
 	var success = (responseXML.getElementsByTagName("success")[0]).childNodes[0].nodeValue;
 	if(success==1)
 	{
 		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'itemDetailArea');
-		document.getElementById("surferTitle").innerHTML="Update Succesful, Refreshing Auction Details...";
+		document.getElementById(title).innerHTML="Update Succesful, Refreshing Auction Details...";
 	}
 	else
 	{
 		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'itemDetailArea');
-		document.getElementById("surferTitle").innerHTML="Update Unsuccesful, Please Try Again! - Refreshing Auction Details...";
+		document.getElementById(title).innerHTML="Update Unsuccesful, Please Try Again! - Refreshing Auction Details...";
 	}
 	
 }
@@ -233,7 +234,7 @@ function viewInfo(colParams)
     
 }
 
-function bidOnAuction(auctionID)
+function bidOnAuction(auctionID, title, feedbackTitle)
 {
 	
 	//alert(document.getElementById("bidAmount").value);
@@ -245,17 +246,17 @@ function bidOnAuction(auctionID)
 	if(document.getElementById("userName").value == "Guest")
 	{
 		alert("Please sign in to bid");
-		document.getElementById("bidFeedback").innerHTML = "<h2>Please Sign In To Bid!</h2>"
+		document.getElementById(feedbackTitle).innerHTML = "<h2>Please Sign In To Bid!</h2>"
 		return;
 	}
 	
 	if(  bidAmount <= latestBidPrice )
 	{
 		alert("Insufficient Bid Amount, current price is: $" + document.getElementById("latestBidPrice").value );
-		document.getElementById("bidFeedback").innerHTML = "<h2>Bid too low</h2>";
+		document.getElementById(feedbackTitle).innerHTML = "<h2>Bid too low</h2>";
 		return;
 	}
-	document.getElementById("bidFeedback").innerHTML="<h2><img src=./resources/images/loading.gif></img> <p>Sending Bid Request...</h2></p>";
+	document.getElementById(feedbackTitle).innerHTML="<h2><img src=./resources/images/loading.gif></img> <p>Sending Bid Request...</h2></p>";
 	document.getElementById("bidButton").disabled=true;
 	
 	if (window.XMLHttpRequest)
@@ -271,7 +272,7 @@ function bidOnAuction(auctionID)
 	  {
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	    {
-		  bidAuctionParseXMLResponse(xmlhttp.responseXML, auctionID);
+		  bidAuctionParseXMLResponse(xmlhttp.responseXML, auctionID, title, feedbackTitle);
 	    }
 	  }
 	
@@ -284,31 +285,31 @@ function bidOnAuction(auctionID)
 	xmlhttp.send(Params);
 }
 
-function bidAuctionParseXMLResponse(responseXML, auctionID)
+function bidAuctionParseXMLResponse(responseXML, auctionID, title, feedbackTitle)
 {
 	 var success = (responseXML.getElementsByTagName("success")[0]).childNodes[0].nodeValue;
 	
 	if(success==1)
 		{
-		document.getElementById("bidFeedback").innerHTML = "<h2>Bid Succesful</h2>";
+		document.getElementById(feedbackTitle).innerHTML = "<h2>Bid Succesful</h2>";
 		
-		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'itemDetailArea'); //load auctionDetailsPage in to div Dynapage
-		document.getElementById("surferTitle").innerHTML="Bid Succesful, Refreshing Auction Details...";
+		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'itemDetailArea'); //load auctionDetailsPage 
+		document.getElementById(title).innerHTML="Bid Succesful, Refreshing Auction Details...";
 		
 		}
 	else if(success==-1)
 		{
-		document.getElementById("bidFeedback").innerHTML = "<h2>Bid Too Low</h2>";
+		document.getElementById(feedbackTitle).innerHTML = "<h2>Bid Too Low</h2>";
 		
-		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'itemDetailArea'); //load auctionDetailsPage in to div Dynapage
-		document.getElementById("surferTitle").innerHTML="Bid too low, Refreshing Auction Details...";
+		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'itemDetailArea'); //load auctionDetailsPage 
+		document.getElementById(feedbackTitle).innerHTML="Bid too low, Refreshing Auction Details...";
 		}
 	else if(success==-2)
 		{
-		document.getElementById("bidFeedback").innerHTML = "<h2>Auction Has Expired</h2>";
+		document.getElementById(feedbackTitle).innerHTML = "<h2>Auction Has Expired</h2>";
 		
-		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'itemDetailArea'); //load auctionDetailsPage in to div Dynapage
-		document.getElementById("surferTitle").innerHTML="Auction Has Expired, Refreshing Auction Details...";
+		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'itemDetailArea'); //load auctionDetailsPage 
+		document.getElementById(title).innerHTML="Auction Has Expired, Refreshing Auction Details...";
 		
 		}
 	document.getElementById("bidButton").disabled=false;

@@ -380,7 +380,10 @@ function refreshAuctionChatParseXMLResponse(responseXML, auctionID)
 	var chatLog = (responseXML.getElementsByTagName("chatLog")[0]).childNodes[0].nodeValue;
 	document.getElementById("auctionChatHistory").innerHTML = chatLog;
 	document.getElementById("auctionChatHistory").scrollTop = document.getElementById("auctionChatHistory").scrollHeight;
-
+	if(auctionChatID!=null)
+	{
+		clearTimeout(auctionChatID);
+	}
 	auctionChatID=setTimeout("refreshAuctionChat(" + auctionID + ")", 5000);
 }
 

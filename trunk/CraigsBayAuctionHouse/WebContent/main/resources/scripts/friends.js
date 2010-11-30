@@ -89,7 +89,7 @@ function ParseFriendsList(responseXML, container){
 }
 
 var theValue=0;
-var friendIdList=new array();
+var friendIdList=new Array();
 function addElement2( rowParams, container ) {
 	
 	  var ni = document.getElementById(container);
@@ -186,8 +186,4 @@ function ParseFriendDelete(responseXML, container){
 	 //TODO Disable page while it reloads; ATM it reloads but the user can interact with it while it does.
 	 loadFriends(container);
 	 return responseText;
-}
-chatFriend(friendID)
-{
-	
 }

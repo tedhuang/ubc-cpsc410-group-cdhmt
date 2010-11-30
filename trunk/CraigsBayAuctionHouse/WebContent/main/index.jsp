@@ -485,7 +485,7 @@
 				{
 					
 				%>
-				, you have <a href="#messages" rel="modal" title="3 Messages">3 Messages</a><br />
+				<br />
 				<p><a href="#" title="Edit your profile"> Profile</a> | 
 				<a href="#" title="Sign Out" onclick="userLogoutRequest()">Sign Out</a> </p>
 				
@@ -542,9 +542,9 @@
 						Social Network
 					</a>
 					<ul>
-						<li><a href="#" onClick="showChatTab()">Start a Chat</a></li>
+						<!-- <li><a href="#" onClick="showChatTab()">Start a Chat</a></li> -->
 						<li OnClick="viewFriends('friendTable')"><a href="#">Friends</a></li>
-						<li><a href="#">Chat history</a></li>
+						<!-- <li><a href="#">Chat history</a></li> -->
 						
 					</ul>
 				</li>
@@ -554,10 +554,10 @@
 						Settings
 					</a>
 					<ul>
-						<li><a href="#">General</a></li>
-						<li><a href="#">Design</a></li>
+						<!-- <li><a href="#">General</a></li> -->
+						<!-- <li><a href="#">Design</a></li> -->
 						<li OnClick="userControlPage()"><a href="#">Your Profile</a></li>
-						<li><a href="#">Users and Permissions</a></li>
+						<!-- <li><a href="#">Users and Permissions</a></li> -->
 					</ul>
 				</li>      
 				

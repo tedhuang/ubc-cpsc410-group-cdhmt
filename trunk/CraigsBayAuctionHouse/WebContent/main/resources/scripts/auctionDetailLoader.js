@@ -81,12 +81,12 @@ function changeAuctionStatusParseResponse(responseXML, auctionID)
 	var success = (responseXML.getElementsByTagName("success")[0]).childNodes[0].nodeValue;
 	if(success==1)
 	{
-		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'Dynapage');
+		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'itemDetailArea');
 		document.getElementById("surferTitle").innerHTML="Update Succesful, Refreshing Auction Details...";
 	}
 	else
 	{
-		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'Dynapage');
+		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'itemDetailArea');
 		document.getElementById("surferTitle").innerHTML="Update Unsuccesful, Please Try Again! - Refreshing Auction Details...";
 	}
 	
@@ -292,7 +292,7 @@ function bidAuctionParseXMLResponse(responseXML, auctionID)
 		{
 		document.getElementById("bidFeedback").innerHTML = "<h2>Bid Succesful</h2>";
 		
-		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'Dynapage'); //load auctionDetailsPage in to div Dynapage
+		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'itemDetailArea'); //load auctionDetailsPage in to div Dynapage
 		document.getElementById("surferTitle").innerHTML="Bid Succesful, Refreshing Auction Details...";
 		
 		}
@@ -300,14 +300,14 @@ function bidAuctionParseXMLResponse(responseXML, auctionID)
 		{
 		document.getElementById("bidFeedback").innerHTML = "<h2>Bid Too Low</h2>";
 		
-		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'Dynapage'); //load auctionDetailsPage in to div Dynapage
+		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'itemDetailArea'); //load auctionDetailsPage in to div Dynapage
 		document.getElementById("surferTitle").innerHTML="Bid too low, Refreshing Auction Details...";
 		}
 	else if(success==-2)
 		{
 		document.getElementById("bidFeedback").innerHTML = "<h2>Auction Has Expired</h2>";
 		
-		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'Dynapage'); //load auctionDetailsPage in to div Dynapage
+		ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID , 'itemDetailArea'); //load auctionDetailsPage in to div Dynapage
 		document.getElementById("surferTitle").innerHTML="Auction Has Expired, Refreshing Auction Details...";
 		
 		}

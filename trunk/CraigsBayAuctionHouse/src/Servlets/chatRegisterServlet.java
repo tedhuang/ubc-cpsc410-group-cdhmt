@@ -35,6 +35,7 @@ public class chatRegisterServlet extends HttpServlet {
         
     }
 
+    //TODO wipe session from serverside when logout or expire
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)

@@ -41,7 +41,7 @@
   
  <!--  this will get called when the page is dynamically loaded. -->
  <script>
- loadAuctionTable('myTable');
+ loadAuctionTable('allItemTable','allItemTitle');
  </script>
   
   
@@ -121,7 +121,7 @@
 							
 <!-- *************Entries Will be inserted here*******************-->
 								
-				<tbody id="myTable"></tbody>
+				<tbody id="allItemTable"></tbody>
 				
 <!--  *************************************************************-->
 						

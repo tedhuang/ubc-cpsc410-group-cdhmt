@@ -543,16 +543,63 @@ function showAdvancedSearchTab()
 /****************************************************************************************************/
 function showFriendTab()
 {
-
-var open=getTabIndexByTitle('My Friends');
-if (open<0)// if the tab is not open yet
-{	
-var aTab= createFriendTab('tabPanel','My Friends', true);
+	
+	var open=getTabIndexByTitle('My Friends');
+	if (open<0)// if the tab is not open yet
+	{	
+		var aTab= createFriendTab('tabPanel','My Friends', true);
+	}
+	else
+	{
+		//showTab('tabPanel',open.toString());
+	}
 }
-else
+/****************************************************************************************************************************************
+ * 
+ * 								Create Tab For The Items User is Bidding on
+ * 
+ * @param parentId --> The Tab Panel ID
+ * @param tabTitle --> New Table Title
+ * @param closeButton --> True for disposable tab; False for non-disposable tabs 
+ *****************************************************************************************************************************************/
+function createWantedItemTab(parentId,tabTitle,closeButton)
 {
-//showTab('tabPanel',open.toString());
+	if(tabFrame_countTabs[parentId]>=tabFrame_maxNumberOfTabs)return;	// Maximum number of tabs reached - return
+	var div = document.createElement('DIV');    //new tab Frame
+	div.className = 'dhtmlgoodies_aTab';
+	tabObj[parentId].appendChild(div);
+	
+	var title = document.createElement('SPAN');
+	title.id='wantedItemTitle';
+	
+	var frame =  document.createElement('TABLE');
+	frame.id = 'wantedItemTab';
+	frame.innerHTML = "<tr>"+
+					   "<th><input class='check-all' type='checkbox' /></th>"+
+					   "<th>Auction Item</th><th>Status</th> <th>Time Left</th>"+
+					   "<th>Latest Price</th><th>Category</th><th>Number of Bids</th>"+
+					   "<tBody id='wantedItemArea'></tBody></tr>";
+
+	var tabId = initTabs(parentId,Array(tabTitle),0,'','',Array(closeButton),true);
+//	div.innerHTML = "<div id='itemDetailArea'></div>";
+	div.appendChild(title);
+	div.appendChild(frame);
 }
+/****************************************************************************************************
+	pen Friends List Tab
+/****************************************************************************************************/
+function showWantedItemTab()
+{
+
+	var open=getTabIndexByTitle('My Wanted Items');
+	if (open<0)// if the tab is not open yet
+	{	
+		var aTab= createWantedItemTab('tabPanel','My Wanted Items', true);
+	}
+	else
+	{
+		//showTab('tabPanel',open.toString());
+	}
 }
 /****************************************************************************************************
 						Open Detail View Tab

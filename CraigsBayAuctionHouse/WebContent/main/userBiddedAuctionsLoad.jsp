@@ -41,7 +41,7 @@
   
  <!--  this will get called when the page is dynamically loaded. -->
  <script>
- loadUserBiddedAuctions();
+ loadUserBiddedAuctions('wantedItemArea', 'wantedItemTitle');
  </script>
   
   

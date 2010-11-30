@@ -408,7 +408,7 @@
 				<a class="trigger" href="#">Menu</a>
 		</div>
 		
-		<script language="javascript"> waitForChat() </script>
+		<!--   <script language="javascript"> waitForChat() </script> -->
 	<%
 	}
 	%>

@@ -9,7 +9,7 @@
  *
  *****************************************************************************************************************************************/
 
-function viewAllAuctions(title, container)
+function viewAllAuctions(container, title)
 	{
 		//loadjscssfile('./resources/scripts/auctionListLoader.js', 'js');
 		//loadobjs('./resources/scripts/auctionListLoader.js'); //load the additional javascript tableLoad.jsp requires
@@ -18,6 +18,13 @@ function viewAllAuctions(title, container)
 		document.getElementById(title).innerHTML="<img src=./resources/images/loading.gif></img>";
 		
 	}
+/****************************************************************************************************************************************
+ * 
+ * 								LAOD  AUCTIONS Detail
+ * 
+ * @param auctionID 
+ *
+ *****************************************************************************************************************************************/
 
 function viewDetails(auctionID)
 {
@@ -29,6 +36,21 @@ function viewDetails(auctionID)
 	document.getElementById("detailTitle").innerHTML="<img src=./resources/images/loading.gif></img><br>" +
 													  "Loading Auction Details...";
 }
+/****************************************************************************************************************************************
+ * 
+ * 								LAOD ALL AUCTIONS FROM CURRENT USER
+ * 
+ * 
+ *
+ *****************************************************************************************************************************************/
+
+function viewUserAuctions(container, title)
+{
+	showMyAuctionTab();
+	ajaxpage('userOwnedAuctionsLoad.jsp', container);
+	document.getElementById(title).innerHTML="<img src=./resources/images/loading.gif></img>";
+	
+}
 
 /**************************************************************************************************
  * 
@@ -36,7 +58,7 @@ function viewDetails(auctionID)
  * 
  * @param responseXML
  ***************************************************************************************************/
-function ParseAuctionList( responseXML, container ) {
+function ParseAuctionList( responseXML, container, title ) {
 	
 
 	var auctionsList = responseXML.getElementsByTagName('auctionsList').item(0);
@@ -120,7 +142,7 @@ function ParseAuctionList( responseXML, container ) {
 		
 	}
 	
-	document.getElementById("allItemTitle").innerHTML="<h2>Auction List</h2>";
+	document.getElementById(title).innerHTML="<h2>Auction List</h2>";
 }
 
 /**************************************************************************************************
@@ -310,7 +332,7 @@ function removeElement(container) {
 
 
 
-function loadAuctionTable(container)
+function loadAuctionTable(container, title)
 {
 	//var ni = document.getElementById('myDiv');
 	//var numi = document.getElementById('theValue');
@@ -332,7 +354,7 @@ function loadAuctionTable(container)
 	    {
 		    //parse XML response from server
 		    
-		    var responseText= ParseAuctionList(xmlhttp.responseXML, container);
+		    var responseText= ParseAuctionList(xmlhttp.responseXML, container, title);
 	    	
 	    }
 	  }
@@ -346,7 +368,7 @@ function loadAuctionTable(container)
 	//document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
 }
 
-function loadUserOwnedAuctions(container)
+function loadUserOwnedAuctions(container, title)
 {
 	//var ni = document.getElementById('myDiv');
 	//var numi = document.getElementById('theValue');
@@ -368,7 +390,7 @@ function loadUserOwnedAuctions(container)
 	    {
 		    //parse XML response from server
 		    
-		    var responseText= ParseAuctionList(xmlhttp.responseXML,container);
+		    var responseText= ParseAuctionList(xmlhttp.responseXML,container, title);
 	    	
 	    }
 	  }
@@ -382,7 +404,7 @@ function loadUserOwnedAuctions(container)
 	//document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
 }
 
-function loadUserBiddedAuctions(container) {
+function loadUserBiddedAuctions(container, title) {
 	
 	var credential = document.getElementById("cred").value;
 	
@@ -401,7 +423,7 @@ function loadUserBiddedAuctions(container) {
 	    {
 		    //parse XML response from server
 		    
-		    var responseText= ParseAuctionList(xmlhttp.responseXML,container);
+		    var responseText= ParseAuctionList(xmlhttp.responseXML,container, title);
 	    	
 	    }
 	  }

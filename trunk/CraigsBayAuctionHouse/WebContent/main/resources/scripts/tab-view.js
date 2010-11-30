@@ -603,6 +603,48 @@ function showAllItemTab()
 			//showTab('tabPanel',open.toString());
 		}
 }
+/****************************************************************************************************
+							Open Tab for All Auction of this user
+/****************************************************************************************************/
+function showMyAuctionTab()
+{
+
+	var open=getTabIndexByTitle('My Auction');
+	if (open<0)// if the tab is not open yet
+	{	
+		var aTab= createMyAuctionTab('tabPanel','My Auction', true);
+	}
+	else
+	{
+		//showTab('tabPanel',open.toString());
+	}
+}
+/****************************************************************************************************************************************
+ * 
+ * 								Create My Auction Tab Function
+ * 
+ * @param parentId --> The Tab Panel ID
+ * @param tabTitle --> New Table Title
+ * @param closeButton --> True for disposable tab; False for non-disposable tabs 
+ *****************************************************************************************************************************************/
+function createMyAuctionTab(parentId,tabTitle,closeButton)
+{
+	if(tabFrame_countTabs[parentId]>=tabFrame_maxNumberOfTabs)return;	// Maximum number of tabs reached - return
+	var div = document.createElement('DIV');    //new tab Frame
+	div.className = 'dhtmlgoodies_aTab';
+	tabObj[parentId].appendChild(div);
+	
+	var title = document.createElement('SPAN');
+	title.id = 'myAuctionTitle';
+	var frame = document.createElement('DIV');
+	frame.id = 'myAuctionTab';
+	frame.innerHTML="<div id='myAuctionArea'></div>";
+	
+
+	var tabId = initTabs(parentId,Array(tabTitle),0,'','',Array(closeButton),true);
+	div.appendChild(title);
+	div.appendChild(frame);
+}
 
 /*****************************************************************************************
 * 

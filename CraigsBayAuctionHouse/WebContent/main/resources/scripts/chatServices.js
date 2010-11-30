@@ -147,9 +147,10 @@
 				//parse XML response from server
 				var responseText= ParseMsg(xmlhttp.responseXML);
 //				alert("msg: " + responseText);
-					
-				document.getElementById('imConversation').innerHTML += responseText;
-				document.getElementById('imConversation').scrollTop = document.getElementById("imConversation").scrollHeight;
+				if ( responseText!="" || responseText != null ) {
+					document.getElementById('imConversation').innerHTML += responseText;
+					document.getElementById('imConversation').scrollTop = document.getElementById("imConversation").scrollHeight;
+				}
 					
 			}
 		}

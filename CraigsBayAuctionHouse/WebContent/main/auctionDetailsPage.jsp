@@ -43,13 +43,15 @@ refreshAuctionChat(<%=auctionID%>);
 				 <tr>  <th id="category">Category</th></tr>
 				 <tr>  <th id="auctionOwner">Owner</th></tr>
 				 <!-- <tr>  <th id="picture"> Picture</th></tr>  -->
-									
+				 <br/><br/>
 			</thead>
 			
 			</tbody>
 			
 		 	</tbody>
 		 	
+
+
 		 	
 			<tfoot>
 				<!--  Bidding -->

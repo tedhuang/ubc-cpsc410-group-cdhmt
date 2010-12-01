@@ -12,9 +12,9 @@
 </script>
  
  
-Password: <input id="Password" disabled = "true"  type="text" name="Password" size="20"><br>
-Phone Number: <input id="PhoneNumber" disabled= "true" type="text" name="PhoneNumber" size="20"><br>
-Phone carrier:<select id="PhoneCarrier" disabled= "true" name="PhoneCarrier">
+Password: <input id="PasswordEdit" disabled = "true"  type="text" name="Password" size="20"><br>
+Phone Number: <input id="PhoneNumberEdit" disabled= "true" type="text" name="PhoneNumber" size="20"><br>
+Phone carrier:<select id="PhoneCarrierEdit" disabled= "true" name="PhoneCarrier">
 				<option value="Fido">Fido</option>
 				<option value="Rogers">Rogers</option>
 				<option value="Telus">Telus</option>
@@ -25,13 +25,13 @@ Phone carrier:<select id="PhoneCarrier" disabled= "true" name="PhoneCarrier">
 				<option value="SaskTel">SaskTel</option>
 				<option value="Manitoba Telecom">Manitoba Telecom</option>
 		  	</select><br>
-E-mail Address: <input id="EmailAddress" disabled= "true" type="text" name="EmailAddress" size="20"><br>
+E-mail Address: <input id="EmailAddressEdit" disabled= "true" type="text" name="EmailAddress" size="20"><br>
 
-<div id="feedBack"><h2>Feedback Area</h2></div>
+<div id="feedBackEditInfo"><h2>Feedback Area</h2></div>
 
 
 <button id='Edit' type="button" OnClick= "editUserInfo()">Edit Info</button>
-<button id='Submit' type="button" disabled = "true"  onclick="updateUserRequest()">Submit Info</button>
+<button id='SubmitEdit' type="button" disabled = "true"  onclick="updateUserRequest('feedBackEditInfo')">Submit Info</button>
 
 </body>
 </html>

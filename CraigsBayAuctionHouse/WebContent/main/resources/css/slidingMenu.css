@@ -1,7 +1,15 @@
-
-
-
-
+#acc-inbox	{
+	background: url(../images/icon_acc_inbox.gif) no-repeat 0 2px;
+	padding: 0 0 0 20px;
+	}
+#profile	{
+	background: url(../images/profile.png) no-repeat 0 2px;
+	padding: 8px 0 0 20px;
+}
+#log-out	{
+	background: url(../images/logout.png) no-repeat 0 2px;
+	padding: 15px 0 0 30px;
+}
 #container {
 clear: both;
 margin: 0;

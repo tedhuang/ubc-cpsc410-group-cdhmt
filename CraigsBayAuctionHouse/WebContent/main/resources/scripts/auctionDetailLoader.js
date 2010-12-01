@@ -189,7 +189,7 @@ function viewInfo(colParams)
 	document.getElementById("lastBidder").innerHTML = "Last Bidder: " + colParams[14];
 	document.getElementById("category").innerHTML = "Category: " + colParams[5];
 	document.getElementById("auctionOwner").innerHTML = "Auction Owner: " + colParams[13] + "<input type=\"button\" onClick='addFriend()' value = \"Add As Friend\" id=\"addFriendButton\">";
-	document.getElementById("picture").innerHTML = "Picture: " + colParams[11];
+	//document.getElementById("picture").innerHTML = "Picture: " + colParams[11];
 
 
 	

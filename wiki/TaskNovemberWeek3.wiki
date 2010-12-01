@@ -7,7 +7,8 @@ List of stuff we left to complete and the manhour estimation for them
 = Details 28-30h = 
 
 URGENT MATTERS!!! FIX NOW - 
-
+  * remove delete button in view all auction
+  * user profile not working
 
 Bugs -
   * Advanged Search - not in, only basic search here

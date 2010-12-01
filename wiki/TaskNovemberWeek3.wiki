@@ -7,13 +7,13 @@ List of stuff we left to complete and the manhour estimation for them
 = Details 28-30h = 
 
 URGENT MATTERS!!! FIX NOW - 
-  * Responses are loading into totally different tabs
+
 
 Bugs -
-  * Advanged Search - conflict between old UI and new UI
+  * Advanged Search - not in, only basic search here
 
 Pending Fixes
-  * Flickr picture - takes time to update?
+  * Friend's auction need to be loaded into advanced search tab
   * user Login / cred check - pass back the old credential if repeated login
   * chat - synchronize chat registering with login and logout fucntion
     * clear map if user logs out
@@ -31,9 +31,6 @@ Friends - 2h - work with harry to fix
   * delete friends will mess up the UI
 
 = Options =
-Register User Page - 2h
-  * Fit to UI style - 2h
-  * Make it so after registering user is logged in - 2h
 
 Mail-Box System
   * possibly used for offline messaging and for friend request
@@ -43,9 +40,6 @@ AuctionExpireTime
   * keep in mind that SMS-daemon will need to check for expiry time
   * should a user who has bidded on an auction see it even if expired? (right now yes)
   * Should we put a expiry countdown timer on the viewAuctionsDetail page?
-
-Search -
-  * Advanced Search - Link up to tab
 
 Random
   * Cleanup web.xml

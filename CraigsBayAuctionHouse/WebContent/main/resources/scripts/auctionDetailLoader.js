@@ -188,7 +188,7 @@ function viewInfo(colParams)
 	document.getElementById("numBids").innerHTML = "Number of Bids: " + colParams[10];
 	document.getElementById("lastBidder").innerHTML = "Last Bidder: " + colParams[14];
 	document.getElementById("category").innerHTML = "Category: " + colParams[5];
-	document.getElementById("auctionOwner").innerHTML = "Auction Owner: " + colParams[13];
+	document.getElementById("auctionOwner").innerHTML = "Auction Owner: " + colParams[13] + "<input type=\"button\" onClick='addFriend()' value = \"Add As Friend\" id=\"addFriendButton\">";
 	document.getElementById("picture").innerHTML = "Picture: " + colParams[11];
 
 
@@ -419,6 +419,63 @@ function refreshAuctionChat(auctionID)
 
 
 }
+
+function addFriend(){
+		var credential = document.getElementById("cred").value;
+		var friendID = document.getElementById("ownerID").value
+		
+		if (window.XMLHttpRequest)
+		  {// code for IE7+, Firefox, Chrome, Opera, Safari
+		  xmlhttp=new XMLHttpRequest();
+		  }
+		else
+		  {// code for IE6, IE5
+		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		  }
+		  
+		xmlhttp.onreadystatechange=function()
+		{
+		  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		    {
+			    //parse XML response from server
+			    
+			    var responseText= ParseFriendAdd(xmlhttp.responseXML);
+		    	
+		    }
+		  }
+		
+		//send the parameters to the servlet with POST
+		var Params = "Credential=" + credential + "&FriendID=" + friendID;
+		
+		xmlhttp.open("POST","../friendAddServlet" ,true);
+		xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		xmlhttp.send(Params);
+	}
+
+	function ParseFriendAdd(responseXML, container){
+		
+		 var success = (responseXML.getElementsByTagName("success")[0]).childNodes[0].nodeValue;
+		 var responseText = "";
+		 
+		 if(success=="-1")
+		{
+			 //responseText = 
+			 alert("Error adding friend!");
+		}
+		 
+		if(success=="0")
+		{
+				 //responseText = 
+				 alert("Already a friend!");
+		}
+		 if(success=="1")
+		{
+			//responseText = 
+			 alert("Friend added!");
+		}
+		 //TODO Disable page while it reloads; ATM it reloads but the user can interact with it while it does.
+		 return responseText;
+	}
 
 /* We don't need this anymore since we are using scriptless badge 
  * Kept just in case

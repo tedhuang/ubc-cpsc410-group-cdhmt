@@ -33,17 +33,26 @@ public class friendAddServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int ownerID = Integer.parseInt(request.getParameter("OwnerID"));
-		int userID = Integer.parseInt(request.getParameter("UserID"));
-		boolean success;
+		int ownerID = Integer.parseInt(request.getParameter("FriendID"));
+		//int userID = Integer.parseInt(request.getParameter("UserID"));
+		String userCred = request.getParameter("Credential");
+		int success;
 		DBManager dbm = new DBManager();
+		int userID = dbm.userCredentialCheck(userCred);
 		
-		//If friend entry already exists return error indicator (in this case true)
-		if(dbm.checkFriendExist(ownerID,userID)){
-			success = true;
+		//Check if valid user
+		if((userID <= 0)||(ownerID == userID)){
+			success = -1;
 		}
 		else{
-			success = dbm.addFriend(ownerID, userID );
+			//If friend entry already exists return error indicator (in this case true)
+			if(dbm.checkFriendExist(ownerID,userID)){
+				success = 0;
+			}
+			else{
+				dbm.addFriend(ownerID, userID );
+				success = 1;
+			}
 		}
 		
 		//Write XML

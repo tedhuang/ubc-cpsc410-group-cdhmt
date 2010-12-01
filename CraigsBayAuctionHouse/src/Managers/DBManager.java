@@ -307,6 +307,7 @@ public class DBManager {
 			
 			String query = "INSERT INTO FriendsTable " +
 							"VALUES (" + userID + ", " + ownerID + ")";
+			System.out.println("Adding friend....");
 			
 			
 			boolean success = stm.execute(query);

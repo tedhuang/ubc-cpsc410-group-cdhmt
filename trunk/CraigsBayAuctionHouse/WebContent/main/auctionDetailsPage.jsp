@@ -55,7 +55,7 @@ refreshAuctionChat(<%=auctionID%>);
 				<!--  Bidding -->
 				<tr> 
 					<td> 
-
+					
 					<input type="button" onClick='bidOnAuction(<%= auctionID %>, "detailTitle", "bidFeedback")' id="bidButton" disabled="true" value="Bid"> : $ <input type="text" id="bidAmount"/>  
 					<div id="bidFeedback"> </div>
 					

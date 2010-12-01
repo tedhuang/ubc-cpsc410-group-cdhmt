@@ -1,4 +1,13 @@
-function loadUserInfo()
+/*******************************************************************************************************
+ * 							Open user control panel
+ *******************************************************************************************************/
+function openProfilePage(container, title)
+{
+		showProfileTab();
+		ajaxpage('userControlPanel.jsp', container);
+		document.getElementById(title).innerHTML="<img src=./resources/images/loading.gif></img>";
+}
+function loadUserProfile(title)
 {	
 	if (window.XMLHttpRequest)
 	  {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -15,7 +24,7 @@ function loadUserInfo()
 	    {
 		    //parse XML response from server
 		    //var responseText= 
-		    ParseUserInfo(xmlhttp.responseXML);
+		    ParseUserInfo(xmlhttp.responseXML, title);
 	    	
 	    }
 	  }
@@ -32,7 +41,7 @@ function loadUserInfo()
 }
 
 
-function ParseUserInfo( responseXML ) {
+function ParseUserInfo( responseXML, title ) {
 	if((responseXML.getElementsByTagName("success")[0]).childNodes[0].nodeValue == "false"){
 		alert("You must login");
 		return;
@@ -49,7 +58,7 @@ function ParseUserInfo( responseXML ) {
     	
     }
     document.getElementById("EmailAddress").value =	user.getAttribute("emailAddress");
-	document.getElementById("surferTitle").innerHTML="User Info";
+	document.getElementById(title).innerHTML="User Info";
 }
 
 
@@ -64,7 +73,7 @@ function editUserInfo()
 }
 
 
-function updateUserRequest()
+function updateUserRequest(feedbackTitle)
 {
 	
 	var Password = document.getElementById("Password").value;
@@ -107,7 +116,7 @@ function updateUserRequest()
 		   //parse XML response from server
 		   var responseText= userParseXMLResponse(xmlhttp.responseXML);
 		   
-	    	document.getElementById("feedBack").innerHTML=responseText;
+	    	document.getElementById(feedbackTitle).innerHTML=responseText;
 	    }
 	  }
 

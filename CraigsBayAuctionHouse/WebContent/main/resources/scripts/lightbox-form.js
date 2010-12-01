@@ -26,18 +26,23 @@ function fadein(id)
 // Open the lightbox
 
 
-function openbox(formtitle, fadin)
+function openbox(div, formtitle, fadin)
 {
-  var box = document.getElementById('box'); 
+  var box = document.getElementById(div); 
   document.getElementById('filter').style.display='block';
 
-  //var btitle = document.getElementById('boxtitle');
- // btitle.innerHTML = formtitle;
-  
+  if (formtitle!=null) 
+  {
+	  var btitle = document.getElementById('boxtitle');
+  	  btitle.innerHTML = "<h3>"+formtitle+"</h3>" +
+			  		"<input type='image' src='./resources/images/login-cancle.png'"+ 
+					"class='login-icon' style='margin-right:0px;'"+ 
+					"type='button' name='cancel' value='Cancel' onclick=closebox('regBox')>";
+	}
   if(fadin)
   {
-	 gradient("box", 0);
-	 fadein("box");
+	 gradient(div, 0);
+	 fadein(div);
   }
   else
   { 	
@@ -48,9 +53,9 @@ function openbox(formtitle, fadin)
 
 // Close the lightbox
 
-function closebox()
+function closebox(div)
 {
-   document.getElementById('box').style.display='none';
+   document.getElementById(div).style.display='none';
    document.getElementById('filter').style.display='none';
 }
 

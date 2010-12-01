@@ -419,9 +419,9 @@
 <!-- ***************************************************************************************
 								 Sidebar Starts Here
 ********************************************************************************************-->
-<!-- NEW LIGHTBOX LOGIN -->
+<!-- S LIGHTBOX LOGIN -->
 		<div id="filter"></div>
-			<div id="box">
+			<div id="loginBox" class="box">
 			  
 			  <form id= "close" name="close" method="post" title="Close" >
 					<input id="submitCred" type="hidden" name="cred"/>
@@ -431,7 +431,9 @@
 					 -->
 			  </form>
 			  
-			<input type="image" src="./resources/images/login-cancle.png" class="login-icon" style="margin-right:20px;" type="button" name="cancel" value="Cancel" onclick="closebox()">  
+			<input type="image" src="./resources/images/login-cancle.png" 
+					class="login-icon" style="margin-right:20px;" 
+					type="button" name="cancel" value="Cancel" onclick="closebox('loginBox')">  
 			<div id="login-box-name" style="margin-top:70px; margin-left:100px;">User:</div>   
 			<div id="login-box-field" >
 			  	<input id="username" name="username" class="form-login" title="Username" value="" size="10" maxlength="2048" />
@@ -446,6 +448,32 @@
 			<input type="image" src="./resources/images/login-go.png" class="login-icon" title="go!" style="margin-left:400px;" onclick="userLoginRequest()" >		
 			<div style="margin-top:300px;" id="myDiv"><h2>Debug Message for page</h2></div>
 			</div>
+<!-- *********************************Register ***************************************
+**************************************************************************************-->
+<div id="filter"></div>
+	<div id="regBox" class="regBox">
+	<span id="boxtitle"></span> 
+	Username: <input id="Username" type="text" name="Password" size="20"><br>
+	Password: <input id="Password" type="password" name="Password" size="20"><br>
+	Repeat Password: <input id="PasswordCheck" type="password" name="Password" size="20"><br>
+	Phone Number: <input id="PhoneNumber" type="text" name="PhoneNumber" size="20"><br>
+	Phone Carrier:<select id="PhoneCarrier"  name="PhoneCarrier">
+				<option value="Fido">Fido</option>
+				<option value="Rogers">Rogers</option>
+				<option value="Telus">Telus</option>
+				<option value="Bell">Bell</option>
+				<option value="Virgin Mobile">Virgin Moblie</option>
+				<option value="PC Mobile">PC Moblie</option>
+				<option value="Koodo">Koodo</option>
+				<option value="SaskTel">SaskTel</option>
+				<option value="Manitoba Telecom">Manitoba Telecom</option>
+		  	</select><br>
+	E-mail Address: <input id="EmailAddress" type="text" name="EmailAddress" size="20"><br>
+
+	<div id="feedBack"><h2>Feedback Area</h2></div>
+	<button id='Submit' type="button"  onclick="createUserRequest()">Submit Info</button>
+</div>
+
 <!-- ***************************************************************************************-->	
 	  					<!-- ~ENDS: NEW LIGHTBOX LOGIN -->	
 <!-- ***************************************************************************************-->
@@ -480,8 +508,9 @@
 				else
 				{
 				%>
-				<p>Already A Member? <a href="#" onclick="openbox('User Sign In', 1)">Sign-in From here</a></p>
-				<p>Not A Member? <a href="./registerUser.jsp" >Register here</a></p>
+				<p>Already A Member? <a href="#" onclick="openbox('loginBox','', 1)">Sign-in From here</a></p>
+				<p>Not A Member? <a href=# onclick="openbox('regBox','Register', 1)" >Register here</a></p>
+				<!-- "./registerUser.jsp" -->
 				<%
 				}
 				%>

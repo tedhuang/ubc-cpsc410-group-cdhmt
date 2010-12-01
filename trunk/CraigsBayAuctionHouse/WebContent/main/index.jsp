@@ -63,6 +63,7 @@
 		<script type="text/javascript" src='./resources/scripts/userControlPanel.js'></script>
 		<script type="text/javascript" src='./resources/scripts/chatServices.js'></script>
 		<script type="text/javascript" src='./resources/scripts/flickrAPI.js'></script>
+		<script type="text/javascript" src='./resources/scripts/registerUser.js'></script>
 
 		
 		
@@ -92,13 +93,7 @@
 	
 	<!--TODO Link with profile button -->
 	<script type="text/javascript">
-	function userControlPage()
-	{
-		//loadjscssfile('./resources/scripts/userControlPanel.js', 'js');
-		//loadobjs('./resources/scripts/userControlPanel.js');
-		ajaxpage('userControlPanel.jsp', 'Dynapage');
-		document.getElementById("surferTitle").innerHTML="<img src=./resources/images/loading.gif></img>";
-	}
+	
 	
 	</script>
 	
@@ -557,24 +552,44 @@
 						Social Network
 					</a>
 					<ul>
+						<%  
+							if(userName != "Guest")
+							{
+						%>
 						<!-- <li><a href="#" onClick="showChatTab()">Start a Chat</a></li> -->
 						<li OnClick="viewFriends('friendTable')"><a href="#">Friends</a></li>
 						<!-- <li><a href="#">Chat history</a></li> -->
 						
+						<%						
+							}
+							else
+							{
+						%>
+						<p>You are a GUEST</p>
+						<P>Why not Join Us and Make Some Friends?</p>
+						<%
+							}
+						%>
 					</ul>
 				</li>
 				
-				<li>
+				<%
+						if(userName!="Guest")
+						{
+				%>
+			<li>
 					<a href="#" class="nav-top-item">
 						Settings
 					</a>
-					<ul>
-						<!-- <li><a href="#">General</a></li> -->
-						<!-- <li><a href="#">Design</a></li> -->
-						<li OnClick="userControlPage()"><a href="#">Your Profile</a></li>
-						<!-- <li><a href="#">Users and Permissions</a></li> -->
-					</ul>
-				</li>      
+				<ul>
+						
+					<li OnClick="openProfilePage('profileArea','profileTitle')"><a href="#">Your Profile</a></li>
+						
+	
+				</li>    
+				<%
+						}
+				%>  
 				
 			</ul> <!-- End #main-nav -->
 			

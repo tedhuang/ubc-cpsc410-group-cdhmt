@@ -522,6 +522,47 @@ function createChatTab(parentId,tabTitle, xmlstuff ,closeButton)
 	div.appendChild(imFrame);
 
 }
+/****************************************************************************************************************************************
+ * 
+ * 								Create Profile Tab Function
+ * 
+ * @param parentId --> The Tab Panel ID
+ * @param tabTitle --> New Table Title
+ * @param closeButton --> True for disposable tab; False for non-disposable tabs 
+ *****************************************************************************************************************************************/
+function createProfileTab(parentId,tabTitle,closeButton)
+{
+	if(tabFrame_countTabs[parentId]>=tabFrame_maxNumberOfTabs)return;	// Maximum number of tabs reached - return
+	var div = document.createElement('DIV');    //new tab Frame
+	div.className = 'dhtmlgoodies_aTab';
+	tabObj[parentId].appendChild(div);
+	
+	var title = document.createElement('SPAN');
+	title.id='profileTitle';
+	var frame = document.createElement('DIV');
+	frame.id = 'profileTab';
+	frame.innerHTML="<div id='profileArea'></div>";
+	
+	var tabId = initTabs(parentId,Array(tabTitle),0,'','',Array(closeButton),true);
+	div.appendChild(title);
+	div.appendChild(frame);
+}
+/****************************************************************************************************
+				Open profile Tab
+/****************************************************************************************************/
+function showProfileTab()
+{
+
+	var open=getTabIndexByTitle('My Profile');
+	if (open<0)// if the tab is not open yet
+	{	
+		var aTab= createProfileTab('tabPanel','My Profile', true);
+	}
+	else
+	{
+		//showTab('tabPanel',open.toString());
+	}
+}
 /****************************************************************************************************
 		 							Open Advanced Search Tab
 /****************************************************************************************************/

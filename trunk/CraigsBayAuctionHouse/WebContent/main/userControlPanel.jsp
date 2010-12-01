@@ -8,7 +8,7 @@
 </head>
 <body>
  <script>
- loadUserInfo();
+ loadUserProfile("profileTitle");
 </script>
  
  

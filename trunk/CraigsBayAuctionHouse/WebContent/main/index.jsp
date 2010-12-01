@@ -495,8 +495,8 @@
 					
 				%>
 				<br />
-				<p><a href="#" title="Edit your profile"> Profile</a> | 
-				<a href="#" title="Sign Out" onclick="userLogoutRequest()">Sign Out</a> </p>
+				<p><a href="#" id="acc-inbox" title="View your Messages"> My Messages</a> | 
+				<a href="#" id="log-out" title="Sign Out" onclick="userLogoutRequest()">Sign Out</a> </p>
 				
 				<%
 				}
@@ -539,7 +539,10 @@
 						<%
 							}
 						%>
-						<li> <input type="text" id="searchTitle" value="search Auctions..." onclick="SelectAll('searchTitle');"/></li>
+						<li> <input type="text" id="searchTitle" value="Search" 
+									onblur="if (this.value=='') { this.value='Search'; }" 
+									onfocus="if (this.value=='Search') { this.value=''; }"
+									/></li>
 						<li>
 							<input type="image" src="./resources/images/advancedSearch.png" title="Advanced Search" onClick="showAdvancedSearchTab()"/>
 							<input type="image" src="./resources/images/search-btn.png" title="Search" onClick="searchAuctionTable(0);"/>
@@ -593,6 +596,91 @@
 				
 			</ul> <!-- End #main-nav -->
 			
+			</div><!-- Sidebar Style ends here -->
+			</div>
+<!-- ********************************************************************************************
+									Siderbar ends here
+*************************************************************************************************-->
+			
+	  
+			
+<!-- ********************************************************************************************
+								Dynamic Page Starts Here 
+*************************************************************************************************-->
+			
+			<div id="main-content">
+
+<!-- ********************************************************************************************
+								Sliding Menu Starts here 
+*************************************************************************************************-->
+			
+			<div class="panel">
+			  <p><h3><%= userName %></h3></p>
+				<img class="right" src="./resources/images/happy.jpg" />
+							<p><a href=# id="acc-inbox">Messages</a> | 
+							<a href=# id="profile" OnClick="openProfilePage('profileArea','profileTitle')">Profile</a> |
+							<a href="#" id="log-out" title="Sign Out" onclick="userLogoutRequest()">Sign Out</a></p>
+						
+						<div style="clear:both;"></div>
+						
+							<div class="columns">
+								<div class="colleft">
+								<h3>Business</h3>
+									<ul>
+										<li OnClick="viewAllAuctions('allItemTitle','allItemArea')"><a href=#>View All Auctions</a></li>
+										<li OnClick="createAuction()"><a href="#">New Auction</a></li>
+										<li OnClick="createAuction('Dynapage');"><a href="#">New Auction</a></li>
+						<li OnClick="viewUserAuctions('myAuctionArea','myAuctionTitle');"><a href="#">Manage Auction</a></li>
+						<li OnClick="viewBiddedAuctions('wantedItemArea', 'wantedItemTitle');"><a href="#" id="bidding">My Bids</a></li>
+									</ul>
+								</div>
+							
+								<div class="colright">
+									<h3>Social Network</h3>
+								<ul>
+									<li OnClick="viewFriends('friendTable')"><a href="#">Friends</a></li>
+									<li><a href="7" title="Twitter">My Messages</a></li>
+									<li><a href="9" title="Digg">Search People</a></li>
+										
+								</ul>
+							</div>
+						</div>
+					<div style="clear:both;"></div>
+						
+						</div>
+						
+	<% 
+	if(userName != "Guest")
+	{
+	%>
+				  <a class="trigger" href="#">MENUS</a>
+				  
+	<%
+	} 
+	%>
+				
+				
+
+		
+<!-- ********************************************************************************************
+								End~ of Sliding Menu 
+*************************************************************************************************
+
+*************************************************************************************************
+							    Tab Panel Starts here
+*************************************************************************************************-->
+	   <div id="tabHolder">
+		<div id="tabPanel">
+				
+				<!-- Main Tab -->
+				<div class="dhtmlgoodies_aTab">
+					 
+					<h2><div id="surferTitle">Welcome <%= userName %></div></h2><br>
+					<div id="Dynapage">
+						Dynamic page is here
+						<a href=# id='Harry' onClick=showChatTab(this.id)>Chat tab test</a>
+						<a class="shortcut-button manage-comments" href="#messages" 
+						rel="modal"><span class="png_bg">Messeages</span></a>
 			<div id="messages" style="display: none"> <!-- Messages are shown when a link with these attributes are clicked: href="#messages" rel="modal"  -->
 				
 				<h3> Messages</h3>
@@ -627,91 +715,7 @@
 				</form>
 				
 			</div> <!-- End #messages -->
-			
-			
-			
-			</div><!-- Sidebar Style ends here -->
-			</div>
-<!-- ********************************************************************************************
-									Siderbar ends here
-*************************************************************************************************-->
-			
-	  
-			
-<!-- ********************************************************************************************
-								Dynamic Page Starts Here 
-*************************************************************************************************-->
-			
-			<div id="main-content">
-
-<!-- ********************************************************************************************
-								Sliding Menu Starts here 
-*************************************************************************************************-->
-			
-			<div class="panel">
-				<h3>Profile</h3>
-				<img class="right" src="./resources/images/happy.jpg" />
-							<p><h3><%= userName %></h3></p>
-							<p><a href=#>Messages</a> | <a href=#>My items</a></p>
-						
-						<div style="clear:both;"></div>
-						
-							<div class="columns">
-								<div class="colleft">
-								<h3>Business</h3>
-									<ul>
-										<li OnClick="viewAllAuctions('allItemTitle','allItemArea')"><a href=#>View All Auctions</a></li>
-										<li OnClick="createAuction()"><a href="#">New Auction</a></li>
-										<li><a href="3" title="portfolio">My Auction</a></li>
-										<li><a href="4" title="contact">Won history</a></li>
-									</ul>
-								</div>
-							
-								<div class="colright">
-									<h3>Social Network</h3>
-									<ul>
-										<li><a href="7" title="Twitter">My Profile</a></li>
-										<li><a href="7" title="Twitter">My Messages</a></li>
-										<li><a href="8" title="DesignBump">My Friends</a></li>
-										<li><a href="9" title="Digg">Search People</a></li>
-										
-									</ul>
-								</div>
-							</div>
-						<div style="clear:both;"></div>
-						
-						</div>
-						
-	<% 
-	if(userName != "Guest")
-	{
-	%>
-				  <a class="trigger" href="#">MENUS</a>
-				  
-	<%
-	} 
-	%>
-				
-				
-
-		
-<!-- ********************************************************************************************
-								End~ of Sliding Menu 
-*************************************************************************************************
-
-*************************************************************************************************
-							    Tab Panel Starts here
-*************************************************************************************************-->
-	   <div id="tabHolder">
-		<div id="tabPanel">
-				
-				<!-- Main Tab -->
-				<div class="dhtmlgoodies_aTab">
-					 
-					<h2><div id="surferTitle">Welcome <%= userName %></div></h2><br>
-					<div id="Dynapage">
-						Dynamic page is here
-						<a href=# id='Harry' onClick=showChatTab(this.id)>Chat tab test</a>
+					
 					</div><br>
 				</div>
 				

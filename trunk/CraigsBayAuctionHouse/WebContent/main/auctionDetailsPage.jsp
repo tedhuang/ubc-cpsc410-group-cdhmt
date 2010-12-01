@@ -61,7 +61,7 @@ refreshAuctionChat(<%=auctionID%>);
 					<input type="button" onClick='bidOnAuction(<%= auctionID %>, "detailTitle", "bidFeedback")' id="bidButton" disabled="true" value="Bid"> : $ <input type="text" id="bidAmount"/>  
 					<div id="bidFeedback"> </div>
 					
-					<input type="button" onClick ='changeAuctionStatus(<%=auctionID %>, "detailTitle", "bigFeedback")' id="changeStatusButton" disabled="true" value="Owner Option: Change Auction Status"/> :  										
+					<input type="button" onClick ='changeAuctionStatus(<%=auctionID %>, "detailTitle", "bidFeedback")' id="changeStatusButton" disabled="true" value="Owner Option: Change Auction Status"/> :  										
 					<select name="changeStatusValue" id="changeStatusValue" disabled="true" onchange="handleStatusSelectionChange()">
 						<option value="OPEN">Open</option>
 						<option value="CLOSED">Closed</option>

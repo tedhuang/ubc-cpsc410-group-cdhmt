@@ -46,18 +46,21 @@ function ParseUserInfo( responseXML, title ) {
 		alert("You must login");
 		return;
 	}
-	var user = responseXML.getElementsByTagName("user").item(0);		
+	var user = responseXML.getElementsByTagName("user").item(0);	
+
     
-	document.getElementById("Password").value =	user.getAttribute("password");
-    document.getElementById("PhoneNumber").value = user.getAttribute("phoneNumber");
+	document.getElementById("PasswordEdit").value =	user.getAttribute("password");
+    document.getElementById("PhoneNumberEdit").value = user.getAttribute("phoneNumber");
+    
+	
     var i = 0;
-    for(i = 0; i < (document.getElementById("PhoneCarrier").options.length); i++){
+    for(i = 0; i < (document.getElementById("PhoneCarrierEdit").options.length); i++){
     	if(document.getElementById("PhoneCarrier").options[i].value == user.getAttribute("phoneCarrier")){
     		document.getElementById("PhoneCarrier").options[i].selected = true;
     	}
     	
     }
-    document.getElementById("EmailAddress").value =	user.getAttribute("emailAddress");
+    document.getElementById("EmailAddressEdit").value =	user.getAttribute("emailAddress");
 	document.getElementById(title).innerHTML="User Info";
 }
 
@@ -65,21 +68,21 @@ function ParseUserInfo( responseXML, title ) {
 function editUserInfo()
 {
 	//Unlocks textboxes etc. to be edited
-	document.getElementById("Password").disabled = false;
-	document.getElementById("PhoneNumber").disabled = false;
-	document.getElementById("PhoneCarrier").disabled = false;
-	document.getElementById("EmailAddress").disabled = false;	
-	document.getElementById("Submit").disabled = false;
+	document.getElementById("PasswordEdit").disabled = false;
+	document.getElementById("PhoneNumberEdit").disabled = false;
+	document.getElementById("PhoneCarrierEdit").disabled = false;
+	document.getElementById("EmailAddressEdit").disabled = false;	
+	document.getElementById("SubmitEdit").disabled = false;
 }
 
 
 function updateUserRequest(feedbackTitle)
 {
 	
-	var Password = document.getElementById("Password").value;
-	var PhoneNumber = document.getElementById("PhoneNumber").value;
-	var PhoneCarrier = document.getElementById("PhoneCarrier").value;
-	var EmailAddress= document.getElementById("EmailAddress").value;
+	var Password = document.getElementById("PasswordEdit").value;
+	var PhoneNumber = document.getElementById("PhoneNumberEdit").value;
+	var PhoneCarrier = document.getElementById("PhoneCarrierEdit").value;
+	var EmailAddress= document.getElementById("EmailAddressEdit").value;
 	var credential = document.getElementById("cred").value;
 	
 	//Check user input
@@ -114,7 +117,7 @@ function updateUserRequest(feedbackTitle)
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	    {
 		   //parse XML response from server
-		   var responseText= userParseXMLResponse(xmlhttp.responseXML);
+		   var responseText= editUserParseXMLResponse(xmlhttp.responseXML);
 		   
 	    	document.getElementById(feedbackTitle).innerHTML=responseText;
 	    }
@@ -129,10 +132,10 @@ function updateUserRequest(feedbackTitle)
 	xmlhttp.send(Params);
 
 	//change the text while sending the request
-	document.getElementById("feedBack").innerHTML="<h2>Please wait... Sending Request</h2>";
+	document.getElementById(feedbackTitle).innerHTML="<h2>Please wait... Sending Request</h2>";
 }
 
-function userParseXMLResponse(responseXML){
+function editUserParseXMLResponse(responseXML){
 	
 	 var success = (responseXML.getElementsByTagName("success")[0]).childNodes[0].nodeValue;
 	 var responseText = "";

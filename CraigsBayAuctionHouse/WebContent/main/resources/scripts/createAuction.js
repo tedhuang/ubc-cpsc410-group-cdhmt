@@ -149,7 +149,7 @@ function postFlickrUpload(auctionID, hash){
 
 
 function flickrUploadResponse(){
-	alert("TestIn");
+	//alert("TestIn");
 	document.getElementById("flickrResponse").innerHTML = '<h2><font color="black">Photo Uploaded! You may now close this tab</font></h2><br/>';
 	
 }

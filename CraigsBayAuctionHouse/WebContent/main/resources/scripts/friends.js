@@ -65,24 +65,24 @@ function ParseFriendsList(responseXML, container){
 	
 	var friends = friendList.getElementsByTagName("friend");
 	for (var iNode = 0; iNode < friends.length; iNode++) {
-		
         var friend_node = friends[iNode];
 
         var friendID		=	friend_node.getAttribute("friendID");
         var friendName		=	friend_node.getAttribute("friendName");
 		
+        
    	 	var rowHTML =	"    <td>" +
    	 					"<a href=index.html>"+ friendID + "</a></td>" +
 						"    <td>"+ friendName + "</td>"+
-						"    <td><a class=\"button\" onclick=deleteFriend("+friendID+","+ container + ");>Delete</a></td>"+
-						"    <td><a class=\"button\" onclick=getFriendAuctions("+friendID+");>View Auctions</a></td>"+
+						"    <td><a class=\"button\" onclick='deleteFriend("+friendID+", "+ container + ")';>Delete</a></td>"+
+						"    <td><a class=\"button\" onclick=searchAuctionTable(2,"+friendName+");>View Auctions</a></td>"+
 						"    <td><a class=\"button\" onclick=chatFriend("+friendID+");>Chat</a></td>";
 		var rowParams = new Array();
 		rowParams[0] = friendID;
 		rowParams[1] = friendName;
-		rowParams[2] = "<a class=\"button\" onclick=deleteFriend("+friendID+","+ container + ");>Delete</a>";
-		rowParams[3] = "<a class=\"button\" onclick=searchAuctionTable(2,\""+friendName+"\");>View Auctions</a>";
-		rowParams[4] = "<a class=\"button\" onclick=chatFriend("+friendID+");>Chat</a>";
+		rowParams[2] = "<a class=\"button\" onclick='deleteFriend("+friendID+",\""+container +"\")';>Delete</a>";
+		rowParams[3] = "<a class=\"button\" onclick='searchAuctionTable(2,\""+friendName+"\")';>View Auctions</a>";
+		rowParams[4] = "<a class=\"button\" onclick='chatFriend("+friendID+")';>Chat</a>";
 		addElement2(rowParams, container);
 	}
 	document.getElementById("friendTbTitle").innerHTML="Friend List";
@@ -154,7 +154,7 @@ var credential = document.getElementById("cred").value;
 		    //parse XML response from server
 		    
 		    var responseText= ParseFriendDelete(xmlhttp.responseXML, container);
-		    loadFriends();
+		    //loadFriends();
 	    	
 	    }
 	  }

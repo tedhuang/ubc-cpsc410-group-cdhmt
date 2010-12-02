@@ -32,12 +32,13 @@ Bid button is greyed out but input for bid is still there,
 maybe remove this
 
 
-
 Type: Issue:
 Page: any
 Clicking New Auction a million
 
-
+Type: Issue
+Page: Auction List
+Using a symbol such as " inside for the auction name will result in auction list loader not working
 
 Things to do when have time:
 
@@ -68,11 +69,9 @@ Create auction button should be greyed out after it is
 clicked before picture is uploaded
 
 
-Type: Issue
-Page: Auction List
-Using a symbol such as " inside for the auction name will result in auction list loader not working
 
-||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
 #summary Stuff that needs doing@!
 

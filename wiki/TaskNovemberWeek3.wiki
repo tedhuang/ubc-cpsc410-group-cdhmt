@@ -1,5 +1,10 @@
 = Bugs and Issues Found on Dec 1 Debugging Session =
 
+Type: Issue, 
+Page: Auction Details Page
+Function requirement F14 states that closed auctions can be re-opened by the owner but right now if you close the auction, it cannot be accessed by the user anymore. (does not show up on manage auction)
+
+
 
 Type: Bug
 Condition: logged in or not

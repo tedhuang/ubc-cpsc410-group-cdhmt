@@ -81,8 +81,9 @@ function ParseFriendsList(responseXML, container){
 		rowParams[0] = friendID;
 		rowParams[1] = friendName;
 		rowParams[2] = "<a class=\"button\" onclick='deleteFriend("+friendID+",\""+container +"\")';>Delete</a>";
-		rowParams[3] = "<a class=\"button\" onclick='searchAuctionTable(2,\""+friendName+"\")';>View Auctions</a>";
-		rowParams[4] = "<a class=\"button\" onclick='chatFriend("+friendID+")';>Chat</a>";
+		rowParams[3] = "<a class=\"button\" onclick=getFriendAuctions("+friendID+ ");>View Auctions</a>";
+		rowParams[4] = "<a class=\"button\" onclick=chatFriend("+friendID+");>Chat</a>";
+
 		addElement2(rowParams, container);
 	}
 	document.getElementById("friendTbTitle").innerHTML="Friend List";
@@ -211,18 +212,78 @@ function getFriendAuctions(friendID)
 	    {
 		    //parse XML response from server
 		    
-		    var responseText= ParseSearchedAuctionList(xmlhttp.responseXML,'searchRsltArea');
+		    var responseText= ParseByOwnerAuctionList(xmlhttp.responseXML,'friendItemRsltArea');
 	    	
 	    }
 	  }
 
 	//send the parameters to the servlet with POST
-	var Params ="ownerID=" + friendID;		//send the owner id to the servelet
+	var Params ="friendID=" + friendID;		//send the owner id to the servelet
 	
-	xmlhttp.open("POST","../auctionListAllServlet" ,true);
+	xmlhttp.open("POST","../searchByOwnerServlet" ,true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xmlhttp.send(Params);
 	//document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
 }
+function ParseByOwnerAuctionList(responseXML, container)
+{
+	var auctionsList = responseXML.getElementsByTagName('auctionsList').item(0);
+
+	//remove old elements
+	  var oBody = document.getElementById(container);
+	  if(oBody != null)
+	  {
+		  while(oBody.hasChildNodes())
+		  {
+			  oBody.removeChild(oBody.firstChild);
+		  }
+	  }
+	  
+	var auctions = auctionsList.getElementsByTagName("auction");
+	for (var iNode = 0; iNode < auctions.length; iNode++) {
+		
+        var auction_node = auctions[iNode];
+
+        var auctionID		=	auction_node.getAttribute("auctionID");
+        var auctionTitle	=	auction_node.getAttribute("auctionTitle");
+        var auctionStatus	=	auction_node.getAttribute("auctionStatus");
+        var expiryDate		=	auction_node.getAttribute("expiryDate");
+        var creationDate	=	auction_node.getAttribute("creationDate");
+        var category		=	auction_node.getAttribute("category");
+        var ownerID			=	auction_node.getAttribute("ownerID");
+        var lastBidderID	=	auction_node.getAttribute("lastBidderID");
+        var minPrice		=	auction_node.getAttribute("minPrice");
+        var latestBidPrice	=	auction_node.getAttribute("latestBidPrice");
+        var bidCounter		=	auction_node.getAttribute("bidCounter");
+
+        var flickerAlbumID	=	auction_node.getAttribute("flickerAlbumID");
+        var numberOfViews	=	auction_node.getAttribute("numberOfViews");
+		
+   	 	var rowHTML =	"<td><input type=checkbox /></td>" +
+						"    <td>" +
+   	 					"<a href=index.html>"+ auctionTitle + "</a></td>" +
+							"    <td>"+ auctionStatus + "</td>" +
+							"    <td>"+ expiryDate +"</td>" +
+							"    <td>"+ latestBidPrice +"</td>"+
+   	 						"    <td>"+ category+"</td><td>" + bidCounter+ "</td>";
+		var rowParams = new Array();
+		rowParams[0] = auctionID;
+		rowParams[1] = auctionTitle;
+		rowParams[2] = auctionStatus;
+		rowParams[3] = expiryDate;
+		rowParams[4] = creationDate;
+		rowParams[5] = category;
+		rowParams[6] = ownerID;
+		rowParams[7] = lastBidderID;
+		rowParams[8] = minPrice;
+		rowParams[9] = latestBidPrice;
+		rowParams[10] = bidCounter;
+		rowParams[11] = flickerAlbumID;
+		rowParams[12] = numberOfViews;
+		addElement(rowParams, container);
+		
+	}
 	
+	//document.getElementById("advSearchTitle").innerHTML="<h2>Search Results</h2>";
+}
 

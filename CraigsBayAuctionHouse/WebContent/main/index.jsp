@@ -533,9 +533,9 @@
 							{
 						%>
 						
-						<li OnClick="createAuction('Dynapage');"><a href="#">New Auction</a></li>
+						<li OnClick="createAuction('Dynapage');"><a href="#" id="newItem">New Auction</a></li>
 						<li OnClick="viewUserAuctions('myAuctionArea','myAuctionTitle');"><a href="#">Manage Auction</a></li>
-						<li OnClick="viewBiddedAuctions('wantedItemArea', 'wantedItemTitle');"><a href="#">My Bids</a></li>
+						<li OnClick="viewBiddedAuctions('wantedItemArea', 'wantedItemTitle');"><a href="#" id="myBid">My Bids</a></li>
 						<%
 							}
 						%>
@@ -560,7 +560,7 @@
 							{
 						%>
 						<!-- <li><a href="#" onClick="showChatTab()">Start a Chat</a></li> -->
-						<li OnClick="viewFriends('friendTable')"><a href="#">Friends</a></li>
+						<li OnClick="viewFriends('friendTable')"><a href="#" id="friends">Friends</a></li>
 						<!-- <li><a href="#">Chat history</a></li> -->
 						
 						<%						
@@ -586,7 +586,7 @@
 					</a>
 				<ul>
 						
-					<li OnClick="openProfilePage('profileArea','profileTitle')"><a href="#">Your Profile</a></li>
+					<li OnClick="openProfilePage('profileArea','profileTitle')"><a href="#" id="profile">Your Profile</a></li>
 						
 	
 				</li>    
@@ -628,18 +628,16 @@
 								<h3>Business</h3>
 									<ul>
 										<li OnClick="viewAllAuctions('allItemTitle','allItemArea')"><a href=#>View All Auctions</a></li>
-										<li OnClick="createAuction()"><a href="#">New Auction</a></li>
-										<li OnClick="createAuction('Dynapage');"><a href="#">New Auction</a></li>
-						<li OnClick="viewUserAuctions('myAuctionArea','myAuctionTitle');"><a href="#">Manage Auction</a></li>
-						<li OnClick="viewBiddedAuctions('wantedItemArea', 'wantedItemTitle');"><a href="#" id="bidding">My Bids</a></li>
+										<li OnClick="createAuction()"><a href="#" id="newItem">New Auction</a></li>
+						<li OnClick="viewUserAuctions('myAuctionArea','myAuctionTitle');"><a href="#" id="">Manage Auction</a></li>
+						<li OnClick="viewBiddedAuctions('wantedItemArea', 'wantedItemTitle');"><a href="#" id="myBid">My Bids</a></li>
 									</ul>
 								</div>
 							
 								<div class="colright">
 									<h3>Social Network</h3>
 								<ul>
-									<li OnClick="viewFriends('friendTable')"><a href="#">Friends</a></li>
-									<li><a href="7" title="Twitter">My Messages</a></li>
+									<li OnClick="viewFriends('friendTable')"><a href="#" id="friends">Friends</a></li>
 									<li><a href="9" title="Digg">Search People</a></li>
 										
 								</ul>

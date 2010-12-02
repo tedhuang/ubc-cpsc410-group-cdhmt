@@ -40,19 +40,19 @@ maybe remove this
 
 Things to do when have time:
 
-Implement newest auctions first on the auction list
+-Implement newest auctions first on the auction list
 
-Implement sort function?
+-Implement sort function?
 
-Add owner name to auction list table
+-Add owner name to auction list table
 
-Add expiry time
+-Add expiry time
 
-Add more categories
+-Add more categories
 
-Add a response to flickr upload
+-Add a response to flickr upload
 
-Implement description for auctions
+-Implement description for auctions
 
 
 

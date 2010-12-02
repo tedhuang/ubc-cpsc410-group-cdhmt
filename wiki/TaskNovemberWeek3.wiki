@@ -5,6 +5,12 @@ Page: Auction Details Page
 Function requirement F14 states that closed auctions can be re-opened by the owner but right now if you close the auction, it cannot be accessed by the user anymore. (does not show up on manage auction)
 
 
+Type: Issue
+Page: View All Auctions
+Auction list does not refresh automatically like we said it was supposed to
+-maybe add an auto refresh similar to what would happen after clicking bid
+
+
 
 Type: Bug
 Condition: logged in or not

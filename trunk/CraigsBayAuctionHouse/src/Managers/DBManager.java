@@ -43,6 +43,8 @@ public class DBManager {
 		try {
 			stm = m_conn.createStatement();
 			auctionName = auctionName.replace("\'", "\\\'");
+			auctionName = auctionName.replace("\"", "\\\"");
+			auctionName = auctionName.replace(";", "");
 			String query = "INSERT INTO AuctionsTable(AuctionTitle, Category, AuctionStatus, " +
 								"ExpiryDate, AuctionExpireTime, CreationDate, OwnerID, MinPrice, LatestBidPrice, FlickerAlbumID) VALUES" +
 								"('" + auctionName + "' , '" + category + "' , '" + auctionStatus +

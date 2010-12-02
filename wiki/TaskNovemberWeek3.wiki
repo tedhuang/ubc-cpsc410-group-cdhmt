@@ -48,10 +48,6 @@ Things to do when have time:
 
 -Add expiry time
 
--Add more categories
-
--Add a response to flickr upload
-
 -Implement description for auctions
 
 
@@ -78,9 +74,12 @@ Type: Issue
 Page: Auction List
 Using a symbol such as " inside for the auction name will result in auction list loader not working
 
+-Add more categories
+
+-Add a response to flickr upload
+
 ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
-#summary Stuff that needs doing@!
 
 = Introduction =
 

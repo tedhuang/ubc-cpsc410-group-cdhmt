@@ -207,14 +207,17 @@ function viewInfo(colParams)
 		document.getElementById("changeStatusButton").disabled=false;
 		document.getElementById("changeStatusValue").disabled=false;
 		document.getElementById("bidButton").disabled=true;
+		document.getElementById("bidAmount").disabled=true;
 		document.getElementById("auctionChatInputText").disabled=false;
 		document.getElementById("auctionChatSubmit").disabled=false;
+		//document.getElementById("")
 		//enable expiry date change fields
 		handleStatusSelectionChange();
 	}
 	else if( document.getElementById("userName").value != "Guest")
 	{
 		document.getElementById("bidButton").disabled=false;
+		document.getElementById("bidAmount").disabled=false;
 		document.getElementById("auctionChatInputText").disabled=false;
 		document.getElementById("auctionChatSubmit").disabled=false;
 	}
@@ -313,6 +316,7 @@ function bidAuctionParseXMLResponse(responseXML, auctionID, title, feedbackTitle
 		
 		}
 	document.getElementById("bidButton").disabled=false;
+	document.getElementById("bidAmount").disabled=false;
 	
 }
 
@@ -422,7 +426,7 @@ function refreshAuctionChat(auctionID)
 
 function addFriend(){
 		var credential = document.getElementById("cred").value;
-		var friendID = document.getElementById("ownerID").value
+		var friendID = document.getElementById("ownerID").value;
 		
 		if (window.XMLHttpRequest)
 		  {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -442,7 +446,7 @@ function addFriend(){
 			    var responseText= ParseFriendAdd(xmlhttp.responseXML);
 		    	
 		    }
-		  }
+		  };
 		
 		//send the parameters to the servlet with POST
 		var Params = "Credential=" + credential + "&FriendID=" + friendID;

@@ -144,6 +144,18 @@ function postFlickrUpload(auctionID, hash){
 	  xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 	  xmlhttp.send(postContent); 
 	
+	  
+}
+
+
+function flickrUploadResponse(){
+	alert("TestIn");
+	document.getElementById("flickrResponse").innerHTML = '<h2><font color="black">Photo Uploaded! You may now close this tab</font></h2><br/>';
+	
+}
+
+	  
+	  
  /*************************************
   * None of the below methods worked  *
   * ***********************************
@@ -206,7 +218,7 @@ function postFlickrUpload(auctionID, hash){
     alert(form.innerHTML);
     form.submit();
     */
-}
+
 
 
 

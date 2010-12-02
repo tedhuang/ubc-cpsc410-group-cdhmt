@@ -445,11 +445,17 @@ function createFriendTab(parentId,tabTitle,closeButton)
 	buddyList.innerHTML = "<tr><th>Friend ID</th><th>Friend Name</th>"+
 								   "<th>Delete</th><th>View Auctions</th>"+
 								   "<th>Chat</th><tBody id='friendTable'></tBody>";
+	var friendItem = document.createElement('TABLE');
+	friendItem.innerHTML= "<tr><th><input class=\"check-all\" type='checkbox' /></th>"+
+							"<th>Auction Item</th><th>Status</th><th>Time Left</th>" +
+							"<th>Latest Price</th><th>Category</th><th>Number of Bids</th></tr>" +
+							"<tBody id='friendItemRsltArea'></tBody>";
 	
 
 	var tabId = initTabs(parentId,Array(tabTitle),0,'','',Array(closeButton),true);
 	div.appendChild(title);
 	div.appendChild(buddyList);
+	div.appendChild(friendItem);
 }
 /****************************************************************************************************************************************
  * 
@@ -576,7 +582,7 @@ function showAdvancedSearchTab()
 	}
 	else
 	{
-			//showTab('tabPanel',open.toString());
+			showTab('tabPanel',open[1]);
 	}
 }
 /****************************************************************************************************
@@ -592,7 +598,7 @@ function showFriendTab()
 	}
 	else
 	{
-		//showTab('tabPanel',open.toString());
+		showTab('tabPanel',open[1]);
 	}
 }
 /****************************************************************************************************************************************
@@ -639,7 +645,7 @@ function showWantedItemTab()
 	}
 	else
 	{
-		//showTab('tabPanel',open.toString());
+		showTab('tabPanel',open[1]);
 	}
 }
 /****************************************************************************************************
@@ -655,7 +661,7 @@ function showDetailViewTab()
 	}
 	else
 	{
-		//showTab('tabPanel',open.toString());
+		showTab('tabPanel',open[1]);
 	}
 }
 /****************************************************************************************************
@@ -665,15 +671,15 @@ function showChatTab( xmlstuff )
 {
 	var sender 		= xmlstuff.getAttribute("friendName");
 	
-var open=getTabIndexByTitle('Chatting with '+ sender);
-if (open<0)// if the tab is not open yet
-{	
-var aTab= createChatTab('tabPanel','Chatting with '+ sender,  xmlstuff , true);
-}
-else
-{
-//showTab('tabPanel',open.toString());
-}
+	var open=getTabIndexByTitle('Chatting with '+ sender);
+	if (open<0)// if the tab is not open yet
+	{	
+		var aTab= createChatTab('tabPanel','Chatting with '+ sender,  xmlstuff , true);
+	}
+	else
+	{
+		showTab('tabPanel',open[1]);
+	}
 }
 /****************************************************************************************************
 						Open All Items Tab
@@ -688,7 +694,7 @@ function showAllItemTab()
 		}
 		else
 		{
-			//showTab('tabPanel',open.toString());
+			showTab('tabPanel',open[1]);
 		}
 }
 /****************************************************************************************************
@@ -704,7 +710,7 @@ function showMyAuctionTab()
 	}
 	else
 	{
-		//showTab('tabPanel',open.toString());
+		showTab('tabPanel',open[1]);
 	}
 }
 /****************************************************************************************************************************************

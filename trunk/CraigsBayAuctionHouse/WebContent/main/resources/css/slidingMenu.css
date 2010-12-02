@@ -10,6 +10,22 @@
 	background: url(../images/logout.png) no-repeat 0 2px;
 	padding: 15px 0 0 30px;
 }
+#friends {
+	background: url(../images/friend.png) no-repeat 0 2px;
+	padding: 10px 5px 0 25px;
+	}
+#myBid {
+	background: url(../images/my_bid.png) no-repeat 0 2px;
+	padding: 10px 5px 0 25px;
+	}
+#newItem {
+	background: url(../images/newItem.png) no-repeat 0 2px;
+	padding: 10px 5px 0 25px;
+	}
+#addPic {
+	background: url(../images/picture_add.png) no-repeat 0 2px;
+	padding: 10px 5px 0 25px;
+	}
 #container {
 clear: both;
 margin: 0;

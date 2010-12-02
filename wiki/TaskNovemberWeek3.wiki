@@ -9,12 +9,6 @@ javascript error and does nothing. This should not even be
 there (take check box away)
 
 
-Type: Bug:
-Page: Auctions Details
-Nothing happens after setting to close and clicking "Owner 
-Option: Change Auction Status" 
-
-
 Type: Issue
 Page: Auction Details
 User should not be able to add themselves as a friend
@@ -27,18 +21,9 @@ User should not be able to check multiple checkboxes for
 
 
 Type: Issue:
-Page: Auctions Details
-Bid button is greyed out but input for bid is still there, 
-maybe remove this
-
-
-Type: Issue:
 Page: any
-Clicking New Auction a million
+Clicking New Auction a million times makes UI go crazy
 
-Type: Issue
-Page: Auction List
-Using a symbol such as " inside for the auction name will result in auction list loader not working
 
 Things to do when have time:
 
@@ -68,8 +53,19 @@ Page: Auctions Details
 Create auction button should be greyed out after it is 
 clicked before picture is uploaded
 
+Type: Bug:
+Page: Auctions Details
+Nothing happens after setting to close and clicking "Owner 
+Option: Change Auction Status" 
 
+Type: Issue:
+Page: Auctions Details
+Bid button is greyed out but input for bid is still there, 
+maybe remove this
 
+Type: Issue
+Page: Auction List
+Using a symbol such as " inside for the auction name will result in auction list loader not working
 
 ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 

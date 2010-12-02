@@ -50,8 +50,8 @@ Things to do when have time:
 
 
 
-=======================================================
- = RESOLVED: =
+
+=RESOLVED:=
 
 Type: Issue:
 Page: Auctions Details
@@ -59,8 +59,6 @@ Create auction button should be greyed out after it is
 clicked before picture is uploaded
 
 
-
-=======================================================
 
 
 

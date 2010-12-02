@@ -110,9 +110,9 @@ refreshAuctionChat(<%=auctionID%>);
 	<div id=flickrImage> <!-- http://flickrbadge.theducky.com/ -->
 	<h4>Scriptless Flickr badge: (Auction ID: <%=auctionID%>)</h4>
 	
-	<!--Eventually repalce the tag2 with: auctionID -->
+	
 	<a href=<%="http://flickrbadge.theducky.com/tag/link/55164508@N02/" +  auctionID + "_1"%>>
-	<img src= <%="http://flickrbadge.theducky.com/tag/photo/55164508@N02/" + auctionID + "_1_m.jpg" %> alt="Scriptless Flickr Badge" /></a>
+	<img src= <%="http://flickrbadge.theducky.com/tag/photo/55164508@N02/" + auctionID + "_1_m.jpg" %> alt="Picture By Flickr:" /></a>
 	</div>
 	
 	
@@ -128,33 +128,9 @@ refreshAuctionChat(<%=auctionID%>);
 					
 </div>
 
-
-
-
-
        				
-
-
-<!-- This import is for testing purposes 
-<script type="text/javascript" src='./resources/scripts/auctionDetailLoader.js'></script> -->
 </body>
 </html>
-
-
-
-
-
-
-<!-- Deprecated Code, delete when necessary
-<div id="flickrTest">
-	<h4>This text should change to picture</h4>
-</div>
-<button type="button" id="flickrButton" onClick='displayBadges()'>Display Picture or die!</button>
-
-<div id="hiddenBadge"style="visibility: hidden">
-<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?show_name=1&count=1&display=latest&size=t&layout=v&source=user_tag&user=55164508%40N02&tag=tag2"></script>
-</div>
- -->
 
 
 

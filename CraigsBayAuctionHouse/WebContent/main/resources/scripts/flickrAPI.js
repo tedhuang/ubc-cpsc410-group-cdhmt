@@ -1,6 +1,7 @@
 
 var hash;
 
+
 function getHash(tags){ 
 		
 	if (window.XMLHttpRequest)

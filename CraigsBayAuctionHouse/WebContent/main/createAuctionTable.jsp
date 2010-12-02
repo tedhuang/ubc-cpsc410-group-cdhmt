@@ -47,9 +47,14 @@ Expire In... :
 Category: <select id="Category" name="Category">
 			<option value="electronics">Electronics</option>
 			<option value="books">Books</option>
-			<option value="motors">Motors</option>
+			<option value="auto/motors">Auto/Motors</option>
 			<option value="art">Art</option>
 			<option value="music">Music</option>
+			<option value="furniture">Furniture</option>
+			<option value="clothing">Clothing</option>
+			<option value="collectibles">Collectibles</option>
+			<option value="jewelry">Jewelry</option>
+			<option value="miscellaneous">Miscellaneous</option>
 		  </select><br>
  <br>
 

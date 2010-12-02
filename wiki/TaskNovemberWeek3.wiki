@@ -46,7 +46,7 @@ Things to do when have time:
 -Add expiry time
 -Add more categories
 -Add a response to flickr upload
-
+-Implement description for auctions
 
 
 

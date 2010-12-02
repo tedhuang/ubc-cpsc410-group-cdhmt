@@ -1,5 +1,9 @@
 = Bugs and Issues Found on Dec 1 Debugging Session =
 
+Type: Issue
+Page: Auction List
+Using a symbol such as " inside for the auction name will result in auction list loader not working
+
 Type: Bug
 Condition: logged in or not
 Page: Auction List

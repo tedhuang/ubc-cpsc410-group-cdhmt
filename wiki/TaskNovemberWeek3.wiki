@@ -40,13 +40,13 @@ maybe remove this
 
 Things to do when have time:
 
-*Implement newest auctions first on the auction list
-*Implement sort function?
-*Add owner name to auction list table
-*Add expiry time
-*Add more categories
-*Add a response to flickr upload
-*Implement description for auctions
+* Implement newest auctions first on the auction list
+* Implement sort function?
+* Add owner name to auction list table
+* Add expiry time
+* Add more categories
+* Add a response to flickr upload
+* Implement description for auctions
 
 
 

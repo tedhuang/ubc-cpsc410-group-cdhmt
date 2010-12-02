@@ -1,3 +1,62 @@
+= Bugs and Issues Found on Dec 1 Debugging Session =
+
+Type: Bug
+Condition: logged in or not
+Page: Auction List
+Delete auction button under auction list page generates 
+javascript error and does nothing. This should not even be 
+there (take check box away)
+
+
+Type: Bug:
+Page: Auctions Details
+Nothing happens after setting to close and clicking "Owner 
+Option: Change Auction Status" 
+
+
+Type: Issue
+Page: Auction Details
+User should not be able to add themselves as a friend
+
+Type: Issue
+Page: Manage Auction
+User should not be able to check multiple checkboxes for
+"EDIT" function
+-Maybe have edit button next to each auction instead
+
+
+Type: Issue:
+Page: Auctions Details
+Bid button is greyed out but input for bid is still there, 
+maybe remove this
+
+
+Type: Issue:
+Page: Auctions Details
+Create auction button should be greyed out after it is 
+clicked before picture is uploaded
+
+
+
+
+Things to do when have time:
+
+-Implement newest auctions first on the auction list
+-Implement sort function?
+-Add owner name to auction list table
+-Add expiry time
+-Add more categories
+-Add a response to flickr upload
+
+
+
+
+=======================================================
+
+
+
+
+
 #summary Stuff that needs doing@!
 
 = Introduction =

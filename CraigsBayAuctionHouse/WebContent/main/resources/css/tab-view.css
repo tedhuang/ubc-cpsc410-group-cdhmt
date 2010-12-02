@@ -13,6 +13,7 @@
 	.dhtmlgoodies_tabPane DIV{
 		float:left;
 		height:100%;	/* Height of tabs */
+		width:100%
 		padding-left:3px;
 		vertical-align:middle;
 		background-repeat:no-repeat;

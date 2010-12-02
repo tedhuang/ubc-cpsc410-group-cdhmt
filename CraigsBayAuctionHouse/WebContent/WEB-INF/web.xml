@@ -282,4 +282,14 @@
     <servlet-name>chatRegisterServlet</servlet-name>
     <url-pattern>/chatRegisterServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>searchByOwnerServlet</display-name>
+    <servlet-name>searchByOwnerServlet</servlet-name>
+    <servlet-class>Servlets.searchByOwnerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>searchByOwnerServlet</servlet-name>
+    <url-pattern>/searchByOwnerServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

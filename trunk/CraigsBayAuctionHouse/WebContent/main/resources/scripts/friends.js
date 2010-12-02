@@ -74,13 +74,13 @@ function ParseFriendsList(responseXML, container){
    	 	var rowHTML =	"    <td>" +
    	 					"<a href=index.html>"+ friendID + "</a></td>" +
 						"    <td>"+ friendName + "</td>"+
-						"    <td><a class=\"button\" onclick=deleteFriend("+friendID+", "+ container + ");>Delete</a></td>"+
-						"    <td><a class=\"button\" onclick=searchAuctionTable(2,"+friendName+");>View Auctions</a></td>"+
+						"    <td><a class=\"button\" onclick=deleteFriend("+friendID+","+ container + ");>Delete</a></td>"+
+						"    <td><a class=\"button\" onclick=getFriendAuctions("+friendID+");>View Auctions</a></td>"+
 						"    <td><a class=\"button\" onclick=chatFriend("+friendID+");>Chat</a></td>";
 		var rowParams = new Array();
 		rowParams[0] = friendID;
 		rowParams[1] = friendName;
-		rowParams[2] = "<a class=\"button\" onclick=deleteFriend("+friendID+", "+ container + ");>Delete</a>";
+		rowParams[2] = "<a class=\"button\" onclick=deleteFriend("+friendID+","+ container + ");>Delete</a>";
 		rowParams[3] = "<a class=\"button\" onclick=searchAuctionTable(2,\""+friendName+"\");>View Auctions</a>";
 		rowParams[4] = "<a class=\"button\" onclick=chatFriend("+friendID+");>Chat</a>";
 		addElement2(rowParams, container);
@@ -187,3 +187,42 @@ function ParseFriendDelete(responseXML, container){
 	 loadFriends(container);
 	 return responseText;
 }
+/*********************************************************************************************************
+ * 								get user's auctions
+ * @param type
+ * @param searchOwner
+ *********************************************************************************************************/
+function getFriendAuctions(friendID)
+{	
+	//NOTE for some reason to pass '%' as a string in javascript it has to be '%25'
+
+	if (window.XMLHttpRequest)
+	  {// code for IE7+, Firefox, Chrome, Opera, Safari
+	  xmlhttp=new XMLHttpRequest();
+	  }
+	else
+	  {// code for IE6, IE5
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	  
+	xmlhttp.onreadystatechange=function()
+	{
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	    {
+		    //parse XML response from server
+		    
+		    var responseText= ParseSearchedAuctionList(xmlhttp.responseXML,'searchRsltArea');
+	    	
+	    }
+	  }
+
+	//send the parameters to the servlet with POST
+	var Params ="ownerID=" + friendID;		//send the owner id to the servelet
+	
+	xmlhttp.open("POST","../auctionListAllServlet" ,true);
+	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xmlhttp.send(Params);
+	//document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
+}
+	
+

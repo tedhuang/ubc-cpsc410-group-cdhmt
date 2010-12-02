@@ -730,7 +730,7 @@
 		  
 		  
 			<script type="text/javascript">
-			initTabs('tabPanel',Array('What\'s New','tips'),0,500,400,Array(false,true));
+			initTabs('tabPanel',Array('What\'s New','tips'),0,"","",Array(false,true));
 			</script>
 		
 <!-- ********************************************************************************************

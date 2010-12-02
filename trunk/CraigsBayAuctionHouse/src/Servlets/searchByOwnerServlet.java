@@ -10,21 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Classes.Auction;
-import Classes.Friend;
 import Managers.DBManager;
 
 /**
- * Servlet implementation class friendsList
+ * Servlet implementation class auctionListUserPostedServlet
  */
-public class friendsListServlet extends HttpServlet {
+public class searchByOwnerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public friendsListServlet() {
+    public searchByOwnerServlet() {
         super();
-        // TODO Auto-generated constructor stub.
+        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -38,34 +37,34 @@ public class friendsListServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userCred = request.getParameter("Credential");
-		boolean success;
-		ArrayList<Friend> friendList = new ArrayList<Friend>();
-		DBManager dbm = new DBManager();
-		int userID = dbm.userCredentialCheck( userCred );
 		
-		if(userID <= 0){
-			success = false;
-		}
-		else{
-			friendList = dbm.getFriends(userID);
-			success = true;
-		}
+		String userID = request.getParameter("friendID");
+		
+		ArrayList<Auction> auctionList = new ArrayList<Auction>();
+		
+		DBManager dbm = new DBManager();
+
+		auctionList = dbm.auctionListPostedByUser( Integer.parseInt(userID) );
+		
 		
 		//Write XML
 		StringBuffer XMLResponse = new StringBuffer();	
 		XMLResponse.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
 		XMLResponse.append("<response>\n");
-		XMLResponse.append("\t<success>" + success + "</success>\n");
-		XMLResponse.append("\t<friendList>\n");
 		
-		ListIterator<Friend> friendListIterator = friendList.listIterator();
 		
-		while( friendListIterator.hasNext() ) {
-			String thisXML = friendListIterator.next().toXMLContent();
+		XMLResponse.append("\t<auctionsList>\n");
+		
+		ListIterator<Auction> auctionListIterator = auctionList.listIterator();
+		
+		//TODO: make each auctiontable entry different element
+		while( auctionListIterator.hasNext() ) {
+			String thisXML = auctionListIterator.next().toXMLContent();
 			XMLResponse.append( thisXML );
 		}
-		XMLResponse.append("\t</friendList>\n");
+		
+		//TODO: XMLResponse.append();
+		XMLResponse.append("\t</auctionsList>\n");
 		XMLResponse.append("</response>\n");
 		response.setContentType("application/xml");
 		response.getWriter().println(XMLResponse);

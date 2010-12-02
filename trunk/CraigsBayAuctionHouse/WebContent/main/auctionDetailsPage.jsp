@@ -51,14 +51,13 @@ refreshAuctionChat(<%=auctionID%>);
 		 	</tbody>
 		 	
 
-
 		 	
 			<tfoot>
 				<!--  Bidding -->
 				<tr> 
 					<td> 
 					
-					<input type="button" onClick='bidOnAuction(<%= auctionID %>, "detailTitle", "bidFeedback")' id="bidButton" disabled="true" value="Bid"> : $ <input type="text" id="bidAmount"/>  
+					<input type="button" onClick='bidOnAuction(<%= auctionID %>, "detailTitle", "bidFeedback")' id="bidButton" disabled="true" value="Bid"> : $ <input type="text" id="bidAmount" disabled="true"/>  
 					<div id="bidFeedback"> </div>
 					
 					<input type="button" onClick ='changeAuctionStatus(<%=auctionID %>, "detailTitle", "bidFeedback")' id="changeStatusButton" disabled="true" value="Owner Option: Change Auction Status"/> :  										
@@ -108,8 +107,7 @@ refreshAuctionChat(<%=auctionID%>);
 	
 					
 	<div id=flickrImage> <!-- http://flickrbadge.theducky.com/ -->
-	<h4>Scriptless Flickr badge: (Auction ID: <%=auctionID%>)</h4>
-	
+	<h5><i><font face="Bookman Old Style, Book Antiqua, Garamond">Picture by Flickr:</font></i></h5>
 	
 	<a href=<%="http://flickrbadge.theducky.com/tag/link/55164508@N02/" +  auctionID + "_1"%>>
 	<img src= <%="http://flickrbadge.theducky.com/tag/photo/55164508@N02/" + auctionID + "_1_m.jpg" %> alt="Picture By Flickr:" /></a>

@@ -35,6 +35,7 @@ refreshAuctionChat(<%=auctionID%>);
 			<thead id="tableHeader">
 				
 				 <tr> <th id="auctionItem">Auction Item </tr>
+				  <tr> <th id="auctionDescription">Auction Description </tr>
 				 <tr>  <th id="status">Status</th></tr>
 				 <tr>  <th id="timeLeft">Time Left</th></tr>
 				 <tr>  <th id="latestPrice">Latest Price</th></tr>

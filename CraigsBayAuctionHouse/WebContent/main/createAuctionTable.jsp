@@ -19,6 +19,9 @@
 <br>
 <h4>Create New Auction</h4>
 Title: <input id="AuctionTitle" type="text" name="AuctionTitle" size="20"><br>
+Description:  <br>
+<textarea id="NewAuctionDescriptuon" rows="4" cols="20">
+</textarea> <br>
 MinPrice: <input id="MinPrice" type="text" name="MinPrice" size="12"><br>
 <!-- The value returned by the selection corresponds to the number of days till expiry -->
 Expire In... :

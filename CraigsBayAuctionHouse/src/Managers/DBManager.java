@@ -38,18 +38,21 @@ public class DBManager {
 		}
 	}
 	
-	public int createNewAuction(String auctionName, String category, String auctionStatus, String creationDate, String expiryDate, long expiryTime, Double minPrice, int ownerID, String flickrAlbumID   )
+	public int createNewAuction(String auctionName, String category, String auctionStatus, String creationDate, String expiryDate, long expiryTime, Double minPrice, int ownerID, String flickrAlbumID, String auctionDescription   )
 	{
 		try {
 			stm = m_conn.createStatement();
 			auctionName = auctionName.replace("\'", "\\\'");
 			auctionName = auctionName.replace("\"", "\\\"");
 			auctionName = auctionName.replace(";", "");
+			auctionDescription = auctionDescription.replace("\'", "\\\'");
+			auctionDescription = auctionDescription.replace("\"", "\\\"");
+			auctionDescription = auctionDescription.replace(";", "");
 			String query = "INSERT INTO AuctionsTable(AuctionTitle, Category, AuctionStatus, " +
-								"ExpiryDate, AuctionExpireTime, CreationDate, OwnerID, MinPrice, LatestBidPrice, FlickerAlbumID) VALUES" +
+								"ExpiryDate, AuctionExpireTime, CreationDate, OwnerID, MinPrice, LatestBidPrice, FlickerAlbumID, AuctionDescription) VALUES" +
 								"('" + auctionName + "' , '" + category + "' , '" + auctionStatus +
 								"' , '"  + expiryDate + "' , '" + expiryTime + "' , '" + creationDate + 
-								"' , '" + ownerID + "' , '" + minPrice + "' , '" + minPrice + "' , '" + flickrAlbumID + "')"; 
+								"' , '" + ownerID + "' , '" + minPrice + "' , '" + minPrice + "' , '" + flickrAlbumID + "' , '" + auctionDescription + "')"; 
 			
 			System.out.println("Creating new auction : " + query);
 			
@@ -252,6 +255,7 @@ public class DBManager {
 				tempAuction.auctionStatus = result.getString("auctionStatus");
 				tempAuction.flickerAlbumID = result.getString("flickerAlbumID");
 				tempAuction.numberOfViews = result.getInt("numberOfViews");
+				tempAuction.auctionDescription = result.getString("AuctionDescription");
 				//TODO do we need to extract AuctionExpiryTime
 				
 				auctionsList.add( tempAuction );
@@ -455,6 +459,7 @@ public class DBManager {
 				tempAuction.auctionStatus = result.getString("auctionStatus");
 				tempAuction.flickerAlbumID = result.getString("flickerAlbumID");
 				tempAuction.numberOfViews = result.getInt("numberOfViews");
+				tempAuction.auctionDescription = result.getString("AuctionDescription");
 				
 				auctionsList.add( tempAuction );
 				
@@ -513,6 +518,7 @@ public class DBManager {
 				auction.auctionStatus 	= result.getString("auctionStatus");
 				auction.flickerAlbumID 	= result.getString("flickerAlbumID");
 				auction.numberOfViews 	= result.getInt("numberOfViews");
+				auction.auctionDescription = result.getString("AuctionDescription");
 				
 			}
 

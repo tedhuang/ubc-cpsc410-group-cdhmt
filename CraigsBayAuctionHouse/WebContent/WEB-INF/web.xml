@@ -292,4 +292,14 @@
     <servlet-name>searchByOwnerServlet</servlet-name>
     <url-pattern>/searchByOwnerServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>auctionFlagServlet</display-name>
+    <servlet-name>auctionFlagServlet</servlet-name>
+    <servlet-class>Servlets.auctionFlagServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>auctionFlagServlet</servlet-name>
+    <url-pattern>/auctionFlagServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

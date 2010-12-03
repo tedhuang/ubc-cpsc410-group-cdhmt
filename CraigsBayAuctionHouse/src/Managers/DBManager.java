@@ -360,6 +360,28 @@ public class DBManager {
 		return true;
 	}
 	
+	public int flagAuction(String auctionID){
+		try {
+			stm = m_conn.createStatement();
+			
+			String query = "UPDATE AuctionsTable" +
+							" SET Flag='1'" +
+							" WHERE AuctionID=" + auctionID;
+			
+			System.out.println("Flagging Auction: " + query);
+			
+			stm.executeUpdate(query);
+			stm.close();
+			
+			return 1;
+			
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		
+		return 0;
+	}
 	
 	public ArrayList<Auction> auctionListPostedByUser( int userID )
 	{

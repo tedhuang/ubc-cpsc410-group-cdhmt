@@ -278,7 +278,7 @@ function viewInfo(colParams)
 
 	document.getElementById("auctionOwner").innerHTML = "Auction Owner: " + colParams[13];
 	document.getElementById("friendButton").innerHTML = "<input type=\"button\" onClick='addFriend()' value = \"Add owner as friend\" id=\"addFriendButton\">";
-	
+	document.getElementById("flag").innerHTML = "Is this auction inappropriate? <input type=\"button\" onClick='flagAuction("+colParams[0]+")' value = \"Click here to tell us\" id=\"flagButton\">";
 
 	
 	document.getElementById("timeLeftHours").innerHTML = "Time to Expire: " + 
@@ -571,6 +571,57 @@ function addFriend(){
 		{
 			//responseText = 
 			 alert("Friend added!");
+		}
+		 //TODO Disable page while it reloads; ATM it reloads but the user can interact with it while it does.
+		 return responseText;
+	}
+	
+	function flagAuction(auctionID){
+		//var credential = document.getElementById("cred").value;
+		//var friendID = document.getElementById("ownerID").value;
+		
+		if (window.XMLHttpRequest)
+		  {// code for IE7+, Firefox, Chrome, Opera, Safari
+		  xmlhttp=new XMLHttpRequest();
+		  }
+		else
+		  {// code for IE6, IE5
+		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		  }
+		  
+		xmlhttp.onreadystatechange=function()
+		{
+		  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		    {
+			    //parse XML response from server
+			    
+			    var responseText= ParseFlagAuction(xmlhttp.responseXML);
+		    	
+		    }
+		  };
+		
+		//send the parameters to the servlet with POST
+		var Params = "AuctionID=" + auctionID;
+		
+		xmlhttp.open("POST","../auctionFlagServlet" ,true);
+		xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		xmlhttp.send(Params);
+	}
+	
+	function ParseFlagAuction(responseXML){
+		 var success = (responseXML.getElementsByTagName("success")[0]).childNodes[0].nodeValue;
+		 var responseText = "";
+		 
+		 if(success=="0")
+		{
+			 //responseText = 
+			 alert("Error flaging auction!");
+		}
+
+		 if(success=="1")
+		{
+			//responseText = 
+			 alert("Auction Reported!");
 		}
 		 //TODO Disable page while it reloads; ATM it reloads but the user can interact with it while it does.
 		 return responseText;

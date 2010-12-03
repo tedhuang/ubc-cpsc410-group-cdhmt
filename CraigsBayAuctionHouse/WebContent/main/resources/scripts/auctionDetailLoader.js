@@ -247,10 +247,10 @@ function viewInfo(colParams)
 	x /= 60;
 	var Minutes = Math.round(x % 60);
 	x /= 60;
-	var Hours = Math.round(x % 24)-1;
+	var Hours = Math.round(x % 24 - 1);
 	x /= 24;
 	
-	var Days = Math.round(x)-1;
+	var Days = Math.round(x - 1);
 	
 	if(Days < 0 )
 	{

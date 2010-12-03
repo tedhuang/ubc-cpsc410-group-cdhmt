@@ -591,7 +591,7 @@
 					<h2><div id="surferTitle">Welcome <%= userName %></div></h2><br>
 					<div id="Dynapage">
 						Dynamic page is here
-						<a href=# id='Harry' onClick=showChatTab(this.id)>Chat tab test</a>
+						<a href=# id='Harry' onClick="preloadFriends('tempTable')">Chat tab test</a>
 						<a class="shortcut-button manage-comments" href="#messages" 
 						rel="modal"><span class="png_bg">Messeages</span></a>
 			<div id="messages" style="display: none"> <!-- Messages are shown when a link with these attributes are clicked: href="#messages" rel="modal"  -->
@@ -644,14 +644,16 @@
 		  
 			<script type="text/javascript">
 			initTabs('tabPanel',Array('What\'s New','tips'),0,"","",Array(false,true));
+			preloadFriends("tempTable");
 			</script>
 		
 <!-- ********************************************************************************************
 							   End~ Tab Panel 
 *************************************************************************************************-->
-	
-		</div> <!-- End~ main Content -->
-		</div> <!-- End~ bodywrapper -->
-		</body><!-- Whole body ends here -->
+		<!-- **********************************TMEPORAL TABLE********************************************* -->
+		<div id="tempDiv" style="visibility:hidden"><table id="tempTable"></table></div>
+</div> <!-- End~ main Content -->
+</div> <!-- End~ bodywrapper -->
+</body><!-- Whole body ends here -->
 
 </html>

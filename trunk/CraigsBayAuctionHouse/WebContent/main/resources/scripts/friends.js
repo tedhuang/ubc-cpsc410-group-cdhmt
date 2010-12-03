@@ -10,6 +10,72 @@ function viewFriends(container)
 		   }
 		
 }
+/*********************************************************************************************************
+ * 								PRELOAD FRIENDS PARSE
+ * 
+ *********************************************************************************************************/
+
+var buddyList=new Array();
+function ParsePreloadFriendsList(responseXML, container)
+{
+	var success = (responseXML.getElementsByTagName("success")[0]).childNodes[0].nodeValue;
+	 
+	if(success=="false")
+	{
+		 //responseText = 
+		 alert("Error finding friends. Please log out and back in again.");
+	}
+	 
+	var friendList = responseXML.getElementsByTagName('friendList').item(0);
+		
+		//remove old elements
+		var oBody = document.getElementById(container);
+		while(oBody.hasChildNodes())
+		{
+			oBody.removeChild(oBody.firstChild);
+		}
+		
+		var friends = friendList.getElementsByTagName("friend");
+		for (var iNode = 0; iNode < friends.length; iNode++) 
+		{
+	        var friend_node = friends[iNode];
+	        buddyList[iNode] 	= 	 friend_node.getAttribute("friendName"); //preload to array
+		}
+}
+function preloadFriends(container)
+{
+	var credential = document.getElementById("cred").value;
+	
+	if (window.XMLHttpRequest)
+	  {// code for IE7+, Firefox, Chrome, Opera, Safari
+	  xmlhttp=new XMLHttpRequest();
+	  }
+	else
+	  {// code for IE6, IE5
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	  
+	xmlhttp.onreadystatechange=function()
+	{
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	    {
+		    //parse XML response from server
+		    
+		    var responseText= ParsePreloadFriendsList(xmlhttp.responseXML, container);
+	    	
+	    }
+	  };
+	
+
+	//send the parameters to the servlet with POST
+	var Params = "Credential=" + credential;
+	
+	xmlhttp.open("POST","../friendsListServlet" ,true);
+	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xmlhttp.send(Params);
+	
+}
+/***************END OF PRELOAD FRIENDS**********************************************************************/
 
 /*********************************************************************************************************
  * 								LOAD FRIENDS
@@ -53,12 +119,6 @@ function loadFriends(container)
 	
 }
 
-/*********************************************************************************************************
- * 								PARSE
- * 
- *********************************************************************************************************/
-
-var buddyList=new Array();
 
 function ParseFriendsList(responseXML, container){
 	
@@ -86,7 +146,6 @@ function ParseFriendsList(responseXML, container){
 	        
 	        var friendID		=	friend_node.getAttribute("friendID");
 	        var friendName		=	friend_node.getAttribute("friendName");
-	        buddyList[iNode] 	= 	friendName;
 	        
 	   	 	var rowHTML =	"    <td>" +
 	   	 					"<a href=index.html>"+ friendID + "</a></td>" +
@@ -104,7 +163,8 @@ function ParseFriendsList(responseXML, container){
 			addElement2(rowParams, container);
 		  
 		}
-		document.getElementById("friendTbTitle").innerHTML="Friend List";
+		
+			document.getElementById("friendTbTitle").innerHTML="Friend List";
 }
 	
 
@@ -344,10 +404,16 @@ function addFriend(){
  * @param searchOwner
  *********************************************************************************************************/
 
-function friendAlready()
+function friendAlready(chkName)
 {
-	
-	return buddyAlready;
+	for(var i=0; i<buddyList.length; i++)
+	{
+		if(buddyList[i]==chkName)
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 var buddyAlready=false;
@@ -367,7 +433,7 @@ function ParseFriendAdd(responseXML, container){
 	{
 			 //responseText = 
 			 alert("Already a friend!");
-		buddyAlready=true;
+			 buddyAlready=true;
 	}
 	 if(success=="1")
 	{

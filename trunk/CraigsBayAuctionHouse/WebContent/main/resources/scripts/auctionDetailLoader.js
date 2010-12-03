@@ -263,7 +263,7 @@ function viewInfo(colParams)
 	document.getElementById("auctionOwner").innerHTML = "Auction Owner: " + colParams[13]+
 								"<input type=\"button\" onClick='addFriend()' " +
 								"value = \"Add owner as friend\" id=\"addFriendButton\">";
-	document.getElementById("flag").innerHTML = "Is this auction inappropriate? <input type=\"button\" onClick='flagAuction("+colParams[0]+")' value = \"Click here to tell us\" id=\"flagButton\">";
+//  document.getElementById("flag").innerHTML = "Is this auction inappropriate? <input type=\"button\" onClick='flagAuction("+colParams[0]+")' value = \"Click here to tell us\" id=\"flagButton\">";
 
 	
 	document.getElementById("timeLeftHours").innerHTML = "Time to Expire: " + 
@@ -289,7 +289,7 @@ function viewInfo(colParams)
 			||
 		(nowCred==null)
 			||
-		(friendAlready()) //friend already added
+		(friendAlready(colParams[13]))//friend already added
 	   )
 	{//is owner
 		document.getElementById("changeStatusButton").disabled=false;
@@ -322,6 +322,7 @@ function viewInfo(colParams)
 		document.getElementById("changeStatusButton").disabled=true;
 		document.getElementById("changeStatusValue").disabled=true;
 	}
+	
 	
 	//document.getElementById("auctionChatHistory").innerHTML += colParams[15];
     

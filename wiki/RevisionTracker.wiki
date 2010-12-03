@@ -1,0 +1,15 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Add your content here.
+
+
+= Details =
+
+r375 - Martin
+  * chat implemented
+  * username error when initiating chat
+
+r376 - Martin
+  * attempt to fix chat initation unsucessful

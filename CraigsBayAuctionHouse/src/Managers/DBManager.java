@@ -45,9 +45,20 @@ public class DBManager {
 			auctionName = auctionName.replace("\'", "\\\'");
 			auctionName = auctionName.replace("\"", "\\\"");
 			auctionName = auctionName.replace(";", "");
+			auctionName = auctionDescription.replace("{", "");
+			auctionName = auctionDescription.replace("}", "");
+			auctionName = auctionDescription.replace("<", "");
+			auctionName = auctionDescription.replace(">", "");
+			auctionName = auctionDescription.replace("^", "");
 			auctionDescription = auctionDescription.replace("\'", "\\\'");
 			auctionDescription = auctionDescription.replace("\"", "\\\"");
 			auctionDescription = auctionDescription.replace(";", "");
+			auctionDescription = auctionDescription.replace("{", "");
+			auctionDescription = auctionDescription.replace("}", "");
+			auctionDescription = auctionDescription.replace("<", "");
+			auctionDescription = auctionDescription.replace(">", "");
+			auctionDescription = auctionDescription.replace("^", "");
+			
 			String query = "INSERT INTO AuctionsTable(AuctionTitle, Category, AuctionStatus, " +
 								"ExpiryDate, AuctionExpireTime, CreationDate, OwnerID, MinPrice, LatestBidPrice, FlickerAlbumID, AuctionDescription) VALUES" +
 								"('" + auctionName + "' , '" + category + "' , '" + auctionStatus +

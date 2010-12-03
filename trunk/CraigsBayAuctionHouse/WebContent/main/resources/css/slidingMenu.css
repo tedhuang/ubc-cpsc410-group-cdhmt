@@ -26,6 +26,26 @@
 	background: url(../images/picture_add.png) no-repeat 0 2px;
 	padding: 10px 5px 0 25px;
 	}
+#all-items {
+	background: url(../images/all_items.png) no-repeat 0 2px;
+	padding: 10px 0 0 25px;
+	}
+#my-item {
+	background: url(../images/my-item.png) no-repeat 0 2px;
+	padding: 10px 0 0 25px;
+	}
+#sign-in {
+	display: inline-block;
+	background: url(../images/sign-in.png) center left no-repeat;
+	line-height: 32px;	/* should be consistent with icon height*/
+	padding: 0 10px 0 35px;
+	}
+#sign-up {
+	display: inline-block;
+	background: url(../images/sign-up.png) center left no-repeat;
+	line-height: 40px;	/* should be consistent with icon height*/
+	padding: 0 10px 0 33px;
+	}
 #container {
 clear: both;
 margin: 0;

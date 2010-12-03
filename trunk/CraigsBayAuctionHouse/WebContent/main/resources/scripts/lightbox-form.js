@@ -58,6 +58,15 @@ function closebox(div)
    document.getElementById(div).style.display='none';
    document.getElementById('filter').style.display='none';
 }
+/****************************************************************************
+ * 				Close Notification Popups 
+ * @param div --> popup id
+ ****************************************************************************/
+function closePopup(div)
+{
+   document.getElementById(div).style.display='none';
+   //document.getElementById('popBG').style.display='none';
+}
 
 //pop up info window
 

@@ -220,6 +220,12 @@ function viewInfo(colParams)
 	if(Minutes==60)
 	{
 		Minutes=0;
+		Hours+=1;
+	}
+	if(Hours == 24)
+	{
+		Hours=0;
+		Days+=1;
 	}
 	
 

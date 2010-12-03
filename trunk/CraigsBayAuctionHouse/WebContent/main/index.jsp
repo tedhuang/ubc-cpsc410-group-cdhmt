@@ -64,6 +64,7 @@
 		<script type="text/javascript" src='./resources/scripts/chatServices.js'></script>
 		<script type="text/javascript" src='./resources/scripts/flickrAPI.js'></script>
 		<script type="text/javascript" src='./resources/scripts/registerUser.js'></script>
+		<script type="text/javascript" src='./resources/scripts/general.js'></script>
 
 		
 		
@@ -72,9 +73,9 @@
 <!-- ***************************************************************************************-->
 	
 	<script type="text/javascript">
-	function createAuction(containerID)
+	function createAuction()
 	{
-			createNewTab('tabPanel','New Auction','','createAuctionTable.jsp',true);
+			
 	}
 	</script>
 
@@ -180,73 +181,7 @@
 	
 				
 
-<!-- ***************************************************************************************-->
-							<!-- login Function  -->
-<!-- ***************************************************************************************-->	
-	<script type="text/javascript">
-	function userLoginRequest()
-		{
-			document.getElementById("loginBox").style.display="none";
-			openbox("sign-inLoading",'',1);
-			var userName = document.getElementById("username").value;
-			var password = document.getElementById("password").value;
-			//alert("im in");
-			
-			if (window.XMLHttpRequest)
-			  {// code for IE7+, Firefox, Chrome, Opera, Safari
-			  xmlhttp=new XMLHttpRequest();
-			  }
-			else
-			  {// code for IE6, IE5
-			  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-			  }
-			  
-			xmlhttp.onreadystatechange=function()
-			  {
-			  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-			    {
-				    //parse XML response from server
-				    //var responseText= ParseXMLResponse(xmlhttp.responseXML);
-				    		    
-				    //Gets userCred and prints it to div
-					var userCred = (xmlhttp.responseXML.getElementsByTagName("userCred")[0]).childNodes[0].nodeValue;
-					var userID = (xmlhttp.responseXML.getElementsByTagName("userID")[0]).childNodes[0].nodeValue;
-					
-				    if( userCred != "null" ) 
-					    { 
-					    
-							var responseText = "<h2>User Credential is: ";
-							responseText += userCred  + "</h2>";		
-							
-							document.getElementById("myDiv").innerHTML=responseText;
-							document.getElementById("submitCred").value = userCred;
-							document.getElementById("name").value = userName;
-							document.getElementById("submitUserID").value = userID;
-							document.getElementById("close").submit();
-							
-		
-				    	}
-				    else
-				    	{
-					    	//TODO: implement error handling
-					    	alert("Login Failed");
-				    		closePopup("sign-inLoading");
-					    	document.getElementById("myDiv").innerHTML="<h2>Login Failed!</h2>";
-					    	document.getElementById("loginBox").style.display="block";
-				    	}
-			    }
-			  };
-			  
-			var Params = "userName=" + userName + "&password=" + password;
-		
-			//send the parameters to the servlet with POST
-			xmlhttp.open("POST","../userLoginServlet" ,true);
-			xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-			xmlhttp.send(Params);
-		
-		
-		}
-		</script>
+
 		
 		
 <!-- ***************************************************************************************-->
@@ -265,47 +200,16 @@
 	
 
 
-
 <!-- ***************************************************************************************-->
-							<!-- logout Function  -->
+							<!-- login Function (Moved to userControlPanel.js)-->
 <!-- ***************************************************************************************-->	
 	<script type="text/javascript">
-	function userLogoutRequest()
-		{
-			var userCred = document.getElementById("cred").value;
-			//alert("im in");
-			
-			if (window.XMLHttpRequest)
-			  {// code for IE7+, Firefox, Chrome, Opera, Safari
-			  xmlhttp=new XMLHttpRequest();
-			  }
-			else
-			  {// code for IE6, IE5
-			  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-			  }
-			  
-			xmlhttp.onreadystatechange=function()
-			  {
-			  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-			    {
-					window.location="../main";   //if logout successfully, redirect to the main page 
-			    }
-			  else //logout failed display error messege
-				 {
-				  
-				 }
-			  };
-			  
-			var Params = "Credential=" + userCred;
-		
-			//send the parameters to the servlet with POST
-			xmlhttp.open("POST","../userLogoutServlet" ,true);
-			xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-			xmlhttp.send(Params);
-		
-		
-		}
-		</script>
+	</script>
+<!-- ***************************************************************************************-->
+							<!-- logout Function  (Moved to userControlPanel.js)-->
+<!-- ***************************************************************************************-->	
+	<script type="text/javascript">
+	</script>
 
 <!-- ***************************************************************************************-->	
 						<!-- Sliding Menu js functions  -->
@@ -514,7 +418,7 @@
 				{
 				%>
 				<p>Already A Member? <a href="#" id="sign-in" onclick="openbox('loginBox','', 1)">Sign-in</a></p>
-				<p>Not A Member? <a href=# id="sign-up" onclick="openbox('regBox','Register', 1)" >&nbsp;</a></p>
+				<p>Not A Member? <a href=# id="sign-up" title="REGISTER" onclick="openbox('regBox','Register', 1)" >&nbsp;</a></p>
 				<!-- "./registerUser.jsp" -->
 				<%
 				}
@@ -543,7 +447,7 @@
 							{
 						%>
 						
-						<li OnClick="createAuction('Dynapage');"><a href="#" id="newItem">New Auction</a></li>
+						<li OnClick="showNewAuctionTab()"><a href="#" id="newItem">New Auction</a></li>
 						<li OnClick="viewUserAuctions('myAuctionArea','myAuctionTitle');"><a href="#" id="my-item">Manage My Auctions</a></li>
 						<li OnClick="viewBiddedAuctions('wantedItemArea', 'wantedItemTitle');"><a href="#" id="myBid">My Bids</a></li>
 						<%
@@ -639,7 +543,7 @@
 								<h3>Business</h3>
 									<ul>
 										<li OnClick="viewAllAuctions('allItemTitle','allItemArea')"><a href=# id="all-items">All Auctions</a></li>
-										<li OnClick="createAuction()"><a href="#" id="newItem">New Auction</a></li>
+										<li OnClick="showNewAuctionTab()"><a href="#" id="newItem">New Auction</a></li>
 						<li OnClick="viewUserAuctions('myAuctionArea','myAuctionTitle');"><a href="#" id="my-item">My Auctions</a></li>
 						<li OnClick="viewBiddedAuctions('wantedItemArea', 'wantedItemTitle');"><a href="#" id="myBid">My Bids</a></li>
 									</ul>

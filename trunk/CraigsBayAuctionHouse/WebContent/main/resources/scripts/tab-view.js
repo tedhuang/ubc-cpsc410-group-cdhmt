@@ -553,6 +553,51 @@ function createProfileTab(parentId,tabTitle,closeButton)
 	div.appendChild(title);
 	div.appendChild(frame);
 }
+/****************************************************************************************************************************************
+ * 
+ * 		Create New Acution Tab Function (Multi-new auction tab plan ABORTED)
+ * 
+ * @param parentId --> The Tab Panel ID
+ * @param tabTitle --> New Table Title
+ * @param closeButton --> True for disposable tab; False for non-disposable tabs 
+ ****************************************************************************************************************************************
+function createNewAuctionTab(parentId,tabTitle,closeButton,tabNum)
+{
+	if(tabFrame_countTabs[parentId]>=tabFrame_maxNumberOfTabs)return;	// Maximum number of tabs reached - return
+	var div = document.createElement('DIV');    //new tab Frame
+	div.className = 'dhtmlgoodies_aTab';
+	tabObj[parentId].appendChild(div);
+	
+	var title = document.createElement('SPAN');
+	title.id='newItemTitle';
+	var frame = document.createElement('DIV');
+	frame.id = 'newItemTab';
+	frame.innerHTML="<h4>Create New Auction</h4>"+
+				"Title: <input id='AuctionTitle"+tabNum+"' type='text' name='AuctionTitle' size='20'><br>"+
+				"MinPrice: <input id='MinPrice"+tabNum+"' type='text' name='MinPrice' size='12'><br>";
+	
+	var tabId = initTabs(parentId,Array(tabTitle),0,'','',Array(closeButton),true);
+	div.appendChild(title);
+	div.appendChild(frame);
+}*/
+
+/****************************************************************************************************
+								Open profile Tab
+/****************************************************************************************************/
+//var numNewItemTab=0;
+function showNewAuctionTab()
+{
+		var open=getTabIndexByTitle('New Auction');
+		if (open<0)// if the tab is not open yet
+		{
+			createNewTab('tabPanel','New Auction','','createAuctionTable.jsp',true);
+		}
+		else
+		{
+			showTab('tabPanel',open[1]);
+		}
+	
+}
 /****************************************************************************************************
 				Open profile Tab
 /****************************************************************************************************/
@@ -566,7 +611,7 @@ function showProfileTab()
 	}
 	else
 	{
-		//showTab('tabPanel',open.toString());
+		showTab('tabPanel',open[1]);
 	}
 }
 /****************************************************************************************************

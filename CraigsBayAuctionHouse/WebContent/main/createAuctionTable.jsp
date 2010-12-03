@@ -66,8 +66,6 @@ Category: <select id="Category" name="Category">
 
 <button id="newAuctionButton" type="button" onclick="createAuctionRequest()">Create Auction</button>
   
-
-
 <input type="hidden" value="" id="tagAuctionID">
 
 </br>
@@ -85,6 +83,9 @@ Category: <select id="Category" name="Category">
 	<input type="hidden" id="api_sig" name="api_sig" value=""/>
 	<input type="submit" id="submit" name ="submit" value="Upload" onclick="this.disable=true;flickrUploadResponse()"/>
 	</form>
+	
+ <button type="button" Onclick="viewAllAuctions('allItemArea','allItemTitle')"><a href=# id="all-items">Go Back to Auctions List</a></button>	
+	
 </div>
 
 

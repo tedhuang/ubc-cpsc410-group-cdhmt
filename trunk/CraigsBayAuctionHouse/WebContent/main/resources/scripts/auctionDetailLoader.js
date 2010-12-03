@@ -155,6 +155,7 @@ function loadAuctionParseXMLResponse(responseXML) {
         {
         	auctionDescription="";
         }
+        var millisecondsLeft	=	auction_node.getAttribute("expiryTimeMS");
 
     var ownerName = auctionView.getElementsByTagName("ownerName")[0].childNodes[0].nodeValue;
     var lastBidderName = auctionView.getElementsByTagName("lastBidderName")[0].childNodes[0].nodeValue;
@@ -177,10 +178,10 @@ function loadAuctionParseXMLResponse(responseXML) {
 		colParams[13] = ownerName;
 		colParams[14] = lastBidderName;
 		colParams[15] = auctionDescription;
+		colParams[16] = millisecondsLeft;
 		//colParams[15] = chatLog;
 		viewInfo(colParams);
 }
-
 
 function viewInfo(colParams)
 {
@@ -198,6 +199,19 @@ function viewInfo(colParams)
 	document.getElementById("category").innerHTML = "Category: " + colParams[5];
 	document.getElementById("auctionOwner").innerHTML = "Auction Owner: " + colParams[13];
 	document.getElementById("friendButton").innerHTML = "<input type=\"button\" onClick='addFriend()' value = \"Add owner as friend\" id=\"addFriendButton\">";
+	
+	var x = colParams[16] / 1000;
+	var Seconds = Math.round(x % 60);
+	Seconds.toFixed(0);
+	x /= 60;
+	var Minutes = Math.round(x % 60);
+	x /= 60;
+	var Hours = Math.round(x % 24);
+	x /= 24;
+	var Days = Math.round(x);
+	
+	document.getElementById("timeLeftHours").innerHTML = "Time to Expire: " + Days + " Days " + Hours + " Hours " + Minutes + " Minutes " + Seconds + " Seconds";
+	
 	//document.getElementById("picture").innerHTML = "Picture: " + colParams[11];
 
 	

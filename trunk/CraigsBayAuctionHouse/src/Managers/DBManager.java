@@ -520,6 +520,14 @@ public class DBManager {
 				auction.numberOfViews 	= result.getInt("numberOfViews");
 				auction.auctionDescription = result.getString("AuctionDescription");
 				
+				double curTime = (System.currentTimeMillis());
+				System.out.println(result.getDouble("AuctionExpireTime"));
+				auction.millisecondsLeft =  result.getDouble("AuctionExpireTime") - curTime;
+				if(auction.millisecondsLeft < 0)
+				{
+					auction.millisecondsLeft = 0;
+				}
+				
 			}
 
 			stm.close();

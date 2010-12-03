@@ -45,11 +45,11 @@ public class DBManager {
 			auctionName = auctionName.replace("\'", "\\\'");
 			auctionName = auctionName.replace("\"", "\\\"");
 			auctionName = auctionName.replace(";", "");
-			auctionName = auctionDescription.replace("{", "");
-			auctionName = auctionDescription.replace("}", "");
-			auctionName = auctionDescription.replace("<", "");
-			auctionName = auctionDescription.replace(">", "");
-			auctionName = auctionDescription.replace("^", "");
+			auctionName = auctionName.replace("{", "");
+			auctionName = auctionName.replace("}", "");
+			auctionName = auctionName.replace("<", "");
+			auctionName = auctionName.replace(">", "");
+			auctionName = auctionName.replace("^", "");
 			auctionDescription = auctionDescription.replace("\'", "\\\'");
 			auctionDescription = auctionDescription.replace("\"", "\\\"");
 			auctionDescription = auctionDescription.replace(";", "");

@@ -200,16 +200,29 @@ function viewInfo(colParams)
 	document.getElementById("auctionOwner").innerHTML = "Auction Owner: " + colParams[13];
 	document.getElementById("friendButton").innerHTML = "<input type=\"button\" onClick='addFriend()' value = \"Add owner as friend\" id=\"addFriendButton\">";
 	
+	
 	var x = colParams[16] / 1000;
 	var Seconds = Math.round(x % 60);
-	Seconds.toFixed(0);
 	x /= 60;
 	var Minutes = Math.round(x % 60);
 	x /= 60;
-	var Hours = Math.round(x % 24);
+	var Hours = Math.round(x % 24)-1;
 	x /= 24;
-	var Days = Math.round(x);
+	var Days = Math.round(x)-1;
+	if(Days < 0 )
+	{
+		Days = 0;
+	}
+	if(Hours < 0)
+	{
+		Hours=0;
+	}
+	if(Minutes==60)
+	{
+		Minutes=0;
+	}
 	
+
 	document.getElementById("timeLeftHours").innerHTML = "Time to Expire: " + Days + " Days " + Hours + " Hours " + Minutes + " Minutes " + Seconds + " Seconds";
 	
 	//document.getElementById("picture").innerHTML = "Picture: " + colParams[11];

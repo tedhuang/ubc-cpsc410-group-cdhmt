@@ -259,7 +259,8 @@ function viewInfo(colParams)
 		Hours=0;
 		Days+=1;
 	}
-
+	
+	document.getElementById("ownersName").value = colParams[13];
 	document.getElementById("auctionOwner").innerHTML = "Auction Owner: " + colParams[13]+
 								"<input type=\"button\" onClick='addFriend()' " +
 								"value = \"Add owner as friend\" id=\"addFriendButton\">";

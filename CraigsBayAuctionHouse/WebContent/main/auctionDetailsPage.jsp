@@ -18,6 +18,7 @@ String auctionID = request.getParameter("auctionID");
 
 <input type="hidden" value="-1" id="ownerID">
 <input type="hidden" value="-1" id="latestBidPrice">
+<input type="hidden" value="" id="ownersName">
 
  <!--  this will get called when the page is dynamically loaded. -->
 <script>

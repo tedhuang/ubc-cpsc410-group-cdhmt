@@ -439,6 +439,9 @@ function ParseFriendAdd(responseXML, container){
 	{
 		//responseText = 
 		 alert("Friend added!");
+		 //preloadFriends("tempTable");
+		 buddyList.push(document.getElementById("ownersName").value);
+		 
 		 document.getElementById("addFriendButton").style.display="none";
 		 
 	}

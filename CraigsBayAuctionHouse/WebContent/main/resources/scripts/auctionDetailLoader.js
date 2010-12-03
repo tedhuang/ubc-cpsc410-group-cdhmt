@@ -292,12 +292,16 @@ function viewInfo(colParams)
 		(friendAlready(colParams[13]))//friend already added
 	   )
 	{//is owner
-		document.getElementById("changeStatusButton").disabled=false;
-		document.getElementById("changeStatusValue").disabled=false;
+
 		document.getElementById("bidButton").disabled=true;
 		document.getElementById("bidAmount").disabled=true;
-		document.getElementById("auctionChatInputText").disabled=false;
-		document.getElementById("auctionChatSubmit").disabled=false;
+		if(nowCred!=null)
+		{
+			document.getElementById("auctionChatInputText").disabled=false;
+			document.getElementById("auctionChatSubmit").disabled=false;
+			document.getElementById("changeStatusButton").disabled=false;
+			document.getElementById("changeStatusValue").disabled=false;
+		}
 		//document.getElementById("uploadDetailsPage").disabled=false;
 		document.getElementById("addFriendButton").style.display="none"; // don't add yourself or by stranger
 
@@ -311,6 +315,7 @@ function viewInfo(colParams)
 		document.getElementById("auctionChatInputText").disabled=false;
 		document.getElementById("auctionChatSubmit").disabled=false;
 	}
+
 	
 	//status checks
 	if(colParams[2] == "EXPIRED" || colParams[2] == "CLOSED")

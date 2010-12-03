@@ -1,5 +1,6 @@
 
 var auctionChatID;
+var auctID;
 
 function toggle() {
 	var ele = document.getElementById("editTab");
@@ -97,6 +98,8 @@ function changeAuctionStatusParseResponse(responseXML, auctionID, title)
 
 function viewAuctionByID(auctionID ){
 	
+	auctID = auctionID;
+	
 	if(auctionChatID!=null)
 	{
 		clearTimeout(auctionChatID);
@@ -183,6 +186,11 @@ function loadAuctionParseXMLResponse(responseXML) {
 		viewInfo(colParams);
 }
 
+function refreshAuctionDetails(){
+	ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctID , 'itemDetailArea'); //refreshes the page
+}
+
+
 function viewInfo(colParams)
 {
 
@@ -192,7 +200,7 @@ function viewInfo(colParams)
 	document.getElementById("auctionDescription").innerHTML = "Auction Description: " + colParams[15];
 	
 	document.getElementById("status").innerHTML = "Status " + colParams[2];
-	document.getElementById("timeLeft").innerHTML = "Expiry Date: " + colParams[3];
+	document.getElementById("timeLeft").innerHTML = "Expiry Date: " + colParams[3]; 
 	document.getElementById("latestPrice").innerHTML = "Latest Price: " + colParams[9];
 	document.getElementById("numBids").innerHTML = "Number of Bids: " + colParams[10];
 	document.getElementById("lastBidder").innerHTML = "Last Bidder: " + colParams[14];
@@ -200,36 +208,22 @@ function viewInfo(colParams)
 	document.getElementById("auctionOwner").innerHTML = "Auction Owner: " + colParams[13];
 	document.getElementById("friendButton").innerHTML = "<input type=\"button\" onClick='addFriend()' value = \"Add owner as friend\" id=\"addFriendButton\">";
 	
-	
 	var x = colParams[16] / 1000;
 	var Seconds = Math.round(x % 60);
+	Seconds.toFixed(0);
 	x /= 60;
 	var Minutes = Math.round(x % 60);
 	x /= 60;
-	var Hours = Math.round(x % 24)-1;
+	var Hours = Math.round(x % 24);
 	x /= 24;
-	var Days = Math.round(x)-1;
-	if(Days < 0 )
-	{
-		Days = 0;
-	}
-	if(Hours < 0)
-	{
-		Hours=0;
-	}
-	if(Minutes==60)
-	{
-		Minutes=0;
-		Hours+=1;
-	}
-	if(Hours == 24)
-	{
-		Hours=0;
-		Days+=1;
-	}
+	var Days = Math.round(x);
 	
-
-	document.getElementById("timeLeftHours").innerHTML = "Time to Expire: " + Days + " Days " + Hours + " Hours " + Minutes + " Minutes " + Seconds + " Seconds";
+	document.getElementById("timeLeftHours").innerHTML = "Time to Expire: " + 
+										Days + " Days " + 
+										Hours + " Hours " + 
+										Minutes + " Minutes " + 
+										Seconds + " Seconds "  + 
+										"<input type=\"button\" onClick='refreshAuctionDetails()' value = \"Refresh\" id=\"refreshAuctionDetails\">"; //button to refresh page
 	
 	//document.getElementById("picture").innerHTML = "Picture: " + colParams[11];
 

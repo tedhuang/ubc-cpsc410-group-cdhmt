@@ -339,7 +339,7 @@
 			  
 			<input type="image" src="./resources/images/login-cancle.png" 
 					class="login-icon" style="margin-right:20px;" 
-					type="button" name="cancel" value="Cancel" onclick="closebox('loginBox')">  
+					type="button" name="cancel" value="Cancel" onclick="closebox('loginBox');document.getElementById('myDiv').innerHTML='<h2>WELCOME</h2>'">  
 			<div id="login-box-name" style="margin-top:70px; margin-left:100px;">User:</div>   
 			<div id="login-box-field" >
 			  	<input id="username" name="username" class="form-login" title="Username" value="" size="10" maxlength="2048" />

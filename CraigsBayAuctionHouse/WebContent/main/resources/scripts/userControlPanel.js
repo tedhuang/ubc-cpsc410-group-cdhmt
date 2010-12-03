@@ -41,6 +41,7 @@ function userLoginRequest()
 							document.getElementById("submitUserID").value = userID;
 							document.getElementById("close").submit();
 							
+							
 		
 				    	}
 				    else

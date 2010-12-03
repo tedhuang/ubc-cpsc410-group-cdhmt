@@ -22,6 +22,7 @@ public class Auction {
 	public String	flickerAlbumID;
 	public int		numberOfViews;
 	public String auctionDescription;
+	public double millisecondsLeft;
 	
 	public Auction() {
 		auctionID 		= -1;
@@ -38,6 +39,7 @@ public class Auction {
 		flickerAlbumID	= null;
 		numberOfViews	= 0;
 		auctionDescription="";
+		millisecondsLeft=0;
 	}
 
 	
@@ -59,6 +61,7 @@ public class Auction {
 				" flickerAlbumID=\"" + flickerAlbumID + "\"" +
 				" numberOfViews=\"" + numberOfViews + "\"" +
 				" auctionDescription=\"" + auctionDescription + "\"" +
+				" expiryTimeMS=\"" + millisecondsLeft + "\"" +
 				"/>\n";
 				
 	}

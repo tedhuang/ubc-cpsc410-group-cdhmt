@@ -88,7 +88,7 @@
 								   <th><input class="check-all" type="checkbox" /></th>
 								   <th>Auction Item</th>
 								   <th>Status</th>
-								   <th>Time Left</th>
+								   <th>Expiry Date</th>
 								   <th>Latest Price</th>
 								   <th>Category</th>
 								   <th>Number of Bids</th>

@@ -45,7 +45,6 @@ refreshAuctionChat(<%=auctionID%>);
 			     <tr>  <th id="auctionOwner">Owner</th></tr>
 			     <tr>  <th id="friendButton" ></th></tr>
 				 
-				 <br/><br/>
 			</thead>
 			
 			</tbody>
@@ -127,7 +126,6 @@ refreshAuctionChat(<%=auctionID%>);
 					
 </div>
 
-       				
 </body>
 </html>
 

@@ -4,6 +4,8 @@ URGENT:
 Page: Auction Details Page
 Function requirement F14 states that closed auctions can be re-opened by the owner but right now if you close the auction, it cannot be accessed by the user anymore. (does not show up on manage auction)
 
+Type: Issue
+"Search People" does not work, maybe remove the link out of the right-side menu
 
 Type: Bug
 Page: Manage Auction/View Details

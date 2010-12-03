@@ -186,6 +186,8 @@
 	<script type="text/javascript">
 	function userLoginRequest()
 		{
+			document.getElementById("loginBox").style.display="none";
+			openbox("sign-inLoading",'',1);
 			var userName = document.getElementById("username").value;
 			var password = document.getElementById("password").value;
 			//alert("im in");
@@ -228,7 +230,9 @@
 				    	{
 					    	//TODO: implement error handling
 					    	alert("Login Failed");
-					    	document.getElementById("myDiv").innerHTML="<h2>Login Failed!</h2>"; 
+				    		closePopup("sign-inLoading");
+					    	document.getElementById("myDiv").innerHTML="<h2>Login Failed!</h2>";
+					    	document.getElementById("loginBox").style.display="block";
 				    	}
 			    }
 			  };
@@ -438,7 +442,7 @@
 			<div id="login-box-field">
 				<input id="password" name="password" type="password" class="form-login" title="Password" value="" size="30" maxlength="2048" />
 			</div>
-				
+			<div id="loginLoading" class="login-icon" style="margin-button:100px; margin-left:500px;"></div>
 				<!-- LOGIN BUTTON -->
 			<input type="image" src="./resources/images/login-go.png" class="login-icon" title="go!" style="margin-left:400px;" onclick="userLoginRequest()" >		
 			<div style="margin-top:300px;" id="myDiv"><h2>Debug Message for page</h2></div>
@@ -446,7 +450,7 @@
 <!-- *********************************Register ***************************************
 **************************************************************************************-->
 <div id="filter"></div>
-	<div id="regBox" class="regBox">
+	<div id="regBox">
 	<span id="boxtitle"></span> 
 	Username: <input id="Username" type="text" name="Password" size="20"><br>
 	Password: <input id="Password" type="password" name="Password" size="20"><br>
@@ -468,6 +472,12 @@
 	<div id="feedBack"><h2>Feedback Area</h2></div>
 	<button id='Submit' type="button"  onclick="createUserRequest()">Submit Info</button>
 </div>
+<!-- **********************************SIGN OUT Lightbox********************************************* -->
+<div id="filter"></div>
+<div id="sign-outLoading" class="signIOBox"><h4>You Are Signing Out...See you soon!</h4></div>
+<!-- **********************************SIGN IN Lightbox********************************************* -->
+<div id="sign-inLoading" class="signIOBox" style="text-indent: 2cm;"><h4>Signing in...</h4></div>
+
 
 <!-- ***************************************************************************************-->	
 	  					<!-- ~ENDS: NEW LIGHTBOX LOGIN -->	
@@ -496,15 +506,15 @@
 				%>
 				<br />
 				<p><a href="#" id="acc-inbox" title="View your Messages"> My Messages</a> | 
-				<a href="#" id="log-out" title="Sign Out" onclick="userLogoutRequest()">Sign Out</a> </p>
+				<a href="#" id="log-out" title="Sign Out" onclick="userLogoutRequest();openbox('sign-outLoading','',1)">Sign Out</a> </p>
 				
 				<%
 				}
 				else
 				{
 				%>
-				<p>Already A Member? <a href="#" onclick="openbox('loginBox','', 1)">Sign-in From here</a></p>
-				<p>Not A Member? <a href=# onclick="openbox('regBox','Register', 1)" >Register here</a></p>
+				<p>Already A Member? <a href="#" id="sign-in" onclick="openbox('loginBox','', 1)">Sign-in</a></p>
+				<p>Not A Member? <a href=# id="sign-up" onclick="openbox('regBox','Register', 1)" >&nbsp;</a></p>
 				<!-- "./registerUser.jsp" -->
 				<%
 				}
@@ -527,14 +537,14 @@
 						Auctions
 					</a>
 					<ul>
-						<li OnClick="viewAllAuctions('allItemArea','allItemTitle')"><a href=#>View All Auctions</a></li>
+						<li OnClick="viewAllAuctions('allItemArea','allItemTitle')"><a href=# id="all-items">View All Auctions</a></li>
 						<%  
 							if(userName != "Guest")
 							{
 						%>
 						
 						<li OnClick="createAuction('Dynapage');"><a href="#" id="newItem">New Auction</a></li>
-						<li OnClick="viewUserAuctions('myAuctionArea','myAuctionTitle');"><a href="#">Manage Auction</a></li>
+						<li OnClick="viewUserAuctions('myAuctionArea','myAuctionTitle');"><a href="#" id="my-item">Manage My Auctions</a></li>
 						<li OnClick="viewBiddedAuctions('wantedItemArea', 'wantedItemTitle');"><a href="#" id="myBid">My Bids</a></li>
 						<%
 							}
@@ -627,9 +637,9 @@
 								<div class="colleft">
 								<h3>Business</h3>
 									<ul>
-										<li OnClick="viewAllAuctions('allItemTitle','allItemArea')"><a href=#>View All Auctions</a></li>
+										<li OnClick="viewAllAuctions('allItemTitle','allItemArea')"><a href=# id="all-items">All Auctions</a></li>
 										<li OnClick="createAuction()"><a href="#" id="newItem">New Auction</a></li>
-						<li OnClick="viewUserAuctions('myAuctionArea','myAuctionTitle');"><a href="#" id="">Manage Auction</a></li>
+						<li OnClick="viewUserAuctions('myAuctionArea','myAuctionTitle');"><a href="#" id="my-item">My Auctions</a></li>
 						<li OnClick="viewBiddedAuctions('wantedItemArea', 'wantedItemTitle');"><a href="#" id="myBid">My Bids</a></li>
 									</ul>
 								</div>

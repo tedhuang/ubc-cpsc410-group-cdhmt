@@ -71,7 +71,7 @@
 				
 				<div class="content-box-header">
 					
-					<h3>All Auction</h3>
+					<h3><font color="black">All Auctions</font></h3>
 					
 					<div class="clear"></div>
 					

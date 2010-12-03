@@ -28,6 +28,8 @@ function createAuctionRequest()
 		return;
 	}
 	
+	document.getElementById("newAuctionButton").disabled=true;
+	
 	
 	if (window.XMLHttpRequest)
 	  {// code for IE7+, Firefox, Chrome, Opera, Safari

@@ -188,7 +188,8 @@ function viewInfo(colParams)
 	document.getElementById("numBids").innerHTML = "Number of Bids: " + colParams[10];
 	document.getElementById("lastBidder").innerHTML = "Last Bidder: " + colParams[14];
 	document.getElementById("category").innerHTML = "Category: " + colParams[5];
-	document.getElementById("auctionOwner").innerHTML = "Auction Owner: " + colParams[13] + "<input type=\"button\" onClick='addFriend()' value = \"Add As Friend\" id=\"addFriendButton\">";
+	document.getElementById("auctionOwner").innerHTML = "Auction Owner: " + colParams[13];
+	document.getElementById("friendButton").innerHTML = "<input type=\"button\" onClick='addFriend()' value = \"Add owner as friend\" id=\"addFriendButton\">";
 	//document.getElementById("picture").innerHTML = "Picture: " + colParams[11];
 
 	
@@ -205,7 +206,8 @@ function viewInfo(colParams)
 		document.getElementById("bidAmount").disabled=true;
 		document.getElementById("auctionChatInputText").disabled=false;
 		document.getElementById("auctionChatSubmit").disabled=false;
-		document.getElementById("uploadDetailsPage").disabled=false;
+		//document.getElementById("uploadDetailsPage").disabled=false;
+		document.getElementById("addFriendButton").disabled=true; // don't add yourself
 		//enable expiry date change fields
 		handleStatusSelectionChange();
 	}

@@ -18,24 +18,7 @@ function viewAllAuctions(container, title)
 		document.getElementById(title).innerHTML="<img src=./resources/images/loading.gif></img>";
 		
 	}
-/****************************************************************************************************************************************
- * 
- * 								LAOD  AUCTIONS Detail
- * 
- * @param auctionID 
- *
- *****************************************************************************************************************************************/
 
-function viewDetails(auctionID)
-{
-	//loadjscssfile('./resources/scripts/auctionDetailLoader.js', 'js');
-	//loadobjs('./resources/scripts/auctionDetailLoader.js'); //load the additional javascript file	
-	
-	showDetailViewTab();
-	ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID, 'itemDetailArea'); //load auctionDetailsPage in to New tab
-	document.getElementById("detailTitle").innerHTML="<img src=./resources/images/loading.gif></img><br>" +
-													  "Loading Auction Details...";
-}
 /****************************************************************************************************************************************
  * 
  * 								LAOD ALL AUCTIONS FROM CURRENT USER

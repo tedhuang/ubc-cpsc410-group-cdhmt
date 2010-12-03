@@ -1,3 +1,106 @@
+/*****************************************************************************************************
+ * 					LOG IN FUNCTION
+ ****************************************************************************************************/
+function userLoginRequest()
+		{
+			document.getElementById("loginBox").style.display="none";
+			openbox("sign-inLoading",'',1);
+			var userName = document.getElementById("username").value;
+			var password = document.getElementById("password").value;
+			//alert("im in");
+			
+			if (window.XMLHttpRequest)
+			  {// code for IE7+, Firefox, Chrome, Opera, Safari
+			  xmlhttp=new XMLHttpRequest();
+			  }
+			else
+			  {// code for IE6, IE5
+			  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			  }
+			  
+			xmlhttp.onreadystatechange=function()
+			  {
+			  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			    {
+				    //parse XML response from server
+				    //var responseText= ParseXMLResponse(xmlhttp.responseXML);
+				    		    
+				    //Gets userCred and prints it to div
+					var userCred = (xmlhttp.responseXML.getElementsByTagName("userCred")[0]).childNodes[0].nodeValue;
+					var userID = (xmlhttp.responseXML.getElementsByTagName("userID")[0]).childNodes[0].nodeValue;
+					
+				    if( userCred != "null" ) 
+					    { 
+					    
+							var responseText = "<h2>User Credential is: ";
+							responseText += userCred  + "</h2>";		
+							
+							document.getElementById("myDiv").innerHTML=responseText;
+							document.getElementById("submitCred").value = userCred;
+							document.getElementById("name").value = userName;
+							document.getElementById("submitUserID").value = userID;
+							document.getElementById("close").submit();
+							
+		
+				    	}
+				    else
+				    	{
+					    	//TODO: implement error handling
+					    	alert("Login Failed");
+				    		closePopup("sign-inLoading");
+					    	document.getElementById("myDiv").innerHTML="<h2>Login Failed!</h2>";
+					    	document.getElementById("loginBox").style.display="block";
+				    	}
+			    }
+			  };
+			  
+			var Params = "userName=" + userName + "&password=" + password;
+		
+			//send the parameters to the servlet with POST
+			xmlhttp.open("POST","../userLoginServlet" ,true);
+			xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			xmlhttp.send(Params);
+		
+		
+		}
+/*****************************************************************************************************
+ * 					LOG OUT FUNCTION
+ ****************************************************************************************************/
+function userLogoutRequest()
+		{
+			var userCred = document.getElementById("cred").value;
+			//alert("im in");
+			
+			if (window.XMLHttpRequest)
+			  {// code for IE7+, Firefox, Chrome, Opera, Safari
+			  xmlhttp=new XMLHttpRequest();
+			  }
+			else
+			  {// code for IE6, IE5
+			  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			  }
+			  
+			xmlhttp.onreadystatechange=function()
+			  {
+			  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			    {
+					window.location="../main";   //if logout successfully, redirect to the main page 
+			    }
+			  else //logout failed display error messege
+				 {
+				  
+				 }
+			  };
+			  
+			var Params = "Credential=" + userCred;
+		
+			//send the parameters to the servlet with POST
+			xmlhttp.open("POST","../userLogoutServlet" ,true);
+			xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			xmlhttp.send(Params);
+		
+		
+		}
 /*******************************************************************************************************
  * 							Open user control panel
  *******************************************************************************************************/

@@ -191,9 +191,8 @@
 	<script type="text/javascript">
 	function chatFriend( friendID ) {
 		
-		requestChat( friendID );
-		
-		
+		showChatTab( document.getElementById("userName").value , friendID);
+
 	}
 	
 	</script>
@@ -312,7 +311,11 @@
 				<a class="trigger" href="#">Menu</a>
 		</div>
 		
-		<!--   <script language="javascript"> waitForChat() </script> -->
+		
+		<script language="javascript">
+
+		setInterval("getMsg("+ document.getElementById("loginUserID").value + ")", 5000)
+		</script>
 	<%
 	}
 	%>

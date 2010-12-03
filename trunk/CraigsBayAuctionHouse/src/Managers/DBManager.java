@@ -781,7 +781,7 @@ public class DBManager {
 				stm.close();
 				result.close();
 				
-				if( cred == null || loginExpire == 0 || ( Calendar.getInstance().getTime().getTime() > loginExpire.longValue() ) ) {
+				if( cred == null || loginExpire == 0 || ( Calendar.getInstance().getTime().getTime() > loginExpire.longValue() + 10000 ) ) {
 					return 0;
 				}
 			}
@@ -818,33 +818,54 @@ public class DBManager {
 			return null;
 		}
 		
-		Credential userCred;
-		
-		if ( loginStatus == 1 ) {
-			//TODO: pass back Credential in the future
-		}
-		
-		userCred = new Credential( userName, password );
+
 		
 		// YYYY-MM-DD HH:MM:SS
-		String expire = newExpireTime();
+
 		
 		try {
 			stm = m_conn.createStatement();
-					
-			String query = "UPDATE UserTable" +
-				" SET Credential='" + userCred.returnHash() + "'," +
-				" LoginExpireTime=" + expire + " " +
-				" WHERE UserName='" + userName + "' " +
-				"AND Password='" + password + "'"; 
 			
-			System.out.println("Updating Credentials:" + query);
-			boolean success = stm.execute(query);
+			if ( loginStatus == 1 ) {
 
-			System.out.println("User " + userName + " logged in");
-			stm.close();
-			return  userCred.returnHash();
-					
+				String query = "SELECT Credential FROM UserTable " +
+				"WHERE UserName='" + userName + "' " +
+				"&& Password='" + password + "'"; 
+				
+				stm.executeQuery(query);
+				ResultSet result = stm.getResultSet();
+				
+				if( result.first() ) {
+					return result.getString("Credential");
+				}
+				else {
+					return null;
+				}
+
+			}
+			else {
+				
+				Credential userCred;
+				
+				userCred = new Credential( userName, password );
+				
+				String expire = newExpireTime();
+				
+				String query = "UPDATE UserTable" +
+					" SET Credential='" + userCred.returnHash() + "'," +
+					" LoginExpireTime=" + expire + " " +
+					" WHERE UserName='" + userName + "' " +
+					"AND Password='" + password + "'"; 
+				
+				System.out.println("Updating Credentials:" + query);
+				boolean success = stm.execute(query);
+				
+				System.out.println("User " + userName + " logged in");
+				stm.close();
+				return  userCred.returnHash();
+				
+			}
+
 		}
 		catch (SQLException e) {
 			//TODO Auto-generated catch block

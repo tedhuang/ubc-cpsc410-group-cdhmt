@@ -111,9 +111,11 @@
 		xmlhttp.send(Params);
 	}
 	
-	function sendMsg(sendToCode ){
+	function sendMsg( sendToCode ){
 		
-		var msg = document.getElementById('imInput') .value;
+		var msg = document.getElementById("chatInput" + sendToCode).value;
+		var senderID = document.getElementById("loginUserID").value;
+		var senderName = document.getElementById("userName").value;
 		
 		xmlhttp = createNewRequest();
 		
@@ -125,8 +127,12 @@
 		    }
 		  }
 
-		var Params = "message=" + msg + "&sendToCode=" + sendToCode;
+		var Params = "message=" + msg + "&sendToCode=" + sendToCode
+						+ "&senderID=" + senderID + "&senderName=" + senderName  ;
 
+		document.getElementById("chatArea" + sendToCode ).innerHTML += "You: " + msg + "\n";
+		document.getElementById("chatArea" + sendToCode ).scrollTop = document.getElementById("chatArea" + sendToCode ).scrollHeight;
+		
 		//send the parameters to the servlet with POST
 		xmlhttp.open("POST","../chatRelayServlet" ,true);
 		xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -145,14 +151,11 @@
 		  if (xmlhttp.readyState==4 && xmlhttp.status==200){
 				//alert("getting msg");
 				//parse XML response from server
-				var responseText= ParseMsg(xmlhttp.responseXML);
+				ParseMsg(xmlhttp.responseXML);
 //				alert("msg: " + responseText);
-				if ( responseText!="" || responseText != null ) {
-					document.getElementById('imConversation').innerHTML += responseText;
-					document.getElementById('imConversation').scrollTop = document.getElementById("imConversation").scrollHeight;
-				}
 					
 			}
+		  
 		}
 		
 		
@@ -162,24 +165,45 @@
 		
 		xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		xmlhttp.send();
-
-		setTimeout("getMsg("+ pollingCode + ")", 2200);
 		
 	}
 
 	function ParseMsg(responseXML)
 	{
+		// check first if there is msessage
+		var isThereMsg = responseXML.getElementsByTagName('isMsg')[0].getAttribute("boolean");
+		if ( isThereMsg != "true" ) {
+			return;
+		}
+		
 		var messageList = responseXML.getElementsByTagName('message');
 		var printout = "";
 		
 		for (var iNode = 0; iNode < messageList.length; iNode++) {
 			
 			var message = messageList[iNode].childNodes[0].nodeValue;
+			var senderName = messageList[iNode].getAttribute("senderName");
+			var senderID = messageList[iNode].getAttribute("senderID");
+			
+			if ( message!="" || message != null ) {
+				
+				var printout = senderName + " said: \"" + message + "\"\n";
+				
+				if( document.getElementById("chatContainer" + senderID ) == null ) {
+					showChatTab( senderName, senderID  );
+				}
+				
+				document.getElementById("chatArea" + senderID ).innerHTML += printout;
+				document.getElementById("chatArea" + senderID ).scrollTop = document.getElementById("chatArea" + senderID ).scrollHeight;
+			}
+			
+
+			
 //			var sender = messageList[iNode].getAttribute("senderID");
 //			printout += "User " + sender + " said: \"" + message + "\"\n";
-			printout += " said: \"" + message + "\"\n";
+
+
 		}
-		
-		return printout;
+
 	}
 	

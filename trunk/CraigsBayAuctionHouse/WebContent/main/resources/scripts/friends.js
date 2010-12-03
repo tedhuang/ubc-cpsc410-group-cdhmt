@@ -11,42 +11,59 @@ function viewFriends(container)
 		
 }
 
+/*********************************************************************************************************
+ * 								LOAD FRIENDS
+ * @param container --> null: just check friends
+ * 						not null: load friends table
+ *********************************************************************************************************/
 function loadFriends(container)
 {	
-	var credential = document.getElementById("cred").value;
 	
-		if (window.XMLHttpRequest)
-		  {// code for IE7+, Firefox, Chrome, Opera, Safari
-		  xmlhttp=new XMLHttpRequest();
-		  }
-		else
-		  {// code for IE6, IE5
-		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		  }
-		  
-		xmlhttp.onreadystatechange=function()
-		{
-		  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-		    {
-			    //parse XML response from server
-			    
-			    var responseText= ParseFriendsList(xmlhttp.responseXML, container);
-		    	
-		    }
-		  }
-	
-		//send the parameters to the servlet with POST
-		var Params = "Credential=" + credential;
+		var credential = document.getElementById("cred").value;
 		
-		xmlhttp.open("POST","../friendsListServlet" ,true);
-		xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		xmlhttp.send(Params);
-	  
-		//document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
+			if (window.XMLHttpRequest)
+			  {// code for IE7+, Firefox, Chrome, Opera, Safari
+			  xmlhttp=new XMLHttpRequest();
+			  }
+			else
+			  {// code for IE6, IE5
+			  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			  }
+			  
+			xmlhttp.onreadystatechange=function()
+			{
+			  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			    {
+				    //parse XML response from server
+				    
+				    var responseText= ParseFriendsList(xmlhttp.responseXML, container);
+			    	
+			    }
+			  }
+		
+			//send the parameters to the servlet with POST
+			var Params = "Credential=" + credential;
+			
+			xmlhttp.open("POST","../friendsListServlet" ,true);
+			xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			xmlhttp.send(Params);
+		  
+			//document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
+	
+	
 }
 
+/*********************************************************************************************************
+ * 								PARSE
+ * 
+ *********************************************************************************************************/
+
+var buddyList=new Array();
+
 function ParseFriendsList(responseXML, container){
-	 var success = (responseXML.getElementsByTagName("success")[0]).childNodes[0].nodeValue;
+	
+	
+	var success = (responseXML.getElementsByTagName("success")[0]).childNodes[0].nodeValue;
 	 
 	if(success=="false")
 	{
@@ -55,39 +72,41 @@ function ParseFriendsList(responseXML, container){
 	}
 	 
 	var friendList = responseXML.getElementsByTagName('friendList').item(0);
-	
-	//remove old elements
-	var oBody = document.getElementById(container);
-	while(oBody.hasChildNodes())
-	{
-		oBody.removeChild(oBody.firstChild);
-	}
-	
-	var friends = friendList.getElementsByTagName("friend");
-	for (var iNode = 0; iNode < friends.length; iNode++) {
-        var friend_node = friends[iNode];
-
-        var friendID		=	friend_node.getAttribute("friendID");
-        var friendName		=	friend_node.getAttribute("friendName");
 		
-        
-   	 	var rowHTML =	"    <td>" +
-   	 					"<a href=index.html>"+ friendID + "</a></td>" +
-						"    <td>"+ friendName + "</td>"+
-						"    <td><a class=\"button\" onclick='deleteFriend("+friendID+", "+ container + ")';>Delete</a></td>"+
-						"    <td><a class=\"button\" onclick=searchAuctionTable(2,"+friendName+");>View Auctions</a></td>"+
-						"    <td><a class=\"button\" onclick=chatFriend("+friendID+");>Chat</a></td>";
-		var rowParams = new Array();
-		rowParams[0] = friendID;
-		rowParams[1] = friendName;
-		rowParams[2] = "<a class=\"button\" onclick='deleteFriend("+friendID+",\""+container +"\")';>Delete</a>";
-		rowParams[3] = "<a class=\"button\" onclick=getFriendAuctions("+friendID+ ");>View Auctions</a>";
-		rowParams[4] = "<a class=\"button\" onclick=chatFriend("+friendID+");>Chat</a>";
-
-		addElement2(rowParams, container);
-	}
-	document.getElementById("friendTbTitle").innerHTML="Friend List";
+		//remove old elements
+		var oBody = document.getElementById(container);
+		while(oBody.hasChildNodes())
+		{
+			oBody.removeChild(oBody.firstChild);
+		}
+		
+		var friends = friendList.getElementsByTagName("friend");
+		for (var iNode = 0; iNode < friends.length; iNode++) {
+	        var friend_node = friends[iNode];
+	        
+	        var friendID		=	friend_node.getAttribute("friendID");
+	        var friendName		=	friend_node.getAttribute("friendName");
+	        buddyList[iNode] 	= 	friendName;
+	        
+	   	 	var rowHTML =	"    <td>" +
+	   	 					"<a href=index.html>"+ friendID + "</a></td>" +
+							"    <td>"+ friendName + "</td>"+
+							"    <td><a class=\"button\" onclick='deleteFriend("+friendID+", "+ container + ")';>Delete</a></td>"+
+							"    <td><a class=\"button\" onclick=searchAuctionTable(2,"+friendName+");>View Auctions</a></td>"+
+							"    <td><a class=\"button\" onclick=chatFriend("+friendID+");>Chat</a></td>";
+			var rowParams = new Array();
+			rowParams[0] = friendID;
+			rowParams[1] = friendName;
+			rowParams[2] = "<a class=\"button\" onclick='deleteFriend("+friendID+",\""+container +"\")';>Delete</a>";
+			rowParams[3] = "<a class=\"button\" onclick=getFriendAuctions("+friendID+ ");>View Auctions</a>";
+			rowParams[4] = "<a class=\"button\" onclick=chatFriend("+friendID+");>Chat</a>";
+		  
+			addElement2(rowParams, container);
+		  
+		}
+		document.getElementById("friendTbTitle").innerHTML="Friend List";
 }
+	
 
 var theValue=0;
 var friendIdList=new Array();
@@ -225,6 +244,7 @@ function getFriendAuctions(friendID)
 	xmlhttp.send(Params);
 	//document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
 }
+
 function ParseByOwnerAuctionList(responseXML, container)
 {
 	var auctionsList = responseXML.getElementsByTagName('auctionsList').item(0);
@@ -287,3 +307,75 @@ function ParseByOwnerAuctionList(responseXML, container)
 	//document.getElementById("advSearchTitle").innerHTML="<h2>Search Results</h2>";
 }
 
+function addFriend(){
+	var credential = document.getElementById("cred").value;
+	var friendID = document.getElementById("ownerID").value;
+	
+	if (window.XMLHttpRequest)
+	  {// code for IE7+, Firefox, Chrome, Opera, Safari
+	  xmlhttp=new XMLHttpRequest();
+	  }
+	else
+	  {// code for IE6, IE5
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	  
+	xmlhttp.onreadystatechange=function()
+	{
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	    {
+		    //parse XML response from server
+		    
+		    var responseText= ParseFriendAdd(xmlhttp.responseXML);
+	    	
+	    }
+	  };
+	
+	//send the parameters to the servlet with POST
+	var Params = "Credential=" + credential + "&FriendID=" + friendID;
+	
+	xmlhttp.open("POST","../friendAddServlet" ,true);
+	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xmlhttp.send(Params);
+}
+/*********************************************************************************************************
+ * 								Check Friends
+ * @param type
+ * @param searchOwner
+ *********************************************************************************************************/
+
+function friendAlready()
+{
+	
+	return buddyAlready;
+}
+
+var buddyAlready=false;
+
+function ParseFriendAdd(responseXML, container){
+	
+	 var success = (responseXML.getElementsByTagName("success")[0]).childNodes[0].nodeValue;
+	 var responseText = "";
+	 
+	 if(success=="-1")
+	{
+		 //responseText = 
+		 alert("Error adding friend!");
+	}
+	 
+	if(success=="0")
+	{
+			 //responseText = 
+			 alert("Already a friend!");
+		buddyAlready=true;
+	}
+	 if(success=="1")
+	{
+		//responseText = 
+		 alert("Friend added!");
+		 document.getElementById("addFriendButton").style.display="none";
+		 
+	}
+	 //TODO Disable page while it reloads; ATM it reloads but the user can interact with it while it does.
+	 return responseText;
+}

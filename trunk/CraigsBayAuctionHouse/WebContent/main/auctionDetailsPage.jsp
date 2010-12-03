@@ -35,7 +35,10 @@ refreshAuctionChat(<%=auctionID%>);
 			<thead id="tableHeader">
 				
 				 <tr> <th id="auctionItem">Auction Item </tr>
-				  <tr> <th id="auctionDescription">Auction Description </tr>
+				 <tr>  <th id="auctionOwner">Owner</th>
+				 		<!--  <td id="friendButton" ></td>-->
+				 </tr>
+				 <tr> <th id="auctionDescription">Auction Description </tr>
 				 <tr>  <th id="status">Status</th></tr>
 				 <tr>  <th id="timeLeft">Expiry Date</th></tr>
 				 <tr>  <th id="timeLeftHours">Time to Expire</th></tr>
@@ -43,9 +46,8 @@ refreshAuctionChat(<%=auctionID%>);
 				 <tr>  <th id="numBids">Number of Bids</th></tr>
 				 <tr>  <th id="lastBidder">Last Bidder</th></tr>
 				 <tr>  <th id="category">Category</th></tr>
-			     <tr>  <th id="auctionOwner">Owner</th></tr>
-			     <tr>  <th id="friendButton" ></th></tr>
-			     <tr>  <th id="flag" ></th></tr>
+			     
+			     
 				 
 			</thead>
 			

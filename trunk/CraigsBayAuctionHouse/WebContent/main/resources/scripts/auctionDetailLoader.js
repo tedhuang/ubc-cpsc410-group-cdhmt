@@ -214,33 +214,17 @@ function refreshAuctionDetails(){
 function viewInfo(colParams)
 {
 
-	document.getElementById("detailTitle").innerHTML="Auction Details : " + colParams[1];
+	document.getElementById("detailTitle").innerHTML="Auction Details: " + colParams[1];
 	
 	document.getElementById("auctionItem").innerHTML = "Auction Item: " + colParams[1];
 	document.getElementById("auctionDescription").innerHTML = "Auction Description: " + colParams[15];
 	
-	document.getElementById("status").innerHTML = "Status " + colParams[2];
+	document.getElementById("status").innerHTML = "Status: " + colParams[2];
 	document.getElementById("timeLeft").innerHTML = "Expiry Date: " + colParams[3]; 
 	document.getElementById("latestPrice").innerHTML = "Latest Price: " + colParams[9];
 	document.getElementById("numBids").innerHTML = "Number of Bids: " + colParams[10];
 	document.getElementById("lastBidder").innerHTML = "Last Bidder: " + colParams[14];
 	document.getElementById("category").innerHTML = "Category: " + colParams[5];
-	var nowCred=getCred();
-	var nowUser= getUserName();
-	//var testCred="\""+userCred+"\"";
-	if( (nowCred==null) || (nowUser == colParams[13]))
-	{
-		document.getElementById("auctionOwner").innerHTML = "Auction Owner: " + colParams[13];
-	}
-	else
-	{
-		document.getElementById("auctionOwner").innerHTML = 
-			"Auction Owner: " + colParams[13] + 
-			"<input type=\"button\" onClick='addFriend()' value = \"Add As Friend\" id=\"addFriendButton\">";
-		
-	}
-	document.getElementById("auctionOwner").innerHTML = "Auction Owner: " + colParams[13];
-	document.getElementById("friendButton").innerHTML = "<input type=\"button\" onClick='addFriend()' value = \"Add owner as friend\" id=\"addFriendButton\">";
 	
 	var x = colParams[16] / 1000;
 	var Seconds = Math.round(x % 60);
@@ -276,8 +260,9 @@ function viewInfo(colParams)
 		Days+=1;
 	}
 
-	document.getElementById("auctionOwner").innerHTML = "Auction Owner: " + colParams[13];
-	document.getElementById("friendButton").innerHTML = "<input type=\"button\" onClick='addFriend()' value = \"Add owner as friend\" id=\"addFriendButton\">";
+	document.getElementById("auctionOwner").innerHTML = "Auction Owner: " + colParams[13]+
+								"<input type=\"button\" onClick='addFriend()' " +
+								"value = \"Add owner as friend\" id=\"addFriendButton\">";
 	document.getElementById("flag").innerHTML = "Is this auction inappropriate? <input type=\"button\" onClick='flagAuction("+colParams[0]+")' value = \"Click here to tell us\" id=\"flagButton\">";
 
 	
@@ -296,7 +281,16 @@ function viewInfo(colParams)
 	
 	//alert( document.getElementById("loginUserID").value );
 	//alert( document.getElementById("ownerID").value );
-	if(document.getElementById("ownerID").value == document.getElementById("loginUserID").value)
+	var nowCred=getCred();
+//	var testUser=getUserName();
+	
+	if(
+		(document.getElementById("ownerID").value == document.getElementById("loginUserID").value)
+			||
+		(nowCred==null)
+			||
+		(friendAlready()) //friend already added
+	   )
 	{//is owner
 		document.getElementById("changeStatusButton").disabled=false;
 		document.getElementById("changeStatusValue").disabled=false;
@@ -305,7 +299,8 @@ function viewInfo(colParams)
 		document.getElementById("auctionChatInputText").disabled=false;
 		document.getElementById("auctionChatSubmit").disabled=false;
 		//document.getElementById("uploadDetailsPage").disabled=false;
-		document.getElementById("addFriendButton").disabled=true; // don't add yourself
+		document.getElementById("addFriendButton").style.display="none"; // don't add yourself or by stranger
+
 		//enable expiry date change fields
 		handleStatusSelectionChange();
 	}
@@ -519,113 +514,9 @@ function refreshAuctionChat(auctionID)
 
 }
 
-function addFriend(){
-		var credential = document.getElementById("cred").value;
-		var friendID = document.getElementById("ownerID").value;
-		
-		if (window.XMLHttpRequest)
-		  {// code for IE7+, Firefox, Chrome, Opera, Safari
-		  xmlhttp=new XMLHttpRequest();
-		  }
-		else
-		  {// code for IE6, IE5
-		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		  }
-		  
-		xmlhttp.onreadystatechange=function()
-		{
-		  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-		    {
-			    //parse XML response from server
-			    
-			    var responseText= ParseFriendAdd(xmlhttp.responseXML);
-		    	
-		    }
-		  };
-		
-		//send the parameters to the servlet with POST
-		var Params = "Credential=" + credential + "&FriendID=" + friendID;
-		
-		xmlhttp.open("POST","../friendAddServlet" ,true);
-		xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		xmlhttp.send(Params);
-	}
-
-	function ParseFriendAdd(responseXML, container){
-		
-		 var success = (responseXML.getElementsByTagName("success")[0]).childNodes[0].nodeValue;
-		 var responseText = "";
-		 
-		 if(success=="-1")
-		{
-			 //responseText = 
-			 alert("Error adding friend!");
-		}
-		 
-		if(success=="0")
-		{
-				 //responseText = 
-				 alert("Already a friend!");
-		}
-		 if(success=="1")
-		{
-			//responseText = 
-			 alert("Friend added!");
-		}
-		 //TODO Disable page while it reloads; ATM it reloads but the user can interact with it while it does.
-		 return responseText;
-	}
-	
-	function flagAuction(auctionID){
-		//var credential = document.getElementById("cred").value;
-		//var friendID = document.getElementById("ownerID").value;
-		
-		if (window.XMLHttpRequest)
-		  {// code for IE7+, Firefox, Chrome, Opera, Safari
-		  xmlhttp=new XMLHttpRequest();
-		  }
-		else
-		  {// code for IE6, IE5
-		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		  }
-		  
-		xmlhttp.onreadystatechange=function()
-		{
-		  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-		    {
-			    //parse XML response from server
-			    
-			    var responseText= ParseFlagAuction(xmlhttp.responseXML);
-		    	
-		    }
-		  };
-		
-		//send the parameters to the servlet with POST
-		var Params = "AuctionID=" + auctionID;
-		
-		xmlhttp.open("POST","../auctionFlagServlet" ,true);
-		xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		xmlhttp.send(Params);
-	}
-	
-	function ParseFlagAuction(responseXML){
-		 var success = (responseXML.getElementsByTagName("success")[0]).childNodes[0].nodeValue;
-		 var responseText = "";
-		 
-		 if(success=="0")
-		{
-			 //responseText = 
-			 alert("Error flaging auction!");
-		}
-
-		 if(success=="1")
-		{
-			//responseText = 
-			 alert("Auction Reported!");
-		}
-		 //TODO Disable page while it reloads; ATM it reloads but the user can interact with it while it does.
-		 return responseText;
-	}
+/**************************************************************************************
+ *  Friend-related functions moved to friends.js by Harry
+ ***************************************************************************************/
 
 /* We don't need this anymore since we are using scriptless badge 
  * Kept just in case

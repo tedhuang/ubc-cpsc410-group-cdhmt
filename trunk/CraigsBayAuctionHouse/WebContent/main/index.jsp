@@ -392,7 +392,7 @@
 		<h1 id="sidebar-title"><a href="#">Admin Panel</a></h1>
 		  
 	  <!-- Logo (221px wide) -->
-	  <img id="logo" src="./resources/images/logo.png" style="float:center;margin-left:50px;margin-bottom:50px">
+	  <img id="logo" src="./resources/images/logo.png" style="float:center;margin-left:20px;margin-bottom:50px">
 <!-- ***************************************************************************************-->
 								<!-- Sidebar Profile links -->
 <!-- ***************************************************************************************-->

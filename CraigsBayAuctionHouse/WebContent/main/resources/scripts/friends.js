@@ -205,8 +205,8 @@ function addElement2( rowParams, container ) {
 	    oCell.innerHTML =  rowParams[3];
 	    
 	    //Chat Button
-	    oCell = oRow.insertCell(-1);
-	    oCell.innerHTML =  rowParams[4];
+	    //oCell = oRow.insertCell(-1);
+	   // oCell.innerHTML =  rowParams[4];
 	    
 	  	//tools
 	    

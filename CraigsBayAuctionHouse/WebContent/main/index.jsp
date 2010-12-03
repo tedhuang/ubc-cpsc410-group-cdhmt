@@ -314,7 +314,7 @@
 		
 		<script language="javascript">
 
-		setInterval("getMsg("+ document.getElementById("loginUserID").value + ")", 5000)
+		//setInterval("getMsg("+ document.getElementById("loginUserID").value + ")", 5000)
 		</script>
 	<%
 	}

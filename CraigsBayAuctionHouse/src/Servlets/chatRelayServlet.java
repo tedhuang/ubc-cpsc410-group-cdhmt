@@ -75,14 +75,19 @@ public class chatRelayServlet extends HttpServlet {
 		// Registering the user's response for chat
 		Integer pollingCode = Integer.parseInt( request.getParameter("pollingCode") );
 		
+//		System.out.println("getting msg " + pollingCode );
+		
 		StringBuffer tempBuffer;
 		if( sessionMsgMap.containsKey( pollingCode ) ) {
-			tempBuffer = sessionMsgMap.remove( pollingCode );
+			tempBuffer = new StringBuffer("\t<isMsg" +
+			" boolean=\"true\"></isMsg>\n");
+			tempBuffer.append(sessionMsgMap.remove( pollingCode ));
 			System.out.println("Message from " + pollingCode + ":\n" + tempBuffer );
 		}
 		else {
 			//tempBuffer = new StringBuffer("\t<message></message>");
-			tempBuffer = new StringBuffer("");
+			tempBuffer = new StringBuffer("\t<isMsg" +
+							" boolean=\"false\"></isMsg>\n");
 		}
 		
 		StringBuffer XMLResponse = new StringBuffer();	
@@ -102,12 +107,13 @@ public class chatRelayServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// get ID for sender and receiver
-//		String senderIDString = request.getParameter("senderID").toString();
+		String senderIDString = request.getParameter("senderID").toString();
 //		String sendToIDString = request.getParameter("sendToID").toString();
-//		
+		
 //		Integer senderID = Integer.valueOf(senderIDString);
 //		Integer sendToID = Integer.valueOf(sendToIDString);
 		
+		String senderName = request.getParameter("senderName").toString();
 		String sendToCodeString = request.getParameter("sendToCode").toString();
 		Integer sendToCode = Integer.valueOf(sendToCodeString);
 		
@@ -128,7 +134,8 @@ public class chatRelayServlet extends HttpServlet {
 
 		
 		tempBuffer.append("\t<message" +
-//							" senderID=\"" + senderIDString + "\"" +
+							" senderID=\"" + senderIDString + "\"" +
+							" senderName=\"" + senderName + "\"" +
 							" timeStamp=\"" + Calendar.getInstance().getTimeInMillis() + "\"" +
 							">" + msg + "</message>\n");
 		

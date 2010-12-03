@@ -465,26 +465,25 @@ function createFriendTab(parentId,tabTitle,closeButton)
  * @param tabTitle --> New Table Title
  * @param closeButton --> True for disposable tab; False for non-disposable tabs 
  *****************************************************************************************************************************************/
-function createChatTab(parentId,tabTitle, xmlstuff ,closeButton)
+function createChatTab(parentId,tabTitle, sendToCode  ,closeButton)
 {
 	//TODO make unique tab so that multiple chat can be handled correctly
-	var senderID	= xmlstuff.getAttribute("senderID");
-	var pollingCode	= xmlstuff.getAttribute("pollingCode");
-	var sendToCode	= xmlstuff.getAttribute("sendToCode");
+//	var pollingCode	= xmlstuff.getAttribute("pollingCode");
+//	var sendToCode	= xmlstuff.getAttribute("sendToCode");
 	
 	if(tabFrame_countTabs[parentId]>=tabFrame_maxNumberOfTabs)return;	// Maximum number of tabs reached - return
 	var div = document.createElement('DIV');    //new tab Frame
 	div.className = 'dhtmlgoodies_aTab';
 	tabObj[parentId].appendChild(div);
-	div.id='imSession'; //TODO: add contact ID and session Number to the div.ID 
+	div.id= 'Session' + sendToCode; //TODO: add contact ID and session Number to the div.ID 
 	
 	var imFrame = document.createElement('DIV');
-	imFrame.id = 'imFrame';
+	imFrame.id = 'chatFrame' + sendToCode;
 	imFrame.clssName='';//TO DO: Make a css class for chatting
 //	imFrame.innerHTML = "test";
 	
 	var imContainer = document.createElement('TABLE');
-	imContainer.id='imContainer';
+	imContainer.id='chatContainer' + sendToCode;
 	imContainer.style.width='100%';
 	imContainer.style.height='100%';
 	imContainer.cellpadding='0';
@@ -500,14 +499,14 @@ function createChatTab(parentId,tabTitle, xmlstuff ,closeButton)
 			"</tr>" +
 			"<tr>" +
 			   "<td>" +
-				  "<textarea id='imConversation' cols='50' rows='5' wrap='hard' readonly>" +
+				  "<textarea id='chatArea" + sendToCode +"' cols='50' rows='5' wrap='hard' readonly>" +
 					      "" +
 				  "</textarea>" +
 				"<td>" +
 			"</tr>" +
 			"<tr>" +
 			   "<td>" +
-				  "<textarea id='imInput' cols='45' rows='5' wrap='hard' >" +
+				  "<textarea id='chatInput" + sendToCode +"' cols='45' rows='5' wrap='hard' >" +
 					      "This is Gonna be the input" +
 				  "</textarea>" +
 				  "<input type=button value='send' onClick='sendMsg(" + sendToCode + ")'/>" + //onClick method needed
@@ -516,10 +515,10 @@ function createChatTab(parentId,tabTitle, xmlstuff ,closeButton)
 //		"</tbody>" +
 //		"<script language=\"javascript\"> getMsg(" + pollingCode + ") </script>";
 
-	 var newScript = document.createElement('script');
-	 newScript.type = 'text/javascript';
-	 newScript.innerHTML = "getMsg(" + pollingCode + ")";
-	 imContainer.appendChild(newScript);
+//	 var newScript = document.createElement('script');
+//	 newScript.type = 'text/javascript';
+//	 newScript.innerHTML = "getMsg(" + pollingCode + ")";
+//	 imContainer.appendChild(newScript);
 	
 	imFrame.appendChild(imContainer);
 	
@@ -712,14 +711,14 @@ function showDetailViewTab()
 /****************************************************************************************************
 						Open Chatting Tab
 /****************************************************************************************************/
-function showChatTab( xmlstuff )
+function showChatTab( senderName, otherID  )
 {
-	var sender 		= xmlstuff.getAttribute("friendName");
+//	var sender 		= xmlstuff.getAttribute("senderName");
 	
-	var open=getTabIndexByTitle('Chatting with '+ sender);
+	var open=getTabIndexByTitle('Chatting with '+ senderName);
 	if (open<0)// if the tab is not open yet
 	{	
-		var aTab= createChatTab('tabPanel','Chatting with '+ sender,  xmlstuff , true);
+		var aTab= createChatTab('tabPanel','Chatting with '+ senderName, otherID , true);
 	}
 	else
 	{

@@ -1,7 +1,10 @@
 
 var hash;
 
-
+/*
+ * Method to calculate the MD5 hash required for flickr Authentication
+ * 
+ */
 function getHash(tags){ 
 		
 	if (window.XMLHttpRequest)
@@ -33,8 +36,6 @@ function getHash(tags){
 	    	var mydiv = document.getElementById("flickrForm");
 	    	mydiv.style.visibility="";
 	    	mydiv.style.display="";
-	    	
-	    	
 	    	
 	    	
 	    	//postFlickrUpload(tags, hash);

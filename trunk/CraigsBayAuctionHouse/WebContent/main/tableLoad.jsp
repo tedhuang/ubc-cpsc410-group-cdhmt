@@ -47,6 +47,8 @@
   
   <input type="hidden" value="0" id="theValue" />
   
+  <button type="button" Onclick="viewAllAuctions('allItemArea','allItemTitle')"><a href=# id="all-items">Refresh This List</a></button>
+  
   
   <!--  
   Item: <input id="auctionItem" type="text" name="auctionItem" size="20"><br>

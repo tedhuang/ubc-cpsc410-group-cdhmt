@@ -150,6 +150,11 @@ function loadAuctionParseXMLResponse(responseXML) {
         var auctionStatus	=	auction_node.getAttribute("auctionStatus");
         var flickerAlbumID	=	auction_node.getAttribute("flickerAlbumID");
         var numberOfViews	=	auction_node.getAttribute("numberOfViews");
+        var auctionDescription	=	auction_node.getAttribute("auctionDescription");
+        if(auctionDescription=="null")
+        {
+        	auctionDescription="";
+        }
 
     var ownerName = auctionView.getElementsByTagName("ownerName")[0].childNodes[0].nodeValue;
     var lastBidderName = auctionView.getElementsByTagName("lastBidderName")[0].childNodes[0].nodeValue;
@@ -171,6 +176,7 @@ function loadAuctionParseXMLResponse(responseXML) {
 		colParams[12] = numberOfViews;
 		colParams[13] = ownerName;
 		colParams[14] = lastBidderName;
+		colParams[15] = auctionDescription;
 		//colParams[15] = chatLog;
 		viewInfo(colParams);
 }
@@ -182,6 +188,8 @@ function viewInfo(colParams)
 	document.getElementById("detailTitle").innerHTML="Auction Details : " + colParams[1];
 	
 	document.getElementById("auctionItem").innerHTML = "Auction Item: " + colParams[1];
+	document.getElementById("auctionDescription").innerHTML = "Auction Description: " + colParams[15];
+	
 	document.getElementById("status").innerHTML = "Status " + colParams[2];
 	document.getElementById("timeLeft").innerHTML = "Expiry Date: " + colParams[3];
 	document.getElementById("latestPrice").innerHTML = "Latest Price: " + colParams[9];

@@ -99,8 +99,9 @@ public class userCreateAuctionServlet extends HttpServlet {
 										Integer.parseInt(request.getParameter("ExpiryDay")),
 										Integer.parseInt(request.getParameter("ExpiryHour")));
 		String Category = request.getParameter("Category").toString();
+		String Description = request.getParameter("Description").toString();
 		
-		int auctionID = dbm.createNewAuction(AuctionTitle, Category, AuctionStatus, CreationDate, ExpiryDate, ExpiryTime, Double.parseDouble(MinPrice), OwnerID, "flickr album");
+		int auctionID = dbm.createNewAuction(AuctionTitle, Category, AuctionStatus, CreationDate, ExpiryDate, ExpiryTime, Double.parseDouble(MinPrice), OwnerID, "flickr album", Description);
 		
 		if(auctionID == -1){
 			System.out.println("Error: createNewAuction in userCreateAuctionServlet failed");

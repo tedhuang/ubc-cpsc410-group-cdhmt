@@ -21,6 +21,7 @@ public class Auction {
 	public String	auctionStatus;
 	public String	flickerAlbumID;
 	public int		numberOfViews;
+	public String auctionDescription;
 	
 	public Auction() {
 		auctionID 		= -1;
@@ -36,6 +37,7 @@ public class Auction {
 		auctionStatus	= null;
 		flickerAlbumID	= null;
 		numberOfViews	= 0;
+		auctionDescription="";
 	}
 
 	
@@ -56,6 +58,7 @@ public class Auction {
 				" auctionStatus=\"" + auctionStatus + "\"" +
 				" flickerAlbumID=\"" + flickerAlbumID + "\"" +
 				" numberOfViews=\"" + numberOfViews + "\"" +
+				" auctionDescription=\"" + auctionDescription + "\"" +
 				"/>\n";
 				
 	}

@@ -5,6 +5,7 @@ function createAuctionRequest()
 {
 	
 	var Title = document.getElementById("AuctionTitle").value;
+	var Description = document.getElementById("NewAuctionDescriptuon").value;
 	var MinPrice = document.getElementById("MinPrice").value;
 	var ExpiryWeek = document.getElementById("ExpiryWeek").value;
 	var ExpiryDay = document.getElementById("ExpiryDay").value;
@@ -19,6 +20,11 @@ function createAuctionRequest()
 	}
 	if(MinPrice.match(/\d{1,10}\.?\d{0,2}/) == null){
 		alert("Min Price not valid");
+		return;
+	}
+	if(Description == null || Description == "")
+	{
+		alert("Must Enter Auction Description!");
 		return;
 	}
 	
@@ -47,7 +53,8 @@ function createAuctionRequest()
 
 	var Params = "Credential=" + credential + "&AuctionTitle=" + Title + "&MinPrice=" + MinPrice
 					+ "&ExpiryWeek=" + ExpiryWeek + "&ExpiryDay=" + ExpiryDay 
-					+ "&ExpiryHour=" + ExpiryHour +"&Category=" + Category;
+					+ "&ExpiryHour=" + ExpiryHour +"&Category=" + Category
+					+ "&Description=" + Description;
 
 	//send the parameters to the servlet with POST
 	xmlhttp.open("POST","../userCreateAuctionServlet" ,true);

@@ -420,7 +420,7 @@
 ********************************************************************************************-->
 <!-- S LIGHTBOX LOGIN -->
 		<div id="filter"></div>
-			<div id="loginBox" class="box">
+			<div id="loginBox" class="box" onkeypress="{if (event.keyCode==13)userLoginRequest()}">
 			  
 			  <form id= "close" name="close" method="post" title="Close" >
 					<input id="submitCred" type="hidden" name="cred"/>
@@ -552,6 +552,7 @@
 						<li> <input type="text" id="searchTitle" value="Search" 
 									onblur="if (this.value=='') { this.value='Search'; }" 
 									onfocus="if (this.value=='Search') { this.value=''; }"
+									onkeypress="{if (event.keyCode==13)searchAuctionTable('0')}"
 									/></li>
 						<li>
 							<input type="image" src="./resources/images/advancedSearch.png" title="Advanced Search" onClick="showAdvancedSearchTab()"/>

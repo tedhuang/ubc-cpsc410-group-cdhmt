@@ -352,7 +352,7 @@
 			<div id="loginLoading" class="login-icon" style="margin-button:100px; margin-left:500px;"></div>
 				<!-- LOGIN BUTTON -->
 			<input type="image" src="./resources/images/login-go.png" class="login-icon" title="go!" style="margin-left:400px;" onclick="userLoginRequest()" >		
-			<div style="margin-top:300px;" id="myDiv"><h2>Debug Message for page</h2></div>
+			<div style="margin-top:300px;" id="myDiv"><h2>Welcome!</h2></div>
 			</div>
 <!-- *********************************Register ***************************************
 **************************************************************************************-->
@@ -647,7 +647,10 @@
 		  
 			<script type="text/javascript">
 			initTabs('tabPanel',Array('What\'s New','tips'),0,"","",Array(false,true));
-			preloadFriends("tempTable");
+			if(document.getElementById("userName").value != "Guest")
+			{
+				preloadFriends("tempTable");
+			}
 			</script>
 		
 <!-- ********************************************************************************************

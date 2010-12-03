@@ -191,14 +191,9 @@ function viewInfo(colParams)
 	document.getElementById("auctionOwner").innerHTML = "Auction Owner: " + colParams[13] + "<input type=\"button\" onClick='addFriend()' value = \"Add As Friend\" id=\"addFriendButton\">";
 	//document.getElementById("picture").innerHTML = "Picture: " + colParams[11];
 
-
-	
-	//http://www.flickr.com/badge_code_v2.gne?show_name=1&count=1&display=latest&size=t&layout=v&source=user_tag&user=55164508%40N02&tag=TestTag
-	
 	
 	document.getElementById("ownerID").value = colParams[6];
 	document.getElementById("latestBidPrice").value = colParams[9];
-	
 	
 	//alert( document.getElementById("loginUserID").value );
 	//alert( document.getElementById("ownerID").value );
@@ -210,7 +205,7 @@ function viewInfo(colParams)
 		document.getElementById("bidAmount").disabled=true;
 		document.getElementById("auctionChatInputText").disabled=false;
 		document.getElementById("auctionChatSubmit").disabled=false;
-		//document.getElementById("")
+		document.getElementById("uploadDetailsPage").disabled=false;
 		//enable expiry date change fields
 		handleStatusSelectionChange();
 	}

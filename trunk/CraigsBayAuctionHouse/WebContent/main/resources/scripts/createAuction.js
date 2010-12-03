@@ -96,7 +96,6 @@ function auctionParseXMLResponse(responseXML){
  */
 function postFlickrUpload(auctionID, hash){
 	
-	
 	if (window.XMLHttpRequest)
 	  {// code for IE7+, Firefox, Chrome, Opera, Safari
 	  xmlhttp=new XMLHttpRequest();
@@ -110,7 +109,7 @@ function postFlickrUpload(auctionID, hash){
 	  {
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	    {
-		   alert(xmlhttp.responseXML);
+		   //alert(xmlhttp.responseXML);
 	    }
 	  };
 	  
@@ -156,69 +155,6 @@ function flickrUploadResponse(){
 
 	  
 	  
- /*************************************
-  * None of the below methods worked  *
-  * ***********************************
-	
-	document.getElementById("flickrUploadForm").innerHTML += 
-		'<form enctype="multipart/form-data" id="flickrUploadForm" action="http://api.flickr.com/services/upload/" method="post"></form>'+    
-		'<input type="file" name="photo" id="photo" value=' + document.getElementById("photoUpload").value + '/>' + 
-		'<input type="hidden" name="tags" id="tags" value=' + auctionID + '/>' +
-		'<input type="hidden" name="api_key" value="301748fd9ccc9801f9ed91772b19d8bd"/>'+
-		'<input type="hidden" name="auth_token" value="72157625289914267-ed25c30f0392675d"/>'+
-		'<input type="hidden" id="api_sig" name="api_sig" value=' + hash + '/>'+
-		'<input type="submit" id="submitFlickrUpload" name ="submit" value="Upload"/>';
-	
-	
-	====================================================================
-	
-	var Params = "photo="+ document.getElementById("photo").value + "&tags=" + auctionID + 
-				"&api_key=301748fd9ccc9801f9ed91772b19d8bd" + "&auth_token=72157625289914267-ed25c30f0392675d" +
-				"&api_sig=" + hash;
-	
-	xmlhttp.open("POST","http://api.flickr.com/services/upload/" ,true); 
-	req.setRequestHeader("Content-Type", "multipart/form-data");
-	xmlhttp.send(Params);
-	
-
-	var form = document.createElement("form");
-	form.setAttribute("enctype", "multipart/form-data");
-	form.setAttribute("method", "post");
-	form.setAttribute("action", "http://api.flickr.com/services/upload/");
-
-    var photo =  document.createElement("input"); //document.getElementById("photoUpload").value;
-    	photo.setAttribute("type", "file");
-	    photo.setAttribute("name", "photo");
-	    photo.setAttribute("value", document.getElementById("photo").value);
-	    form.appendChild(photo);
-	    
-    var tags =  document.createElement("input");//auctionID;
-    	tags.setAttribute("type", "hidden");
-    	tags.setAttribute("name", "tags"); 
-    	tags.setAttribute("value", "TestTag"); //    	tags.setAttribute("value", auctionID);
-    	form.appendChild(tags);
-
-    var api_key =  document.createElement("input"); //"301748fd9ccc9801f9ed91772b19d8bd";
-	    api_key.setAttribute("type", "hidden");
-	    api_key.setAttribute("name", "api_key");
-	    api_key.setAttribute("value","301748fd9ccc9801f9ed91772b19d8bd");
-	    form.appendChild(api_key);
-	    
-    var aut_token =  document.createElement("input");//"72157625289914267-ed25c30f0392675d";
-    	aut_token.setAttribute("type", "hidden");
-    	aut_token.setAttribute("name", "auth_token");
-	    aut_token.setAttribute("value", "72157625289914267-ed25c30f0392675d");
-	    form.appendChild(aut_token);
-	    
-    var api_sig =  document.createElement("input");//hash;
-    	api_sig.setAttribute("type", "hidden");
-    	api_sig.setAttribute("name", "api_sig");
-    	api_sig.setAttribute("value", "05fc99a75e09453bc14536bf23593a50"); //    	api_sig.setAttribute("value", hash);
-    	form.appendChild(api_sig);       
-    alert(form.innerHTML);
-    form.submit();
-    */
-
 
 
 

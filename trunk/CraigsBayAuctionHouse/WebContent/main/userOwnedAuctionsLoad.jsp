@@ -88,14 +88,6 @@
 							<tfoot>
 								<tr>
 									<td colspan="6">
-										<div class="bulk-actions align-left">
-											<select name="dropdown">
-												<option value="option1">Choose an action...</option>
-												<option value="option2">Edit</option>
-												<option value="option3">Delete</option>
-											</select>
-											<a class="button" onclick=removeElement();>Apply to selected</a>
-										</div>
 								<!-- Need code to Generate Pages-->		
 										<div class="pagination">
 											<a href="#" title="First Page">&laquo; First</a><a href="#" title="Previous Page">&laquo; Previous</a>

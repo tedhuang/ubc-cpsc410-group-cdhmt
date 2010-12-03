@@ -36,7 +36,6 @@ public class auctionFlagServlet extends HttpServlet {
 		String auctionID = request.getParameter("AuctionID").toString();
 		int result=0;
 		
-		System.out.println("Hello ou are here");
 		DBManager dbm = new DBManager();
 		result = dbm.flagAuction(auctionID);
 		

@@ -46,8 +46,7 @@ refreshAuctionChat(<%=auctionID%>);
 				 <tr>  <th id="numBids">Number of Bids</th></tr>
 				 <tr>  <th id="lastBidder">Last Bidder</th></tr>
 				 <tr>  <th id="category">Category</th></tr>
-			     
-			     
+			     <tr>  <th id="flag" ></th></tr>
 				 
 			</thead>
 			

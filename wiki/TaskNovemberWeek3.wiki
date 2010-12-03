@@ -7,6 +7,7 @@ Function requirement F14 states that closed auctions can be re-opened by the own
 
 Type: Bug
 Page: Manage Auction/View Details
+-This only seems to affect some of the old created auctions (house s1, testtest)
 Closing an expired auction does not change its status from expired to closed under the Status column in the Auction List Table. (Auction status changes to closed in the details page ) Due to this it is possible to "Change Auction Status" to close and then access the auction again from Manage Auction and still be able to close the auction again from "Owner Option: Change Auction Status"
 (Tested with test1 - trying to close "testtest")
 

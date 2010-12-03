@@ -49,8 +49,6 @@ ooooooooooooooooooooooooooooooooooooooooooooo
 
 Things to do when have time:
 
--Make it so that new auction window only pops up once and having subsequent click of "new auction" redirect to the opened "new auction" page
-
 -Implement newest auctions first on the auction list
 
 -Implement sort function?

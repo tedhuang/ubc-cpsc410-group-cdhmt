@@ -74,7 +74,7 @@
 								   <th>Friend Name</th>
 								   <th>Delete</th>
 								   <th>View Auctions</th>
-								   <th>Chat</th>
+								   
 								</tr>
 								
 							</thead>

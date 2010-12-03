@@ -86,6 +86,7 @@ function auctionParseXMLResponse(responseXML){
 	}
 	 else 
 	{
+		 document.getElementById("createAuctionButtonX").disabled=true;
 		 document.getElementById("tags").value = auctionID;
 		 getHash(auctionID);
 		 

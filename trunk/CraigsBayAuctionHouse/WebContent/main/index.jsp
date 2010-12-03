@@ -189,9 +189,9 @@
 <!-- ***************************************************************************************-->	
 
 	<script type="text/javascript">
-	function chatFriend( friendID ) {
+	function chatFriend( friendName, friendID ) {
 		
-		showChatTab( document.getElementById("userName").value , friendID);
+		showChatTab( friendName , friendID);
 
 	}
 	

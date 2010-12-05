@@ -6,18 +6,13 @@
 	<head>
 		
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-		
 		<title></title>
 		
 		<!--                       CSS                       -->
-	  
-		
 		<!-- Main Stylesheet -->
 		<link rel="stylesheet" href="./resources/css/contenBox.css" type="text/css" media="screen" />
 		
-		
 		<!--                       Javascripts                       -->
-  
 		<!-- jQuery -->
 		<script type="text/javascript" src="./resources/scripts/jquery-1.3.2.min.js"></script>
 		
@@ -48,14 +43,6 @@
   <input type="hidden" value="0" id="theValue" />
   
   <button type="button" Onclick="viewAllAuctions('allItemArea','allItemTitle')"><a href=# id="all-items">Refresh This List</a></button>
-  
-  
-  
-<!-- ****************************Main Content Section with everything*****************************************
-	<div id="main-content"> 
-			
-			
-			<div class="clear"></div> <!-- End .clear -->
 			
 <!-- ***************************Start Content Box***************************** -->
 			<div class="content-box">
@@ -69,9 +56,6 @@
 				</div> <!-- End .content-box-header -->
 				
 				<div class="content-box-content">
-			   
-					
-						
 						<table>
 							
 							<thead id="tableHeader">
@@ -105,14 +89,7 @@
 							</tfoot>
 							
 <!-- *************Entries Will be inserted here*******************-->
-								
 				<tbody id="allItemTable"></tbody>
-				
-<!--  *************************************************************-->
-						
-		
-						
-							
 		</table>
 						
  

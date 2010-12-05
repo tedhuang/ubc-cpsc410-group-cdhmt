@@ -11,7 +11,6 @@
 
 <br>
 
-
 <%
 String auctionID = request.getParameter("auctionID");
 %>
@@ -29,15 +28,11 @@ refreshAuctionChat(<%=auctionID%>);
 <div class="content-box-content">
 			   
 	<div class="tab-content default-tab" id="infoTab"> <!-- This is the target div. id must match the href of this div's tab -->
-	
-		
 		<table>
-			
 			<thead id="tableHeader">
 				
 				 <tr> <th id="auctionItem">Auction Item </tr>
 				 <tr>  <th id="auctionOwner">Owner</th>
-				 		<!--  <td id="friendButton" ></td>-->
 				 </tr>
 				 <tr> <th id="auctionDescription">Auction Description </tr>
 				 <tr>  <th id="status">Status</th></tr>
@@ -119,16 +114,12 @@ refreshAuctionChat(<%=auctionID%>);
 	<img src= <%="http://flickrbadge.theducky.com/tag/photo/55164508@N02/" + auctionID + "_1_m.jpg" %> alt="Picture By Flickr:" /></a>
 	</div>
 	
-	
-	
 		<textarea id="auctionChatHistory" readonly="readonly" rows="10" cols="40">
-		Auction Chat
+			Auction Chat
 		</textarea>
-		
 
 		<textarea id="auctionChatInputText" cols="40" rows="1" disabled="true" align="left" >Post your questions...</textarea>
 		<input id="auctionChatSubmit" type="button" value="Submit" disabled="true" onClick='sendAuctionChat(<%= auctionID %>)'/>
-		
 					
 </div>
 

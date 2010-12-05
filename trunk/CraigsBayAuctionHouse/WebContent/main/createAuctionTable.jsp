@@ -5,16 +5,6 @@
 </head>
 
 <body>
-
-<!--  this is non-AJAX.
-<form action="GmailSMTPServlet" method="POST">
-        To Email Address: <input type="text" name="emailAddress" size="20"><br>
-        Subject: <input type="text" name="subject" size="20"><br>
-        Body: <textarea name="body" cols="40" rows="5">
-        	  </textarea><br>
-        <input type="submit" value="Send">
-</form>
- -->
  
 <br>
 <h4>Create New Auction</h4>
@@ -99,8 +89,6 @@ For details about how we worked with FlickrAPI, please look at the description a
 	
 </div>
 
-
-    
 </body>
 </html>
 

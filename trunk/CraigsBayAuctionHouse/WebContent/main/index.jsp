@@ -8,9 +8,7 @@
 		
 		<title>Welcome To CS410 Project</title>
 		
-<!-- ***************************************************************************************-->
-						<!--   CSS    -->
-<!-- ***************************************************************************************-->
+<!-- **************************INCLUDED CSS*********************************************************-->
 	  
 		<!-- Reset Stylesheet -->
 		<link rel="stylesheet" href="./resources/css/reset.css" type="text/css" media="screen" />
@@ -36,10 +34,7 @@
 		<link type="text/css" rel="stylesheet" href="./resources/css/lightbox-form.css">
 		<script src="./resources/scripts/lightbox-form.js" type="text/javascript"></script>
 		
-<!-- ***************************************************************************************-->
-						<!--  Javascripts -->
-<!-- ***************************************************************************************-->
-  		
+<!-- *************************INCLUDED Javascripts**************************************************-->
 		<!-- jQuery -->
 		<script type="text/javascript" src="./resources/scripts/jquery-1.3.2.min.js"></script>
 		
@@ -68,152 +63,25 @@
 
 		
 		
-<!-- ***************************************************************************************-->		
-					<!-- Auction Functions -->
-<!-- ***************************************************************************************-->
-	
-	<script type="text/javascript">
-	function createAuction()
+<!-- *********************Functions**********************************************-->
+
+<script type="text/javascript">
+	var insideTab;
+	function getContain(elementID)
 	{
-			
+		insideTab=document.getElementById(elementID).innerHTML;
 	}
-	</script>
+</script>
+<!-- ****************************chat Function ********************************************-->	
 
-	<script type="text/javascript">
-	function viewBiddedAuctions(container, title)
+<script type="text/javascript">
+	function chatFriend( friendID ) 
 	{
-		//loadjscssfile('./resources/scripts/auctionListLoader.js', 'js');
-		//loadobjs('./resources/scripts/auctionListLoader.js'); //load the additional javascript tableLoad.jsp requires
-		showWantedItemTab();
-		ajaxpage('userBiddedAuctionsLoad.jsp', container); //load tableLoad.jsp in to div Dynapage
-		//createNewTab('tabPanel','All Auctions','','tableLoad.jsp',true);
-		document.getElementById(title).innerHTML="<img src=./resources/images/loading.gif></img>";
-		
-	}
-	</script>
-	
-	<!--TODO Link with profile button -->
-	<script type="text/javascript">
-	
-	
-	</script>
-	
-	<script type="text/javascript">
-		var insideTab;
-		function getContain(elementID)
-		{
-			insideTab=document.getElementById(elementID).innerHTML;
-		}
-	</script>
-	
-	<script type="text/javascript">
-		
-	</script>
-	
-	<script type="text/javascript">	
-	//Code to search DB for auctions
-	function searchAuctionTable(type, searchOwner)
-	{	
-		//If type = 0 then basic search else advanced
-		//NOTE for some reason to pass '%' as a string in javascript it has to be '%25'
-		if(type == 0){
-			var searchTitle = document.getElementById("searchTitle").value;
-			var searchCategory = "%25";
-			searchOwner = "";
-			showAdvancedSearchTab();
-		}
-
-		//Advanced Search
-		if(type == 1){
-			var searchTitle = document.getElementById("advancedSearchTitle").value;
-			var searchCategory = document.getElementById("searchCategory").value;
-			searchOwner = document.getElementById("searchOwner").value;
-
-			//Check to see what parameters matter
-			if(searchTitle == ""){
-				searchTitle = "%25";
-			}
-			if(searchCategory == ""){
-				searchCategory = "%25";
-			}
-			if(searchOwner == ""){
-				searchOwner = "";
-			}
-		}
-		
-		//Friend Search
-		if(type == 2){
-			var searchCategory = "%25";
-			var searchTitle = "%25";
-		}
-		
-		if (window.XMLHttpRequest)
-		  {// code for IE7+, Firefox, Chrome, Opera, Safari
-		  xmlhttp=new XMLHttpRequest();
-		  }
-		else
-		  {// code for IE6, IE5
-		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		  }
-		  
-		xmlhttp.onreadystatechange=function()
-		{
-		  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-		    {
-			    //parse XML response from server
-			    
-			    var responseText= ParseSearchedAuctionList(xmlhttp.responseXML,'searchRsltArea');
-		    	
-		    }
-		  }
-	
-		//send the parameters to the servlet with POST
-		var Params = "SearchTitle="+ searchTitle + "&SearchCategory=" + searchCategory + 
-						"&SearchOwner=" + searchOwner;
-		
-		xmlhttp.open("POST","../auctionListAllServlet" ,true);
-		xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		xmlhttp.send(Params);
-		//document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
-	}
-	</script>
-
-	
-				
-
-
-		
-		
-<!-- ***************************************************************************************-->
-							<!-- chat Function  -->
-<!-- ***************************************************************************************-->	
-
-	<script type="text/javascript">
-	function chatFriend( friendID ) {
-		
 		showChatTab( "Your Friend" , friendID);
-
 	}
-	
-	</script>
-	
+</script>
 
-
-<!-- ***************************************************************************************-->
-							<!-- login Function (Moved to userControlPanel.js)-->
-<!-- ***************************************************************************************-->	
-	<script type="text/javascript">
-	</script>
-<!-- ***************************************************************************************-->
-							<!-- logout Function  (Moved to userControlPanel.js)-->
-<!-- ***************************************************************************************-->	
-	<script type="text/javascript">
-	</script>
-
-<!-- ***************************************************************************************-->	
-						<!-- Sliding Menu js functions  -->
-<!-- ***************************************************************************************-->
-
+<!-- ***********************jQuery for Sliding Menu Behavior*************************************-->
 		<script type="text/javascript">
 		$(document).ready(function(){
 			$(".trigger").click(function(){
@@ -223,65 +91,10 @@
 		});
 		});
 	</script>
-	
-	
-	<script type="text/javascript">
-	
 
-
-	</script>
+</head> <!-- END OF HEADER -->
 	
-	<script type="text/javascript">
-	
-	
-	//---------------------------------------------------------
-	//<ul id="bubblemenu">
-  //      <li>
-  //          LOG IN FROM HERE
-  //          <div class="tabIframeWrapper">
-//	  			<iframe class="tabContent" 
-	//	  			name="tabIframe2" src="del.html" 
-//		  			marginheight="8" marginwidth="8" frameborder="0">
-//	  			</iframe>
-//			</div>
-//	</ul>
-//<script language="javascript">
-			
-//			function cascadeOpt(dropdown){
-//			var myForm = document.getElementById("searchOpt");
-//			var opt1=document.getElementById("searchCategory");
-//			var opt2=document.getElementById("searchByPplBox");
-			
-	//		var opt= dropdown.selectedIndex;
-	//		var temp=opt1.style.display;
-		//	switch(opt)
-			//{
-//			case 0:
-	//			break;
-	//		case 1:
-		//		if(temp=="block")
-			//	{
-				//	opt1.style.display="none";
-			//	}
-		//		else
-			//	{
-				//	opt1.style.display="block";
-				//}
-//			break;
-			
-	//	  }
-		//}
-	//	</script>
-	</script>
-	
-
-		
-	</head>
-	
-   	
-<!-- ***************************************************************************************-->
-							<!--  CREDENTIAL CHECK -->
-<!-- ***************************************************************************************-->
+<!-- ********************************CREDENTIAL CHECK *****************************************-->
 	
 	<% 
 		String cred = request.getParameter("cred");
@@ -322,40 +135,37 @@
 
 	<body><div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
 
-<!-- ***************************************************************************************
-								 Sidebar Starts Here
-********************************************************************************************-->
+<!-- ****************************Sidebar Starts Here*****************************************-->
 <!-- S LIGHTBOX LOGIN -->
-		<div id="filter"></div>
-			<div id="loginBox" class="box" onkeypress="{if (event.keyCode==13)userLoginRequest()}">
+	<div id="filter"></div>
+	<div id="loginBox" class="box" onkeypress="{if (event.keyCode==13)userLoginRequest()}">
 			  
-			  <form id= "close" name="close" method="post" title="Close" >
-					<input id="submitCred" type="hidden" name="cred"/>
-					<input id="name" type="hidden" name="name" />
-					<input id="submitUserID" type="hidden" name="loggedInUserID" />
-					<!-- <input type="image" src="./resources/images/minus.png" name="image" />
-					 -->
-			  </form>
-			  
-			<input type="image" src="./resources/images/login-cancle.png" 
-					class="login-icon" style="margin-right:20px;" 
-					type="button" name="cancel" value="Cancel" onclick="closebox('loginBox');document.getElementById('myDiv').innerHTML='<h2>WELCOME</h2>'">  
-			<div id="login-box-name" style="margin-top:70px; margin-left:100px;">User:</div>   
-			<div id="login-box-field" >
-			  	<input id="username" name="username" class="form-login" title="Username" value="" size="10" maxlength="2048" />
-			</div>
-					
-			<div id="login-box-name" style="margin-top:0px; margin-left:130px;">Password:</div>
-			<div id="login-box-field">
-				<input id="password" name="password" type="password" class="form-login" title="Password" value="" size="30" maxlength="2048" />
-			</div>
-			<div id="loginLoading" class="login-icon" style="margin-button:100px; margin-left:500px;"></div>
-				<!-- LOGIN BUTTON -->
-			<input type="image" src="./resources/images/login-go.png" class="login-icon" title="go!" style="margin-left:400px;" onclick="userLoginRequest()" >		
-			<div style="margin-top:300px;" id="myDiv"><h2>Welcome!</h2></div>
-			</div>
-<!-- *********************************Register ***************************************
-**************************************************************************************-->
+	  <form id= "close" name="close" method="post" title="Close" >
+			<input id="submitCred" type="hidden" name="cred"/>
+			<input id="name" type="hidden" name="name" />
+			<input id="submitUserID" type="hidden" name="loggedInUserID" />
+			<!-- <input type="image" src="./resources/images/minus.png" name="image" />
+			 -->
+	  </form>
+	  
+	<input type="image" src="./resources/images/login-cancle.png" 
+			class="login-icon" style="margin-right:20px;" 
+			type="button" name="cancel" value="Cancel" onclick="closebox('loginBox');document.getElementById('myDiv').innerHTML='<h2>WELCOME</h2>'">  
+	<div id="login-box-name" style="margin-top:70px; margin-left:100px;">User:</div>   
+	<div id="login-box-field" >
+	  	<input id="username" name="username" class="form-login" title="Username" value="" size="10" maxlength="2048" />
+	</div>
+			
+	<div id="login-box-name" style="margin-top:0px; margin-left:130px;">Password:</div>
+	<div id="login-box-field">
+		<input id="password" name="password" type="password" class="form-login" title="Password" value="" size="30" maxlength="2048" />
+	</div>
+	<div id="loginLoading" class="login-icon" style="margin-button:100px; margin-left:500px;"></div>
+		<!-- LOGIN BUTTON -->
+	<input type="image" src="./resources/images/login-go.png" class="login-icon" title="go!" style="margin-left:400px;" onclick="userLoginRequest()" >		
+	<div style="margin-top:300px;" id="myDiv"><h2>Welcome!</h2></div>
+	</div>
+<!-- *********************************Register ***********************************************-->
 <div id="filter"></div>
 	<div id="regBox">
 	<span id="boxtitle"></span> 
@@ -396,48 +206,38 @@
 		  
 	  <!-- Logo (221px wide) -->
 	  <img id="logo" src="./resources/images/logo.png" style="float:center;margin-left:20px;margin-bottom:50px">
-<!-- ***************************************************************************************-->
-								<!-- Sidebar Profile links -->
-<!-- ***************************************************************************************-->
-			
-		
-			<div id="profile-links">
-				Hello, 
 
-				<%= userName %>
-				 
-				<%  
-				if(userName != "Guest")
-				{
-					
-				%>
-				<br />
-				<p><a href="#" id="acc-inbox" title="View your Messages"> My Messages</a> | 
-				<a href="#" id="log-out" title="Sign Out" onclick="userLogoutRequest();openbox('sign-outLoading','',1)">Sign Out</a> </p>
+<!-- *******************************Sidebar Profile links *********************************-->
+		<div id="profile-links">
+			Hello, 
+	
+			<%= userName %>
+			 
+			<%  
+			if(userName != "Guest")
+			{
 				
-				<%
-				}
-				else
-				{
-				%>
-				<p>Already A Member? <a href="#" id="sign-in" onclick="openbox('loginBox','', 1)">Sign-in</a></p>
-				<p>Not A Member? <a href=# id="sign-up" title="REGISTER" onclick="openbox('regBox','Register', 1)" >&nbsp;</a></p>
-				<!-- "./registerUser.jsp" -->
-				<%
-				}
-				%>
-				
-				
-				
-				
-			</div>        
+			%>
+			<br />
+			<p><a href="#" id="acc-inbox" title="View your Messages"> My Messages</a> | 
+			<a href="#" id="log-out" title="Sign Out" onclick="userLogoutRequest();openbox('sign-outLoading','',1)">Sign Out</a> </p>
 			
-<!-- ***************************************************************************************-->
-							<!-- Quick Tools -->
-<!-- ***************************************************************************************-->			
+			<%
+			}
+			else
+			{
+			%>
+			<p>Already A Member? <a href="#" id="sign-in" onclick="openbox('loginBox','', 1)">Sign-in</a></p>
+			<p>Not A Member? <a href=# id="sign-up" title="REGISTER" onclick="openbox('regBox','Register', 1)" >&nbsp;</a></p>
+			<!-- "./registerUser.jsp" -->
+			<%
+			}
+			%>
+		</div>        
+			
+<!-- **************************** Quick Tools ********************************************************-->			
 			
 			<ul id="main-nav">  <!-- Accordion Menu -->
-				
 				
 				<li>
 					<a href="#" class="nav-top-item">
@@ -516,21 +316,15 @@
 			
 			</div><!-- Sidebar Style ends here -->
 			</div>
-<!-- ********************************************************************************************
-									Siderbar ends here
-*************************************************************************************************-->
+<!-- *******************************Siderbar ends here*******************************************-->
 			
 	  
 			
-<!-- ********************************************************************************************
-								Dynamic Page Starts Here 
-*************************************************************************************************-->
+<!-- **************************Dynamic Page Starts Here*****************************************-->
 			
-			<div id="main-content">
+		<div id="main-content">
 
-<!-- ********************************************************************************************
-								Sliding Menu Starts here 
-*************************************************************************************************-->
+<!-- **************************Sliding Menu Starts here****************************************-->
 			
 			<div class="panel">
 			  <p><h3><%= userName %></h3></p>
@@ -578,13 +372,9 @@
 				
 
 		
-<!-- ********************************************************************************************
-								End~ of Sliding Menu 
-*************************************************************************************************
+<!-- **********************************End~ of Sliding Menu *************************************
 
-*************************************************************************************************
-							    Tab Panel Starts here
-*************************************************************************************************-->
+***************************************Tab Panel Starts here*************************************-->
 	   <div id="tabHolder">
 		<div id="tabPanel">
 				
@@ -644,20 +434,19 @@
 			</div>
 		  </div>
 		  
-		  
 			<script type="text/javascript">
 			initTabs('tabPanel',Array('What\'s New','tips'),0,"","",Array(false,true));
 			if(document.getElementById("userName").value != "Guest")
 			{
-				preloadFriends("tempTable");
+				preloadFriends("tempTable"); //preload friend into an array
 			}
 			</script>
 		
-<!-- ********************************************************************************************
-							   End~ Tab Panel 
-*************************************************************************************************-->
-		<!-- **********************************TMEPORAL TABLE********************************************* -->
-		<div id="tempDiv" style="visibility:hidden"><table id="tempTable"></table></div>
+<!-- ************************End~ Tab Panel*************************************************-->
+							    
+<!-- ************************TMEPORAL TABLE*************************************************-->
+<div id="tempDiv" style="visibility:hidden"><table id="tempTable"></table></div>
+
 </div> <!-- End~ main Content -->
 </div> <!-- End~ bodywrapper -->
 </body><!-- Whole body ends here -->

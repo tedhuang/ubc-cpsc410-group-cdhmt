@@ -28,9 +28,6 @@ function userLoginRequest()
 	  {
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	    {
-		    //parse XML response from server
-		    //var responseText= ParseXMLResponse(xmlhttp.responseXML);
-		    		    
 		    //Gets userCred and prints it to div
 			var userCred = (xmlhttp.responseXML.getElementsByTagName("userCred")[0]).childNodes[0].nodeValue;
 
@@ -44,12 +41,10 @@ function userLoginRequest()
 					document.getElementById("submitCred").value = userCred;
 					document.getElementById("name").value = userName;
 					document.getElementById("close").submit();
-					
 
 		    	}
 		    else
 		    	{
-			    	//TODO: implement error handling
 			    	alert("Login Failed");
 			    	document.getElementById("myDiv").innerHTML="<h2>Login Failed!</h2>"; 
 		    	}

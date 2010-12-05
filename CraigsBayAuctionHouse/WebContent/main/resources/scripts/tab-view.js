@@ -1,7 +1,11 @@
 /************************************************************************************************************
 Tab view
 Copyright (C) 2010  UBC CPSC 410 CraigsBay Team
-Cheng Chen
+ **************************************************************
+ * Description:
+ * 	JS file handles the tab-related actions
+ *
+ **************************************************************	
 
 ************************************************************************************************************/
 
@@ -9,7 +13,7 @@ Cheng Chen
 	var strictDocType = true;
 	var tabFrame_maxNumberOfTabs = 15;	// Maximum number of tabs
 
-	/* Don't change anything below here */
+	/* Protype Don't change anything below here */
 	var tabObj = new Array();
 	var activeTabIndex = new Array();
 	var MSIE = navigator.userAgent.indexOf('MSIE')>=0?true:false;
@@ -96,7 +100,7 @@ Cheng Chen
 
 		return;
 	}
-
+/***************************Tab Behavior Functions****************************************/
 	function tabClick()
 	{
 		var idArray = this.id.split('_');
@@ -134,7 +138,9 @@ Cheng Chen
 	{
 		this.src = this.src.replace('close_over.gif','close.gif');
 	}
-
+  /******************END: Tab Behavior Functions****************************************************************/
+	
+	
 /******************************************************************************************************
  * 
  * 							Initialize Tabs
@@ -249,7 +255,12 @@ Cheng Chen
 		return activeTab;
 	}
 
-	
+/*********************************************************************************************
+ * 					Display Tab Contain
+ * @param ajaxIndex
+ * @param parentId
+ * @param tabId
+ **********************************************************************************************/	
 	
 	function showAjaxTabContent(ajaxIndex,parentId,tabId)
 	{
@@ -552,33 +563,7 @@ function createProfileTab(parentId,tabTitle,closeButton)
 	div.appendChild(title);
 	div.appendChild(frame);
 }
-/****************************************************************************************************************************************
- * 
- * 		Create New Acution Tab Function (Multi-new auction tab plan ABORTED)
- * 
- * @param parentId --> The Tab Panel ID
- * @param tabTitle --> New Table Title
- * @param closeButton --> True for disposable tab; False for non-disposable tabs 
- ****************************************************************************************************************************************
-function createNewAuctionTab(parentId,tabTitle,closeButton,tabNum)
-{
-	if(tabFrame_countTabs[parentId]>=tabFrame_maxNumberOfTabs)return;	// Maximum number of tabs reached - return
-	var div = document.createElement('DIV');    //new tab Frame
-	div.className = 'dhtmlgoodies_aTab';
-	tabObj[parentId].appendChild(div);
-	
-	var title = document.createElement('SPAN');
-	title.id='newItemTitle';
-	var frame = document.createElement('DIV');
-	frame.id = 'newItemTab';
-	frame.innerHTML="<h4>Create New Auction</h4>"+
-				"Title: <input id='AuctionTitle"+tabNum+"' type='text' name='AuctionTitle' size='20'><br>"+
-				"MinPrice: <input id='MinPrice"+tabNum+"' type='text' name='MinPrice' size='12'><br>";
-	
-	var tabId = initTabs(parentId,Array(tabTitle),0,'','',Array(closeButton),true);
-	div.appendChild(title);
-	div.appendChild(frame);
-}*/
+
 
 /****************************************************************************************************
 								Open profile Tab

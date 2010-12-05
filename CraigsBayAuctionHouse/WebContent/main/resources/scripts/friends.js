@@ -1,3 +1,8 @@
+/**************************************************************
+ * Description:
+ * Handles friend-related events
+ *
+ **************************************************************/
 function viewFriends(container)
 {
 		var credential = document.getElementById("cred").value;

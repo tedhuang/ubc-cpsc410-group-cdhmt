@@ -21,7 +21,7 @@
 		
 		<!-- jQuery WYSIWYG Plugin -->
 		<script type="text/javascript" src="./resources/scripts/jquery.wysiwyg.js"></script>
-		
+		<!-- FRIEND JS -->
 		<script type="text/javascript" src="./resources/scripts/friends.js"></script>
  
  <!-- ****************************CSS FOR TABLE********************************************************-->

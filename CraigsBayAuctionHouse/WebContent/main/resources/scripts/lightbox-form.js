@@ -1,6 +1,6 @@
 
 
-function gradient(id, level)
+function gradient(id, level) // background effect
 {
 	var box = document.getElementById(id);
 	box.style.opacity = level;
@@ -12,7 +12,7 @@ function gradient(id, level)
 }
 
 
-function fadein(id) 
+function fadein(id) //fade in effect
 {
 	var level = 0;
 	while(level <= 1)
@@ -24,14 +24,12 @@ function fadein(id)
 
 
 // Open the lightbox
-
-
 function openbox(div, formtitle, fadin)
 {
   var box = document.getElementById(div); 
   document.getElementById('filter').style.display='block';
 
-  if (formtitle!=null) 
+  if (formtitle!=null) //if no title means we gonna open up the register page
   {
 	  var btitle = document.getElementById('boxtitle');
   	  btitle.innerHTML = "<h3>"+formtitle+"</h3>" +
@@ -52,7 +50,6 @@ function openbox(div, formtitle, fadin)
 
 
 // Close the lightbox
-
 function closebox(div)
 {
    document.getElementById(div).style.display='none';
@@ -65,10 +62,4 @@ function closebox(div)
 function closePopup(div)
 {
    document.getElementById(div).style.display='none';
-   //document.getElementById('popBG').style.display='none';
 }
-
-//pop up info window
-
-
-

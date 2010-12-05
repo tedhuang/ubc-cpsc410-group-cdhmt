@@ -1,3 +1,8 @@
+/*
+ * Description:
+ * User Control Panel Handles User-related Functions
+ */
+
 /*****************************************************************************************************
  * 					LOG IN FUNCTION
  ****************************************************************************************************/
@@ -7,7 +12,6 @@ function userLoginRequest()
 			openbox("sign-inLoading",'',1);
 			var userName = document.getElementById("username").value;
 			var password = document.getElementById("password").value;
-			//alert("im in");
 			
 			if (window.XMLHttpRequest)
 			  {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -22,16 +26,12 @@ function userLoginRequest()
 			  {
 			  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 			    {
-				    //parse XML response from server
-				    //var responseText= ParseXMLResponse(xmlhttp.responseXML);
-				    		    
 				    //Gets userCred and prints it to div
 					var userCred = (xmlhttp.responseXML.getElementsByTagName("userCred")[0]).childNodes[0].nodeValue;
 					var userID = (xmlhttp.responseXML.getElementsByTagName("userID")[0]).childNodes[0].nodeValue;
 					
 				    if( userCred != "null" ) 
 					    { 
-					    
 							var responseText = "<h2>User Credential is: ";
 							responseText += userCred  + "</h2>";		
 							
@@ -40,9 +40,6 @@ function userLoginRequest()
 							document.getElementById("name").value = userName;
 							document.getElementById("submitUserID").value = userID;
 							document.getElementById("close").submit();
-							
-							
-		
 				    	}
 				    else
 				    	{
@@ -126,12 +123,9 @@ function loadUserProfile(title)
 	{
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	    {
-		    //parse XML response from server
-		    //var responseText= 
 		    ParseUserInfo(xmlhttp.responseXML, title);
-	    	
 	    }
-	  }
+	  };
 	
 	var credential = document.getElementById("cred").value;
 
@@ -141,7 +135,6 @@ function loadUserProfile(title)
 	xmlhttp.open("GET","../userEditInfo?Credential="+ credential ,true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xmlhttp.send();
-	//document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
 }
 
 
@@ -256,4 +249,10 @@ function editUserParseXMLResponse(responseXML){
 	
 
 	 return responseText;
+}
+function viewBiddedAuctions(container, title)
+{
+	showWantedItemTab();
+	ajaxpage('userBiddedAuctionsLoad.jsp', container); //load tableLoad.jsp in to div Dynapage
+	document.getElementById(title).innerHTML="<img src=./resources/images/loading.gif></img>";
 }

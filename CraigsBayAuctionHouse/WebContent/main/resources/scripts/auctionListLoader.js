@@ -5,7 +5,73 @@
  *
  **************************************************************/
 
+/******************************************************************************************
+ *  			AUCTION SEARCH FUNCTION 
+ ******************************************************************************************/
+function searchAuctionTable(type, searchOwner)
+	{	
+		//If type = 0 then basic search else advanced
+		//NOTE for some reason to pass '%' as a string in javascript it has to be '%25'
+		if(type == 0){
+			var searchTitle = document.getElementById("searchTitle").value;
+			var searchCategory = "%25";
+			searchOwner = "";
+			showAdvancedSearchTab();
+		}
 
+		//Advanced Search
+		if(type == 1){
+			var searchTitle = document.getElementById("advancedSearchTitle").value;
+			var searchCategory = document.getElementById("searchCategory").value;
+			searchOwner = document.getElementById("searchOwner").value;
+
+			//Check to see what parameters matter
+			if(searchTitle == ""){
+				searchTitle = "%25";
+			}
+			if(searchCategory == ""){
+				searchCategory = "%25";
+			}
+			if(searchOwner == ""){
+				searchOwner = "";
+			}
+		}
+		
+		//Friend Search
+		if(type == 2){
+			var searchCategory = "%25";
+			var searchTitle = "%25";
+		}
+		
+		if (window.XMLHttpRequest)
+		  {// code for IE7+, Firefox, Chrome, Opera, Safari
+		  xmlhttp=new XMLHttpRequest();
+		  }
+		else
+		  {// code for IE6, IE5
+		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		  }
+		  
+		xmlhttp.onreadystatechange=function()
+		{
+		  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		    {
+			    //parse XML response from server
+			    
+			    var responseText= ParseSearchedAuctionList(xmlhttp.responseXML,'searchRsltArea');
+		    	
+		    }
+		  }
+	
+		//send the parameters to the servlet with POST
+		var Params = "SearchTitle="+ searchTitle + "&SearchCategory=" + searchCategory + 
+						"&SearchOwner=" + searchOwner;
+		
+		xmlhttp.open("POST","../auctionListAllServlet" ,true);
+		xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		xmlhttp.send(Params);
+		//document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
+	}
 
 	// Ajax to add entries to the table
 /****************************************************************************************************************************************
@@ -19,8 +85,6 @@
 
 function viewAllAuctions(container, title)
 	{
-		//loadjscssfile('./resources/scripts/auctionListLoader.js', 'js');
-		//loadobjs('./resources/scripts/auctionListLoader.js'); //load the additional javascript tableLoad.jsp requires
 		showAllItemTab();
 		ajaxpage('tableLoad.jsp', container); //load tableLoad.jsp in to div Dynapage;
 		document.getElementById(title).innerHTML="<img src=./resources/images/loading.gif></img>";
@@ -28,11 +92,7 @@ function viewAllAuctions(container, title)
 	}
 
 /****************************************************************************************************************************************
- * 
  * 								LAOD ALL AUCTIONS FROM CURRENT USER
- * 
- * 
- *
  *****************************************************************************************************************************************/
 
 function viewUserAuctions(container, title)
@@ -54,12 +114,6 @@ function ParseAuctionList( responseXML, container, title ) {
 
 	var auctionsList = responseXML.getElementsByTagName('auctionsList').item(0);
 
-	/*
-	var auctionListLength = responseXML.getElementsByTagName('auctionsList').item(0).length;
-	var auctionChildLength = auctionsList.childNodes.length;
-	var areponseLength = responseXML.getElementsByTagName('response').length;
-	*/
-	
 	//remove old elements
 	  var oBody = document.getElementById(container);
 	  if(oBody != null)
@@ -111,35 +165,12 @@ function ParseAuctionList( responseXML, container, title ) {
 		rowParams[11] = flickerAlbumID;
 		rowParams[12] = numberOfViews;
 		addElement(rowParams, container);
-		//alert(rowParams);
-		
-		/*
-		var rowHTML = 	
-						
-		'	<td><input type="checkbox" /></td> '+
-		'	<td><a href="#" title="title">IPhone 4G</a></td> ' +
-		'	<td>Hot Bidding!</td> ' +
-		'	<td>12 Hours</td> ' +
-		'	<td>150</td> ' +
-
-		' <td> ' + 
-				' <a href="#" title="Edit"><img src="resources/images/icons/pencil.png" alt="Edit" /></a> ' +
-				' <a href="#" title="Delete"><img src="resources/images/icons/cross.png" alt="Delete" /></a> ' +
-				' <a href="#" title="Edit Meta"><img src="resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a> ' +
-			' </td> ' ;
-		*/
-		
-		//addElement(rowHTML);
-		
 	}
-	
 	document.getElementById(title).innerHTML="<h2>Auction List</h2>";
 }
 
 /**************************************************************************************************
- * 
  * 							SEARCH AUCTIONS LIST 		
- * 
  * @param responseXML
  ***************************************************************************************************/
 function ParseSearchedAuctionList( responseXML, container ) {
@@ -147,12 +178,6 @@ function ParseSearchedAuctionList( responseXML, container ) {
 
 	var auctionsList = responseXML.getElementsByTagName('auctionsList').item(0);
 
-	/*
-	var auctionListLength = responseXML.getElementsByTagName('auctionsList').item(0).length;
-	var auctionChildLength = auctionsList.childNodes.length;
-	var areponseLength = responseXML.getElementsByTagName('response').length;
-	*/
-	
 	//remove old elements
 	  var oBody = document.getElementById(container);
 	  if(oBody != null)
@@ -221,25 +246,13 @@ var theValue = 0;
 function addElement( rowParams, container ) {
 	
 	  var ni = document.getElementById(container);
-	  
-//	  var numi = document.getElementById('theValue');
-//	  var num = (document.getElementById('theValue').value -1)+ 2;
-//	  numi.value = num;
 	  var num = (theValue-1)+2;
 	  var newdiv = document.createElement('div');
 	  var divIdName = 'my'+num+'Div';
 	  newdiv.setAttribute('id',divIdName);
 	  newdiv.setAttribute('class','div-table-row');
-	  
-	  
-	  //newdiv.innerHTML += "<tr>";
-	  //alert("<tr>"+rowHTML+"</tr>");
-	  //newdiv.innerHTML = '<tr>'+ rowHTML + '</tr>';
-	  //alert(newdiv.innerHTML);
-	 // newdiv.innerHTML += "</tr>";
-	 
+
 	  //remove old rows..
-	  
 	  var oBody = document.getElementById(container);
 	  
 	 // Insert rows and cells into bodies.
@@ -250,11 +263,9 @@ function addElement( rowParams, container ) {
 	    oCell = oRow.insertCell(-1);
 	    oCell.setAttribute ('id', "checkBox" );
 	    oCell.innerHTML = "<input type=checkbox />";
-	      
 
 	   //name
 	    oCell = oRow.insertCell(-1);
-//	    var title=escape(rowParams[1]);
 	    oCell.innerHTML = 
 	    	"<a href='#' " +
 	    	" onClick=viewDetails("+rowParams[0]+")>"+ rowParams[1] + "</a>";
@@ -280,22 +291,13 @@ function addElement( rowParams, container ) {
 	    oCell.innerHTML =  rowParams[10];
 	    
 	  	//tools
-	    
-	  //ni.appendChild(newdiv);
-	  
 	}
 
-function alltrim(str) {
-    return str.replace(/^\s+|\s+$/g, '%2525%2525%2520%2520');
-}
 /************************************************************************************************
- * 
  * 					REMOVE UNWANTED ENTRIES FROM THE PAGE 
- * 
  ************************************************************************************************/
 function removeElement(container) {
 	var tableBody=document.getElementById( container );
-	//var entries = document.getElementById( 'myDiv' ).getElementsByTagName('div');
 	var chkBox;
 	var temp;
 
@@ -319,16 +321,12 @@ function removeElement(container) {
 		tableBody.removeChild( checked[j] );
 	 }
 		
-	}
+}
 
 
 
 function loadAuctionTable(container, title)
 {
-	//var ni = document.getElementById('myDiv');
-	//var numi = document.getElementById('theValue');
-	//var num = (document.getElementById('theValue').value -1)+ 2;
-	  
 	
 	if (window.XMLHttpRequest)
 	  {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -352,18 +350,13 @@ function loadAuctionTable(container, title)
 
 	//send the parameters to the servlet with POST
 	var Params = "";
-	
 	xmlhttp.open("POST","../auctionListAllServlet" ,true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xmlhttp.send(Params);
-	//document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
 }
 
 function loadUserOwnedAuctions(container, title)
 {
-	//var ni = document.getElementById('myDiv');
-	//var numi = document.getElementById('theValue');
-	//var num = (document.getElementById('theValue').value -1)+ 2;
 	var credential = document.getElementById("cred").value;
 	
 	if (window.XMLHttpRequest)
@@ -392,7 +385,6 @@ function loadUserOwnedAuctions(container, title)
 	xmlhttp.open("POST","../auctionListUserPostedServlet" ,true);
 	xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xmlhttp.send(Params);
-	//document.getElementById("myDiv").innerHTML="<h2>Please wait...getting entry</h2>";
 }
 
 function loadUserBiddedAuctions(container, title) {

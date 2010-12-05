@@ -101,9 +101,19 @@ function auctionParseXMLResponse(responseXML){
 
 
 
-/*
- * Handling Flickr Upload in Javascript
- */
+
+function flickrUploadResponse(){
+	//alert("TestIn");
+	document.getElementById("flickrResponse").innerHTML = '<h3><font color="black">Photo Uploaded! You may now close this tab</font></h3><br/>';
+	
+}
+
+
+/*******************************************************************************************
+ * Stuff that didn't work:
+ * 
+
+//Handling Flickr Upload in Javascript
 function postFlickrUpload(auctionID, hash){
 	
 	if (window.XMLHttpRequest)
@@ -123,29 +133,29 @@ function postFlickrUpload(auctionID, hash){
 	    }
 	  };
 	  
-	  var boundaryString = 'AaBbCcX30';
-	  var boundary1 = '--'+boundaryString;
-	  var boundary2 = '----'+boundaryString;
-	  var boundary3 = '----'+boundaryString+'--';
+//	  var boundaryString = 'AaBbCcX30';
+//	  var boundary1 = '--'+boundaryString;
+//	  var boundary2 = '----'+boundaryString;
+//	  var boundary3 = '----'+boundaryString+'--';
 
-	  var postContent = 'Content-Disposition: form-data; name="api_key"\r\n'+
-	  '\r\n'+
-	  '301748fd9ccc9801f9ed91772b19d8bd'+'\r\n'+
-	  boundary2+'\r\n'
-
-	  +'Content-Disposition: form-data; name="auth_token"\r\n'+
-	  '\r\n'+
-	  '72157625289914267-ed25c30f0392675d'+'\r\n'+
-	  boundary2+'\r\n'
-
-	  +'Content-Disposition: form-data; name="api_sig"\r\n'+
-	  '\r\n'+
-	  hash+'\r\n'+
-	  boundary3+'\r\n';
+//	  var postContent = 'Content-Disposition: form-data; name="api_key"\r\n'+
+//	  '\r\n'+
+//	  '301748fd9ccc9801f9ed91772b19d8bd'+'\r\n'+
+//	  boundary2+'\r\n'
+//
+//	  +'Content-Disposition: form-data; name="auth_token"\r\n'+
+//	  '\r\n'+
+//	  '72157625289914267-ed25c30f0392675d'+'\r\n'+
+//	  boundary2+'\r\n'
+//
+//	  +'Content-Disposition: form-data; name="api_sig"\r\n'+
+//	  '\r\n'+
+//	  hash+'\r\n'+
+//	  boundary3+'\r\n';
 	  
 	  //Content-Disposition: form-data; name="photo"; filename="C:\test.jpg"
 
-	  var postLength = postContent.length;
+//	  var postLength = postContent.length;
 
 	  xmlhttp.open("POST", "http://api.flickr.com/services/upload/",true);
 	  xmlhttp.setRequestHeader('Content-type','multipart/form-data; boundary='+boundary1);
@@ -156,13 +166,7 @@ function postFlickrUpload(auctionID, hash){
 }
 
 
-function flickrUploadResponse(){
-	//alert("TestIn");
-	document.getElementById("flickrResponse").innerHTML = '<h3><font color="black">Photo Uploaded! You may now close this tab</font></h3><br/>';
-	
-}
-
-	  
+*******************************************************************************************/
 	  
 
 

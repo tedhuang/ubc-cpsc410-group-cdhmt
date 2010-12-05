@@ -13,7 +13,7 @@
 
 
 <%
-String auctionID = request.getParameter("auctionID");		
+String auctionID = request.getParameter("auctionID");
 %>
 
 <input type="hidden" value="-1" id="ownerID">
@@ -109,7 +109,9 @@ refreshAuctionChat(<%=auctionID%>);
 		
 	</div> <!-- End #infoTab -->
 	
-					
+	<!-- We used a external flickr service to help us display the Flickr Badge without having to use javascript
+		 because we could not get Flickr's javascript to run correctly in our dynamically loaded web page 
+		 the down side is that this usually takes around 10-15min for the image that we uploaded to be displayed-->				
 	<div id=flickrImage> <!-- http://flickrbadge.theducky.com/ -->
 	<h5><i><font face="Bookman Old Style, Book Antiqua, Garamond">Picture by Flickr:</font></i></h5>
 	

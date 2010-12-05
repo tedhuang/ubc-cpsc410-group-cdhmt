@@ -8,16 +8,11 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		
 		<title></title>
-		
-		<!--                       CSS                       -->
-	  
-		
+ <!-- ****************************INCLUDED CSS FILES********************************************************-->
 		<!-- Main Stylesheet -->
 		<link rel="stylesheet" href="./resources/css/contenBox.css" type="text/css" media="screen" />
 		
-		
-		<!--                       Javascripts                       -->
-  
+ <!-- ****************************INCLUDED JAVASCRIPT FILES********************************************************-->
 		<!-- jQuery -->
 		<script type="text/javascript" src="./resources/scripts/jquery-1.3.2.min.js"></script>
 		
@@ -30,7 +25,6 @@
 		<script type="text/javascript" src="./resources/scripts/auctionListLoader.js"></script>
 
   <style type="text/css">
-	
   	.div-table-row{display:table-row;}
   	.div-table-col{display:table-cell; padding: 5px; border: 1px solid #003399;}
   </style>
@@ -41,29 +35,11 @@
   
  <!--  this will get called when the page is dynamically loaded. -->
  <script>
- loadUserBiddedAuctions('wantedItemArea', 'wantedItemTitle');
+ 	loadUserBiddedAuctions('wantedItemArea', 'wantedItemTitle');
  </script>
   
+ <input type="hidden" value="0" id="theValue" />
   
-  <input type="hidden" value="0" id="theValue" />
-  
-  
-  <!--  
-  Item: <input id="auctionItem" type="text" name="auctionItem" size="20"><br>
-  Status: <input id="status" type="text" name="status" size="20"><br>
-  Time Left: <input id="timeLeft" name="time left" size="20"><br>
-  Latest Price: <input id="latestPrice" type="text" name="price" size="20"><br>
-  
- <button type="button" onclick="loadAuctionTable()">LOAD</button>
-	<a href=# onclick=removeElement();>Remove Selected Entry</a>'
-  -->
-  
-<!-- ****************************Main Content Section with everything*****************************************
-	<div id="main-content"> 
-			
-			
-			<div class="clear"></div> <!-- End .clear -->
-			
 <!-- ***************************Start Content Box***************************** -->
 			<div class="content-box">
 				
@@ -111,99 +87,15 @@
 							</tfoot>
 							
 <!-- *************Entries Will be inserted here*******************-->
-								
 				<tbody id="myTable"></tbody>
-				
 <!--  *************************************************************-->
-						
-		
-						
-							
 		</table>
 						
 	 </div> 
-<!-- ********************************************************************************************
-						END~ Auction List
-*************************************************************************************************-->
-	
-<!-- ********************************************************************************************
-					OLD INPUT FORM 
-			
-					<div class="tab-content" id="tab2">
-					
-						<form action="" method="post">
-														
-								<p>
-									<label>Title</label>
-										<input class="text-input large-input" type="text" id="title-input" name="title-input" />
-										<br /><small>Edit the Title Here</small>
-								</p>
-								<p>
-									<label>Category</label>              
-									<select name="dropdown" class="small-input">
-										<option value="option1">Option 1</option>
-										<option value="option2">Option 2</option>
-										<option value="option3">Option 3</option>
-										<option value="option4">Option 4</option>
-									</select> 
-								</p>
-								<p>
-									<label>Price</label>
-									<input class="text-input small-input" type="text" id="category-input" name="category-input" />
-									<br /><small>Price Cannot be Changed Once Bidding is Started</small>
-								</p>
-								
-								<p>
-									<label>Flickr Picture URL</label>
-									<input class="text-input small-input" type="text" id="large-input" name="large-input" />
-								</p>
-								<p>
-									<label>Conditions</label>
-									<input type="checkBox" name="checkbox1" /> New </br>
-									<input type="checkBox" name="checkbox2" />Used
-								</p>
-								
-								<p>
-									<label>Shipping</label>
-									<input type="radio" name="freeship" /> Free Shipping </br>
-									<input type="radio" name="nFreeship" /> Shipping By Rates</br>
-									<input type="radio" name="pickup" /> Local-Pickup Only
-								</p>
-								
-								<p>
-									<label>Refund Policy</label>
-									<input type="radio" name="radio1" /> Non-Refundable<br />
-									<input type="radio" name="radio2" /> Refundable
-								</p>
-								<p>
-									<label>Payment</label>
-									<input type="checkBox" name="pmcash" /> Cash </br>
-									<input type="checkBox" name="pmchk" /> Checks</br>
-									<input type="checkBox" name="pmOther" /> Other 
-									<input type="text" id="otherPayment" name="other-Payment" />
-								</p>
-							
-								
-								<p>
-									<label>Details</label>
-									<textarea class="text-input textarea wysiwyg" id="detail-input" name="detailInput" cols="79" rows="15"></textarea>
-								</p>
-								
-								<p>
-									<input class="button" type="submit" value="Submit" />
-								</p>
-								
-							</fieldset>
-							
-							<div class="clear"></div><!-- End .clear -->
-							
-						</form>
-						
-					</div>         
-<!-- ***********************************End OLD Input***************************-->					
-				</div> <!-- End .content-box -->
+<!-- ***********************END~ Auction List*********************************************************************-->
+	</div>         
+	</div> <!-- End .content-box -->
 <!-- ***********************************End .content-box-content*****************************************************-->
-	</div> <!-- End #main-content -->
 	<div class="clear"></div>
  
 </body>

@@ -66,6 +66,17 @@ Category: <select id="Category" name="Category">
 
 <button id="newAuctionButton" type="button" onclick="createAuctionRequest()">Create Auction</button>
   
+  
+  
+  
+  
+<!--=========================================================================================================
+
+Flickr Upload is handed here:
+For details about how we worked with FlickrAPI, please look at the description at the front of flickrAPI.js
+ 
+ -->  
+
 <input type="hidden" value="" id="tagAuctionID">
 
 </br>

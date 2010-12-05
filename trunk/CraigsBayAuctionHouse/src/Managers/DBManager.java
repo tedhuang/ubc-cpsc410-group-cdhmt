@@ -1,3 +1,11 @@
+/****************************************************************************
+ * Description:                                                             *
+ * This is the core of our web app/program in terms of interaction with the *
+ * database. Most functions related to the modification of databse are done *
+ * through this manager.													*
+ * The functions of many of the methods are trivial through their names     *
+ ****************************************************************************/
+
 package Managers;
 
 import java.sql.*;
@@ -38,6 +46,9 @@ public class DBManager {
 		}
 	}
 	
+	
+	
+
 	public int createNewAuction(String auctionName, String category, String auctionStatus, String creationDate, String expiryDate, long expiryTime, Double minPrice, int ownerID, String flickrAlbumID, String auctionDescription   )
 	{
 		try {
@@ -100,6 +111,9 @@ public class DBManager {
 	}
 	
 	
+	
+	
+
 	public int auctionChangeStatus(String auctionID, String status){
 		
 		try{
@@ -122,6 +136,8 @@ public class DBManager {
 		
 		return 0;
 	}
+	
+	
 	
 	public ArrayList<Friend> getFriends(int userID){
 		ArrayList<Friend> friendList = new ArrayList<Friend>();
@@ -162,6 +178,8 @@ public class DBManager {
 		
 		return null;
 	}
+	
+	
 	
 	public ArrayList<Auction> searchAuctionResults(String searchTitle, String searchCategory, String SearchOwner)
 	{
@@ -229,6 +247,7 @@ public class DBManager {
 		}
 	
 
+	
 	public ArrayList<Auction> auctionListAll() //TODO: change the name of this method to something like "makeAuctionList"
 	{
 		ArrayList<Auction> auctionsList = new ArrayList<Auction>();
@@ -288,6 +307,7 @@ public class DBManager {
 		
 	}
 	
+	
 	public boolean checkFriendExist(int ownerID, int userID){
 		try {
 			stm = m_conn.createStatement();
@@ -340,6 +360,8 @@ public class DBManager {
 		
 	}
 	
+	
+	
 	public boolean deleteFriend(int userID, int friendID ){
 		
 		try {
@@ -360,6 +382,10 @@ public class DBManager {
 		return true;
 	}
 	
+	
+	/*
+	 * Flags a given auction for inappropriate content for admins to examine it
+	 */
 	public int flagAuction(String auctionID){
 		try {
 			stm = m_conn.createStatement();
@@ -513,6 +539,10 @@ public class DBManager {
 		
 	}
 	
+	
+	/*
+	 * Returns the auction given its ID
+	 */
 	public Auction auctionGetByID( int auctionID )
 	{
 

@@ -1,3 +1,10 @@
+/**************************************************************
+ * Description:
+ * Used to load many of the aspects of the auctionDetailsPage
+ *
+ **************************************************************/
+
+
 
 var auctionChatID;
 var auctID;
@@ -11,10 +18,7 @@ var auctID;
  *****************************************************************************************************************************************/
 
 function viewDetails(auctionID)
-{
-	//loadjscssfile('./resources/scripts/auctionDetailLoader.js', 'js');
-	//loadobjs('./resources/scripts/auctionDetailLoader.js'); //load the additional javascript file	
-	
+{	
 	showDetailViewTab();
 	ajaxpage('./auctionDetailsPage.jsp?auctionID='+auctionID, 'itemDetailArea'); //load auctionDetailsPage in to New tab
 	document.getElementById("detailTitle").innerHTML="<img src=./resources/images/loading.gif></img><br>" +
@@ -182,7 +186,6 @@ function loadAuctionParseXMLResponse(responseXML) {
 
     var ownerName = auctionView.getElementsByTagName("ownerName")[0].childNodes[0].nodeValue;
     var lastBidderName = auctionView.getElementsByTagName("lastBidderName")[0].childNodes[0].nodeValue;
-    //var chatLog = auctionView.getElementsByTagName("chatLog")[0].childNodes[0].nodeValue;;
 			
         var colParams = new Array();
         colParams[0] = auctionID;
@@ -274,16 +277,10 @@ function viewInfo(colParams)
 										Seconds + " Seconds "  + 
 										"<input type=\"button\" onClick='refreshAuctionDetails()' value = \"Refresh\" id=\"refreshAuctionDetails\">"; //button to refresh page
 	
-	//document.getElementById("picture").innerHTML = "Picture: " + colParams[11];
-
-	
 	document.getElementById("ownerID").value = colParams[6];
 	document.getElementById("latestBidPrice").value = colParams[9];
 	
-	//alert( document.getElementById("loginUserID").value );
-	//alert( document.getElementById("ownerID").value );
 	var nowCred=getCred();
-//	var testUser=getUserName();
 	
 	if(
 		(document.getElementById("ownerID").value == document.getElementById("loginUserID").value)
@@ -303,7 +300,6 @@ function viewInfo(colParams)
 			document.getElementById("changeStatusButton").disabled=false;
 			document.getElementById("changeStatusValue").disabled=false;
 		}
-		//document.getElementById("uploadDetailsPage").disabled=false;
 		document.getElementById("addFriendButton").style.display="none"; // don't add yourself or by stranger
 
 		//enable expiry date change fields
@@ -328,17 +324,11 @@ function viewInfo(colParams)
 		document.getElementById("changeStatusButton").disabled=true;
 		document.getElementById("changeStatusValue").disabled=true;
 	}
-	
-	
-	//document.getElementById("auctionChatHistory").innerHTML += colParams[15];
     
 }
 
 function bidOnAuction(auctionID, title, feedbackTitle)
 {
-	
-	//alert(document.getElementById("bidAmount").value);
-	//alert(document.getElementById("latestBidPrice").value);
 	
 	var bidAmount =  parseFloat(document.getElementById("bidAmount").value);
 	var latestBidPrice = parseFloat(document.getElementById("latestBidPrice").value);
@@ -470,8 +460,6 @@ function getReadyStateHandler(req, responseXmlHandler, auctionID) {
 
 	       } else {
 
-	         // An HTTP problem has occurred
-	        // alert("HTTP error "+req.status+": "+req.statusText);
 	       }
 	     }
 	   }
@@ -576,8 +564,7 @@ function ParseFlagAuction(responseXML){
  *  Friend-related functions moved to friends.js by Harry
  ***************************************************************************************/
 
-/* We don't need this anymore since we are using scriptless badge 
- * Kept just in case
+/* Here are some of the other ways that we've tried with Flickr Badge but it didn't work out
  * 
 function displayBadges(){
 	//var str = '<a href="javascript:alert(\'hello world\')">test</a>';

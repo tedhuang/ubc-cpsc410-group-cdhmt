@@ -97,6 +97,7 @@
 <!-- ********************************CREDENTIAL CHECK *****************************************-->
 	
 	<% 
+		//here we check if user logged in and sets parameters
 		String cred = request.getParameter("cred");
 		String userName = request.getParameter("name");
 		String loggedInUserID = request.getParameter("loggedInUserID");

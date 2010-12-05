@@ -430,7 +430,6 @@ function createDetailViewTab(parentId,tabTitle,closeButton)
 	frame.innerHTML="<div id='itemDetailArea'></div>";
 	
 	var tabId = initTabs(parentId,Array(tabTitle),0,'','',Array(closeButton),true);
-//	div.innerHTML = "<div id='itemDetailArea'></div>";
 	div.appendChild(title);
 	div.appendChild(frame);
 }

@@ -53,6 +53,7 @@ public class DBManager {
 	{
 		try {
 			stm = m_conn.createStatement();
+			//Parse user input into SQL acceptable format
 			auctionName = auctionName.replace("\'", "\\\'");
 			auctionName = auctionName.replace("\"", "\\\"");
 			auctionName = auctionName.replace(";", "");
@@ -148,14 +149,10 @@ public class DBManager {
 			String query = "SELECT FT.FriendID,UT.UserName FROM FriendsTable FT "
 				+ "INNER JOIN UserTable UT ON FT.FriendID = UT.UserID "
 				+ "WHERE FT.UserID = '" + userID + "' ";
-				//+
-				//" AND (SELECT UserName FROM UserTable "
-				//+ "WHERE UserID = FriendID)"; 
 			
 			boolean success = stm.execute(query);
 			ResultSet result = stm.getResultSet();
 			
-			//System.out.println(result.getInt("FriendID"));
 			while( result.next() ) {
 				Friend tempFriend = new Friend();
 				
@@ -320,8 +317,6 @@ public class DBManager {
 			ResultSet result = stm.getResultSet();
 			System.out.println("Result : " + result.first() );
 			
-			
-			//TODO: Check if these conditons work
 			if ( result.first() != false) {
 				stm.close();
 				System.out.println("Result : User already friend");
@@ -978,20 +973,15 @@ public class DBManager {
 			String query = "SELECT * FROM UserTable" +
 							" WHERE UserID=" + userID; 
 			
-			//System.out.println("Retrieving Auction " + auctionID + ": " + query);
-			
-			//TODO: figure out if we need a success check here
 			boolean success = stm.execute(query);
 			
 			ResultSet result = stm.getResultSet();
 			
-			//TODO: Check if these conditons work
 			if (  result.first() == false) {
 				stm.close();
 				return null;
 			}
 			else {
-				// TODO: match up the names with names in database
 				user.userID 	= result.getInt("UserID");
 				user.password		= result.getString("Password");
 				user.phoneNumber 		= result.getString("PhoneNumber");

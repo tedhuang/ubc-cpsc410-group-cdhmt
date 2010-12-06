@@ -27,7 +27,6 @@ function ParsePreloadFriendsList(responseXML, container)
 	 
 	if(success=="false")
 	{
-		 //responseText = 
 		 alert("Error finding friends. Please log out and back in again.");
 	}
 	 
@@ -65,7 +64,6 @@ function preloadFriends(container)
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	    {
 		    //parse XML response from server
-		    
 		    var responseText= ParsePreloadFriendsList(xmlhttp.responseXML, container);
 	    	
 	    }
@@ -132,7 +130,6 @@ function ParseFriendsList(responseXML, container){
 	 
 	if(success=="false")
 	{
-		 //responseText = 
 		 alert("Error finding friends. Please log out and back in again.");
 	}
 	 
@@ -279,7 +276,7 @@ function ParseFriendDelete(responseXML, container){
  *********************************************************************************************************/
 function getFriendAuctions(friendID)
 {	
-	//NOTE for some reason to pass '%' as a string in javascript it has to be '%25'
+	//NOTE To pass '%' as a string in javascript it has to be escaped as '%25'
 
 	if (window.XMLHttpRequest)
 	  {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -368,8 +365,6 @@ function ParseByOwnerAuctionList(responseXML, container)
 		addElement(rowParams, container);
 		
 	}
-	
-	//document.getElementById("advSearchTitle").innerHTML="<h2>Search Results</h2>";
 }
 
 function addFriend(){

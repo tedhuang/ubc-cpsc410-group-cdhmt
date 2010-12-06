@@ -43,6 +43,7 @@ public class friendDeleteServlet extends HttpServlet {
 		DBManager dbm = new DBManager();
 		int userID = dbm.userCredentialCheck( userCred );
 		
+		//Return error if user credential has run out or invalid user.
 		if(userID <= 0){
 			success = true;
 		}

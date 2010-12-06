@@ -67,7 +67,6 @@ function userLoginRequest()
 function userLogoutRequest()
 		{
 			var userCred = document.getElementById("cred").value;
-			//alert("im in");
 			
 			if (window.XMLHttpRequest)
 			  {// code for IE7+, Firefox, Chrome, Opera, Safari

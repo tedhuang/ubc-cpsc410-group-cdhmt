@@ -54,7 +54,8 @@
 			
 			<div class="clear"></div> <!-- End .clear -->
 			
-<!-- ***************************Start Content Box***************************** -->
+<!-- ***************************Start Content Box*****************************
+	Loads user owned auctions -->
 			<div class="content-box">
 				
 				<div class="content-box-header">

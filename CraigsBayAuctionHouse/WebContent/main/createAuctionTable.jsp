@@ -6,6 +6,7 @@
 
 <body>
  
+ <!--  Create new Auction Flow, specify the auction title, category description, price, and expiry date -->
 <br>
 <h4>Create New Auction</h4>
 Title: <input id="AuctionTitle" type="text" name="AuctionTitle" size="20"><br>

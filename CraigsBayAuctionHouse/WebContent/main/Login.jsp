@@ -8,6 +8,7 @@
 
 <script type="text/javascript">
 
+//Login lightbox functions
 
 function userLoginRequest()
 {

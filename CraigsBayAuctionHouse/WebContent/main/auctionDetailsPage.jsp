@@ -52,7 +52,7 @@ refreshAuctionChat(<%=auctionID%>);
 		 	
 		 	
 			<tfoot>
-				<!--  Bidding -->
+				<!--  Bidding flow or auction status change for the auction owner-->
 				<tr> 
 					<td> 
 					

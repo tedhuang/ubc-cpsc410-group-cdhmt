@@ -3,6 +3,8 @@
 * Dynamic Ajax Content- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
 * This notice MUST stay intact for legal use
 * Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
+* 
+* Modified by Delfino
 ***********************************************/
 
 var bustcachevar=1 //bust potential caching of external pages after initial request? (1=yes, 0=no)

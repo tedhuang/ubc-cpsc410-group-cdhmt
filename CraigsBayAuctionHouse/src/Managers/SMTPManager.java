@@ -7,6 +7,11 @@ import javax.mail.Authenticator;
 import java.sql.Array;
 import java.util.*;
 
+/*
+ * This class deals with authenticating with Gmail's SSL and sending text messages to specific phone carriers
+ * Sends SMS message with source CraigsBayAuctionHouse@Gmail.com
+ * Currently sends a message for auctions expiring, and the initial bid for all auctions.
+ */
 public class SMTPManager {
 	
 	private static final String CRAIGSBAY_EMAIL = "craigsbayauctionhouse@gmail.com";
@@ -128,6 +133,7 @@ public class SMTPManager {
 		
 	}
 	
+	//Dependant on the user's phone carrier
 	public String constructAddress(String number, String carrier)
 	{
 		if (carrier.equalsIgnoreCase("Fido"))

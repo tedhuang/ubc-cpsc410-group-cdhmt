@@ -477,9 +477,7 @@ function createFriendTab(parentId,tabTitle,closeButton)
  *****************************************************************************************************************************************/
 function createChatTab(parentId,tabTitle, sendToCode  ,closeButton)
 {
-	//TODO make unique tab so that multiple chat can be handled correctly
-//	var pollingCode	= xmlstuff.getAttribute("pollingCode");
-//	var sendToCode	= xmlstuff.getAttribute("sendToCode");
+
 	
 	if(tabFrame_countTabs[parentId]>=tabFrame_maxNumberOfTabs)return;	// Maximum number of tabs reached - return
 	var div = document.createElement('DIV');    //new tab Frame
@@ -489,9 +487,9 @@ function createChatTab(parentId,tabTitle, sendToCode  ,closeButton)
 	
 	var imFrame = document.createElement('DIV');
 	imFrame.id = 'chatFrame' + sendToCode;
-	imFrame.clssName='';//TO DO: Make a css class for chatting
-//	imFrame.innerHTML = "test";
-	
+	imFrame.clssName='';
+
+	// generates a unique container for each chat session
 	var imContainer = document.createElement('TABLE');
 	imContainer.id='chatContainer' + sendToCode;
 	imContainer.style.width='100%';
@@ -502,8 +500,6 @@ function createChatTab(parentId,tabTitle, sendToCode  ,closeButton)
 		"<tbody>" +
 			"<tr style='height: 37px'>" +
 			  "<td>" +
-//			  	"<input type='button' value='Send SMS' onClick=''/>" +
-//			  	"<input type='button' value='Send Message' onClick=''/>" +
 			  	"<input type='button' value='Block User' onClick=''/>" +
 			  "</td>" +
 			"</tr>" +
@@ -522,17 +518,10 @@ function createChatTab(parentId,tabTitle, sendToCode  ,closeButton)
 				  "<input type=button value='send' onClick='sendMsg(" + sendToCode + ")'/>" + //onClick method needed
 			"</tr>" +
 		"</tbody>";
-//		"</tbody>" +
-//		"<script language=\"javascript\"> getMsg(" + pollingCode + ") </script>";
-
-//	 var newScript = document.createElement('script');
-//	 newScript.type = 'text/javascript';
-//	 newScript.innerHTML = "getMsg(" + pollingCode + ")";
-//	 imContainer.appendChild(newScript);
 	
 	imFrame.appendChild(imContainer);
 	
-
+	// loads the new tab
 	var tabId = initTabs(parentId,Array(tabTitle),0,'','',Array(closeButton),true);
 	div.appendChild(imFrame);
 
@@ -697,8 +686,7 @@ function showDetailViewTab()
 /****************************************************************************************************/
 function showChatTab( senderName, otherID  )
 {
-//	var sender 		= xmlstuff.getAttribute("senderName");
-	
+
 	var open=getTabIndexByTitle('Chatting with '+ senderName);
 	if (open<0)// if the tab is not open yet
 	{	

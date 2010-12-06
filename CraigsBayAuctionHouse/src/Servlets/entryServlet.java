@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 /**
+ * DEPRECATED
  * Servlet implementation class pageFrameTestServlet
  */
 public class entryServlet extends HttpServlet {

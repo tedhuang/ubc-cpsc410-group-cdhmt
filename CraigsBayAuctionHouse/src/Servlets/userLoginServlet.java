@@ -19,7 +19,6 @@ public class userLoginServlet extends HttpServlet {
      */
     public userLoginServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -41,11 +40,14 @@ public class userLoginServlet extends HttpServlet {
 
 		
 		DBManager dbm = new DBManager();
-				
+		
+		// retrie the credential associated with the username/password
+		// also retrieve the userID
 		String userCred = dbm.userLogin(userName, password);
 		int userID = dbm.userGetIDByUserNameAndPassword(userName, password);
 		
 
+		//if login fails, return fail message
 		if( userCred != null && userID != -1){ 
 			
 			// Write XML to response if DB has return message
@@ -62,6 +64,7 @@ public class userLoginServlet extends HttpServlet {
 			
 		}
 		else{
+			// if login successful, return credential and sucess message
 			System.out.println("userCred is null");
 			
 			StringBuffer XMLResponse = new StringBuffer();	
@@ -77,17 +80,6 @@ public class userLoginServlet extends HttpServlet {
 		}
 		
 		
-		//Kept for reference:
-//		StringBuffer XMLResponse = new StringBuffer();	
-//		XMLResponse.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n");
-//		XMLResponse.append("<response>\n");
-//		XMLResponse.append("\t<toAddress>" + toAddress + "</toAddress>\n");
-//		XMLResponse.append("\t<subject>" + subject + "</subject>\n");
-//		XMLResponse.append("\t<body>" + body + "</body>\n");
-//		XMLResponse.append("</response>\n");
-//
-//		response.setContentType("application/xml");
-//		response.getWriter().println(XMLResponse);
 	}
 
 }

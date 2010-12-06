@@ -35,19 +35,11 @@ public class userLogoutServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userCred = request.getParameter("Credential").toString();
 
-		
+		// make call to the database to clear out credential associated with the account
 		DBManager dbm = new DBManager();
 				
-		//int userID = dbm.userCredentialCheck( userCred);
-		
 		dbm.userLogout(userCred);
 		
-//		if (dbm.userLogout( userCred ) ) {
-//			System.out.println("Logout Sucessful");
-//		}
-//		else {
-//			System.out.println("Logout Fail?");
-//		}
 		
 	}
 

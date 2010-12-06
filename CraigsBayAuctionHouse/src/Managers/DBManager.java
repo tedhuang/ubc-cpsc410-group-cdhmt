@@ -72,6 +72,7 @@ public class DBManager {
 			auctionDescription = auctionDescription.replace(">", "");
 			auctionDescription = auctionDescription.replace("^", "");
 			
+			// create entry in DB
 			String query = "INSERT INTO AuctionsTable(AuctionTitle, Category, AuctionStatus, " +
 								"ExpiryDate, AuctionExpireTime, CreationDate, OwnerID, MinPrice, LatestBidPrice, FlickerAlbumID, AuctionDescription) VALUES" +
 								"('" + auctionName + "' , '" + category + "' , '" + auctionStatus +
@@ -90,6 +91,7 @@ public class DBManager {
 			
 			System.out.println("Debug Check " + query);
 			
+			//checks the result
 			if( result.first() )
 			{
 				int AuctionID = result.getInt("AuctionID");
@@ -181,6 +183,8 @@ public class DBManager {
 		return null;
 	}
 	
+
+	// search the auction based on title and category
 	/*
 	 * This method searches auction results given the params provided
 	 */
@@ -253,7 +257,7 @@ public class DBManager {
 	/*
 	 * This is the function that retrives the main auction list
 	 */
-	public ArrayList<Auction> auctionListAll() //TODO: change the name of this method to something like "makeAuctionList"
+	public ArrayList<Auction> auctionListAll()
 	{
 		ArrayList<Auction> auctionsList = new ArrayList<Auction>();
 		
@@ -419,6 +423,8 @@ public class DBManager {
 		return 0;
 	}
 	
+	
+	// Lists the auctions posted by the userID
 	/*
 	 * Retrieves a list of the current users auctions from the database
 	 */
@@ -444,11 +450,11 @@ public class DBManager {
 			
 			System.out.println("Retrieving Auctions Owned by User : " + query);
 			
-			//TODO: figure out if we need a success check here
 			boolean success = stm.execute(query);
 			
 			ResultSet result = stm.getResultSet();
 			
+			// format the auction results into a list
 			while( result.next() ) {
 				Auction tempAuction = new Auction();
 				
@@ -648,7 +654,7 @@ public class DBManager {
 			System.out.println("Result : " + result.first() );
 			
 			
-			//TODO: Check if these conditons work
+			// user may not exist
 			if (  result.first() == false) {
 				stm.close();
 				System.out.println("Result : Failed to find Credential");
@@ -664,10 +670,12 @@ public class DBManager {
 				result.close();
 				
 				if( loginExpire == null || ( Calendar.getInstance().getTime().getTime() > loginExpire.longValue() ) ) {
+					// user exists but is not logged in or credential expired
 					System.out.println("Result : Credential Expired");
 					return 0;
 				}
 				else {
+					// if user exist, return the correct user ID
 					stm = m_conn.createStatement();
 					String updateQuery =	"UPDATE UserTable" + 
 											" SET LoginExpireTime=" + newExpireTime() +
@@ -676,10 +684,8 @@ public class DBManager {
 					System.out.println("Updating LoginExpireTime: \n" + updateQuery);
 					
 					stm.executeUpdate(updateQuery);
-					//result = stm.getResultSet();
 					
 					stm.close();
-					//result.close();
 					
 					return userID;
 				}
@@ -697,6 +703,8 @@ public class DBManager {
 			
 	}
 	
+	
+	// same as userCredentialCheck() but without the constant update message
 	public int userCredentialCheckNoUpdate( String cred ){
 		
 		Long loginExpire = null;
@@ -714,7 +722,7 @@ public class DBManager {
 			stm.executeQuery(query);
 			result = stm.getResultSet();
 
-			//TODO: Check if these conditons work
+			// determine whether the user exists
 			if (  result.first() == false) {
 				stm.close();
 				System.out.println("Result : Failed to find Credential");
@@ -728,13 +736,13 @@ public class DBManager {
 				
 				stm.close();
 				result.close();
-				
+				//if the user exists but not logged in
 				if( loginExpire == null || ( Calendar.getInstance().getTime().getTime() > loginExpire.longValue() ) ) {
 					System.out.println("Result : Credential Expired");
 					return 0;
 				}
 				else {
-
+					// user exists and is logged in
 					return userID;
 				}
 				
@@ -791,7 +799,13 @@ public class DBManager {
 	}
 	
 	
-	
+	// checks whether or not user is logged in
+	/*
+	 * 3 possible return value
+	 *  1 = user exists and is logged in
+	 *  0 = user exists and is not logged in
+	 *  -1 = user does not exist
+	 */
 	public int userLoginCheck( String userName, String password ) {
 		
 		String cred = null;
@@ -836,7 +850,6 @@ public class DBManager {
 			}
 		}
 		catch (SQLException e) {
-			//TODO Auto-generated catch block
 			e.printStackTrace();
 			return -1;
 		}
@@ -846,31 +859,24 @@ public class DBManager {
 		
 	}
 	
+	// calculates the expiry time for a login credential
 	private String newExpireTime() {
-		//java.util.Date expire = new java.util.Date( Calendar.getInstance().getTime().getTime() + loginExpireTime );
-		Long expire = Calendar.getInstance().getTime().getTime() + loginExpireTime;
-		
+		Long expire = Calendar.getInstance().getTime().getTime() + loginExpireTime;		
 		
 		return expire.toString();
 	}
 	
 	
-	
-	
+	// handles user login from checking, to assigning new credentials
 	public String userLogin(String userName, String password)
 	{
-		int loginStatus = userLoginCheck( userName, password );
 		
-		//System.out.println("loginStatus: " + loginStatus);
+		// checks login status
+		int loginStatus = userLoginCheck( userName, password );
 		
 		if ( loginStatus == -1 ) {
 			return null;
 		}
-		
-
-		
-		// YYYY-MM-DD HH:MM:SS
-
 		
 		try {
 			stm = m_conn.createStatement();
@@ -894,6 +900,7 @@ public class DBManager {
 			}
 			else {
 				
+				// assign a new credential
 				Credential userCred;
 				
 				userCred = new Credential( userName, password );
@@ -924,6 +931,7 @@ public class DBManager {
 		return null;
 	}
 	
+	// take the old credential and wipe it from database
 	public int userLogout( String credential )
 	{
 		try {

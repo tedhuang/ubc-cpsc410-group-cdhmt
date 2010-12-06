@@ -15,6 +15,9 @@ import Managers.DBManager;
 
 /**
  * Servlet implementation class chatRegisterServlet
+ * 
+ * DEPRECATED SERVLET
+ * 
  */
 public class chatRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

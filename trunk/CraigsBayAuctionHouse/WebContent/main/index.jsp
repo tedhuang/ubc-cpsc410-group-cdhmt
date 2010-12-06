@@ -128,6 +128,7 @@
 		
 		<script language="javascript">
 
+		//uncomment the next line enables receiving of messages
 		//setInterval("getMsg("+ document.getElementById("loginUserID").value + ")", 5000)
 		</script>
 	<%

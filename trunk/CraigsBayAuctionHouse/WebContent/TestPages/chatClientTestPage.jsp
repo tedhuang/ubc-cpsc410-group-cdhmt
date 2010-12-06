@@ -8,6 +8,10 @@
 
 <script type="text/javascript">
 
+/*
+ * Test Page deployed for testing/creating peer-to-peer chat
+ * The code is likely outdated as xml data format are changed
+ */
 
 function getMsg( pollingCode ) {
 	
@@ -17,7 +21,7 @@ function getMsg( pollingCode ) {
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200){
 			//alert("getting msg");
 			//parse XML response from server
-			var responseText= ParseGETXMLResponse(xmlhttp.responseXML);
+			var responseText= ParseMsg(xmlhttp.responseXML);
 			//alert("msg: " + responseText);
 				
 			document.getElementById("auctionChatHistory").innerHTML += responseText;
@@ -38,7 +42,8 @@ function getMsg( pollingCode ) {
 	
 }
 
-function ParseGETXMLResponse(responseXML)
+//Parse the message sent back to user
+function ParseMsg(responseXML)
 {
 	var messageList = responseXML.getElementsByTagName('message');
 	var printout = "";

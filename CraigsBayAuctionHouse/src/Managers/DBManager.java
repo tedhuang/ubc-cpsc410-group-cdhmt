@@ -47,8 +47,9 @@ public class DBManager {
 	}
 	
 	
-	
-
+	/*
+	 * This method handles the creation of an auction in the database given the parameters listed
+	 */
 	public int createNewAuction(String auctionName, String category, String auctionStatus, String creationDate, String expiryDate, long expiryTime, Double minPrice, int ownerID, String flickrAlbumID, String auctionDescription   )
 	{
 		try {
@@ -114,7 +115,9 @@ public class DBManager {
 	
 	
 	
-
+	/*
+	 * This method changes the status of an auction to the status given based on the auctionID
+	 */
 	public int auctionChangeStatus(String auctionID, String status){
 		
 		try{
@@ -139,7 +142,9 @@ public class DBManager {
 	}
 	
 	
-	
+	/*
+	 * This method returns an ArrayList with Friends of the user based on userID
+	 */
 	public ArrayList<Friend> getFriends(int userID){
 		ArrayList<Friend> friendList = new ArrayList<Friend>();
 		
@@ -175,7 +180,6 @@ public class DBManager {
 		
 		return null;
 	}
-	
 	
 	
 	public ArrayList<Auction> searchAuctionResults(String searchTitle, String searchCategory, String SearchOwner)

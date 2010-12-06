@@ -45,11 +45,11 @@ Copyright (C) 2010  UBC CPSC 410 CraigsBay Team
 	{
 		var parentId_div = parentId + "_";
 		if(!document.getElementById('tabFrame' + parentId_div + tabIndex)){
-			return;
+			return; //if no such tab
 		}
 		if(activeTabIndex[parentId]>=0){
 			if(activeTabIndex[parentId]==tabIndex){
-				return;
+				return;  //if already a active tab
 			}
 
 			var obj = document.getElementById('tabTitle'+parentId_div + activeTabIndex[parentId]);
@@ -157,8 +157,8 @@ Copyright (C) 2010  UBC CPSC 410 CraigsBay Team
 	function initTabs(mainContainerID,tabTitles,activeTab,width,height,closeButtonArray,additionalTab)
 	{
 		if(!closeButtonArray)closeButtonArray = new Array();
-
-		if(!additionalTab || additionalTab=='undefined'){
+		
+		if(!additionalTab || additionalTab=='undefined'){  //if another tab
 			tabObj[mainContainerID] = document.getElementById(mainContainerID);
 			width = width + '';
 			if(width.indexOf('%')<0)width= width + 'px';
@@ -180,7 +180,7 @@ Copyright (C) 2010  UBC CPSC 410 CraigsBay Team
 			tabDiv.className = 'dhtmlgoodies_tabPane';
 			tabFrame_countTabs[mainContainerID] = 0;
 
-		}else{
+		}else{ //just add a tab in the panel
 			var tabDiv = tabObj[mainContainerID].getElementsByTagName('DIV')[0];
 			var firstDiv = tabObj[mainContainerID].getElementsByTagName('DIV')[1];
 			height = tabFrameHeight[mainContainerID];
@@ -190,7 +190,7 @@ Copyright (C) 2010  UBC CPSC 410 CraigsBay Team
 		}
 
 
-
+		//add appearance and behavior to tab
 		for(var no=0;no<tabTitles.length;no++){
 			var aTab = document.createElement('DIV');
 			aTab.id = 'tabTitle' + mainContainerID + "_" +  (no + tabFrame_countTabs[mainContainerID]);
@@ -836,7 +836,7 @@ function createMyAuctionTab(parentId,tabTitle,closeButton)
 				var id = obj.parentNode.parentNode.id;
 				obj.parentNode.removeChild(obj);
 				var obj2 = document.getElementById('tabFrame' + parentId + '_' + tabIndex);//the tab frame
-				obj2.parentNode.removeChild(obj2); //element goen for good
+				obj2.parentNode.removeChild(obj2); //element gone for good
 				resetTabIds(parentId);
 				activeTabIndex[parentId]=-1;
 				showTab(parentId,'0');

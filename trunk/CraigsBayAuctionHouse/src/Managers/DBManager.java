@@ -181,7 +181,9 @@ public class DBManager {
 		return null;
 	}
 	
-	
+	/*
+	 * This method searches auction results given the params provided
+	 */
 	public ArrayList<Auction> searchAuctionResults(String searchTitle, String searchCategory, String SearchOwner)
 	{
 		ArrayList<Auction> auctionList = new ArrayList<Auction>();
@@ -248,7 +250,9 @@ public class DBManager {
 		}
 	
 
-	
+	/*
+	 * This is the function that retrives the main auction list
+	 */
 	public ArrayList<Auction> auctionListAll() //TODO: change the name of this method to something like "makeAuctionList"
 	{
 		ArrayList<Auction> auctionsList = new ArrayList<Auction>();
@@ -308,7 +312,9 @@ public class DBManager {
 		
 	}
 	
-	
+	/*
+	 * This function determines if a user is already friends with the owner of the auction they are viewing
+	 */
 	public boolean checkFriendExist(int ownerID, int userID){
 		try {
 			stm = m_conn.createStatement();
@@ -338,6 +344,9 @@ public class DBManager {
 		return true;
 	}
 	
+	/*
+	 * This function creates a new friend pair in the database
+	 */
 	public boolean addFriend(int ownerID,int userID){
 		try {
 			stm = m_conn.createStatement();
@@ -360,7 +369,9 @@ public class DBManager {
 	}
 	
 	
-	
+	/*
+	 * This auction deletes the specified friend from the database
+	 */
 	public boolean deleteFriend(int userID, int friendID ){
 		
 		try {
@@ -408,6 +419,9 @@ public class DBManager {
 		return 0;
 	}
 	
+	/*
+	 * Retrieves a list of the current users auctions from the database
+	 */
 	public ArrayList<Auction> auctionListPostedByUser( int userID )
 	{
 		
@@ -472,6 +486,9 @@ public class DBManager {
 		
 	}
 	
+	/*
+	 * Retrieves the auctions the current user has bidded on
+	 */
 	public ArrayList<Auction> auctionListBiddedByUser( int userID )
 	{
 		
@@ -734,6 +751,9 @@ public class DBManager {
 			
 	}
 	
+	/*
+	 * This fuction queries the database to determine if the inputed user name is unique
+	 */
 	public boolean usernameCheck(String Username){
 		ResultSet result;
 		
@@ -1041,6 +1061,9 @@ public class DBManager {
 		return -1;
 	}
 	
+	/*
+	 * Updates the specified user's record in the table with new information
+	 */
 	public boolean userEditInfo( int userID, String Password,String PhoneNumber,String PhoneCarrier,String EmailAddress ) {
 
 		
@@ -1072,6 +1095,9 @@ public class DBManager {
 		return false;
 	}
 	
+	/*
+	 * Creates a new user in the database
+	 */
 	public boolean userRegister(String Username, String Password , String PhoneNumber,String PhoneCarrier,String EmailAddress){
 		try {
 			stm = m_conn.createStatement();

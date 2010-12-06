@@ -44,7 +44,9 @@
   
   <button type="button" Onclick="viewAllAuctions('allItemArea','allItemTitle')"><a href=# id="all-items">Refresh This List</a></button>
 			
-<!-- ***************************Start Content Box***************************** -->
+<!-- ***************************Start Content Box***************************** 
+	This is the flow that lists all auctions 	-->
+
 			<div class="content-box">
 				
 				<div class="content-box-header">

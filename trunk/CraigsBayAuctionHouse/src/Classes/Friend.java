@@ -1,11 +1,14 @@
 package Classes;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+/*
+ * Encapsulates friends 
+ */
 public class Friend {
 	
 	public int		friendID;

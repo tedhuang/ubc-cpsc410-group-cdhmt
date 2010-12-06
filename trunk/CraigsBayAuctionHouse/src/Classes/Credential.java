@@ -1,6 +1,9 @@
 package Classes;
 
 import java.util.Calendar;
+/*
+ * Session Credential Generator
+ */
 
 import javax.servlet.http.HttpServletRequest;
 

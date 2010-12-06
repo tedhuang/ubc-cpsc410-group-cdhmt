@@ -103,7 +103,6 @@ function auctionParseXMLResponse(responseXML){
 
 
 function flickrUploadResponse(){
-	//alert("TestIn");
 	document.getElementById("flickrResponse").innerHTML = '<h3><font color="black">Photo Uploaded! You may now close this tab</font></h3><br/>';
 	
 }

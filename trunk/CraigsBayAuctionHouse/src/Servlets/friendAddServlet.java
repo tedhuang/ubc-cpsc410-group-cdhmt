@@ -34,9 +34,9 @@ public class friendAddServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int ownerID = Integer.parseInt(request.getParameter("FriendID"));
-		//int userID = Integer.parseInt(request.getParameter("UserID"));
 		String userCred = request.getParameter("Credential");
 		int success;
+		
 		DBManager dbm = new DBManager();
 		int userID = dbm.userCredentialCheck(userCred);
 		

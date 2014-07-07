@@ -4,23 +4,23 @@
 
 Chris Lack
   * Phone = 
-  * Email = c.lack@ucl.ac.uk
+  * Email =
 
 Delfino Leong
-  * Phone = 778-858-4356
-  * Email = delfino.leong@gmail.com
+  * Phone = 
+  * Email = 
   * Automatic links to other wiki pages
 
 Harry Chen
-  * Email = abigrabit@gmail.com
+  * Email =
 
 Martin Ku
-  * Phone = 604-306-4985
-  * Email = martinku86@gmail.com
+  * Phone = 
+  * Email =
 
 Ted Huang
-  * Phone = 778-238-8891
-  * Email = ted_huang88@hotmail.com
+  * Phone =
+  * Email = 
 
 
 Martin Ku
